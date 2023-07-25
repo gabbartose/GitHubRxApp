@@ -13,7 +13,7 @@ class UserDetailsCoordinator: NSObject, NavigationCoordinator {
     
     var rootViewController: UINavigationController
     var dependencyManager: DependencyManager
-    var childCoordinators: [Coordinator] = [] 
+    var childCoordinators: [Coordinator] = []
     
     weak var delegate: UserDetailsCoordinatorDelegate?
     
