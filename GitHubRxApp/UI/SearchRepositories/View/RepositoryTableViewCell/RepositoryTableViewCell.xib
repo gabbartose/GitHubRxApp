@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-Medium.ttf">
+            <string>Raleway-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="156" id="KGk-i7-Jjw" customClass="RepositoryTableViewCell" customModule="GitHubRxApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="422" height="156"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="422" height="156"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FQZ-IM-9lK">
+                        <rect key="frame" x="20" y="48" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="1R6-su-50Q"/>
+                            <constraint firstAttribute="width" secondItem="FQZ-IM-9lK" secondAttribute="height" multiplier="1:1" id="5zB-gB-zO1"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ne0-hq-k1o">
+                        <rect key="frame" x="100" y="10" width="302" height="136"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repository name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8Y-UZ-q54">
+                                <rect key="frame" x="0.0" y="0.0" width="302" height="21.333333333333332"/>
+                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="18"/>
+                                <color key="textColor" name="GDarkGray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name of the author" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="841-Al-V8Y">
+                                <rect key="frame" x="0.0" y="31.333333333333339" width="302" height="41.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="15"/>
+                                <color key="textColor" name="GDarkGray"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zNz-VJ-qsh">
+                                <rect key="frame" x="0.0" y="83" width="302" height="28.666666666666671"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4v0-0q-cV4">
+                                        <rect key="frame" x="0.0" y="0.0" width="75.666666666666671" height="28.666666666666668"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Watchers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cN3-lX-yLH">
+                                                <rect key="frame" x="0.0" y="0.0" width="75.666666666666671" height="14.333333333333334"/>
+                                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="12"/>
+                                                <color key="textColor" name="GLightGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0q-y6-TkP">
+                                                <rect key="frame" x="0.0" y="14.333333333333329" width="75.666666666666671" height="14.333333333333336"/>
+                                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="12"/>
+                                                <color key="textColor" name="GDarkGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="U0x-XL-VNg">
+                                        <rect key="frame" x="75.666666666666657" y="0.0" width="75.333333333333343" height="28.666666666666668"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PG-Qx-aPL">
+                                                <rect key="frame" x="0.0" y="0.0" width="75.333333333333329" height="14.333333333333334"/>
+                                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="12"/>
+                                                <color key="textColor" name="GDarkGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zy-gD-91N">
+                                                <rect key="frame" x="0.0" y="14.333333333333329" width="75.333333333333329" height="14.333333333333336"/>
+                                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="12"/>
+                                                <color key="textColor" name="GDarkGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OAb-Pu-PID">
+                                        <rect key="frame" x="151" y="0.0" width="75.666666666666686" height="28.666666666666668"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issues" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeE-GD-QjC">
+                                                <rect key="frame" x="0.0" y="0.0" width="75.666666666666671" height="14.333333333333334"/>
+                                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="12"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWM-0W-dkm">
+                                                <rect key="frame" x="0.0" y="14.333333333333329" width="75.666666666666671" height="14.333333333333336"/>
+                                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="12"/>
+                                                <color key="textColor" name="GDarkGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YIW-ax-yGX">
+                                        <rect key="frame" x="226.66666666666671" y="0.0" width="75.333333333333343" height="28.666666666666668"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lou-CN-wHh">
+                                                <rect key="frame" x="0.0" y="0.0" width="75.333333333333329" height="14.333333333333334"/>
+                                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="12"/>
+                                                <color key="textColor" name="GDarkGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6X-MV-aCU">
+                                                <rect key="frame" x="0.0" y="14.333333333333329" width="75.333333333333329" height="14.333333333333336"/>
+                                                <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="12"/>
+                                                <color key="textColor" name="GLightGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="N34-l4-zQx">
+                                <rect key="frame" x="0.0" y="121.66666666666664" width="302" height="14.333333333333329"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" text="Updated:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alF-Du-zI6">
+                                        <rect key="frame" x="0.0" y="0.0" width="52" height="14.333333333333334"/>
+                                        <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="12"/>
+                                        <color key="textColor" name="GLightGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15.12.2020." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKw-c2-9Lc">
+                                        <rect key="frame" x="62" y="0.0" width="240" height="14.333333333333334"/>
+                                        <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="12"/>
+                                        <color key="textColor" name="GLightGray"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="841-Al-V8Y" firstAttribute="leading" secondItem="ne0-hq-k1o" secondAttribute="leading" id="0mt-Lr-Pk3"/>
+                            <constraint firstAttribute="trailing" secondItem="N34-l4-zQx" secondAttribute="trailing" id="80m-d0-kyh"/>
+                            <constraint firstAttribute="trailing" secondItem="zNz-VJ-qsh" secondAttribute="trailing" id="Ep1-d1-aGJ"/>
+                            <constraint firstItem="N34-l4-zQx" firstAttribute="leading" secondItem="ne0-hq-k1o" secondAttribute="leading" id="Odw-Wo-VHQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Q8Y-UZ-q54" secondAttribute="trailing" id="eAK-QE-WGa"/>
+                            <constraint firstAttribute="trailing" secondItem="841-Al-V8Y" secondAttribute="trailing" id="gHu-PH-WWK"/>
+                            <constraint firstItem="zNz-VJ-qsh" firstAttribute="leading" secondItem="ne0-hq-k1o" secondAttribute="leading" id="pdC-gJ-Cgz"/>
+                            <constraint firstItem="Q8Y-UZ-q54" firstAttribute="leading" secondItem="ne0-hq-k1o" secondAttribute="leading" id="sRr-OI-ly7"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="FQZ-IM-9lK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7qA-tE-jyL"/>
+                    <constraint firstAttribute="trailing" secondItem="ne0-hq-k1o" secondAttribute="trailing" constant="20" id="Fqx-IQ-lBc"/>
+                    <constraint firstItem="ne0-hq-k1o" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Tir-bZ-QyV"/>
+                    <constraint firstItem="FQZ-IM-9lK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="UG3-13-AHA"/>
+                    <constraint firstItem="ne0-hq-k1o" firstAttribute="leading" secondItem="FQZ-IM-9lK" secondAttribute="trailing" constant="20" id="XTx-IG-IdT"/>
+                    <constraint firstAttribute="bottom" secondItem="ne0-hq-k1o" secondAttribute="bottom" constant="10" id="bfc-QU-gVd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="authorImageView" destination="FQZ-IM-9lK" id="iNp-vH-Hmb"/>
+                <outlet property="authorNameLabel" destination="841-Al-V8Y" id="7sY-IB-Fe6"/>
+                <outlet property="numberOfForksLabel" destination="8Zy-gD-91N" id="e2h-L8-lCI"/>
+                <outlet property="numberOfIssuesLabel" destination="JWM-0W-dkm" id="UBg-ns-v6r"/>
+                <outlet property="numberOfStarsLabel" destination="Q6X-MV-aCU" id="8VL-Qs-DzR"/>
+                <outlet property="numberOfWatchersLabel" destination="A0q-y6-TkP" id="MbZ-G2-4pl"/>
+                <outlet property="repositoryNameLabel" destination="Q8Y-UZ-q54" id="hxh-V5-UPb"/>
+                <outlet property="updatedDateLabel" destination="nKw-c2-9Lc" id="cxY-VP-nws"/>
+            </connections>
+            <point key="canvasLocation" x="207.63358778625954" y="7.042253521126761"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="GDarkGray">
+            <color red="0.21500000357627869" green="0.20600000023841858" blue="0.20600000023841858" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="GLightGray">
+            <color red="0.18600000441074371" green="0.18600000441074371" blue="0.18600000441074371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
