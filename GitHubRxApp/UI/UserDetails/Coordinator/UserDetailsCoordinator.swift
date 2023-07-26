@@ -49,7 +49,7 @@ extension UserDetailsCoordinator: UserDetailsViewModelDelegate {
         delegate?.didTapAdditionalInfoInBrowser(htmlURL: htmlURL)
     }
     
-    func didEnd() { 
+    func didEnd() {
         delegate?.shouldRemoveCoordinator(coordinator: self)
     }
 }
