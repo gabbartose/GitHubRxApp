@@ -35,6 +35,7 @@ class LoginView: UIView, BasicViewMethodsProtocol {
         button.layer.cornerRadius = 20
         button.addShadow()
         button.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
+        return button
     }()
     
     var onDidSelectLoginButton: (() -> ())?
