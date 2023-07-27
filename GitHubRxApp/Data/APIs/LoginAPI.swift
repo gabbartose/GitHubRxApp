@@ -8,13 +8,15 @@
 import Foundation
 
 protocol LoginAPIProtocol {
-    func postLogin(query: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ())
+    func exchangeCodeForToken(code: String, state: String, completion: @escaping (Result<TokenBag, ErrorReport>) -> ())
 }
 
 class LoginAPI: LoginAPIProtocol {
     
+    
+    
     private enum Paths: String {
-        case searchRepositories = "/search/nesto"
+        case tokenPath = "/search/nesto"
     }
     
     private let networkManager: NetworkManager
@@ -25,10 +27,10 @@ class LoginAPI: LoginAPIProtocol {
 }
 
 extension LoginAPI {
-    func postLogin(query: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) {
-        var resource = Resource<RepositoriesResponse>(path: Paths.searchRepositories.rawValue)
+    func exchangeCodeForToken(code: String, state: String, completion: @escaping (Result<TokenBag, ErrorReport>) -> ()) {
+        var resource = Resource<TokenBag>(path: Paths.tokenPath.rawValue)
         resource.queryItems = [
-            URLQueryItem(name: "q", value: query)
+            // URLQueryItem(name: "q", value: query)
         ]
         
         networkManager.apiCall(for: resource, completion: completion)

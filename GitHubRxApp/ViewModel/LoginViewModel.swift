@@ -19,10 +19,12 @@ protocol LoginViewModelProtocol {
 
 class LoginViewModel: LoginViewModelProtocol {
     
+    private let loginRepository: LoginRepositoryProtocol
+    
     weak var delegate: LoginViewModelDelegate?
     
-    init() {
-        
+    init(loginRepository: LoginRepositoryProtocol) {
+        self.loginRepository = loginRepository
     }
     
     deinit {

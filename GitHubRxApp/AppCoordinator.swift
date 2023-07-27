@@ -8,7 +8,10 @@
 import UIKit
 
 class AppCoordinator: NSObject, Coordinator {
+    
     var childCoordinators = [Coordinator]()
+    let deepLinkHandler = DeepLinkHandler()
+    
     lazy var dependencyManager: DependencyManager = {
         let configuration = NetworkConfiguration(HTTPHeaders: getHTTPHeaders())
         let networkManager = NetworkManager(configuration: configuration)

@@ -8,7 +8,6 @@
 import Foundation
 
 struct Owner: Codable, Equatable {
-    
     let id: Int?
     let nodeId: String?
     let avatarUrl: String?

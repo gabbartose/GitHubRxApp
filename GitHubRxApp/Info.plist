@@ -6,6 +6,19 @@
 	<string>$(API_BASE_URL_PATH)</string>
 	<key>App Bundle ID</key>
 	<string>$(APP_BUNDLE_ID)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.beer.GitHubRxApp</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.beer.GitHubRxApp</string>
+			</array>
+		</dict>
+	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

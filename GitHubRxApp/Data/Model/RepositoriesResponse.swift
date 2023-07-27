@@ -8,6 +8,5 @@
 import Foundation
 
 struct RepositoriesResponse: Codable, Equatable {
-    
     let items: [Item]
 }

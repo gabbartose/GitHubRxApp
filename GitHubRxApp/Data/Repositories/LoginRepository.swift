@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LoginRepositoryProtocol {
-    func postLogin(query: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ())
+    func exchangeCodeForToken(code: String, state: String, completion: @escaping (Result<TokenBag, ErrorReport>) -> ())
 }
 
 class LoginRepository: LoginRepositoryProtocol {
@@ -21,7 +21,7 @@ class LoginRepository: LoginRepositoryProtocol {
 }
 
 extension LoginRepository {
-    func postLogin(query: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) {
-        loginAPI.postLogin(query: query, completion: completion)
+    func exchangeCodeForToken(code: String, state: String, completion: @escaping (Result<TokenBag, ErrorReport>) -> ()) {
+        loginAPI.exchangeCodeForToken(code: code, state: state, completion: completion)
     }
 }
