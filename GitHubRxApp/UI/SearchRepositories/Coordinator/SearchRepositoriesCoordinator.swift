@@ -59,9 +59,6 @@ extension SearchRepositoriesCoordinator: RepositoryDetailsCoordinatorDelegate {
 // MARK: Open AdditionalInfoInBrowser (info about Repositories and Users via HTML in browser)
 extension SearchRepositoriesCoordinator: UserDetailsCoordinatorDelegate {
     func didTapAdditionalInfoInBrowser(htmlURL: String) {
-        // TODO: Needs to delete all web browser methods from SearchRepositoriesCoordinator
-//        guard let url = URL(string: htmlURL) else { return }
-//        UIApplication.shared.open(url)
         URL.openLinkInWebBrowser(htmlURL: htmlURL)
     }
 }
