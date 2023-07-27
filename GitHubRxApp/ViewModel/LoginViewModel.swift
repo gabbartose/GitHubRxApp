@@ -8,6 +8,7 @@
 import Foundation
 
 protocol LoginViewModelDelegate: AnyObject {
+    func openScreenInSafari(url: URL)
     func didEnd()
 }
 
@@ -29,12 +30,23 @@ class LoginViewModel: LoginViewModelProtocol {
     }
 }
 
+// MARK: LoginViewModelDelegate necessary methods
 extension LoginViewModel {
+    func didSelectLoginButton() {
+        guard let url = getAuthPageURL() else { return }
+        delegate?.openScreenInSafari(url: url)
+    }
+    
     func didDisappearViewController() {
         delegate?.didEnd()
     }
-    
-    func didSelectLoginButton() {
-        print("LOGIN BUTTON is selected")
+}
+
+// MARK: Helper private methods
+extension LoginViewModel {
+    private func getAuthPageURL() -> URL? {
+        let state = UUID().uuidString
+        let urlString = "https://github.com/login/oauth/authorize?client_id=yourClientId&redirect_uri=it.iacopo.github://authentication&s&scopes=repo,user&state=\(state)"
+        return URL(string: urlString)!
     }
 }

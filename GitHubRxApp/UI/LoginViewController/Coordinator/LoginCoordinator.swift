@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol LoginCoordinatorDelegate: CoordinatorDelegate { }
 
@@ -21,7 +22,7 @@ class LoginCoordinator: NSObject, NavigationCoordinator {
         self.rootViewController = rootViewController
         self.dependencyManager = dependencyManager
     }
-
+    
     func start() {
         fatalError("use startWith")
     }
@@ -39,6 +40,12 @@ class LoginCoordinator: NSObject, NavigationCoordinator {
 }
 
 extension LoginCoordinator: LoginViewModelDelegate {
+    func openScreenInSafari(url: URL) {
+        let safariViewController = SFSafariViewController(url: url)
+        safariViewController.modalPresentationStyle = .fullScreen
+        rootViewController.present(safariViewController, animated: true)
+    }
+    
     func didEnd() {
         delegate?.shouldRemoveCoordinator(coordinator: self)
     }
