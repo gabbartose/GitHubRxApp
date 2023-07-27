@@ -27,11 +27,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .GBlue
+        
     }
     
     override func loadView() {
         self.view = LoginView()
+        setupLoginButton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -44,5 +45,11 @@ class LoginViewController: UIViewController {
     
     deinit {
         print("deinit LoginViewController")
+    }
+}
+
+extension LoginViewController {
+    private func setupLoginButton() {
+        loginView.onDidSelectLoginButton = viewModel.didSelectLoginButton
     }
 }

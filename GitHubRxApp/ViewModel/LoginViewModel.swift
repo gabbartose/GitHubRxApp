@@ -12,6 +12,7 @@ protocol LoginViewModelDelegate: AnyObject {
 }
 
 protocol LoginViewModelProtocol {
+    func didSelectLoginButton()
     func didDisappearViewController()
 }
 
@@ -30,6 +31,10 @@ class LoginViewModel: LoginViewModelProtocol {
 
 extension LoginViewModel {
     func didDisappearViewController() {
-        
+        delegate?.didEnd()
+    }
+    
+    func didSelectLoginButton() {
+        print("LOGIN BUTTON is selected")
     }
 }

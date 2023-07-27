@@ -25,22 +25,13 @@ class AppCoordinator: NSObject, Coordinator {
     func start() {
         print("Current environment is: \(EnvironmentProvider.shared.currentEnvironment)")
         
-        // TODO: Depends if user is logged in or not we need to distinguish where we need to navigate user as a first screen (and whether there will be navigation bar on the top)
-        UINavigationBar.appearance().barTintColor = .white
-        let navigationBar = rootViewController.navigationBar
-        let appearance = UINavigationBarAppearance()
-        let attributes = [NSAttributedString.Key.font: UIFont(name: .ralewayBold, size: 20), NSAttributedString.Key.foregroundColor: UIColor.setColor(.GBlue)]
-        appearance.titleTextAttributes = attributes as [NSAttributedString.Key: Any]
-        appearance.backgroundColor = .white
-        navigationBar.standardAppearance = appearance
-        navigationBar.isTranslucent = false
-        navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+        showLoginFlow()
+        
+        // setupNavigationBar()
+        // showSearchRepositoriesFlow()
+        
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
-        
-        // TODO: distinguish flows at that point
-        showLoginFlow()
-        // showSearchRepositoriesFlow()
     }
 }
 
@@ -60,8 +51,8 @@ extension AppCoordinator {
     }
 }
 
+// MARK: Navigation
 extension AppCoordinator {
-    
     private func showLoginFlow() {
         let loginCoordinator = LoginCoordinator(rootViewController: rootViewController,
                                                 dependencyManager: dependencyManager)
@@ -74,5 +65,20 @@ extension AppCoordinator {
                                                                           dependencyManager: dependencyManager)
         addChildCoordinator(searchRepositoriesCoordinator)
         searchRepositoriesCoordinator.start()
+    }
+}
+
+// MARK: Setup UINavigationBar
+extension AppCoordinator {
+    private func setupNavigationBar() {
+        UINavigationBar.appearance().barTintColor = .white
+        let navigationBar = rootViewController.navigationBar
+        let appearance = UINavigationBarAppearance()
+        let attributes = [NSAttributedString.Key.font: UIFont(name: .ralewayBold, size: 20), NSAttributedString.Key.foregroundColor: UIColor.setColor(.GBlue)]
+        appearance.titleTextAttributes = attributes as [NSAttributedString.Key: Any]
+        appearance.backgroundColor = .white
+        navigationBar.standardAppearance = appearance
+        navigationBar.isTranslucent = false
+        navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
     }
 }

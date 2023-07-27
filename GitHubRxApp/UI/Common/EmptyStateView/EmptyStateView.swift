@@ -20,6 +20,7 @@ class EmptyStateView: UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: Constants.gitHubSearchIcon)
+        imageView.addShadow()
         return imageView
     }()
     
