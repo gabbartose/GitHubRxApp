@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol RepositoryDetailsCoordinatorDelegate: CoordinatorDelegate, UserDetailsDelegate, ExternalBrowserDelegate { }
+protocol RepositoryDetailsCoordinatorDelegate: CoordinatorDelegate, UserDetailsDelegate { }
 
 class RepositoryDetailsCoordinator: NSObject, NavigationCoordinator {
     
@@ -38,9 +38,9 @@ class RepositoryDetailsCoordinator: NSObject, NavigationCoordinator {
     }
 }
 
-extension RepositoryDetailsCoordinator: RepositoryDetailsViewModelDelegate, UserDetailsViewModelDelegate {
+extension RepositoryDetailsCoordinator: RepositoryDetailsViewModelDelegate {
     func didTapAdditionalInfoInBrowser(htmlURL: String) {
-        delegate?.didTapAdditionalInfoInBrowser(htmlURL: htmlURL)
+        URL.openLinkInWebBrowser(htmlURL: htmlURL)
     }
     
     func didEnd() {

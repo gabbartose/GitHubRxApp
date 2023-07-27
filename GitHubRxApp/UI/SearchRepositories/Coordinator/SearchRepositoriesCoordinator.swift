@@ -11,10 +11,6 @@ protocol UserDetailsDelegate: AnyObject {
     func didSelectUserDetails(userDetails: Owner)
 }
 
-protocol ExternalBrowserDelegate: AnyObject {
-    func didTapAdditionalInfoInBrowser(htmlURL: String)
-}
-
 class SearchRepositoriesCoordinator: NSObject, NavigationCoordinator {
     
     var rootViewController: UINavigationController

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol UserDetailsCoordinatorDelegate: CoordinatorDelegate, ExternalBrowserDelegate { }
+protocol UserDetailsCoordinatorDelegate: CoordinatorDelegate { }
 
 class UserDetailsCoordinator: NSObject, NavigationCoordinator {
     
@@ -46,7 +46,7 @@ class UserDetailsCoordinator: NSObject, NavigationCoordinator {
 
 extension UserDetailsCoordinator: UserDetailsViewModelDelegate {
     func didTapAdditionalInfoInBrowser(htmlURL: String) {
-        delegate?.didTapAdditionalInfoInBrowser(htmlURL: htmlURL)
+        URL.openLinkInWebBrowser(htmlURL: htmlURL)
     }
     
     func didEnd() {
