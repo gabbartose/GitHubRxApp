@@ -1,5 +1,5 @@
 //
-//  RepositoriesAPI.swift
+//  SearchRepositoriesAPI.swift
 //  GitHubRxApp
 //
 //  Created by Gabrijel Bartosek on 19.07.2023..
@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol RepositoriesAPIProtocol {
+protocol SearchRepositoriesAPIProtocol {
     func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ())
 }
 
-class RepositoriesAPI: RepositoriesAPIProtocol {
+class SearchRepositoriesAPI: SearchRepositoriesAPIProtocol {
     
     private enum Paths: String {
         case searchRepositories = "/search/repositories"
@@ -24,7 +24,7 @@ class RepositoriesAPI: RepositoriesAPIProtocol {
     }
 }
 
-extension RepositoriesAPI {
+extension SearchRepositoriesAPI {
     func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) {
         var resource = Resource<RepositoriesResponse>(path: Paths.searchRepositories.rawValue)
         resource.queryItems = [

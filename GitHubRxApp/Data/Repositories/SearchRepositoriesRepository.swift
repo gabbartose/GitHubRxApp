@@ -13,15 +13,15 @@ protocol SearchRepositoriesRepositoryProtocol {
 
 class SearchRepositoriesRepository: SearchRepositoriesRepositoryProtocol {
     
-    let repositoriesAPI: RepositoriesAPIProtocol
+    let searchRepositoriesAPI: SearchRepositoriesAPIProtocol
     
-    init(networkManager: NetworkManager, repositoriesAPI: RepositoriesAPIProtocol? = nil) {
-        self.repositoriesAPI = repositoriesAPI ?? RepositoriesAPI(networkManager: networkManager)
+    init(networkManager: NetworkManager, searchRepositoriesAPI: SearchRepositoriesAPIProtocol? = nil) {
+        self.searchRepositoriesAPI = searchRepositoriesAPI ?? SearchRepositoriesAPI(networkManager: networkManager)
     }
 }
 
 extension SearchRepositoriesRepository {
     func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) {
-        repositoriesAPI.getRepositories(query: query, page: page, perPage: perPage, sort: sort, completion: completion)
+        searchRepositoriesAPI.getRepositories(query: query, page: page, perPage: perPage, sort: sort, completion: completion)
     }
 }
