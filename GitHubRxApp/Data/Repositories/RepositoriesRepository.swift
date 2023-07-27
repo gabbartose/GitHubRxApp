@@ -21,7 +21,6 @@ class RepositoriesRepository: RepositoriesRepositoryProtocol {
 }
 
 extension RepositoriesRepository {
-    
     func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) {
         repositoriesAPI.getRepositories(query: query, page: page, perPage: perPage, sort: sort, completion: completion)
     }

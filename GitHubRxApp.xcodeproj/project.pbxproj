@@ -14,6 +14,8 @@
 		7515D6942A72534500211BD4 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6932A72534500211BD4 /* LoginCoordinator.swift */; };
 		7515D6962A72535200211BD4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6952A72535200211BD4 /* LoginViewModel.swift */; };
 		7515D6982A7269A700211BD4 /* UIView+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6972A7269A700211BD4 /* UIView+GitHubRxApp.swift */; };
+		7515D69A2A727E6E00211BD4 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6992A727E6E00211BD4 /* LoginRepository.swift */; };
+		7515D69C2A727E8F00211BD4 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D69B2A727E8F00211BD4 /* LoginAPI.swift */; };
 		75A47C832A64FA0800618359 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47C822A64FA0800618359 /* AppDelegate.swift */; };
 		75A47C852A64FA0800618359 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47C842A64FA0800618359 /* SceneDelegate.swift */; };
 		75A47C8C2A64FA0A00618359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C8B2A64FA0A00618359 /* Assets.xcassets */; };
@@ -130,6 +132,8 @@
 		7515D6932A72534500211BD4 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		7515D6952A72535200211BD4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7515D6972A7269A700211BD4 /* UIView+GitHubRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GitHubRxApp.swift"; sourceTree = "<group>"; };
+		7515D6992A727E6E00211BD4 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
+		7515D69B2A727E8F00211BD4 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		75230E16ACCAA1378A3DF58E /* Pods_GitHubRxAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubRxAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A47C7F2A64FA0800618359 /* GitHubRxApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRxApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A47C822A64FA0800618359 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -633,6 +637,7 @@
 		75A47CFD2A67A7E000618359 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				7515D6992A727E6E00211BD4 /* LoginRepository.swift */,
 				75A47D012A67AAE300618359 /* RepositoriesRepository.swift */,
 			);
 			path = Repositories;
@@ -641,6 +646,7 @@
 		75A47CFE2A67A80C00618359 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				7515D69B2A727E8F00211BD4 /* LoginAPI.swift */,
 				75A47CFF2A67A84F00618359 /* RepositoriesAPI.swift */,
 			);
 			path = APIs;
@@ -1059,9 +1065,11 @@
 				75A47CDC2A65389A00618359 /* Formatters.swift in Sources */,
 				75A47CE02A6539DE00618359 /* UITableView+GitHubRxApp.swift in Sources */,
 				75A47CAB2A65092E00618359 /* DependencyManager.swift in Sources */,
+				7515D69A2A727E6E00211BD4 /* LoginRepository.swift in Sources */,
 				75A47D1C2A6A80F900618359 /* UILabel+GitHubRxApp.swift in Sources */,
 				75A47D272A6E4CD300618359 /* UserDetailsViewController.swift in Sources */,
 				7515D6902A72532100211BD4 /* LoginViewController.swift in Sources */,
+				7515D69C2A727E8F00211BD4 /* LoginAPI.swift in Sources */,
 				7515D68B2A71679300211BD4 /* EnvironmentProvider.swift in Sources */,
 				75A47CF72A66652E00618359 /* GrayBottomLineView.swift in Sources */,
 				75A47CE22A653A4200618359 /* SearchRepositoriesViewController.swift in Sources */,

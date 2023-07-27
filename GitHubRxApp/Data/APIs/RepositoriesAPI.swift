@@ -25,7 +25,6 @@ class RepositoriesAPI: RepositoriesAPIProtocol {
 }
 
 extension RepositoriesAPI {
-    
     func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) {
         var resource = Resource<RepositoriesResponse>(path: Paths.searchRepositories.rawValue)
         resource.queryItems = [
