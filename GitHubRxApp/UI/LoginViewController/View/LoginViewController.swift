@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
     
     private var loginView: LoginView {
         guard let view = self.view as? LoginView else { fatalError("There is no LoginView") }
@@ -23,11 +23,6 @@ class LoginViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
     }
     
     override func loadView() {

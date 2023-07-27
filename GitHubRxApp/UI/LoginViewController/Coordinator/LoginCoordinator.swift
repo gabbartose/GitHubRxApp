@@ -41,7 +41,7 @@ class LoginCoordinator: NSObject, NavigationCoordinator {
 }
 
 extension LoginCoordinator: LoginViewModelDelegate {
-    func openScreenInSafari(url: URL) {
+    func getAuthPageURL(with url: URL) {
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.modalPresentationStyle = .fullScreen
         rootViewController.present(safariViewController, animated: true)
