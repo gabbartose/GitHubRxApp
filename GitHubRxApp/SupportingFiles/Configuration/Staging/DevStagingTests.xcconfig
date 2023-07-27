@@ -1,0 +1,13 @@
+//
+//  DevStagingTests.xcconfig
+//  GitHubRxApp
+//
+//  Created by Gabrijel Bartosek on 26.07.2023..
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Pods/Target Support Files/Pods-GitHubRxAppTests/Pods-GitHubRxAppTests.devstaging.xcconfig"
+
+#include "DevStaging.xcconfig"

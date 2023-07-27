@@ -8,7 +8,7 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-APP_NAME = GitHubRxApp
-APP_BUNDLE_ID = com.beer.GitHubRxApp
+APP_NAME = GitHubRxSearchStaging
+APP_BUNDLE_ID = com.beer.GitHubRxApp-staging
 API_BASE_URL_PATH = https:/$()/api.github.com
-APP_ICON = AppIcon
+APP_ICON = AppIconStaging

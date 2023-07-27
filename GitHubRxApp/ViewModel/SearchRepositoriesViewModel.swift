@@ -77,10 +77,12 @@ extension SearchRepositoriesViewModel {
     }
     
     func didSelectRepository(item: Item) {
+        guard !EnvironmentProvider.shared.isTest() else { return }
         delegate?.didSelectRepository(item: item)
     }
     
     func didSelectUserImageView(userDetails: Owner) {
+        guard EnvironmentProvider.shared.isProduction() else { return }
         delegate?.didSelectUserDetails(userDetails: userDetails)
     }
     

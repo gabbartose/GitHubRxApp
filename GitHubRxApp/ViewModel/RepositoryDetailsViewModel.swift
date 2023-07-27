@@ -41,16 +41,16 @@ extension RepositoryDetailsViewModel {
         return repositoryItem
     }
     
-    func didSelectUserDetails(userDetails: Owner) {
-        delegate?.didSelectUserDetails(userDetails: userDetails)
-    }
-    
     func didTapAdditionalInfoInBrowser(htmlURL: String) {
         delegate?.didTapAdditionalInfoInBrowser(htmlURL: htmlURL)
+    }
+    
+    func didSelectUserDetails(userDetails: Owner) {
+        guard EnvironmentProvider.shared.isProduction() else { return }
+        delegate?.didSelectUserDetails(userDetails: userDetails)
     }
     
     func didDisappearViewController() {
         delegate?.didEnd()
     }
-    
 }

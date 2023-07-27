@@ -13,4 +13,14 @@ target 'GitHubRxApp' do
   pod 'RxSwift', '~> 6'
   pod 'SnapKit', '~> 5.0.0'
   
+  target 'GitHubRxAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+    pod 'RxTest', '~> 6'
+  end
+
+  target 'GitHubRxAppUITests' do
+    # Pods for testing
+  end
+  
 end

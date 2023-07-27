@@ -34,6 +34,10 @@ class SearchRepositoriesCoordinator: NSObject, NavigationCoordinator {
             viewModel: searchRepositoriesViewModel)
         rootViewController.pushViewController(searchRepositoriesViewController, animated: true)
     }
+    
+    deinit {
+        print("deinit SearchRepositoriesCoordinator")
+    }
 }
 
 // MARK: Open RepositoryDetails
@@ -59,8 +63,10 @@ extension SearchRepositoriesCoordinator: RepositoryDetailsCoordinatorDelegate {
 // MARK: Open AdditionalInfoInBrowser (info about Repositories and Users via HTML in browser)
 extension SearchRepositoriesCoordinator: UserDetailsCoordinatorDelegate {
     func didTapAdditionalInfoInBrowser(htmlURL: String) {
-        guard let url = URL(string: htmlURL) else { return }
-        UIApplication.shared.open(url)
+        // TODO: Needs to delete all web browser methods from SearchRepositoriesCoordinator
+//        guard let url = URL(string: htmlURL) else { return }
+//        UIApplication.shared.open(url)
+        URL.openLinkInWebBrowser(htmlURL: htmlURL)
     }
 }
 

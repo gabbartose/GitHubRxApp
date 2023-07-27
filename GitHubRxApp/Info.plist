@@ -4,6 +4,10 @@
 <dict>
 	<key>API base path</key>
 	<string>$(API_BASE_URL_PATH)</string>
+	<key>App Bundle ID</key>
+	<string>$(APP_BUNDLE_ID)</string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

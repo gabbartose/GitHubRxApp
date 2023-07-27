@@ -5,7 +5,7 @@
 //  Created by Gabrijel Bartosek on 17.07.2023..
 //
 
-import Foundation
+import UIKit
 
 extension URL {
     static var base: URL {
@@ -18,6 +18,11 @@ extension URL {
         }
         
         return baseURL
+    }
+    
+    static func openLinkInWebBrowser(htmlURL: String) {
+        guard let url = URL(string: htmlURL) else { return }
+        UIApplication.shared.open(url)
     }
 }
 

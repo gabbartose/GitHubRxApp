@@ -57,7 +57,7 @@ extension AppCoordinator {
 extension AppCoordinator {
     private func showMainFlow() {
         let searchRepositoriesCoordinator = SearchRepositoriesCoordinator(rootViewController: rootViewController,
-                                              dependencyManager: dependencyManager)
+                                                                          dependencyManager: dependencyManager)
         addChildCoordinator(searchRepositoriesCoordinator)
         searchRepositoriesCoordinator.start()
     }

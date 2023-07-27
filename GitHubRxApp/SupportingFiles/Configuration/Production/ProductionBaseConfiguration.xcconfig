@@ -1,0 +1,14 @@
+//
+//  ProductionBaseConfiguration.xcconfig
+//  GitHubRxApp
+//
+//  Created by Gabrijel Bartosek on 26.07.2023..
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+APP_NAME = GitHubRxSearch
+APP_BUNDLE_ID = com.beer.GitHubRxApp-production
+API_BASE_URL_PATH = https:/$()/api.github.com
+APP_ICON = AppIcon
