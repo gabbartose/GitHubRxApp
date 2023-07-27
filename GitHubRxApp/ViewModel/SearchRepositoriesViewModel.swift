@@ -32,7 +32,7 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     internal var repositoryComponents: Observable<[Item]>
     internal var isFetchInProgress = false
     
-    private let repositoriesRepository: RepositoriesRepositoryProtocol
+    private let searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()
     private let onErrorSubject = PublishSubject<ErrorReport>()
     private let repositoryComponentsSubject = PublishSubject<[Item]>()
@@ -43,8 +43,8 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     private var oldQueryString = ""
     private var oldSortOption = ""
     
-    init(repositoriesRepository: RepositoriesRepositoryProtocol) {
-        self.repositoriesRepository = repositoriesRepository
+    init(searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol) {
+        self.searchRepositoriesRepository = searchRepositoriesRepository
         loadingInProgress = loadingInProgressSubject.asObservable().distinctUntilChanged()
         onError = onErrorSubject.asObservable()
         repositoryComponents = repositoryComponentsSubject.asObservable()
@@ -90,7 +90,7 @@ extension SearchRepositoriesViewModel {
         guard !isFetchInProgress else { return }
         isFetchInProgress = true
         loadingInProgressSubject.onNext(true)
-        repositoriesRepository.getRepositories(query: query,
+        searchRepositoriesRepository.getRepositories(query: query,
                                                page: currentPage + 1,
                                                perPage: numberOfItemsPerPage,
                                                sort: sortOption) { [weak self] result in

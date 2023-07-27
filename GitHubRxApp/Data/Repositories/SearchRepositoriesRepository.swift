@@ -1,5 +1,5 @@
 //
-//  RepositoriesRepository.swift
+//  SearchRepositoriesRepository.swift
 //  GitHubRxApp
 //
 //  Created by Gabrijel Bartosek on 19.07.2023..
@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol RepositoriesRepositoryProtocol {
+protocol SearchRepositoriesRepositoryProtocol {
     func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ())
 }
 
-class RepositoriesRepository: RepositoriesRepositoryProtocol {
+class SearchRepositoriesRepository: SearchRepositoriesRepositoryProtocol {
     
     let repositoriesAPI: RepositoriesAPIProtocol
     
@@ -20,7 +20,7 @@ class RepositoriesRepository: RepositoriesRepositoryProtocol {
     }
 }
 
-extension RepositoriesRepository {
+extension SearchRepositoriesRepository {
     func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) {
         repositoriesAPI.getRepositories(query: query, page: page, perPage: perPage, sort: sort, completion: completion)
     }

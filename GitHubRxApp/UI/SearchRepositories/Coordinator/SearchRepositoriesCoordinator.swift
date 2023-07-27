@@ -23,8 +23,8 @@ class SearchRepositoriesCoordinator: NSObject, NavigationCoordinator {
     }
     
     func start() {
-        let repositoriesRepository = RepositoriesRepository(networkManager: dependencyManager.networkManager)
-        let searchRepositoriesViewModel = SearchRepositoriesViewModel(repositoriesRepository: repositoriesRepository)
+        let searchRepositoriesRepository = SearchRepositoriesRepository(networkManager: dependencyManager.networkManager)
+        let searchRepositoriesViewModel = SearchRepositoriesViewModel(searchRepositoriesRepository: searchRepositoriesRepository)
         searchRepositoriesViewModel.delegate = self
         let searchRepositoriesViewController = SearchRepositoriesViewController(
             viewModel: searchRepositoriesViewModel)
