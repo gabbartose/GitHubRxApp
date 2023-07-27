@@ -14,15 +14,18 @@ class AppCoordinator: NSObject, Coordinator {
         let networkManager = NetworkManager(configuration: configuration)
         return DependencyManager(networkManager: networkManager)
     }()
-
+    
     private let rootViewController = UINavigationController()
     private let window: UIWindow
-
+    
     init(window: UIWindow) {
         self.window = window
     }
-
+    
     func start() {
+        print("Current environment is: \(EnvironmentProvider.shared.currentEnvironment)")
+        
+        // TODO: Depends if user is logged in or not we need to distinguish where we need to navigate user as a first screen (and whether there will be navigation bar on the top)
         UINavigationBar.appearance().barTintColor = .white
         let navigationBar = rootViewController.navigationBar
         let appearance = UINavigationBarAppearance()
@@ -34,7 +37,10 @@ class AppCoordinator: NSObject, Coordinator {
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
-        showMainFlow()
+        
+        // TODO: distinguish flows at that point
+        showLoginFlow()
+        // showSearchRepositoriesFlow()
     }
 }
 
@@ -45,17 +51,25 @@ extension AppCoordinator {
         HTTPHeaders["Content-Type"] = "application/json"
         HTTPHeaders["Accept"] = "application/json"
         HTTPHeaders["X-App-OS"] = "iOS"
-
+        
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             HTTPHeaders["X-App-Version"] = version
         }
-
+        
         return HTTPHeaders
     }
 }
 
 extension AppCoordinator {
-    private func showMainFlow() {
+    
+    private func showLoginFlow() {
+        let loginCoordinator = LoginCoordinator(rootViewController: rootViewController,
+                                                dependencyManager: dependencyManager)
+        addChildCoordinator(loginCoordinator)
+        loginCoordinator.startWith()
+    }
+    
+    private func showSearchRepositoriesFlow() {
         let searchRepositoriesCoordinator = SearchRepositoriesCoordinator(rootViewController: rootViewController,
                                                                           dependencyManager: dependencyManager)
         addChildCoordinator(searchRepositoriesCoordinator)

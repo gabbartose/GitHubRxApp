@@ -16,7 +16,7 @@ class UserDetailsViewController: BaseViewController {
     }
     
     private var userDetailsView: UserDetailsView {
-        guard let view = self.view as? UserDetailsView else { fatalError("Ther is no UserDetailsView") }
+        guard let view = self.view as? UserDetailsView else { fatalError("There is no UserDetailsView") }
         return view
     }
     

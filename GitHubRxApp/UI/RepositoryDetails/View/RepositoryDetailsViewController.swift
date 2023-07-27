@@ -11,7 +11,7 @@ import SnapKit
 class RepositoryDetailsViewController: BaseViewController {
     
     private var repositoryDetailsView: RepositoryDetailsView {
-        guard let view = self.view as? RepositoryDetailsView else { fatalError("Ther is no RepositoryDetailsView") }
+        guard let view = self.view as? RepositoryDetailsView else { fatalError("There is no RepositoryDetailsView") }
         return view
     }
     

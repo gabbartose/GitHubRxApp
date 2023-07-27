@@ -22,7 +22,6 @@ struct EnvironmentProvider {
         if let environmentString = Bundle.main.infoDictionary?["App Bundle ID"] as? String,
            let environment = Environment(rawValue: environmentString) {
             self.currentEnvironment = environment
-            print("Current environment is: \(currentEnvironment)")
         } else {
             fatalError("No valid environment available!")
         }
@@ -38,9 +37,5 @@ struct EnvironmentProvider {
     
     func isTest() -> Bool {
         return EnvironmentProvider.shared.currentEnvironment == .test
-    }
-    
-    func getCurrentEnvironment() -> String {
-        return currentEnvironment.rawValue
     }
 }
