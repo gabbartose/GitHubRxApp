@@ -19,6 +19,7 @@ enum RequestMethod: String {
 enum APIVersion: String {
     case v1 = "/api/v1"
     case v2 = "/api/v2"
+    case v3 = "/api/v3"
     case none = ""
 }
 

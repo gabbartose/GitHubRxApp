@@ -8,10 +8,17 @@
 import Foundation
 
 protocol LoginRepositoryProtocol {
+    var signInPath: String { get }
     func signInUser(completion: @escaping (Result<User, ErrorReport>) -> ())
+    
+    func signInPathWithClientId() -> URL
 }
 
 class LoginRepository: LoginRepositoryProtocol {
+    
+    var signInPath: String {
+        return loginAPI.signInPath
+    }
     
     let loginAPI: LoginAPIProtocol
     
@@ -23,5 +30,9 @@ class LoginRepository: LoginRepositoryProtocol {
 extension LoginRepository {
     func signInUser(completion: @escaping (Result<User, ErrorReport>) -> ()) {
         loginAPI.signInUser(completion: completion)
+    }
+    
+    func signInPathWithClientId() -> URL {
+        loginAPI.signInPathWithClientId()
     }
 }

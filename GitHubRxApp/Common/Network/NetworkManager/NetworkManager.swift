@@ -8,6 +8,13 @@
 import Foundation
 
 class NetworkManager {
+    
+    struct Constants {
+        static let callbackURLScheme = "com.beer.GitHubRxApp"
+        static let clientID = "Iv1.03eda0e0b6c3100b"
+        static let clientSecret = "370d1b2a85339484e0bb76c26a214ffbac09a388"
+    }
+    
     typealias Failure = (ErrorReport) -> Void
 
     private(set) var configuration: NetworkConfiguration
@@ -16,8 +23,8 @@ class NetworkManager {
         self.configuration = configuration
     }
 
-    func apiCall<T: Codable>(for resource: Resource<T>, completion: @escaping (Swift.Result<T, ErrorReport>) -> Void) {
-        guard let endpoint = createEndpoint(for: resource) else { return }
+    func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Swift.Result<T, ErrorReport>) -> Void) {
+        guard let endpoint = createEndpoint(for: resource, basePath: basePath) else { return }
         let request = createURLRequest(from: resource, endpoint)
 
         let task = configuration.session.dataTask(with: request) { [weak self] data, response, error in
@@ -45,8 +52,8 @@ class NetworkManager {
         task.resume()
     }
 
-    func createEndpoint<T>(for resource: Resource<T>) -> URL? {
-        var components = URLComponents(url: configuration.baseURL, resolvingAgainstBaseURL: true)
+    func createEndpoint<T>(for resource: Resource<T>, basePath: URL) -> URL? {
+        var components = URLComponents(url: basePath, resolvingAgainstBaseURL: true)
         components?.path.append(resource.path)
         components?.queryItems = resource.queryItems
         return components?.url

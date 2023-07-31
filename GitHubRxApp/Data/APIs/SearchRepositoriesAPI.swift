@@ -34,6 +34,8 @@ extension SearchRepositoriesAPI {
             URLQueryItem(name: "per_page", value: "\(perPage)")
         ]
         
-        networkManager.apiCall(for: resource, completion: completion)
+        print("Repositories: \(resource)")
+        
+        networkManager.apiCall(for: resource, basePath: networkManager.configuration.basePath, completion: completion)
     }
 }

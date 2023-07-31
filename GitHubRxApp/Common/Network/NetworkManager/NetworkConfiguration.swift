@@ -8,13 +8,18 @@
 import Foundation
 
 class NetworkConfiguration {
-    private(set) var baseURL: URL
+    
+    private(set) var basePath: URL
+    private(set) var oAuthBasePath: URL
     private(set) var session: URLSession
-
     private var HTTPHeaders: [String: String]
-
-    init(baseURL: URL = .base, HTTPHeaders: [String: String] = [:], session: URLSession = .shared) {
-        self.baseURL = baseURL
+    
+    init(basePath: URL = .basePath,
+         oAuthBasePath: URL = .oAuthBasePath,
+         HTTPHeaders: [String: String] = [:],
+         session: URLSession = .shared) {
+        self.basePath = basePath
+        self.oAuthBasePath = oAuthBasePath
         self.HTTPHeaders = HTTPHeaders
         self.session = session
     }
