@@ -8,8 +8,7 @@
 import Foundation
 
 protocol LoginRepositoryProtocol {
-    func getAuthPageURL(state: String) -> URL?
-    func exchangeCodeForToken(code: String, state: String, completion: @escaping (Result<TokenBag, ErrorReport>) -> ())
+    func signInUser(completion: @escaping (Result<User, ErrorReport>) -> ())
 }
 
 class LoginRepository: LoginRepositoryProtocol {
@@ -22,12 +21,7 @@ class LoginRepository: LoginRepositoryProtocol {
 }
 
 extension LoginRepository {
-    func getAuthPageURL(state: String) -> URL? {
-        let urlString = "https://github.com/login/oauth/authorize?client_id=yourClientId&redirect_uri=com.beer.GitHubRxApp://authentication&s&scopes=repo,user&state=\(state)"
-        return URL(string: urlString)!
-    }
-    
-    func exchangeCodeForToken(code: String, state: String, completion: @escaping (Result<TokenBag, ErrorReport>) -> ()) {
-        loginAPI.exchangeCodeForToken(code: code, state: state, completion: completion)
+    func signInUser(completion: @escaping (Result<User, ErrorReport>) -> ()) {
+        loginAPI.signInUser(completion: completion)
     }
 }

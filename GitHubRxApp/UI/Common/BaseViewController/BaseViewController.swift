@@ -11,22 +11,22 @@ import SnapKit
 class BaseViewController: UIViewController {
     
     struct Constants {
-        static let activityIndicatorDistanceFromCenter = -UIScreen.main.bounds.height * 0.11
+        static var activityIndicatorDistanceFromCenter = -UIScreen.main.bounds.height * 0.11
     }
     
     private var activityIndicatorView: UIActivityIndicatorView?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .white // TODO: Set color because of Appearance purpose
     }
 }
 
 // MARK: Activity Indicator View
 extension BaseViewController {
     
-    func activityIndicatorView(startAnimating: Bool) {
+    func activityIndicatorView(startAnimating: Bool, offsetFromYAxis: CGFloat = -UIScreen.main.bounds.height * 0.11) {
+        Constants.activityIndicatorDistanceFromCenter = offsetFromYAxis
         switch startAnimating {
         case true:
             startActivityIndicatorView()

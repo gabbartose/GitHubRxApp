@@ -40,5 +40,3 @@ extension Resource {
 
 /// Used when HTTP response body is empty
 typealias EmptyResponse = String
-
-

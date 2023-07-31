@@ -5,16 +5,22 @@
 //  Created by Gabrijel Bartosek on 27.07.2023..
 //
 
-import UIKit
+import RxSwift
+import RxCocoa
 
 class LoginViewController: BaseViewController {
+    
+    struct Constants {
+        static let activityIndicatorYOffset = -UIScreen.main.bounds.height * 0.05
+    }
     
     private var loginView: LoginView {
         guard let view = self.view as? LoginView else { fatalError("There is no LoginView") }
         return view
     }
     
-    private let viewModel: LoginViewModelProtocol
+    private var viewModel: LoginViewModelProtocol
+    private let disposeBag = DisposeBag()
     
     init(viewModel: LoginViewModelProtocol) {
         self.viewModel = viewModel
@@ -27,6 +33,7 @@ class LoginViewController: BaseViewController {
     
     override func loadView() {
         self.view = LoginView()
+        subscribeToViewModel()
         setupLoginButton()
     }
     
@@ -40,6 +47,24 @@ class LoginViewController: BaseViewController {
     
     deinit {
         print("deinit LoginViewController")
+    }
+}
+
+extension LoginViewController {
+    private func subscribeToViewModel() {
+        viewModel
+            .loadingInProgress
+            .bind { [weak self] isInProgress in
+                self?.activityIndicatorView(startAnimating: isInProgress, offsetFromYAxis: Constants.activityIndicatorYOffset)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel
+            .onError
+            .bind { [weak self] errorReport in
+                ErrorHandler(rootViewController: self).handle(errorReport)
+            }
+            .disposed(by: disposeBag)
     }
 }
 

@@ -27,10 +27,10 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     
     weak var delegate: SearchRepositoriesViewModelDelegate?
     
-    internal var loadingInProgress: Observable<Bool>
-    internal var onError: Observable<ErrorReport>
-    internal var repositoryComponents: Observable<[Item]>
-    internal var isFetchInProgress = false
+    var loadingInProgress: Observable<Bool>
+    var onError: Observable<ErrorReport>
+    var repositoryComponents: Observable<[Item]>
+    var isFetchInProgress = false
     
     private let searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()

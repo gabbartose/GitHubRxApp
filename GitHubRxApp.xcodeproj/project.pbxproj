@@ -16,9 +16,8 @@
 		7515D6982A7269A700211BD4 /* UIView+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6972A7269A700211BD4 /* UIView+GitHubRxApp.swift */; };
 		7515D69A2A727E6E00211BD4 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6992A727E6E00211BD4 /* LoginRepository.swift */; };
 		7515D69C2A727E8F00211BD4 /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D69B2A727E8F00211BD4 /* LoginAPI.swift */; };
-		7515D6A42A7290B100211BD4 /* DeepLinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6A32A7290B100211BD4 /* DeepLinkHandler.swift */; };
-		7515D6A62A72911D00211BD4 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6A52A72911D00211BD4 /* DeepLink.swift */; };
-		7515D6A82A7293C500211BD4 /* TokenBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6A72A7293C500211BD4 /* TokenBag.swift */; };
+		7515D6AA2A73E2B900211BD4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6A92A73E2B900211BD4 /* User.swift */; };
+		7515D6AE2A74284D00211BD4 /* NetworkManager+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6AD2A74284D00211BD4 /* NetworkManager+User.swift */; };
 		75A47C832A64FA0800618359 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47C822A64FA0800618359 /* AppDelegate.swift */; };
 		75A47C852A64FA0800618359 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47C842A64FA0800618359 /* SceneDelegate.swift */; };
 		75A47C8C2A64FA0A00618359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C8B2A64FA0A00618359 /* Assets.xcassets */; };
@@ -137,9 +136,8 @@
 		7515D6972A7269A700211BD4 /* UIView+GitHubRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GitHubRxApp.swift"; sourceTree = "<group>"; };
 		7515D6992A727E6E00211BD4 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		7515D69B2A727E8F00211BD4 /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
-		7515D6A32A7290B100211BD4 /* DeepLinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkHandler.swift; sourceTree = "<group>"; };
-		7515D6A52A72911D00211BD4 /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
-		7515D6A72A7293C500211BD4 /* TokenBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenBag.swift; sourceTree = "<group>"; };
+		7515D6A92A73E2B900211BD4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7515D6AD2A74284D00211BD4 /* NetworkManager+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+User.swift"; sourceTree = "<group>"; };
 		75230E16ACCAA1378A3DF58E /* Pods_GitHubRxAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubRxAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A47C7F2A64FA0800618359 /* GitHubRxApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRxApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A47C822A64FA0800618359 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -337,15 +335,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		7515D6A22A72909E00211BD4 /* DeepLink */ = {
-			isa = PBXGroup;
-			children = (
-				7515D6A52A72911D00211BD4 /* DeepLink.swift */,
-				7515D6A32A7290B100211BD4 /* DeepLinkHandler.swift */,
-			);
-			path = DeepLink;
-			sourceTree = "<group>";
-		};
 		75A47C762A64FA0700618359 = {
 			isa = PBXGroup;
 			children = (
@@ -468,7 +457,6 @@
 		75A47CAC2A65096600618359 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				7515D6A22A72909E00211BD4 /* DeepLink */,
 				75A47CCD2A65370D00618359 /* ErrorHandler */,
 				75A47CCC2A65370000618359 /* NetworkManager */,
 			);
@@ -529,7 +517,7 @@
 				75A47CB72A65216100618359 /* RepositoriesResponse.swift */,
 				75A47CB92A6524F300618359 /* Item.swift */,
 				75A47CBB2A65253400618359 /* Owner.swift */,
-				7515D6A72A7293C500211BD4 /* TokenBag.swift */,
+				7515D6A92A73E2B900211BD4 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -554,6 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				75A47CAD2A6519E300618359 /* NetworkManager.swift */,
+				7515D6AD2A74284D00211BD4 /* NetworkManager+User.swift */,
 				75A47CBD2A65286800618359 /* NetworkConfiguration.swift */,
 				75A47CD82A65385700618359 /* Resource.swift */,
 			);
@@ -1050,6 +1039,7 @@
 				75A47CBA2A6524F300618359 /* Item.swift in Sources */,
 				75A47CBC2A65253400618359 /* Owner.swift in Sources */,
 				75A47CCF2A65371E00618359 /* ErrorReport.swift in Sources */,
+				7515D6AA2A73E2B900211BD4 /* User.swift in Sources */,
 				7515D6962A72535200211BD4 /* LoginViewModel.swift in Sources */,
 				75A47CE62A653AE500618359 /* BaseViewController.swift in Sources */,
 				75A47CC12A652DF200618359 /* URL+GitHubRxApp.swift in Sources */,
@@ -1077,21 +1067,18 @@
 				7515D6942A72534500211BD4 /* LoginCoordinator.swift in Sources */,
 				75A47CF42A66621500618359 /* UISearchBar+GitHubRxApp.swift in Sources */,
 				75A47D042A67C8E400618359 /* ErrorHandler.swift in Sources */,
-				7515D6A82A7293C500211BD4 /* TokenBag.swift in Sources */,
 				75A47D292A6E4CE100618359 /* UserDetailsViewModel.swift in Sources */,
 				75A47D0F2A68F67400618359 /* RepositoryDetailsView.swift in Sources */,
 				75A47CDC2A65389A00618359 /* Formatters.swift in Sources */,
 				75A47CE02A6539DE00618359 /* UITableView+GitHubRxApp.swift in Sources */,
 				75A47CAB2A65092E00618359 /* DependencyManager.swift in Sources */,
 				7515D69A2A727E6E00211BD4 /* LoginRepository.swift in Sources */,
-				7515D6A62A72911D00211BD4 /* DeepLink.swift in Sources */,
 				75A47D1C2A6A80F900618359 /* UILabel+GitHubRxApp.swift in Sources */,
 				75A47D272A6E4CD300618359 /* UserDetailsViewController.swift in Sources */,
 				7515D6902A72532100211BD4 /* LoginViewController.swift in Sources */,
 				7515D69C2A727E8F00211BD4 /* LoginAPI.swift in Sources */,
 				7515D68B2A71679300211BD4 /* EnvironmentProvider.swift in Sources */,
 				75A47CF72A66652E00618359 /* GrayBottomLineView.swift in Sources */,
-				7515D6A42A7290B100211BD4 /* DeepLinkHandler.swift in Sources */,
 				75A47CE22A653A4200618359 /* SearchRepositoriesViewController.swift in Sources */,
 				75A47D2E2A6E68DC00618359 /* UIImageView+GitHubRxApp.swift in Sources */,
 				75A47CFC2A67A36400618359 /* EmptyStateView.swift in Sources */,
@@ -1100,6 +1087,7 @@
 				75A47CBE2A65286800618359 /* NetworkConfiguration.swift in Sources */,
 				75A47D002A67A84F00618359 /* SearchRepositoriesAPI.swift in Sources */,
 				75A47C852A64FA0800618359 /* SceneDelegate.swift in Sources */,
+				7515D6AE2A74284D00211BD4 /* NetworkManager+User.swift in Sources */,
 				75A47CC72A65332E00618359 /* UIFont+GitHubRxApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1224,7 +1212,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubRxApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
@@ -1461,7 +1449,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubRxApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
@@ -1686,7 +1674,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubRxApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
@@ -1911,7 +1899,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubRxApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
@@ -2197,7 +2185,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubRxApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
@@ -2234,7 +2222,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubRxApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;

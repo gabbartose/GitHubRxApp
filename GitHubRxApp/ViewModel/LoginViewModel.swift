@@ -5,33 +5,36 @@
 //  Created by Gabrijel Bartosek on 27.07.2023..
 //
 
-import Foundation
+import RxSwift
 
 protocol LoginViewModelDelegate: AnyObject {
-    func getAuthPageURL(with url: URL)
     func didEnd()
 }
 
 protocol LoginViewModelProtocol {
+    var loadingInProgress: Observable<Bool> { get set }
+    var onError: Observable<ErrorReport> { get set }
+    
     func didSelectLoginButton()
-    func getAuthPageURL() -> URL?
     func didDisappearViewController()
 }
 
 class LoginViewModel: LoginViewModelProtocol {
     
-    enum OAuthError: Error {
-        case malformedLink
-        case exchangeFailed
-    }
+    var loadingInProgress: Observable<Bool>
+    var onError: Observable<ErrorReport>
+    
     
     weak var delegate: LoginViewModelDelegate?
     
-    private let loginRepository: LoginRepositoryProtocol // OAuthClient
-    private var state: String?
+    private let loginRepository: LoginRepositoryProtocol
+    private let loadingInProgressSubject = PublishSubject<Bool>()
+    private let onErrorSubject = PublishSubject<ErrorReport>()
     
     init(loginRepository: LoginRepositoryProtocol) {
         self.loginRepository = loginRepository
+        loadingInProgress = loadingInProgressSubject.asObservable().distinctUntilChanged()
+        onError = onErrorSubject.asObservable()
     }
     
     deinit {
@@ -42,15 +45,12 @@ class LoginViewModel: LoginViewModelProtocol {
 // MARK: LoginViewModelDelegate necessary methods
 extension LoginViewModel {
     func didSelectLoginButton() {
-        guard let url = getAuthPageURL() else { return }
-        delegate?.getAuthPageURL(with: url)
-    }
-    
-    internal func getAuthPageURL() -> URL? {
-        state = UUID().uuidString
-        // let urlString = "https://github.com/login/oauth/authorize?client_id=yourClientId&redirect_uri=com.beer.GitHubRxApp://authentication&s&scopes=repo,user&state=\(state)"
-        // return URL(string: urlString)!
-        return loginRepository.getAuthPageURL(state: state ?? "")
+        print("Login button pressed!")
+        // guard let url = getAuthPageURL() else { return }
+        // TODO: Navigation to the SearchRepository Screen
+        
+        loadingInProgressSubject.onNext(true)
+        
     }
     
     func didDisappearViewController() {

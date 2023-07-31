@@ -13,8 +13,8 @@ protocol LoginCoordinatorDelegate: CoordinatorDelegate { }
 class LoginCoordinator: NSObject, NavigationCoordinator {
     
     var rootViewController: UINavigationController
-    var childCoordinators: [Coordinator] = []
     var dependencyManager: DependencyManager
+    var childCoordinators: [Coordinator] = []
     
     weak var delegate: LoginCoordinatorDelegate?
     
@@ -28,6 +28,7 @@ class LoginCoordinator: NSObject, NavigationCoordinator {
     }
     
     func startWith() {
+        // let redirectUri = URL(string: "com.beer.GitHubRxApp://authentication")!
         let loginRepository = LoginRepository(networkManager: dependencyManager.networkManager)
         let loginViewModel = LoginViewModel(loginRepository: loginRepository)
         loginViewModel.delegate = self
