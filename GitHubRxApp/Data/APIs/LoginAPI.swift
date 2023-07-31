@@ -8,16 +8,12 @@
 import Foundation
 
 protocol LoginAPIProtocol {
-    var signInPath: String { get }
     func signInUser(completion: @escaping (Result<User, ErrorReport>) -> ())
-    func signInPathWithClientId() -> URL
+    func createSignInURLWithClientId() -> URL
 }
 
 class LoginAPI: LoginAPIProtocol {
-    
-    var signInPath: String = Paths.signIn.rawValue
-    
-    
+
     private enum Paths: String {
         case codeExchange = "/login/oauth/access_token"
         case getUser = "/user"
@@ -48,7 +44,7 @@ extension LoginAPI {
     }
     
     
-    func signInPathWithClientId() -> URL {
+    func createSignInURLWithClientId() -> URL {
         var resource = Resource<User>(path: Paths.signIn.rawValue)
         resource.queryItems = [
             URLQueryItem(name: "client_id", value: NetworkManager.Constants.clientID)
