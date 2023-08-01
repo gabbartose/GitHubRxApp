@@ -51,10 +51,12 @@ class SearchRepositoriesViewController: BaseViewController {
     }
     
     override func loadView() {
-        self.view = SearchRepositoriesView()
+        view = SearchRepositoriesView()
+        setupNavigationBarElements()
         setupNavigationItemTitle()
         setupSearchBar()
         setupPickerView()
+        showLoggedInUser()
         setupTableView()
         setupGestures()
         subscribeToViewModel()
@@ -121,6 +123,15 @@ extension SearchRepositoriesViewController {
     
     private func registerTableViewCell() {
         searchRepositoriesView.tableView.registerUINib(ofType: RepositoryTableViewCell.self)
+    }
+}
+
+// MARK: Setup UINavigationBar elements
+extension SearchRepositoriesViewController {
+    
+    private func setupNavigationBarElements() {
+        navigationItem.hidesBackButton = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(didTapSignOutButton))
     }
 }
 
@@ -214,6 +225,9 @@ extension SearchRepositoriesViewController: UITableViewDelegate, UITableViewData
 // MARK: Helper methods
 // TODO: Consider to move those functions to the SearchRepositoriesViewModel
 extension SearchRepositoriesViewController {
+    private func showLoggedInUser() {
+        searchRepositoriesView.loggedInUserValue = viewModel.loggedInUser
+    }
     
     private func getAttributedString(query: String) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: query)
@@ -246,8 +260,12 @@ extension SearchRepositoriesViewController {
     }
     
     @objc
+    private func didTapSignOutButton() {
+        viewModel.didTapSignOutButton()
+    }
+    
+    @objc
     private func didTapFilterButton() {
-        // guard !repositoryComponents.isEmpty else { return }
         searchRepositoriesView.backgroundView.isHidden = false
     }
     

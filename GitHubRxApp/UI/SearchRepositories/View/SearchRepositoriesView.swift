@@ -13,7 +13,10 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     struct Constants {
         static let searchGithubRepositoriesPlaceholder = "Search Github Repositories"
         static let filterIcon = "FilterIcon"
+        static let currentlyLoggedInUser = "Currently logged in: "
     }
+    
+    var loggedInUserValue: String = ""
     
     private lazy var searchComponentsView = UIView()
     
@@ -42,6 +45,18 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     }()
     
     private lazy var grayBottomLineViewUnderSearch = GrayBottomLineView()
+    
+    private lazy var loggedInUserView = UIView()
+    
+    lazy var loggedInUserLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: .ralewayBold, size: 14)
+        label.textColor = .GDarkGray
+        label.text = Constants.currentlyLoggedInUser + loggedInUserValue
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        return label
+    }()
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -87,8 +102,11 @@ extension SearchRepositoriesView {
         addSubview(searchComponentsView)
         searchComponentsView.addSubview(repositorySearchBar)
         searchComponentsView.addSubview(filterButton)
-        
         addSubview(grayBottomLineViewUnderSearch)
+        
+        addSubview(loggedInUserView)
+        loggedInUserView.addSubview(loggedInUserLabel)
+        
         addSubview(tableView)
         addSubview(emptyStateView)
         
@@ -121,8 +139,20 @@ extension SearchRepositoriesView {
             make.height.equalTo(1)
         }
         
-        tableView.snp.makeConstraints { make in
+        loggedInUserView.snp.makeConstraints { make in
             make.top.equalTo(grayBottomLineViewUnderSearch.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(25)
+        }
+        
+        loggedInUserLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(25)
+            make.trailing.equalToSuperview().offset(-25)
+            make.centerY.equalToSuperview()
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(loggedInUserView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
         

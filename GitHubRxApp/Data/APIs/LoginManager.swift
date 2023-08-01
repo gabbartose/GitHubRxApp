@@ -15,12 +15,6 @@ struct LoginManager {
         static let clientSecret = "370d1b2a85339484e0bb76c26a214ffbac09a388"
     }
     
-    static func signOut() {
-        Self.accessToken = ""
-        Self.refreshToken = ""
-        Self.username = ""
-    }
-    
     enum RequestError: Error {
         case invalidResponse
         case networkCreationError
@@ -90,19 +84,19 @@ struct LoginManager {
         }
     }
     
+    typealias NetworkResult<T: Decodable> = (response: HTTPURLResponse, object: T)
+    
     // MARK: Properties
     var method: RequestMethod
     var url: URL
     
-    //    private let networkManager: NetworkManager
-    //
-    //    init(networkManager: NetworkManager) {
-    //        self.networkManager = networkManager
-    //    }
-}
-
-extension LoginManager {
-    typealias NetworkResult<T: Decodable> = (response: HTTPURLResponse, object: T)
+    // MARK: Static Methods
+    static func signOut() {
+        accessToken = ""
+        refreshToken = ""
+        username = ""
+    }
+    
     func start<T: Decodable>(responseType: T.Type, completionHandler: @escaping ((Result<NetworkResult<T>, Error>) -> Void)) {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
@@ -160,45 +154,3 @@ extension LoginManager {
         session.resume()
     }
 }
-
-/*
- extension LoginRequest {
- func signInUser(completion: @escaping (Result<User, ErrorReport>) -> ()) {
- var resource = Resource<User>(path: Paths.signIn.rawValue)
- 
- print(resource)
- 
- resource.queryItems = [
- URLQueryItem(name: "client_id", value: NetworkManager.Constants.clientID)
- ]
- 
- print(resource)
- 
- NetworkManager.apiCall(for: resource, basePath: networkManager.configuration.oAuthBasePath, completion: completion)
- }
- 
- func createSignInURLWithClientId() -> URL {
- var resource = Resource<User>(path: Paths.signIn.rawValue)
- resource.queryItems = [
- URLQueryItem(name: "client_id", value: NetworkManager.Constants.clientID)
- ]
- 
- guard let signInURL = networkManager.createEndpoint(for: resource, basePath: networkManager.configuration.oAuthBasePath) else {
- fatalError("Could not create the Sign In URL.")
- }
- 
- return signInURL
- }
- 
- func codeExcanhange(code: String, completion: @escaping (Result<String, ErrorReport>) -> ()) {
- var resource = Resource<String>(path: Paths.codeExchange.rawValue, method: .post)
- resource.queryItems = [
- URLQueryItem(name: "client_id", value: NetworkManager.Constants.clientID),
- URLQueryItem(name: "client_secret", value: NetworkManager.Constants.clientSecret),
- URLQueryItem(name: "code", value: code)
- ]
- 
- NetworkManager.apiCall(for: resource, basePath: .oAuthBasePath, completion: completion)
- }
- }
- */

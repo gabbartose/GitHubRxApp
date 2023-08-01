@@ -19,7 +19,7 @@ protocol LoginViewModelProtocol {
     
     func didSelectLoginButton()
     func didDisappearViewController()
-    
+    func getUser()
     func navigateToSearchRepositoriesScreen()
 }
 
@@ -91,7 +91,7 @@ extension LoginViewModel {
         loadingInProgressSubject.onNext(false)
     }
     
-    private func getUser() {
+    func getUser() {
         loadingInProgressSubject.onNext(true)
         
         LoginManager
@@ -102,8 +102,8 @@ extension LoginViewModel {
                 guard let self = self else { return }
                 switch result {
                 case .success:
-                    print("Success!")
-                    navigateToSearchRepositoriesScreen()
+                    LoginManager.isShowingSearchRepositoriesScreen = true
+                    self.navigateToSearchRepositoriesScreen()
                 case .failure(let error):
                     print("Failed to get user, or there is no valid/active session: \(error.localizedDescription)")
                 }

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SafariServices
 
 protocol LoginCoordinatorDelegate: CoordinatorDelegate { }
 
@@ -24,10 +23,6 @@ class LoginCoordinator: NSObject, NavigationCoordinator {
     }
     
     func start() {
-        fatalError("use startWith")
-    }
-    
-    func startWith() {
         let loginRepository = LoginRepository(/*networkManager: dependencyManager.networkManager*/)
         let loginViewModel = LoginViewModel(loginRepository: loginRepository)
         loginViewModel.delegate = self
@@ -41,23 +36,48 @@ class LoginCoordinator: NSObject, NavigationCoordinator {
 }
 
 extension LoginCoordinator: LoginViewModelDelegate {
-    func getAuthPageURL(with url: URL) {
-        let safariViewController = SFSafariViewController(url: url)
-        safariViewController.modalPresentationStyle = .fullScreen
-        rootViewController.present(safariViewController, animated: true)
-    }
-    
     func showSearchRepositoriesScreen() {
-        let searchRepositoriesRepository = SearchRepositoriesRepository(networkManager: dependencyManager.networkManager)
-        let searchRepositoriesViewModel = SearchRepositoriesViewModel(searchRepositoriesRepository: searchRepositoriesRepository)
-        // searchRepositoriesViewModel.delegate = self
-        let searchRepositoriesViewController = SearchRepositoriesViewController(
-            viewModel: searchRepositoriesViewModel)
-        rootViewController.pushViewController(searchRepositoriesViewController, animated: true)
+        
+        print("VRIJEDNOST: \(LoginManager.isShowingSearchRepositoriesScreen)")
+        
+        if LoginManager.isShowingSearchRepositoriesScreen {
+            let searchRepositoriesRepository = SearchRepositoriesRepository(networkManager: dependencyManager.networkManager)
+            let searchRepositoriesViewModel = SearchRepositoriesViewModel(searchRepositoriesRepository: searchRepositoriesRepository)
+            searchRepositoriesViewModel.delegate = self
+            let searchRepositoriesViewController = SearchRepositoriesViewController(
+                viewModel: searchRepositoriesViewModel)
+            rootViewController.pushViewController(searchRepositoriesViewController, animated: true)
+        }
     }
     
     func didEnd() {
         delegate?.shouldRemoveCoordinator(coordinator: self)
+    }
+}
+
+extension LoginCoordinator: SearchRepositoriesViewModelDelegate, RepositoryDetailsCoordinatorDelegate, UserDetailsCoordinatorDelegate {
+    func didSelectRepository(item: Item) {
+        let repositoryDetailsCoordinator = RepositoryDetailsCoordinator(rootViewController: rootViewController, dependencyManager: dependencyManager)
+        addChildCoordinator(repositoryDetailsCoordinator)
+        repositoryDetailsCoordinator.delegate = self
+        repositoryDetailsCoordinator.startWith(repositoryItem: item)
+    }
+    
+    func didSelectUserDetails(userDetails: Owner) {
+        let userDetailsCoordinator = UserDetailsCoordinator(rootViewController: rootViewController, dependencyManager: dependencyManager)
+        addChildCoordinator(userDetailsCoordinator)
+        userDetailsCoordinator.delegate = self
+        userDetailsCoordinator.startWith(userDetails: userDetails)
+    }
+    
+    func showLoginScreen() {
+        // start()
+        print("TU SMOOOO - LoginCoordinator")
+        let loginRepository = LoginRepository(/*networkManager: dependencyManager.networkManager*/)
+        let loginViewModel = LoginViewModel(loginRepository: loginRepository)
+        loginViewModel.delegate = self
+        let loginViewController = LoginViewController(viewModel: loginViewModel)
+        rootViewController.pushViewController(loginViewController, animated: true)
     }
 }
 

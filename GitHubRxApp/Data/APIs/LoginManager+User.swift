@@ -14,6 +14,8 @@ extension LoginManager {
     private static let refreshTokenKey = "refreshToken"
     private static let usernameKey = "username"
     
+    static var isShowingSearchRepositoriesScreen: Bool = false
+    
     // MARK: Properties
     static var accessToken: String? {
         get {

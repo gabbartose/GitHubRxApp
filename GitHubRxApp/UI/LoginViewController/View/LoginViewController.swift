@@ -33,13 +33,13 @@ class LoginViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        hideNavigationBar(animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        showNavigationBar(animated: animated)
         
         if isMovingFromParent {
             viewModel.didDisappearViewController()
@@ -49,6 +49,9 @@ class LoginViewController: BaseViewController {
     override func loadView() {
         self.view = LoginView()
         subscribeToViewModel()
+        
+        // Try to get the user in case the tokens are already stored on this device
+        viewModel.getUser()
         setupLoginButton()
     }
     

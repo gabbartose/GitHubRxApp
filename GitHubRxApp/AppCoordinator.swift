@@ -27,9 +27,10 @@ class AppCoordinator: NSObject, Coordinator {
     func start() {
         print("Current environment is: \(EnvironmentProvider.shared.currentEnvironment)")
         
-        showLoginFlow()
-        setupNavigationBar()
+        // if LoginManager.
         
+        setupNavigationBar()
+        showLoginFlow()
         // showSearchRepositoriesFlow()
         
         window.rootViewController = rootViewController
@@ -59,7 +60,7 @@ extension AppCoordinator {
         let loginCoordinator = LoginCoordinator(rootViewController: rootViewController,
                                                 dependencyManager: dependencyManager)
         addChildCoordinator(loginCoordinator)
-        loginCoordinator.startWith()
+        loginCoordinator.start()
     }
     
     private func showSearchRepositoriesFlow() {

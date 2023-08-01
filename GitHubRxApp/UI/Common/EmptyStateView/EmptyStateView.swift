@@ -25,7 +25,7 @@ class EmptyStateView: UIView {
     }()
     
     private let emptyStateLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = UIFont(name: .ralewayBold, size: 14)
         label.textColor = .GDarkGray
         label.text = Constants.emptyStateLabelText

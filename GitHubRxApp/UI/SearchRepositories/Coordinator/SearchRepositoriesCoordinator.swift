@@ -46,6 +46,26 @@ extension SearchRepositoriesCoordinator: SearchRepositoriesViewModelDelegate {
     }
 }
 
+// MARK: Open Login
+extension SearchRepositoriesCoordinator: LoginViewModelDelegate {
+    func showLoginScreen() {
+//        print("TU SMOOOO - SearchRepositoriesCoordinator")
+//        let loginRepository = LoginRepository(/*networkManager: dependencyManager.networkManager*/)
+//        let loginViewModel = LoginViewModel(loginRepository: loginRepository)
+//        loginViewModel.delegate = self
+//        let loginViewController = LoginViewController(viewModel: loginViewModel)
+//        rootViewController.pushViewController(loginViewController, animated: true)
+    }
+    
+    func showSearchRepositoriesScreen() {
+        
+    }
+    
+    func didEnd() {
+        
+    }
+}
+
 // MARK: Open UserDetails
 extension SearchRepositoriesCoordinator: RepositoryDetailsCoordinatorDelegate {
     func didSelectUserDetails(userDetails: Owner) {
