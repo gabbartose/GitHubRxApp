@@ -78,8 +78,8 @@
             filePath = "GitHubRxApp/UI/LoginViewController/Coordinator/LoginCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "showLoginScreen()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,8 +94,8 @@
             filePath = "GitHubRxApp/AppCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "start()"
             landmarkType = "7">
             <Locations>
@@ -144,7 +144,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
             endingLineNumber = "53"
-            landmarkName = "showLoginScreen()"
+            landmarkName = "showSearchRepositoriesScreen()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -160,7 +160,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "showLoginScreen()"
+            landmarkName = "showSearchRepositoriesScreen()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -174,8 +174,8 @@
             filePath = "GitHubRxApp/UI/LoginViewController/Coordinator/LoginCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "showLoginScreen()"
             landmarkType = "7">
             <Locations>
@@ -230,97 +230,97 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F3A1D6E7-94F7-41B6-864F-0A8081A62E16"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GitHubRxApp/UI/LoginViewController/Coordinator/LoginCoordinator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "showSearchRepositoriesScreen()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F3A1D6E7-94F7-41B6-864F-0A8081A62E16 - 2e2f8117bd68c8dd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GitHubRxApp.LoginCoordinator.showSearchRepositoriesScreen() -&gt; ()"
-                  moduleName = "GitHubRxApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gabrijel.bartosek/Desktop/Courses/Projects_for_practice%20/My_projects_for_practice/GitHubRxApp/GitHubRxApp/UI/LoginViewController/Coordinator/LoginCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "41"
-                  endingLineNumber = "41"
-                  offsetFromSymbolStart = "20">
-               </Location>
-               <Location
-                  uuid = "F3A1D6E7-94F7-41B6-864F-0A8081A62E16 - 2e2f8117bd68c71f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GitHubRxApp.LoginCoordinator.showSearchRepositoriesScreen() -&gt; ()"
-                  moduleName = "GitHubRxApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gabrijel.bartosek/Desktop/Courses/Projects_for_practice%20/My_projects_for_practice/GitHubRxApp/GitHubRxApp/UI/LoginViewController/Coordinator/LoginCoordinator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "43"
-                  endingLineNumber = "43"
-                  offsetFromSymbolStart = "214">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "59C3A295-8823-4298-B244-BA75141D1FFD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GitHubRxApp/ViewModel/SearchRepositoriesViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "didTapSignOutButton()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D3A5F01B-76D0-4B2C-946A-3053C7911B6F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GitHubRxApp/UI/LoginViewController/Coordinator/LoginCoordinator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "showSearchRepositoriesScreen()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "14F80839-9E58-44F3-AAC5-45FA90837D48"
+            uuid = "015AAA37-17B0-4A5C-BC02-67FC5BDEE02D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GitHubRxApp/ViewModel/LoginViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "getUser()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A03F781A-024B-439F-BB91-DC1EE15AAEEF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/ViewModel/LoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "getUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "72BD4757-53B4-4F4B-9AA4-7F752C53D125"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/UI/SearchRepositories/View/SearchRepositoriesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "SearchRepositoriesViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B0BC321-61BF-48AC-A11A-563237ED8604"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/ViewModel/SearchRepositoriesViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "didTapSignOutButton()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7B0BC321-61BF-48AC-A11A-563237ED8604 - 3a6ffafeb1c5c0ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc GitHubRxApp.SearchRepositoriesViewController.didTapSignOutButton() -&gt; ()"
+                  moduleName = "GitHubRxApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrijel.bartosek/Desktop/Courses/Projects_for_practice%20/My_projects_for_practice/GitHubRxApp/GitHubRxApp/ViewModel/SearchRepositoriesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "54">
+               </Location>
+               <Location
+                  uuid = "7B0BC321-61BF-48AC-A11A-563237ED8604 - 48234339ffc9d2c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitHubRxApp.SearchRepositoriesViewModel.didTapSignOutButton() -&gt; ()"
+                  moduleName = "GitHubRxApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrijel.bartosek/Desktop/Courses/Projects_for_practice%20/My_projects_for_practice/GitHubRxApp/GitHubRxApp/ViewModel/SearchRepositoriesViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "294">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -49,7 +49,7 @@ extension SearchRepositoriesCoordinator: SearchRepositoriesViewModelDelegate {
 // MARK: Open Login
 extension SearchRepositoriesCoordinator: LoginViewModelDelegate {
     func showLoginScreen() {
-//        print("TU SMOOOO - SearchRepositoriesCoordinator")
+//        print("TU SMOOOO - treba se prikazati show login screen ")
 //        let loginRepository = LoginRepository(/*networkManager: dependencyManager.networkManager*/)
 //        let loginViewModel = LoginViewModel(loginRepository: loginRepository)
 //        loginViewModel.delegate = self

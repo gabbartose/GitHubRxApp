@@ -50,6 +50,13 @@ class SearchRepositoriesViewController: BaseViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        print("accessToken: \(LoginManager.accessToken ?? "")")
+//        print("refreshToken: \(LoginManager.refreshToken ?? "")")
+//        print("username: \(LoginManager.username ?? "")")
+//    }
+    
     override func loadView() {
         view = SearchRepositoriesView()
         setupNavigationBarElements()
@@ -60,6 +67,7 @@ class SearchRepositoriesViewController: BaseViewController {
         setupTableView()
         setupGestures()
         subscribeToViewModel()
+        LoginManager.printTokens()
     }
     
     required init?(coder: NSCoder) {

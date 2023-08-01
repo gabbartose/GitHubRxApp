@@ -14,8 +14,6 @@ extension LoginManager {
     private static let refreshTokenKey = "refreshToken"
     private static let usernameKey = "username"
     
-    static var isShowingSearchRepositoriesScreen: Bool = false
-    
     // MARK: Properties
     static var accessToken: String? {
         get {
@@ -42,5 +40,11 @@ extension LoginManager {
         set {
             UserDefaults.standard.setValue(newValue, forKey: usernameKey)
         }
+    }
+    
+    static func printTokens() {
+        print("accessToken: \(accessToken ?? "")")
+        print("refreshToken: \(refreshToken ?? "")")
+        print("username: \(username ?? "")")
     }
 }

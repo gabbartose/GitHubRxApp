@@ -34,8 +34,15 @@ class LoginViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideNavigationBar(animated: animated)
+
+        // Try to get the user in case the tokens are already stored on this device
+        if let accessToken = LoginManager.accessToken,
+           let refreshToken = LoginManager.refreshToken,
+           !accessToken.isEmpty, !refreshToken.isEmpty {
+            viewModel.getUser()
+        }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -47,12 +54,10 @@ class LoginViewController: BaseViewController {
     }
     
     override func loadView() {
-        self.view = LoginView()
+        view = LoginView()
         subscribeToViewModel()
-        
-        // Try to get the user in case the tokens are already stored on this device
-        viewModel.getUser()
         setupLoginButton()
+        LoginManager.printTokens()
     }
     
     deinit {
@@ -60,6 +65,7 @@ class LoginViewController: BaseViewController {
     }
 }
 
+// MARK: Subscribe to LoginViewModel
 extension LoginViewController {
     private func subscribeToViewModel() {
         viewModel
@@ -78,8 +84,15 @@ extension LoginViewController {
     }
 }
 
+
+// MARK: Setup UI elements
 extension LoginViewController {
     private func setupLoginButton() {
         loginView.onDidSelectLoginButton = viewModel.didSelectLoginButton
     }
+}
+
+// MARK: Helper methods
+extension LoginViewController {
+    
 }

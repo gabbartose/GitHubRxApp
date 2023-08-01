@@ -102,12 +102,12 @@ extension LoginViewModel {
                 guard let self = self else { return }
                 switch result {
                 case .success:
-                    LoginManager.isShowingSearchRepositoriesScreen = true
+                    self.loadingInProgressSubject.onNext(false)
                     self.navigateToSearchRepositoriesScreen()
                 case .failure(let error):
+                    self.loadingInProgressSubject.onNext(false)
                     print("Failed to get user, or there is no valid/active session: \(error.localizedDescription)")
                 }
-                self.loadingInProgressSubject.onNext(false)
             }
     }
     

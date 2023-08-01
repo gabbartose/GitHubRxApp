@@ -25,10 +25,8 @@ class AppCoordinator: NSObject, Coordinator {
     }
     
     func start() {
-        print("Current environment is: \(EnvironmentProvider.shared.currentEnvironment)")
-        
-        // if LoginManager.
-        
+        print("Current app environment is: \(EnvironmentProvider.shared.currentEnvironment)")
+
         setupNavigationBar()
         showLoginFlow()
         // showSearchRepositoriesFlow()

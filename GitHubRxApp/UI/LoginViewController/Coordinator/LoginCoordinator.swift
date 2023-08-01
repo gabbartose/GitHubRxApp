@@ -37,17 +37,12 @@ class LoginCoordinator: NSObject, NavigationCoordinator {
 
 extension LoginCoordinator: LoginViewModelDelegate {
     func showSearchRepositoriesScreen() {
-        
-        print("VRIJEDNOST: \(LoginManager.isShowingSearchRepositoriesScreen)")
-        
-        if LoginManager.isShowingSearchRepositoriesScreen {
             let searchRepositoriesRepository = SearchRepositoriesRepository(networkManager: dependencyManager.networkManager)
             let searchRepositoriesViewModel = SearchRepositoriesViewModel(searchRepositoriesRepository: searchRepositoriesRepository)
             searchRepositoriesViewModel.delegate = self
             let searchRepositoriesViewController = SearchRepositoriesViewController(
                 viewModel: searchRepositoriesViewModel)
             rootViewController.pushViewController(searchRepositoriesViewController, animated: true)
-        }
     }
     
     func didEnd() {

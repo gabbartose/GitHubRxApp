@@ -91,11 +91,11 @@ extension SearchRepositoriesViewModel {
     }
     
     func didTapSignOutButton() {
-        LoginManager.signOut()
-//        LoginManager.accessToken = nil
-//        LoginManager.refreshToken = nil
-//        LoginManager.username = nil
-        LoginManager.isShowingSearchRepositoriesScreen = false
+//        LoginManager.signOut()
+        
+        LoginManager.accessToken = ""
+        LoginManager.refreshToken = ""
+        LoginManager.username = ""
         
         delegate?.showLoginScreen()
     }
