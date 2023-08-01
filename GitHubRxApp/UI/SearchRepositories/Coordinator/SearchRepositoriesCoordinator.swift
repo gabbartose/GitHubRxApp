@@ -38,31 +38,15 @@ class SearchRepositoriesCoordinator: NSObject, NavigationCoordinator {
 
 // MARK: Open RepositoryDetails
 extension SearchRepositoriesCoordinator: SearchRepositoriesViewModelDelegate {
+    func showLoginScreen() {
+        
+    }
+    
     func didSelectRepository(item: Item) {
         let repositoryDetailsCoordinator = RepositoryDetailsCoordinator(rootViewController: rootViewController, dependencyManager: dependencyManager)
         addChildCoordinator(repositoryDetailsCoordinator)
         repositoryDetailsCoordinator.delegate = self
         repositoryDetailsCoordinator.startWith(repositoryItem: item)
-    }
-}
-
-// MARK: Open Login
-extension SearchRepositoriesCoordinator: LoginViewModelDelegate {
-    func showLoginScreen() {
-//        print("TU SMOOOO - treba se prikazati show login screen ")
-//        let loginRepository = LoginRepository(/*networkManager: dependencyManager.networkManager*/)
-//        let loginViewModel = LoginViewModel(loginRepository: loginRepository)
-//        loginViewModel.delegate = self
-//        let loginViewController = LoginViewController(viewModel: loginViewModel)
-//        rootViewController.pushViewController(loginViewController, animated: true)
-    }
-    
-    func showSearchRepositoriesScreen() {
-        
-    }
-    
-    func didEnd() {
-        
     }
 }
 

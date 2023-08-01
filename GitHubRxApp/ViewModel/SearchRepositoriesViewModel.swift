@@ -18,7 +18,6 @@ protocol SearchRepositoriesViewModelProtocol {
     var onError: Observable<ErrorReport> { get set }
     var repositoryComponents: Observable<[Item]> { get set }
     var isFetchInProgress: Bool { get set }
-    var loggedInUser: String { get set }
     
     func didEnter(currentQueryString: String, sortOption: String)
     func didSelectRepository(item: Item)
@@ -34,7 +33,6 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     var onError: Observable<ErrorReport>
     var repositoryComponents: Observable<[Item]>
     var isFetchInProgress = false
-    var loggedInUser = LoginManager.username ?? ""
     
     private let searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()
@@ -91,13 +89,10 @@ extension SearchRepositoriesViewModel {
     }
     
     func didTapSignOutButton() {
-//        LoginManager.signOut()
-        
-        LoginManager.accessToken = ""
-        LoginManager.refreshToken = ""
-        LoginManager.username = ""
-        
-        delegate?.showLoginScreen()
+        LoginManager.signOut()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.delegate?.showLoginScreen()
+        }
     }
     
     private func getRepositoryComponents(query: String = "", sortOption: String = "") {

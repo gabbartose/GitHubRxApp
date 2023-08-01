@@ -102,8 +102,10 @@ extension LoginViewModel {
                 guard let self = self else { return }
                 switch result {
                 case .success:
-                    self.loadingInProgressSubject.onNext(false)
-                    self.navigateToSearchRepositoriesScreen()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        self.loadingInProgressSubject.onNext(false)
+                        self.navigateToSearchRepositoriesScreen()
+                    }
                 case .failure(let error):
                     self.loadingInProgressSubject.onNext(false)
                     print("Failed to get user, or there is no valid/active session: \(error.localizedDescription)")

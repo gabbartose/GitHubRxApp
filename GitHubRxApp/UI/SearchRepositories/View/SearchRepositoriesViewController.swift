@@ -35,7 +35,6 @@ class SearchRepositoriesViewController: BaseViewController {
             guard !repositoryComponents.isEmpty else {
                 searchRepositoriesView.emptyStateView.isHidden = false
                 searchRepositoriesView.tableView.isHidden = true
-                // setPickerOnDefaultValue()
                 searchRepositoriesView.tableView.reloadData()
                 return
             }
@@ -49,21 +48,13 @@ class SearchRepositoriesViewController: BaseViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        print("accessToken: \(LoginManager.accessToken ?? "")")
-//        print("refreshToken: \(LoginManager.refreshToken ?? "")")
-//        print("username: \(LoginManager.username ?? "")")
-//    }
-    
+
     override func loadView() {
         view = SearchRepositoriesView()
         setupNavigationBarElements()
         setupNavigationItemTitle()
         setupSearchBar()
         setupPickerView()
-        showLoggedInUser()
         setupTableView()
         setupGestures()
         subscribeToViewModel()
@@ -233,10 +224,6 @@ extension SearchRepositoriesViewController: UITableViewDelegate, UITableViewData
 // MARK: Helper methods
 // TODO: Consider to move those functions to the SearchRepositoriesViewModel
 extension SearchRepositoriesViewController {
-    private func showLoggedInUser() {
-        searchRepositoriesView.loggedInUserValue = viewModel.loggedInUser
-    }
-    
     private func getAttributedString(query: String) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: query)
         let range = (query as NSString).range(of: queryString, options: .caseInsensitive)

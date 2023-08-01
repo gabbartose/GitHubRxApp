@@ -13,7 +13,7 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     struct Constants {
         static let searchGithubRepositoriesPlaceholder = "Search Github Repositories"
         static let filterIcon = "FilterIcon"
-        static let currentlyLoggedInUser = "Currently logged in: "
+        static let currentlyLoggedInUser = "Currently logged in user: "
     }
     
     var loggedInUserValue: String = ""
@@ -50,13 +50,15 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     
     lazy var loggedInUserLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: .ralewayBold, size: 14)
+        label.font = UIFont(name: .ralewayBold, size: 12)
         label.textColor = .GDarkGray
-        label.text = Constants.currentlyLoggedInUser + (LoginManager.username ?? "Mirko")
+        label.text = Constants.currentlyLoggedInUser + (LoginManager.username ?? "")
         label.numberOfLines = 1
         label.textAlignment = .center
         return label
     }()
+    
+    private lazy var grayBottomLineViewUnderLoggedInUserView = GrayBottomLineView()
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -106,6 +108,7 @@ extension SearchRepositoriesView {
         
         addSubview(loggedInUserView)
         loggedInUserView.addSubview(loggedInUserLabel)
+        addSubview(grayBottomLineViewUnderLoggedInUserView)
         
         addSubview(tableView)
         addSubview(emptyStateView)
@@ -134,8 +137,8 @@ extension SearchRepositoriesView {
         }
         
         grayBottomLineViewUnderSearch.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
             make.top.equalTo(searchComponentsView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(1)
         }
         
@@ -151,8 +154,14 @@ extension SearchRepositoriesView {
             make.centerY.equalToSuperview()
         }
         
-        tableView.snp.makeConstraints { make in
+        grayBottomLineViewUnderLoggedInUserView.snp.makeConstraints { make in
             make.top.equalTo(loggedInUserView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(1)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(grayBottomLineViewUnderLoggedInUserView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
         
