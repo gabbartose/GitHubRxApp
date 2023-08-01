@@ -31,18 +31,25 @@ class LoginViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadView() {
-        self.view = LoginView()
-        subscribeToViewModel()
-        setupLoginButton()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        
         if isMovingFromParent {
             viewModel.didDisappearViewController()
         }
+    }
+    
+    override func loadView() {
+        self.view = LoginView()
+        subscribeToViewModel()
+        setupLoginButton()
     }
     
     deinit {

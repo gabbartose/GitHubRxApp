@@ -1,13 +1,13 @@
 //
-//  NetworkManager+User.swift
+//  LoginManager+User.swift
 //  GitHubRxApp
 //
-//  Created by Gabrijel Bartosek on 28.07.2023..
+//  Created by Gabrijel Bartosek on 01.08.2023..
 //
 
 import Foundation
 
-extension NetworkManager {
+extension LoginManager {
     
     // MARK: Private Constants
     private static let accessTokenKey = "accessToken"

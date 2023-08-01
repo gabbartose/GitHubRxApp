@@ -28,8 +28,8 @@ class AppCoordinator: NSObject, Coordinator {
         print("Current environment is: \(EnvironmentProvider.shared.currentEnvironment)")
         
         showLoginFlow()
+        setupNavigationBar()
         
-        // setupNavigationBar()
         // showSearchRepositoriesFlow()
         
         window.rootViewController = rootViewController

@@ -28,8 +28,7 @@ class LoginCoordinator: NSObject, NavigationCoordinator {
     }
     
     func startWith() {
-        // let redirectUri = URL(string: "com.beer.GitHubRxApp://authentication")!
-        let loginRepository = LoginRepository(networkManager: dependencyManager.networkManager)
+        let loginRepository = LoginRepository(/*networkManager: dependencyManager.networkManager*/)
         let loginViewModel = LoginViewModel(loginRepository: loginRepository)
         loginViewModel.delegate = self
         let loginViewController = LoginViewController(viewModel: loginViewModel)
@@ -46,6 +45,15 @@ extension LoginCoordinator: LoginViewModelDelegate {
         let safariViewController = SFSafariViewController(url: url)
         safariViewController.modalPresentationStyle = .fullScreen
         rootViewController.present(safariViewController, animated: true)
+    }
+    
+    func showSearchRepositoriesScreen() {
+        let searchRepositoriesRepository = SearchRepositoriesRepository(networkManager: dependencyManager.networkManager)
+        let searchRepositoriesViewModel = SearchRepositoriesViewModel(searchRepositoriesRepository: searchRepositoriesRepository)
+        // searchRepositoriesViewModel.delegate = self
+        let searchRepositoriesViewController = SearchRepositoriesViewController(
+            viewModel: searchRepositoriesViewModel)
+        rootViewController.pushViewController(searchRepositoriesViewController, animated: true)
     }
     
     func didEnd() {

@@ -9,6 +9,7 @@ import AuthenticationServices
 import RxSwift
 
 protocol LoginViewModelDelegate: AnyObject {
+    func showSearchRepositoriesScreen()
     func didEnd()
 }
 
@@ -18,6 +19,8 @@ protocol LoginViewModelProtocol {
     
     func didSelectLoginButton()
     func didDisappearViewController()
+    
+    func navigateToSearchRepositoriesScreen()
 }
 
 class LoginViewModel: NSObject, LoginViewModelProtocol {
@@ -46,19 +49,38 @@ class LoginViewModel: NSObject, LoginViewModelProtocol {
 extension LoginViewModel {
     func didSelectLoginButton() {
         loadingInProgressSubject.onNext(true)
-        let callbackURLScheme = NetworkManager.Constants.callbackURLScheme
-        let signInURL = loginRepository.createSignInURLWithClientId()
-        let authenticationSession = ASWebAuthenticationSession(url: signInURL,
-                                                               callbackURLScheme: callbackURLScheme) { [weak self] callbackURL, error in
-            guard let self = self else { return }
-            // TODO: Further implementation
-            //                guard error == nil,
-            //                      let callbackURL = callbackURL else {
-            //                    self.loadingInProgressSubject.onNext(false)
-            //                }
-            //                print("An error occurred when attempting to sign in.")
-            //                return
+        guard let signInURL =
+                LoginManager.RequestType.signIn.networkRequest()?.url
+        else {
+            print("Could not create the sign in URL .")
+            return
         }
+        
+        let callbackURLScheme = LoginManager.Constants.callbackURLScheme
+        let authenticationSession = ASWebAuthenticationSession(
+            url: signInURL,
+            callbackURLScheme: callbackURLScheme) { [weak self] callbackURL, error in
+                guard let self = self,
+                      error == nil,
+                      let callbackURL = callbackURL,
+                      let queryItems = URLComponents(string: callbackURL.absoluteString)?.queryItems,
+                      let code = queryItems.first(where: { $0.name == "code" })?.value,
+                      let networkRequest =
+                        LoginManager.RequestType.codeExchange(code: code).networkRequest() else {
+                    print("An error occurred when attempting to sign in.")
+                    return
+                }
+                
+                networkRequest.start(responseType: String.self) { result in
+                    self.loadingInProgressSubject.onNext(false)
+                    switch result {
+                    case .success:
+                        self.getUser()
+                    case .failure(let error):
+                        print("Failed to exchange access code for tokens: \(error)")
+                    }
+                }
+            }
         
         authenticationSession.presentationContextProvider = self
         authenticationSession.prefersEphemeralWebBrowserSession = true
@@ -66,11 +88,35 @@ extension LoginViewModel {
         if !authenticationSession.start() {
             print("Failed to start ASWebAuthenticationSession")
         }
-        self.loadingInProgressSubject.onNext(false)
+        loadingInProgressSubject.onNext(false)
+    }
+    
+    private func getUser() {
+        loadingInProgressSubject.onNext(true)
+        
+        LoginManager
+            .RequestType
+            .getUser
+            .networkRequest()?
+            .start(responseType: User.self) { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success:
+                    print("Success!")
+                    navigateToSearchRepositoriesScreen()
+                case .failure(let error):
+                    print("Failed to get user, or there is no valid/active session: \(error.localizedDescription)")
+                }
+                self.loadingInProgressSubject.onNext(false)
+            }
     }
     
     func didDisappearViewController() {
         delegate?.didEnd()
+    }
+    
+    func navigateToSearchRepositoriesScreen() {
+        delegate?.showSearchRepositoriesScreen()
     }
 }
 

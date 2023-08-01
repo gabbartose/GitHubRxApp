@@ -9,12 +9,6 @@ import Foundation
 
 class NetworkManager {
     
-    struct Constants {
-        static let callbackURLScheme = "com.beer.GitHubRxApp"
-        static let clientID = "Iv1.03eda0e0b6c3100b"
-        static let clientSecret = "370d1b2a85339484e0bb76c26a214ffbac09a388"
-    }
-    
     typealias Failure = (ErrorReport) -> Void
 
     private(set) var configuration: NetworkConfiguration
