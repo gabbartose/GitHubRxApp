@@ -16,8 +16,6 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
         static let currentlyLoggedInUser = "Currently logged in user: "
     }
     
-    var loggedInUserValue: String = ""
-    
     private lazy var searchComponentsView = UIView()
     
     lazy var repositorySearchBar: UISearchBar = {
@@ -50,7 +48,7 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     
     lazy var loggedInUserLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: .ralewayBold, size: 12)
+        label.font = UIFont(name: .ralewayBold, size: 14)
         label.textColor = .GDarkGray
         label.text = Constants.currentlyLoggedInUser + (LoginManager.username ?? "")
         label.numberOfLines = 1
@@ -139,7 +137,6 @@ extension SearchRepositoriesView {
         grayBottomLineViewUnderSearch.snp.makeConstraints { make in
             make.top.equalTo(searchComponentsView.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(1)
         }
         
         loggedInUserView.snp.makeConstraints { make in
@@ -157,7 +154,6 @@ extension SearchRepositoriesView {
         grayBottomLineViewUnderLoggedInUserView.snp.makeConstraints { make in
             make.top.equalTo(loggedInUserView.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(1)
         }
         
         tableView.snp.makeConstraints { make in

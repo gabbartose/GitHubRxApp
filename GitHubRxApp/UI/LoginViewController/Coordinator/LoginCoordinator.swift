@@ -37,12 +37,12 @@ class LoginCoordinator: NSObject, NavigationCoordinator {
 
 extension LoginCoordinator: LoginViewModelDelegate {
     func showSearchRepositoriesScreen() {
-            let searchRepositoriesRepository = SearchRepositoriesRepository(networkManager: dependencyManager.networkManager)
-            let searchRepositoriesViewModel = SearchRepositoriesViewModel(searchRepositoriesRepository: searchRepositoriesRepository)
-            searchRepositoriesViewModel.delegate = self
-            let searchRepositoriesViewController = SearchRepositoriesViewController(
-                viewModel: searchRepositoriesViewModel)
-            rootViewController.pushViewController(searchRepositoriesViewController, animated: true)
+        let searchRepositoriesRepository = SearchRepositoriesRepository(networkManager: dependencyManager.networkManager)
+        let searchRepositoriesViewModel = SearchRepositoriesViewModel(searchRepositoriesRepository: searchRepositoriesRepository)
+        searchRepositoriesViewModel.delegate = self
+        let searchRepositoriesViewController = SearchRepositoriesViewController(
+            viewModel: searchRepositoriesViewModel)
+        rootViewController.pushViewController(searchRepositoriesViewController, animated: true)
     }
     
     func didEnd() {
@@ -66,13 +66,7 @@ extension LoginCoordinator: SearchRepositoriesViewModelDelegate, RepositoryDetai
     }
     
     func showLoginScreen() {
-        // start()
-        print("TU SMOOOO - LoginCoordinator")
-        let loginRepository = LoginRepository(/*networkManager: dependencyManager.networkManager*/)
-        let loginViewModel = LoginViewModel(loginRepository: loginRepository)
-        loginViewModel.delegate = self
-        let loginViewController = LoginViewController(viewModel: loginViewModel)
-        rootViewController.pushViewController(loginViewController, animated: true)
+        start()
     }
 }
 
