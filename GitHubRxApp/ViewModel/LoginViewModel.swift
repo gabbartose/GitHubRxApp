@@ -63,22 +63,42 @@ extension LoginViewModel {
                       error == nil,
                       let callbackURL = callbackURL,
                       let queryItems = URLComponents(string: callbackURL.absoluteString)?.queryItems,
-                      let code = queryItems.first(where: { $0.name == "code" })?.value,
-                      let networkRequest =
-                        LoginManager.RequestType.codeExchange(code: code).networkRequest() else {
+                      let code = queryItems.first(where: { $0.name == "code" })?.value else {
                     print("An error occurred when attempting to sign in.")
                     return
                 }
                 
-                networkRequest.start(responseType: String.self) { result in
+                // NetworkManager way
+                loginRepository.codeExchange(code: code) { [weak self] result in
+                    guard let self = self else { return }
                     self.loadingInProgressSubject.onNext(false)
                     switch result {
                     case .success:
                         self.getUser()
-                    case .failure(let error):
-                        print("Failed to exchange access code for tokens: \(error)")
+                    case .failure(let errorReport):
+                        self.onErrorSubject.onNext(errorReport)
+                        print("Failed to exchange access code for tokens: \(errorReport)")
+                        print("ERROR: \(errorReport.cause)")
                     }
                 }
+                
+
+                // LoginManager way
+//                      let networkRequest =
+//                        LoginManager.RequestType.codeExchange(code: code).networkRequest() else {
+//                    print("An error occurred when attempting to sign in.")
+//                    return
+//                }
+//
+//                networkRequest.start(responseType: String.self) { result in
+//                    self.loadingInProgressSubject.onNext(false)
+//                    switch result {
+//                    case .success:
+//                        self.getUser()
+//                    case .failure(let error):
+//                        print("Failed to exchange access code for tokens: \(error)")
+//                    }
+//                }
             }
         
         authenticationSession.presentationContextProvider = self

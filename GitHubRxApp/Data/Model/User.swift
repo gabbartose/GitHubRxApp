@@ -8,6 +8,6 @@
 import Foundation
 
 struct User: Codable, Equatable {
-    let login: String?
-    let name: String?
+    var login: String
+    var name: String
 }

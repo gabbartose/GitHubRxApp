@@ -15,9 +15,9 @@ class NetworkManager {
     
     // MARK: Static Methods
     static func signOut() {
-        accessToken = ""
-        refreshToken = ""
-        username = ""
+        Self.accessToken = ""
+        Self.refreshToken = ""
+        Self.username = ""
     }
     
     typealias Failure = (ErrorReport) -> Void
@@ -27,16 +27,19 @@ class NetworkManager {
     init(configuration: NetworkConfiguration = NetworkConfiguration()) {
         self.configuration = configuration
     }
+    
+    // typealias NetworkResult<T: Codable> = (response: HTTPURLResponse, object: T)
 
-    func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Swift.Result<T, ErrorReport>) -> Void) {
+    func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Result<T, ErrorReport>) -> ()) {
         guard let endpoint = createEndpoint(for: resource, basePath: basePath) else { return }
+        print("Endpoint: \(endpoint)")
         var request = createURLRequest(from: resource, endpoint)
         
         if let accessToken = NetworkManager.accessToken {
             request.setValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
         }
 
-        let task = configuration.session.dataTask(with: request) { [weak self] data, response, error in
+        let session = configuration.session.dataTask(with: request) { [weak self] data, response, error in
             guard let self = self else { return }
             let networkResponseState = self.getNetworkResponseState(response: response, error: error, data: data)
 
@@ -47,6 +50,8 @@ class NetworkManager {
                 }
             case NetworkResponseState.success:
                 let responseResult: Result<T, ErrorReport> = self.getResponseResult(data: data)
+                
+                print("Response result: \(responseResult)")
 
                 DispatchQueue.main.async {
                     switch responseResult {
@@ -57,8 +62,43 @@ class NetworkManager {
                     }
                 }
             }
+            
+            guard let data = data else {
+                print("Neki error se desio!")
+                return
+            }
+            
+            if T.self == String.self, let responseString = String(data: data, encoding: .utf8) {
+                let components = responseString.components(separatedBy: "&")
+                var dictionary: [String: String] = [:]
+                for component in components {
+                    let itemComponents = component.components(separatedBy: "=")
+                    if let key = itemComponents.first, let value = itemComponents.last {
+                        dictionary[key] = value
+                    }
+                }
+                DispatchQueue.main.async {
+                    NetworkManager.accessToken = dictionary["access_token"]
+                    NetworkManager.refreshToken = dictionary["refresh_token"]
+                    // swiftlint:disable:next force_cast
+                    completion(.success((response, "Success") as! T))
+                }
+                return
+            } else if let object = try? JSONDecoder().decode(T.self, from: data) {
+                DispatchQueue.main.async {
+                    if let user = object as? User {
+                        NetworkManager.username = user.login
+                    }
+                    completion(.success((response, object) as! T))
+                }
+                return
+            } else {
+                DispatchQueue.main.async {
+                    completion(.failure(ErrorReport(cause: .other, data: data)))
+                }
+            }
         }
-        task.resume()
+        session.resume()
     }
 
     func createEndpoint<T>(for resource: Resource<T>, basePath: URL) -> URL? {

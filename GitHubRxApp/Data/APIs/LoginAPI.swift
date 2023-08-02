@@ -47,14 +47,14 @@ extension LoginAPI {
     }
     
     func codeExchange(code: String, completion: @escaping (Result<String, ErrorReport>) -> ()) {
-        var resource = Resource<String>(path: Paths.codeExchange.rawValue)
+        var resource = Resource<String>(path: Paths.codeExchange.rawValue, method: .post)
         
         resource.queryItems = [
             URLQueryItem(name: "client_id", value: NetworkManager.clientID),
             URLQueryItem(name: "client_secret", value: NetworkManager.clientSecret),
             URLQueryItem(name: "code", value: code)
         ]
-        
+        print("resource: \(resource)")
         networkManager.apiCall(for: resource, basePath: .oAuthBasePath, completion: completion)
     }
 }
