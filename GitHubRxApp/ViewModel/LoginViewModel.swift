@@ -49,10 +49,10 @@ class LoginViewModel: NSObject, LoginViewModelProtocol {
 extension LoginViewModel {
     func didSelectLoginButton() {
         loadingInProgressSubject.onNext(true)
-        guard let signInURL =
-                LoginManager.RequestType.signIn.networkRequest()?.url
+        guard let signInURL = loginRepository.createSignInURLWithClientId()
+                              // LoginManager.RequestType.signIn.networkRequest()?.url
         else {
-            print("Could not create the sign in URL .")
+            print("Could not create the sign in URL.")
             return
         }
         

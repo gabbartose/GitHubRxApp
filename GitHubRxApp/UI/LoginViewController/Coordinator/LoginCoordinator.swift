@@ -23,7 +23,7 @@ class LoginCoordinator: NSObject, NavigationCoordinator {
     }
     
     func start() {
-        let loginRepository = LoginRepository(/*networkManager: dependencyManager.networkManager*/)
+        let loginRepository = LoginRepository(networkManager: dependencyManager.networkManager)
         let loginViewModel = LoginViewModel(loginRepository: loginRepository)
         loginViewModel.delegate = self
         let loginViewController = LoginViewController(viewModel: loginViewModel)

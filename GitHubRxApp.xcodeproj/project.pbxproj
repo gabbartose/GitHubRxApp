@@ -10,6 +10,7 @@
 		4061A4AED2028F8E3AD74FEA /* Pods_GitHubRxApp_GitHubRxAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212507A7785563B259917FE3 /* Pods_GitHubRxApp_GitHubRxAppUITests.framework */; };
 		7510C46A2A78F44E009EAAAF /* LoginManager+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C4692A78F44E009EAAAF /* LoginManager+User.swift */; };
 		7510C46C2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46B2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift */; };
+		7510C46E2A7A166F009EAAAF /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46D2A7A166F009EAAAF /* LoginAPI.swift */; };
 		7515D68B2A71679300211BD4 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D68A2A71679300211BD4 /* EnvironmentProvider.swift */; };
 		7515D6902A72532100211BD4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D68F2A72532100211BD4 /* LoginViewController.swift */; };
 		7515D6922A72532D00211BD4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6912A72532D00211BD4 /* LoginView.swift */; };
@@ -111,6 +112,7 @@
 		684B1D0E61B3CC0647DF90F8 /* Pods-GitHubRxApp.devproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxApp.devproduction.xcconfig"; path = "Target Support Files/Pods-GitHubRxApp/Pods-GitHubRxApp.devproduction.xcconfig"; sourceTree = "<group>"; };
 		7510C4692A78F44E009EAAAF /* LoginManager+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginManager+User.swift"; sourceTree = "<group>"; };
 		7510C46B2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+GitHubRxApp.swift"; sourceTree = "<group>"; };
+		7510C46D2A7A166F009EAAAF /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		7515D6742A715B9D00211BD4 /* ProductionBaseConfiguration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ProductionBaseConfiguration.xcconfig; sourceTree = "<group>"; };
 		7515D6762A715C7200211BD4 /* TestBaseConfiguration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestBaseConfiguration.xcconfig; sourceTree = "<group>"; };
 		7515D6772A715D1E00211BD4 /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
@@ -656,6 +658,7 @@
 			children = (
 				7515D69B2A727E8F00211BD4 /* LoginManager.swift */,
 				7510C4692A78F44E009EAAAF /* LoginManager+User.swift */,
+				7510C46D2A7A166F009EAAAF /* LoginAPI.swift */,
 				75A47CFF2A67A84F00618359 /* SearchRepositoriesAPI.swift */,
 			);
 			path = APIs;
@@ -1062,6 +1065,7 @@
 				75A47CF72A66652E00618359 /* GrayBottomLineView.swift in Sources */,
 				75A47CE22A653A4200618359 /* SearchRepositoriesViewController.swift in Sources */,
 				75A47D2E2A6E68DC00618359 /* UIImageView+GitHubRxApp.swift in Sources */,
+				7510C46E2A7A166F009EAAAF /* LoginAPI.swift in Sources */,
 				75A47CFC2A67A36400618359 /* EmptyStateView.swift in Sources */,
 				75A47CEE2A66506B00618359 /* RepositoryTableViewCell.swift in Sources */,
 				75A47CD52A6537AF00618359 /* PreconditionFailedError.swift in Sources */,
