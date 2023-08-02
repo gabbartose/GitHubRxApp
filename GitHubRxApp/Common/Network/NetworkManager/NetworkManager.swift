@@ -8,10 +8,17 @@
 import Foundation
 
 class NetworkManager {
-
-    let callbackURLScheme = "com.beer.GitHubRxApp"
-    let clientID = "Iv1.03eda0e0b6c3100b"
-    let clientSecret = "370d1b2a85339484e0bb76c26a214ffbac09a388"
+    
+    static let callbackURLScheme = "com.beer.GitHubRxApp"
+    static let clientID = "Iv1.03eda0e0b6c3100b"
+    static let clientSecret = "370d1b2a85339484e0bb76c26a214ffbac09a388"
+    
+    // MARK: Static Methods
+    static func signOut() {
+        accessToken = ""
+        refreshToken = ""
+        username = ""
+    }
     
     typealias Failure = (ErrorReport) -> Void
 
@@ -23,7 +30,11 @@ class NetworkManager {
 
     func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Swift.Result<T, ErrorReport>) -> Void) {
         guard let endpoint = createEndpoint(for: resource, basePath: basePath) else { return }
-        let request = createURLRequest(from: resource, endpoint)
+        var request = createURLRequest(from: resource, endpoint)
+        
+        if let accessToken = NetworkManager.accessToken {
+            request.setValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
+        }
 
         let task = configuration.session.dataTask(with: request) { [weak self] data, response, error in
             guard let self = self else { return }
@@ -149,3 +160,44 @@ internal enum NetworkResponseState {
     case failure(ErrorReport)
 }
 
+extension NetworkManager {
+    
+    // MARK: Private Constants
+    private static let accessTokenKey = "accessToken"
+    private static let refreshTokenKey = "refreshToken"
+    private static let usernameKey = "username"
+    
+    // MARK: Properties
+    static var accessToken: String? {
+        get {
+            UserDefaults.standard.string(forKey: accessTokenKey)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: accessTokenKey)
+        }
+    }
+    
+    static var refreshToken: String? {
+        get {
+            UserDefaults.standard.string(forKey: refreshTokenKey)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: refreshTokenKey)
+        }
+    }
+    
+    static var username: String? {
+        get {
+            UserDefaults.standard.string(forKey: usernameKey)
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: usernameKey)
+        }
+    }
+    
+    static func printTokens() {
+        print("accessToken: \(accessToken ?? "")")
+        print("refreshToken: \(refreshToken ?? "")")
+        print("username: \(username ?? "")")
+    }
+}

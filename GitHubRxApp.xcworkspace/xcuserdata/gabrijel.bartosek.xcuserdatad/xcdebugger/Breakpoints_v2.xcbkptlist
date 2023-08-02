@@ -52,5 +52,274 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "73269CEA-5104-4A41-8D9C-96B5CDD47E6B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/ViewModel/LoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "getUser()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "73269CEA-5104-4A41-8D9C-96B5CDD47E6B - 96239d5f90b3dec9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;GitHubRxApp.User, GitHubRxApp.ErrorReport&gt;) -&gt; () in GitHubRxApp.LoginViewModel.getUser() -&gt; ()"
+                  moduleName = "GitHubRxApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrijel.bartosek/Desktop/Courses/Projects_for_practice%20/My_projects_for_practice/GitHubRxApp/GitHubRxApp/ViewModel/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "126">
+               </Location>
+               <Location
+                  uuid = "73269CEA-5104-4A41-8D9C-96B5CDD47E6B - 96239d5f90b3dec9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;GitHubRxApp.User, GitHubRxApp.ErrorReport&gt;) -&gt; () in GitHubRxApp.LoginViewModel.getUser() -&gt; ()"
+                  moduleName = "GitHubRxApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrijel.bartosek/Desktop/Courses/Projects_for_practice%20/My_projects_for_practice/GitHubRxApp/GitHubRxApp/ViewModel/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "173">
+               </Location>
+               <Location
+                  uuid = "73269CEA-5104-4A41-8D9C-96B5CDD47E6B - 1634931c3fcb7d26"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitHubRxApp.LoginViewModel.getUser() -&gt; ()"
+                  moduleName = "GitHubRxApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrijel.bartosek/Desktop/Courses/Projects_for_practice%20/My_projects_for_practice/GitHubRxApp/GitHubRxApp/ViewModel/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "360">
+               </Location>
+               <Location
+                  uuid = "73269CEA-5104-4A41-8D9C-96B5CDD47E6B - 96239d5f90b3dec9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;GitHubRxApp.User, GitHubRxApp.ErrorReport&gt;) -&gt; () in GitHubRxApp.LoginViewModel.getUser() -&gt; ()"
+                  moduleName = "GitHubRxApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrijel.bartosek/Desktop/Courses/Projects_for_practice%20/My_projects_for_practice/GitHubRxApp/GitHubRxApp/ViewModel/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "178">
+               </Location>
+               <Location
+                  uuid = "73269CEA-5104-4A41-8D9C-96B5CDD47E6B - 96239d5f90b3dea8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;GitHubRxApp.User, GitHubRxApp.ErrorReport&gt;) -&gt; () in GitHubRxApp.LoginViewModel.getUser() -&gt; ()"
+                  moduleName = "GitHubRxApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrijel.bartosek/Desktop/Courses/Projects_for_practice%20/My_projects_for_practice/GitHubRxApp/GitHubRxApp/ViewModel/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "178">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BEADF359-F404-4811-A1BB-6AC3F555F766"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/Data/APIs/LoginAPI.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "getUser(completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BEADF359-F404-4811-A1BB-6AC3F555F766 - 2ee5a8096d990b07"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitHubRxApp.LoginViewModel.getUser() -&gt; ()"
+                  moduleName = "GitHubRxApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrijel.bartosek/Desktop/Courses/Projects_for_practice%20/My_projects_for_practice/GitHubRxApp/GitHubRxApp/Data/APIs/LoginAPI.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "309">
+               </Location>
+               <Location
+                  uuid = "BEADF359-F404-4811-A1BB-6AC3F555F766 - 307a562f84f559ce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GitHubRxApp.LoginAPI.getUser(completion: (Swift.Result&lt;GitHubRxApp.User, GitHubRxApp.ErrorReport&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "GitHubRxApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gabrijel.bartosek/Desktop/Courses/Projects_for_practice%20/My_projects_for_practice/GitHubRxApp/GitHubRxApp/Data/APIs/LoginAPI.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "222">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "815ACEBD-3EDE-4D94-A86E-6FC7BAAB1C68"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/ViewModel/LoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "didSelectLoginButton()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2C569B8B-C758-4DD4-B227-F20D3BF26925"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/Data/APIs/LoginManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "start(responseType:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3A6AEF7-DA0C-4DD9-8786-C24120FB0F80"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/UI/LoginViewController/View/LoginViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DD86816C-AAE9-4A99-B693-54E8C992DAC2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/Data/APIs/LoginAPI.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "getUser(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2214A481-01AB-4A55-BDA2-4E51F26FBDBF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/ViewModel/LoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "getUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D79371E4-B0F0-414F-87BC-C1B275F9BE1C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/Common/Network/NetworkManager/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "apiCall(for:basePath:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BDFCB91B-B414-419A-A6C5-D705A39979E9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/Data/APIs/LoginManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "start(responseType:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E14A0949-37F7-4918-B74C-805BCC25D81B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GitHubRxApp/ViewModel/LoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "getUser()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

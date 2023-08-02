@@ -110,10 +110,8 @@ struct LoginManager {
                 }
                 return
             }
-            guard
-                error == nil,
-                let data = data
-            else {
+            guard error == nil,
+                  let data = data else {
                 DispatchQueue.main.async {
                     let error = error ?? RequestError.otherError
                     completionHandler(.failure(error))
@@ -141,6 +139,7 @@ struct LoginManager {
                 DispatchQueue.main.async {
                     if let user = object as? User {
                         LoginManager.username = user.login
+                        NetworkManager.username = user.login
                     }
                     completionHandler(.success((response, object)))
                 }

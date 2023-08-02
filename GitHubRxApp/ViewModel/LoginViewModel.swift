@@ -49,14 +49,13 @@ class LoginViewModel: NSObject, LoginViewModelProtocol {
 extension LoginViewModel {
     func didSelectLoginButton() {
         loadingInProgressSubject.onNext(true)
-        guard let signInURL = loginRepository.createSignInURLWithClientId()
-                              // LoginManager.RequestType.signIn.networkRequest()?.url
+        guard let signInURL = loginRepository.createSignInURLWithClientId() // LoginManager.RequestType.signIn.networkRequest()?.url
         else {
             print("Could not create the sign in URL.")
             return
         }
         
-        let callbackURLScheme = LoginManager.Constants.callbackURLScheme
+        let callbackURLScheme = NetworkManager.callbackURLScheme // LoginManager.Constants.callbackURLScheme
         let authenticationSession = ASWebAuthenticationSession(
             url: signInURL,
             callbackURLScheme: callbackURLScheme) { [weak self] callbackURL, error in
@@ -94,23 +93,38 @@ extension LoginViewModel {
     func getUser() {
         loadingInProgressSubject.onNext(true)
         
-        LoginManager
-            .RequestType
-            .getUser
-            .networkRequest()?
-            .start(responseType: User.self) { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success:
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        self.loadingInProgressSubject.onNext(false)
-                        self.navigateToSearchRepositoriesScreen()
-                    }
-                case .failure(let error):
-                    self.loadingInProgressSubject.onNext(false)
-                    print("Failed to get user, or there is no valid/active session: \(error.localizedDescription)")
-                }
+        // NetworkManager way
+        loginRepository.getUser { [weak self] result in
+            guard let self = self else { return }
+            self.loadingInProgressSubject.onNext(false)
+            switch result {
+            case .success:
+                self.navigateToSearchRepositoriesScreen()
+            case .failure(let errorReport):
+                self.onErrorSubject.onNext(errorReport)
+                print("Failed to get user, or there is no valid/active session: \(errorReport.localizedDescription)")
+                print("ERROR: \(errorReport.cause)")
             }
+        }
+        
+        // LoginManager way
+//        LoginManager
+//            .RequestType
+//            .getUser
+//            .networkRequest()?
+//            .start(responseType: User.self) { [weak self] result in
+//                guard let self = self else { return }
+//                switch result {
+//                case .success:
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+//                        self.loadingInProgressSubject.onNext(false)
+//                        self.navigateToSearchRepositoriesScreen()
+//                    }
+//                case .failure(let error):
+//                    self.loadingInProgressSubject.onNext(false)
+//                    print("Failed to get user, or there is no valid/active session: \(error.localizedDescription)")
+//                }
+//            }
     }
     
     func didDisappearViewController() {
@@ -122,7 +136,7 @@ extension LoginViewModel {
     }
 }
 
-// MARK: Helper private methods
+// MARK: Helper methods
 extension LoginViewModel: ASWebAuthenticationPresentationContextProviding {
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         let window = UIApplication.shared.windows.first { $0.isKeyWindow }

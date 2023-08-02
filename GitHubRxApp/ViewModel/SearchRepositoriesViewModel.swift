@@ -89,7 +89,12 @@ extension SearchRepositoriesViewModel {
     }
     
     func didTapSignOutButton() {
-        LoginManager.signOut()
+        // NetworkManager way
+        NetworkManager.signOut()
+        
+        // LoginManager way
+        // LoginManager.signOut()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.delegate?.showLoginScreen()
         }

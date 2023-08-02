@@ -36,11 +36,20 @@ class LoginViewController: BaseViewController {
         hideNavigationBar(animated: animated)
 
         // Try to get the user in case the tokens are already stored on this device
-        if let accessToken = LoginManager.accessToken,
-           let refreshToken = LoginManager.refreshToken,
+        
+        // NetworkManager way
+        if let accessToken = NetworkManager.accessToken,
+           let refreshToken = NetworkManager.refreshToken,
            !accessToken.isEmpty, !refreshToken.isEmpty {
             viewModel.getUser()
         }
+        
+        // LoginManager way
+//        if let accessToken = LoginManager.accessToken,
+//           let refreshToken = LoginManager.refreshToken,
+//           !accessToken.isEmpty, !refreshToken.isEmpty {
+//            viewModel.getUser()
+//        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
