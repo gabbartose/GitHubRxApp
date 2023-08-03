@@ -17,7 +17,10 @@ protocol SearchRepositoriesViewModelProtocol {
     var loadingInProgress: Observable<Bool> { get set }
     var onError: Observable<ErrorReport> { get set }
     var repositoryComponents: Observable<[Item]> { get set }
+    var oldQueryString: String { get set }
+    var oldSortOption: String { get set }
     var isFetchInProgress: Bool { get set }
+    var isReachedEndOfList: Bool { get set }
     
     func didEnter(currentQueryString: String, sortOption: String)
     func didSelectRepository(item: Item)
@@ -32,7 +35,10 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     var loadingInProgress: Observable<Bool>
     var onError: Observable<ErrorReport>
     var repositoryComponents: Observable<[Item]>
+    var oldQueryString = ""
+    var oldSortOption = ""
     var isFetchInProgress = false
+    var isReachedEndOfList = false
     
     private let searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()
@@ -42,8 +48,6 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     private var currentPage = 0
     private var numberOfItemsPerPage = 20
     private var repositoryItems: [Item] = []
-    private var oldQueryString = ""
-    private var oldSortOption = ""
     
     init(searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol) {
         self.searchRepositoriesRepository = searchRepositoriesRepository
@@ -61,21 +65,28 @@ extension SearchRepositoriesViewModel {
     
     func didEnter(currentQueryString: String, sortOption: String = "") {
         guard currentQueryString.count < 3 else {
+            
             if oldQueryString != currentQueryString {
                 setCurrentPageAndRepositoryItemsToDefault()
-                oldQueryString = currentQueryString
             }
 
             if oldSortOption != sortOption {
                 setCurrentPageAndRepositoryItemsToDefault()
-                oldSortOption = sortOption
             }
-            
+
             getRepositoryComponents(query: currentQueryString, sortOption: sortOption)
+            oldQueryString = currentQueryString
+            oldSortOption = sortOption
             return
         }
         
+        oldQueryString = currentQueryString
         repositoryComponentsSubject.onNext([])
+    }
+    
+    func didTapSignOutButton() {
+        NetworkManager.signOut()
+        delegate?.showLoginScreen()
     }
     
     func didSelectRepository(item: Item) {
@@ -86,11 +97,6 @@ extension SearchRepositoriesViewModel {
     func didSelectUserImageView(userDetails: Owner) {
         guard EnvironmentProvider.shared.isProduction() else { return }
         delegate?.didSelectUserDetails(userDetails: userDetails)
-    }
-    
-    func didTapSignOutButton() {
-        NetworkManager.signOut()
-        delegate?.showLoginScreen()
     }
     
     private func getRepositoryComponents(query: String = "", sortOption: String = "") {
@@ -114,6 +120,13 @@ extension SearchRepositoriesViewModel {
                 repositoryItems.append(contentsOf: temporaryRepositoriesPerPage.items)
                 repositoryComponentsSubject.onNext(self.repositoryItems)
                 print("Repository items count: \(self.repositoryItems.count)")
+                
+                guard numberOfItemsPerPage > temporaryRepositoriesPerPage.items.count else {
+                    isReachedEndOfList = false
+                    return
+                }
+                isReachedEndOfList = true
+                
             case .failure(let errorReport):
                 onErrorSubject.onNext(errorReport)
             }

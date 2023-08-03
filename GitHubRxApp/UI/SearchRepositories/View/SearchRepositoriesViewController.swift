@@ -141,6 +141,10 @@ extension SearchRepositoriesViewController: UISearchBarDelegate {
         searchTask?.cancel()
         let task = DispatchWorkItem { [weak self] in
             guard let self = self else { return }
+            
+            guard viewModel.oldQueryString != searchedText else {
+                return
+            }
             viewModel.didEnter(currentQueryString: searchedText, sortOption: self.selectedPickerChoice)
             self.queryString = searchedText
         }
@@ -183,6 +187,10 @@ extension SearchRepositoriesViewController: UIPickerViewDelegate, UIPickerViewDa
             selectedPickerChoice = PickerValues.BestMatch.rawValue
         }
         
+        guard viewModel.oldSortOption != selectedPickerChoice else {
+            searchRepositoriesView.backgroundView.isHidden = true
+            return
+        }
         viewModel.didEnter(currentQueryString: queryString, sortOption: selectedPickerChoice)
         print("CurrentQueryString: \(queryString), SortOption: \(selectedPickerChoice)")
         
@@ -216,7 +224,11 @@ extension SearchRepositoriesViewController: UITableViewDelegate, UITableViewData
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
-        guard offsetY > contentHeight - scrollView.frame.height, !viewModel.isFetchInProgress else { return }
+        guard offsetY > contentHeight - scrollView.frame.height,
+              !viewModel.isFetchInProgress,
+              !viewModel.isReachedEndOfList else {
+            return
+        }
         viewModel.didEnter(currentQueryString: queryString, sortOption: selectedPickerChoice)
     }
 }

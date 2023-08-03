@@ -20,7 +20,7 @@ class NetworkManager {
     
     func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Result<NetworkResult<T>, ErrorReport>) -> ()) {
         guard let endpoint = createEndpoint(for: resource, basePath: basePath) else { return }
-        print("Endpoint: \(endpoint)")
+        print("Entire endpoint: \(endpoint)")
         var request = createURLRequest(from: resource, endpoint)
         
         if let accessToken = NetworkManager.accessToken {
@@ -29,39 +29,19 @@ class NetworkManager {
 
         let session = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             guard let self = self else { return }
-            // let networkResponseState = self.getNetworkResponseState(response: response, error: error, data: data)
 
             guard let response = response as? HTTPURLResponse else {
               DispatchQueue.main.async {
-                completion(.failure(ErrorReport(cause: .appOutdated, data: data)))
+                completion(.failure(ErrorReport(cause: .other, data: data)))
               }
               return
             }
             
-//            switch networkResponseState {
-//            case NetworkResponseState.failure(let cause):
-//                DispatchQueue.main.async {
-//                    completion(.failure(cause))
-//                }
-//            case NetworkResponseState.success:
-//                let responseResult: Result<T, ErrorReport> = self.getResponseResult(data: data)
-//
-//                print("Response result: \(responseResult)")
-//
-//                DispatchQueue.main.async {
-//                    switch responseResult {
-//                    case .failure(let cause):
-//                        completion(.failure(cause))
-//                    case .success(let decodedObject):
-//                        completion(.success(decodedObject as! (response: URLResponse, object: T)))
-//                    }
-//                }
-//            }
-            
-            
-            
-            guard let data = data else {
-                print("Neki error se desio!")
+            guard error == nil, let data = data else {
+                DispatchQueue.main.async {
+                  let error = error ?? ErrorReport(cause: .other, data: data)
+                    completion(.failure(ErrorReport(cause: .dataMissing)))
+                }
                 return
             }
             
@@ -77,10 +57,10 @@ class NetworkManager {
                 DispatchQueue.main.async {
                     NetworkManager.accessToken = dictionary["access_token"]
                     NetworkManager.refreshToken = dictionary["refresh_token"]
-                    // swiftlint:disable:next force_cast
                     completion(.success((response: response, "Success" as! T)))
                 }
                 return
+                
             } else if let object = try? JSONDecoder().decode(T.self, from: data) {
                 DispatchQueue.main.async {
                     if let user = object as? User {
@@ -100,10 +80,10 @@ class NetworkManager {
     
     func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Swift.Result<T, ErrorReport>) -> Void) {
         guard let endpoint = createEndpoint(for: resource, basePath: basePath) else { return }
-        var request = createURLRequest(from: resource, endpoint)
-        // configuration.requiredHTTPHeaders.forEach { request.addValue($0.value, forHTTPHeaderField: $0.key) }
+        print("Entire endpoint: \(endpoint)")
+        let request = createURLRequest(from: resource, endpoint)
 
-        let task = configuration.session.dataTask(with: request) { [weak self] data, response, error in
+        let session = configuration.session.dataTask(with: request) { [weak self] data, response, error in
             guard let self = self else { return }
             let networkResponseState = self.getNetworkResponseState(response: response, error: error, data: data)
 
@@ -125,7 +105,7 @@ class NetworkManager {
                 }
             }
         }
-        task.resume()
+        session.resume()
     }
 
     func createEndpoint<T>(for resource: Resource<T>, basePath: URL) -> URL? {

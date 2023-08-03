@@ -11,7 +11,7 @@ import SnapKit
 class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     
     struct Constants {
-        static let searchGithubRepositoriesPlaceholder = "Search Github Repositories"
+        static let searchGithubRepositoriesPlaceholder = "Search GitHub Repositories"
         static let filterIcon = "FilterIcon"
         static let currentlyLoggedInUser = "Currently logged in user: "
     }
