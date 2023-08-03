@@ -8,6 +8,7 @@
 import Foundation
 
 protocol SearchRepositoriesAPIProtocol {
+    // func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<(response: HTTPURLResponse, object: RepositoriesResponse), ErrorReport>) -> ())
     func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ())
 }
 
@@ -33,8 +34,6 @@ extension SearchRepositoriesAPI {
             URLQueryItem(name: "page", value: "\(page)"),
             URLQueryItem(name: "per_page", value: "\(perPage)")
         ]
-        
-        print("Repositories: \(resource)")
         
         networkManager.apiCall(for: resource, basePath: networkManager.configuration.basePath, completion: completion)
     }

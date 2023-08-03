@@ -49,13 +49,13 @@ class LoginViewModel: NSObject, LoginViewModelProtocol {
 extension LoginViewModel {
     func didSelectLoginButton() {
         loadingInProgressSubject.onNext(true)
-        guard let signInURL = loginRepository.createSignInURLWithClientId() // LoginManager.RequestType.signIn.networkRequest()?.url
+        guard let signInURL = loginRepository.createSignInURLWithClientId()
         else {
             print("Could not create the sign in URL.")
             return
         }
         
-        let callbackURLScheme = NetworkManager.callbackURLScheme // LoginManager.Constants.callbackURLScheme
+        let callbackURLScheme = NetworkManager.callbackURLScheme
         let authenticationSession = ASWebAuthenticationSession(
             url: signInURL,
             callbackURLScheme: callbackURLScheme) { [weak self] callbackURL, error in
@@ -68,7 +68,6 @@ extension LoginViewModel {
                     return
                 }
                 
-                // NetworkManager way
                 loginRepository.codeExchange(code: code) { [weak self] result in
                     guard let self = self else { return }
                     self.loadingInProgressSubject.onNext(false)
@@ -77,28 +76,9 @@ extension LoginViewModel {
                         self.getUser()
                     case .failure(let errorReport):
                         self.onErrorSubject.onNext(errorReport)
-                        print("Failed to exchange access code for tokens: \(errorReport)")
-                        print("ERROR: \(errorReport.cause)")
+                        print("Failed to exchange access code for tokens: \(errorReport), \(errorReport.cause)")
                     }
                 }
-                
-
-                // LoginManager way
-//                      let networkRequest =
-//                        LoginManager.RequestType.codeExchange(code: code).networkRequest() else {
-//                    print("An error occurred when attempting to sign in.")
-//                    return
-//                }
-//
-//                networkRequest.start(responseType: String.self) { result in
-//                    self.loadingInProgressSubject.onNext(false)
-//                    switch result {
-//                    case .success:
-//                        self.getUser()
-//                    case .failure(let error):
-//                        print("Failed to exchange access code for tokens: \(error)")
-//                    }
-//                }
             }
         
         authenticationSession.presentationContextProvider = self
@@ -113,7 +93,6 @@ extension LoginViewModel {
     func getUser() {
         loadingInProgressSubject.onNext(true)
         
-        // NetworkManager way
         loginRepository.getUser { [weak self] result in
             guard let self = self else { return }
             self.loadingInProgressSubject.onNext(false)
@@ -122,29 +101,9 @@ extension LoginViewModel {
                 self.navigateToSearchRepositoriesScreen()
             case .failure(let errorReport):
                 self.onErrorSubject.onNext(errorReport)
-                print("Failed to get user, or there is no valid/active session: \(errorReport.localizedDescription)")
-                print("ERROR: \(errorReport.cause)")
+                print("Failed to get user, or there is no valid/active session: \(errorReport.localizedDescription), \(errorReport.cause)")
             }
         }
-        
-        // LoginManager way
-//        LoginManager
-//            .RequestType
-//            .getUser
-//            .networkRequest()?
-//            .start(responseType: User.self) { [weak self] result in
-//                guard let self = self else { return }
-//                switch result {
-//                case .success:
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-//                        self.loadingInProgressSubject.onNext(false)
-//                        self.navigateToSearchRepositoriesScreen()
-//                    }
-//                case .failure(let error):
-//                    self.loadingInProgressSubject.onNext(false)
-//                    print("Failed to get user, or there is no valid/active session: \(error.localizedDescription)")
-//                }
-//            }
     }
     
     func didDisappearViewController() {

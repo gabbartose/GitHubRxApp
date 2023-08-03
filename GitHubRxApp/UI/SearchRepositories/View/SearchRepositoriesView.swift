@@ -50,12 +50,7 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
         let label = UILabel()
         label.font = UIFont(name: .ralewayBold, size: 14)
         label.textColor = .GDarkGray
-        
-        // NetworkManager way
         label.text = Constants.currentlyLoggedInUser + (NetworkManager.username ?? "")
-        
-        // LoginManager way
-        // label.text = Constants.currentlyLoggedInUser + (LoginManager.username ?? "")
         label.numberOfLines = 1
         label.textAlignment = .center
         return label

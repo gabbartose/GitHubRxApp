@@ -9,8 +9,8 @@ import Foundation
 
 protocol LoginRepositoryProtocol {
     func createSignInURLWithClientId() -> URL?
-    func getUser(completion: @escaping (Result<User, ErrorReport>) -> ())
-    func codeExchange(code: String, completion: @escaping (Result<String, ErrorReport>) -> ())
+    func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ())
+    func codeExchange(code: String, completion: @escaping (Result<(response: HTTPURLResponse, object: String), ErrorReport>) -> ())
 }
 
 class LoginRepository: LoginRepositoryProtocol {
@@ -27,11 +27,11 @@ extension LoginRepository {
         loginAPI.createSignInURLWithClientId()
     }
     
-    func getUser(completion: @escaping (Result<User, ErrorReport>) -> ()) {
+    func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ()) {
         loginAPI.getUser(completion: completion)
     }
     
-    func codeExchange(code: String, completion: @escaping (Result<String, ErrorReport>) -> ()) {
+    func codeExchange(code: String, completion: @escaping (Result<(response: HTTPURLResponse, object: String), ErrorReport>) -> ()) {
         loginAPI.codeExchange(code: code, completion: completion)
     }
 }

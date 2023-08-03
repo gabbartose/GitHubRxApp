@@ -9,18 +9,8 @@ import Foundation
 
 class NetworkManager {
     
-    static let callbackURLScheme = "com.beer.GitHubRxApp"
-    static let clientID = "Iv1.03eda0e0b6c3100b"
-    static let clientSecret = "370d1b2a85339484e0bb76c26a214ffbac09a388"
-    
-    // MARK: Static Methods
-    static func signOut() {
-        Self.accessToken = ""
-        Self.refreshToken = ""
-        Self.username = ""
-    }
-    
     typealias Failure = (ErrorReport) -> Void
+    typealias NetworkResult<T: Codable> = (response: HTTPURLResponse, object: T)
 
     private(set) var configuration: NetworkConfiguration
 
@@ -28,9 +18,7 @@ class NetworkManager {
         self.configuration = configuration
     }
     
-    // typealias NetworkResult<T: Codable> = (response: HTTPURLResponse, object: T)
-
-    func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Result<T, ErrorReport>) -> ()) {
+    func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Result<NetworkResult<T>, ErrorReport>) -> ()) {
         guard let endpoint = createEndpoint(for: resource, basePath: basePath) else { return }
         print("Endpoint: \(endpoint)")
         var request = createURLRequest(from: resource, endpoint)
@@ -39,29 +27,38 @@ class NetworkManager {
             request.setValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
         }
 
-        let session = configuration.session.dataTask(with: request) { [weak self] data, response, error in
+        let session = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             guard let self = self else { return }
-            let networkResponseState = self.getNetworkResponseState(response: response, error: error, data: data)
+            // let networkResponseState = self.getNetworkResponseState(response: response, error: error, data: data)
 
-            switch networkResponseState {
-            case NetworkResponseState.failure(let cause):
-                DispatchQueue.main.async {
-                    completion(.failure(cause))
-                }
-            case NetworkResponseState.success:
-                let responseResult: Result<T, ErrorReport> = self.getResponseResult(data: data)
-                
-                print("Response result: \(responseResult)")
-
-                DispatchQueue.main.async {
-                    switch responseResult {
-                    case .failure(let cause):
-                        completion(.failure(cause))
-                    case .success(let decodedObject):
-                        completion(.success(decodedObject))
-                    }
-                }
+            guard let response = response as? HTTPURLResponse else {
+              DispatchQueue.main.async {
+                completion(.failure(ErrorReport(cause: .appOutdated, data: data)))
+              }
+              return
             }
+            
+//            switch networkResponseState {
+//            case NetworkResponseState.failure(let cause):
+//                DispatchQueue.main.async {
+//                    completion(.failure(cause))
+//                }
+//            case NetworkResponseState.success:
+//                let responseResult: Result<T, ErrorReport> = self.getResponseResult(data: data)
+//
+//                print("Response result: \(responseResult)")
+//
+//                DispatchQueue.main.async {
+//                    switch responseResult {
+//                    case .failure(let cause):
+//                        completion(.failure(cause))
+//                    case .success(let decodedObject):
+//                        completion(.success(decodedObject as! (response: URLResponse, object: T)))
+//                    }
+//                }
+//            }
+            
+            
             
             guard let data = data else {
                 print("Neki error se desio!")
@@ -81,7 +78,7 @@ class NetworkManager {
                     NetworkManager.accessToken = dictionary["access_token"]
                     NetworkManager.refreshToken = dictionary["refresh_token"]
                     // swiftlint:disable:next force_cast
-                    completion(.success((response, "Success") as! T))
+                    completion(.success((response: response, "Success" as! T)))
                 }
                 return
             } else if let object = try? JSONDecoder().decode(T.self, from: data) {
@@ -89,16 +86,46 @@ class NetworkManager {
                     if let user = object as? User {
                         NetworkManager.username = user.login
                     }
-                    completion(.success((response, object) as! T))
+                    completion(.success((response, object)))
                 }
                 return
             } else {
                 DispatchQueue.main.async {
-                    completion(.failure(ErrorReport(cause: .other, data: data)))
+                    completion(.failure(ErrorReport(cause: .methodFailure, data: data)))
                 }
             }
         }
         session.resume()
+    }
+    
+    func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Swift.Result<T, ErrorReport>) -> Void) {
+        guard let endpoint = createEndpoint(for: resource, basePath: basePath) else { return }
+        var request = createURLRequest(from: resource, endpoint)
+        // configuration.requiredHTTPHeaders.forEach { request.addValue($0.value, forHTTPHeaderField: $0.key) }
+
+        let task = configuration.session.dataTask(with: request) { [weak self] data, response, error in
+            guard let self = self else { return }
+            let networkResponseState = self.getNetworkResponseState(response: response, error: error, data: data)
+
+            switch networkResponseState {
+            case NetworkResponseState.failure(let cause):
+                DispatchQueue.main.async {
+                    completion(.failure(cause))
+                }
+            case NetworkResponseState.success:
+                let responseResult: Result<T, ErrorReport> = self.getResponseResult(data: data)
+
+                DispatchQueue.main.async {
+                    switch responseResult {
+                    case .failure(let cause):
+                        completion(.failure(cause))
+                    case .success(let decodedObject):
+                        completion(.success(decodedObject))
+                    }
+                }
+            }
+        }
+        task.resume()
     }
 
     func createEndpoint<T>(for resource: Resource<T>, basePath: URL) -> URL? {
@@ -198,46 +225,4 @@ class NetworkManager {
 internal enum NetworkResponseState {
     case success
     case failure(ErrorReport)
-}
-
-extension NetworkManager {
-    
-    // MARK: Private Constants
-    private static let accessTokenKey = "accessToken"
-    private static let refreshTokenKey = "refreshToken"
-    private static let usernameKey = "username"
-    
-    // MARK: Properties
-    static var accessToken: String? {
-        get {
-            UserDefaults.standard.string(forKey: accessTokenKey)
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: accessTokenKey)
-        }
-    }
-    
-    static var refreshToken: String? {
-        get {
-            UserDefaults.standard.string(forKey: refreshTokenKey)
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: refreshTokenKey)
-        }
-    }
-    
-    static var username: String? {
-        get {
-            UserDefaults.standard.string(forKey: usernameKey)
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: usernameKey)
-        }
-    }
-    
-    static func printTokens() {
-        print("accessToken: \(accessToken ?? "")")
-        print("refreshToken: \(refreshToken ?? "")")
-        print("username: \(username ?? "")")
-    }
 }

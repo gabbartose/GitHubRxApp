@@ -58,7 +58,7 @@ class SearchRepositoriesViewController: BaseViewController {
         setupTableView()
         setupGestures()
         subscribeToViewModel()
-        LoginManager.printTokens()
+        NetworkManager.printTokens()
     }
     
     required init?(coder: NSCoder) {

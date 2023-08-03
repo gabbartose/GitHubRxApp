@@ -1,13 +1,31 @@
 //
-//  LoginManager+User.swift
+//  NetworkManager+User.swift
 //  GitHubRxApp
 //
-//  Created by Gabrijel Bartosek on 01.08.2023..
+//  Created by Gabrijel Bartosek on 03.08.2023..
 //
 
 import Foundation
 
-extension LoginManager {
+// MARK: UserDefaults related topics
+/**
+ accessTokenKey
+ refreshTokenKey
+ usernameKey
+ */
+extension NetworkManager {
+    
+    // MARK: User related keys defined on GitHub
+    static let callbackURLScheme = "com.beer.GitHubRxApp"
+    static let clientID = "Iv1.03eda0e0b6c3100b"
+    static let clientSecret = "370d1b2a85339484e0bb76c26a214ffbac09a388"
+    
+    // MARK: Static Methods
+    static func signOut() {
+        Self.accessToken = ""
+        Self.refreshToken = ""
+        Self.username = ""
+    }
     
     // MARK: Private Constants
     private static let accessTokenKey = "accessToken"
