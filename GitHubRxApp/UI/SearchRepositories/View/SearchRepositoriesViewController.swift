@@ -15,14 +15,6 @@ class SearchRepositoriesViewController: BaseViewController {
         return view
     }
     
-    private enum PickerValues: String, CaseIterable {
-        case BestMatch = ""
-        case Stars = "stars"
-        case Forks = "forks"
-        case Issues = "help-wanted-issues"
-        case Updated = "updated"
-    }
-    
     private let viewModel: SearchRepositoriesViewModelProtocol
     private let disposeBag = DisposeBag()
     private var searchTask: DispatchWorkItem?
@@ -176,15 +168,15 @@ extension SearchRepositoriesViewController: UIPickerViewDelegate, UIPickerViewDa
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch row {
         case 1:
-            selectedPickerChoice = PickerValues.Stars.rawValue
+            selectedPickerChoice = PickerValues.stars.rawValue
         case 2:
-            selectedPickerChoice = PickerValues.Forks.rawValue
+            selectedPickerChoice = PickerValues.forks.rawValue
         case 3:
-            selectedPickerChoice = PickerValues.Issues.rawValue
+            selectedPickerChoice = PickerValues.issues.rawValue
         case 4:
-            selectedPickerChoice = PickerValues.Updated.rawValue
+            selectedPickerChoice = PickerValues.updated.rawValue
         default:
-            selectedPickerChoice = PickerValues.BestMatch.rawValue
+            selectedPickerChoice = PickerValues.bestMatch.rawValue
         }
         
         guard viewModel.oldSortOption != selectedPickerChoice else {
@@ -245,7 +237,7 @@ extension SearchRepositoriesViewController {
     }
     
     private func setPickerOnDefaultValue() {
-        selectedPickerChoice = PickerValues.BestMatch.rawValue
+        selectedPickerChoice = PickerValues.bestMatch.rawValue
         searchRepositoriesView.sortPickerView.selectRow(0, inComponent: 0, animated: true)
     }
     

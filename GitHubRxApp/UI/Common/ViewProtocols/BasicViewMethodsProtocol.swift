@@ -8,7 +8,6 @@
 import Foundation
 
 protocol BasicViewMethodsProtocol {
-
     func addSubviews()
     func setupConstraints()
 }
