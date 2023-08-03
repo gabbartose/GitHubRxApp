@@ -10,6 +10,10 @@ import SnapKit
 
 class RepositoryDetailsViewController: BaseViewController {
     
+    struct Constants {
+        static let noDataLabel = "There is currently no data for this record."
+    }
+    
     private var repositoryDetailsView: RepositoryDetailsView {
         guard let view = self.view as? RepositoryDetailsView else { fatalError("There is no RepositoryDetailsView") }
         return view
@@ -33,7 +37,7 @@ class RepositoryDetailsViewController: BaseViewController {
         bottomConstraint = repositoryDetailsView.bottomConstraint
         getRepositoryItem()
         setupNavigationItemTitle()
-        setupElements()
+        setupLabels()
         setupGestures()
     }
     
@@ -61,16 +65,11 @@ extension RepositoryDetailsViewController {
         navigationItem.title = repositoryItem?.name
     }
     
-    private func setupElements() {
-        if let language = repositoryItem?.language,
-           let dateOfCreation = repositoryItem?.createdAt,
-           let dateOfModification = repositoryItem?.updatedAt,
-           let description = repositoryItem?.description {
-            repositoryDetailsView.programmingLanguageLabel.descriptionLabel.text = language
-            repositoryDetailsView.dateOfCreationLabel.descriptionLabel.text = Date.convertDate(date: dateOfCreation)
-            repositoryDetailsView.dateOfModificationLabel.descriptionLabel.text = Date.convertDate(date: dateOfModification)
-            repositoryDetailsView.descriptionLabel.text = description
-        }
+    private func setupLabels() {
+        repositoryDetailsView.programmingLanguageLabel.descriptionLabel?.text = repositoryItem?.language ?? Constants.noDataLabel
+        repositoryDetailsView.dateOfCreationLabel.descriptionLabel?.text = Date.convertDate(date: repositoryItem?.createdAt ?? Constants.noDataLabel)
+        repositoryDetailsView.dateOfModificationLabel.descriptionLabel?.text = Date.convertDate(date: repositoryItem?.updatedAt ?? Constants.noDataLabel)
+        repositoryDetailsView.descriptionLabel.text = repositoryItem?.description ?? Constants.noDataLabel
     }
 }
 

@@ -11,7 +11,6 @@ import SnapKit
 class RepositoryDetailsView: UIView, BasicViewMethodsProtocol {
     
     enum RepositoryDetailsStackViewLabels: String {
-        
         case programmingLanguage = "Programming language:"
         case dateOfCreation = "Date of creation:"
         case dateOfModification = "Date of modification:"

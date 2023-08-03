@@ -9,7 +9,7 @@ import UIKit
 
 extension UIStackView {
     
-    static func createHorizontalStackView(with title: String) -> (stackView: UIStackView, titleLabel: UILabel, descriptionLabel: UILabel) {
+    static func createHorizontalStackView(with title: String) -> (stackView: UIStackView, titleLabel: UILabel, descriptionLabel: UILabel?) {
         let titleLabel = UILabel.setupLabel(font: .ralewayExtraBold, textColor: .GDarkGray)
         let descriptionLabel = UILabel.setupLabel(font: .ralewayBold, textColor: .GDarkGray)
         let horizontalStackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
