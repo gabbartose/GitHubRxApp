@@ -10,8 +10,8 @@ import UIKit
 extension UIStackView {
     
     static func createHorizontalStackView(with title: String) -> (stackView: UIStackView, titleLabel: UILabel, descriptionLabel: UILabel?) {
-        let titleLabel = UILabel.setupLabel(font: .ralewayExtraBold, textColor: .GDarkGray)
-        let descriptionLabel = UILabel.setupLabel(font: .ralewayBold, textColor: .GDarkGray)
+        let titleLabel = UILabel.setupLabel(font: .ralewayExtraBold, textColor: .gDarkGray)
+        let descriptionLabel = UILabel.setupLabel(font: .ralewayBold, textColor: .gDarkGray)
         let horizontalStackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
         
         titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)

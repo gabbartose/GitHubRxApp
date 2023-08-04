@@ -18,14 +18,14 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white // TODO: Set color because of Appearance purpose
+        view.backgroundColor = .gBackgroundMain
     }
 }
 
 // MARK: Activity Indicator View
 extension BaseViewController {
     
-    func activityIndicatorView(startAnimating: Bool, offsetFromYAxis: CGFloat = -UIScreen.main.bounds.height * 0.11) {
+    func activityIndicatorView(startAnimating: Bool, offsetFromYAxis: CGFloat = -UIScreen.main.bounds.height * 0.1) {
         Constants.activityIndicatorDistanceFromCenter = offsetFromYAxis
         switch startAnimating {
         case true:
@@ -57,7 +57,7 @@ extension BaseViewController {
     private func addActivityIndicatorView() {
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.style = .large
-        activityIndicatorView.color = .GBlue
+        activityIndicatorView.color = .gBlue
         
         view.addSubview(activityIndicatorView)
         activityIndicatorView.snp.makeConstraints { make in

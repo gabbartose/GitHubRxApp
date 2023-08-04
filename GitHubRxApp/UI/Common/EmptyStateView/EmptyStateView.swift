@@ -27,7 +27,7 @@ class EmptyStateView: UIView {
     private let emptyStateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: .ralewayBold, size: 14)
-        label.textColor = .GDarkGray
+        label.textColor = .gDarkGray
         label.text = Constants.emptyStateLabelText
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -36,6 +36,7 @@ class EmptyStateView: UIView {
     
     init() {
         super.init(frame: CGRect.zero)
+        backgroundColor = .gBackgroundMain
         setupView()
     }
     

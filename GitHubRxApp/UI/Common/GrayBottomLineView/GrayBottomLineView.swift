@@ -20,7 +20,7 @@ class GrayBottomLineView: UIView {
     }
     
     private func setupView() {
-        backgroundColor = .GBorderLightGray
+        backgroundColor = .gBorderLightGray
         setupConstraints()
     }
     

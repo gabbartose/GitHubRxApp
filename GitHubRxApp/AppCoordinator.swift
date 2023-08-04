@@ -72,12 +72,12 @@ extension AppCoordinator {
 // MARK: Setup UINavigationBar
 extension AppCoordinator {
     private func setupNavigationBar() {
-        UINavigationBar.appearance().barTintColor = .white
+        // UINavigationBar.appearance().barTintColor = .gBackgroundMain
         let navigationBar = rootViewController.navigationBar
         let appearance = UINavigationBarAppearance()
-        let attributes = [NSAttributedString.Key.font: UIFont(name: .ralewayBold, size: 20), NSAttributedString.Key.foregroundColor: UIColor.setColor(.GBlue)]
+        let attributes = [NSAttributedString.Key.font: UIFont(name: .ralewayBold, size: 20), NSAttributedString.Key.foregroundColor: UIColor.setColor(.gDarkGray)]
         appearance.titleTextAttributes = attributes as [NSAttributedString.Key: Any]
-        appearance.backgroundColor = .white
+        appearance.backgroundColor = .gBackgroundMain
         navigationBar.standardAppearance = appearance
         navigationBar.isTranslucent = false
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance

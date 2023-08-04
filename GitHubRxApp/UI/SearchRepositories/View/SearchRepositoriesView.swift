@@ -16,18 +16,22 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
         static let currentlyLoggedInUser = "Currently logged in user: "
     }
     
-    private lazy var searchComponentsView = UIView()
+    private lazy var searchComponentsView = {
+        let view = UIView()
+        view.backgroundColor = .gBackgroundMain
+        return view
+    }()
     
     lazy var repositorySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.backgroundColor = .GBorderLightGray
+        searchBar.backgroundColor = .gBorderLightGray
         searchBar.layer.cornerRadius = 30
         searchBar.clearBackgroundColor()
         searchBar.searchTextField.borderStyle = .none
         searchBar.searchTextField.font = UIFont(name: .ralewayMedium, size: 14)
         searchBar.searchTextField.attributedPlaceholder =
         NSAttributedString(string: Constants.searchGithubRepositoriesPlaceholder,
-                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.GDarkGray])
+                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.gDarkGray])
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         searchBar.searchTextField.leftView = paddingView
         searchBar.searchTextField.leftViewMode = .always
@@ -38,18 +42,22 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     lazy var filterButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: Constants.filterIcon), for: .normal)
-        button.tintColor = .GBlue
+        button.tintColor = .gBlue
         return button
     }()
     
     private lazy var grayBottomLineViewUnderSearch = GrayBottomLineView()
     
-    private lazy var loggedInUserView = UIView()
+    private lazy var loggedInUserView = {
+        let view = UIView()
+        view.backgroundColor = .gBackgroundMain
+        return view
+    }()
     
     lazy var loggedInUserLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: .ralewayBold, size: 14)
-        label.textColor = .GDarkGray
+        label.textColor = .gDarkGray
         label.text = Constants.currentlyLoggedInUser + (NetworkManager.username ?? "")
         label.numberOfLines = 1
         label.textAlignment = .center
@@ -70,7 +78,7 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     
     lazy var backgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = .GLightGray
+        view.backgroundColor = .gLightGray
         view.alpha = 0.95
         view.isHidden = true
         return view
@@ -78,7 +86,7 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     
     lazy var sortPickerView: UIPickerView = {
         let pickerView = UIPickerView()
-        pickerView.backgroundColor = .GBackgroundGray
+        pickerView.backgroundColor = .gBackgroundMain
         pickerView.layer.cornerRadius = 30
         return pickerView
     }()
@@ -162,7 +170,7 @@ extension SearchRepositoriesView {
         }
         
         emptyStateView.snp.makeConstraints { make in
-            make.top.equalTo(grayBottomLineViewUnderSearch.snp.bottom)
+            make.top.equalTo(grayBottomLineViewUnderLoggedInUserView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
         

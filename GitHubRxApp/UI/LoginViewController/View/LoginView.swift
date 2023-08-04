@@ -29,9 +29,9 @@ class LoginView: UIView, BasicViewMethodsProtocol {
     lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.buttonText, for: .normal)
-        button.titleLabel?.textColor = .GLightGray
+        button.titleLabel?.textColor = .gLightGray
         button.titleLabel?.font = .ralewayBold(size: 18)
-        button.backgroundColor = .GBlue
+        button.backgroundColor = .gBlue
         button.layer.cornerRadius = 20
         button.addShadow()
         button.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)

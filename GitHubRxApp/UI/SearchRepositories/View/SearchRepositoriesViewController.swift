@@ -109,6 +109,8 @@ extension SearchRepositoriesViewController {
     private func setupTableView() {
         searchRepositoriesView.tableView.delegate = self
         searchRepositoriesView.tableView.dataSource = self
+        searchRepositoriesView.tableView.backgroundView = UIView()
+        searchRepositoriesView.tableView.backgroundView?.backgroundColor = .gBackgroundMain
         registerTableViewCell()
     }
     

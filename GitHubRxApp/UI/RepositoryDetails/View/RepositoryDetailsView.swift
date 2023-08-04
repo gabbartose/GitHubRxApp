@@ -36,13 +36,13 @@ class RepositoryDetailsView: UIView, BasicViewMethodsProtocol {
     lazy var dateOfCreationLabel = UIStackView.createHorizontalStackView(with: RepositoryDetailsStackViewLabels.dateOfCreation.rawValue)
     lazy var dateOfModificationLabel = UIStackView.createHorizontalStackView(with: RepositoryDetailsStackViewLabels.dateOfModification.rawValue)
     
-    lazy var descriptionLabel = UILabel.setupLabel(textColor: .GDarkGray)
+    lazy var descriptionLabel = UILabel.setupLabel(textColor: .gDarkGray)
     
     lazy var repositoryDetailsExternalBrowserLabel = UILabel.setupLabel(with: "Open repository details in external browser",
-                                                                        textColor: .GButonBlue,
+                                                                        textColor: .gButonBlue,
                                                                         isUserInteractionEnabled: true)
     lazy var userDetailsLabel = UILabel.setupLabel(with: "Open user details screen",
-                                                   textColor: .GButonBlue,
+                                                   textColor: .gButonBlue,
                                                    isUserInteractionEnabled: true)
     
     init() {
