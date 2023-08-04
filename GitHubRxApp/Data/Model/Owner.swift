@@ -7,7 +7,7 @@
 
 // GitHub API info:
 /*
- // URL https://api.github.com/search/repositories?q={query}{&page,per_page,sort,order}
+ // URL: https://api.github.com/search/repositories?q={query}{&page,per_page,sort,order}
  
  JSON response:
  "owner": {

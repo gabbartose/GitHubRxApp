@@ -97,7 +97,7 @@ extension LoginViewModel {
             guard let self = self else { return }
             self.loadingInProgressSubject.onNext(false)
             switch result {
-            case .success:
+            case .success(let result):
                 self.navigateToSearchRepositoriesScreen()
             case .failure(let errorReport):
                 self.onErrorSubject.onNext(errorReport)
