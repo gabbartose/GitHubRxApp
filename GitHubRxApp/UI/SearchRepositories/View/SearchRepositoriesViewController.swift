@@ -111,6 +111,7 @@ extension SearchRepositoriesViewController {
         searchRepositoriesView.tableView.dataSource = self
         searchRepositoriesView.tableView.backgroundView = UIView()
         searchRepositoriesView.tableView.backgroundView?.backgroundColor = .gBackgroundMain
+        searchRepositoriesView.tableView.separatorColor = .gBorderLightGray
         registerTableViewCell()
     }
     

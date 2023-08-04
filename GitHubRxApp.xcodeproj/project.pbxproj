@@ -21,7 +21,6 @@
 		7515D69A2A727E6E00211BD4 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6992A727E6E00211BD4 /* LoginRepository.swift */; };
 		7515D6AA2A73E2B900211BD4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6A92A73E2B900211BD4 /* User.swift */; };
 		75A47C832A64FA0800618359 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47C822A64FA0800618359 /* AppDelegate.swift */; };
-		75A47C852A64FA0800618359 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47C842A64FA0800618359 /* SceneDelegate.swift */; };
 		75A47C8C2A64FA0A00618359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C8B2A64FA0A00618359 /* Assets.xcassets */; };
 		75A47C8F2A64FA0A00618359 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C8D2A64FA0A00618359 /* LaunchScreen.storyboard */; };
 		75A47C982A64FADA00618359 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C972A64FADA00618359 /* Colors.xcassets */; };
@@ -145,7 +144,6 @@
 		75230E16ACCAA1378A3DF58E /* Pods_GitHubRxAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubRxAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A47C7F2A64FA0800618359 /* GitHubRxApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRxApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A47C822A64FA0800618359 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		75A47C842A64FA0800618359 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		75A47C8B2A64FA0A00618359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75A47C8E2A64FA0A00618359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75A47C902A64FA0A00618359 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -373,7 +371,6 @@
 			isa = PBXGroup;
 			children = (
 				75A47C822A64FA0800618359 /* AppDelegate.swift */,
-				75A47C842A64FA0800618359 /* SceneDelegate.swift */,
 				75A47CA22A65084600618359 /* AppCoordinator.swift */,
 				75A47CB52A65210000618359 /* Data */,
 				75A47CB32A6520CB00618359 /* ViewModel */,
@@ -1079,7 +1076,6 @@
 				75A47CD52A6537AF00618359 /* PreconditionFailedError.swift in Sources */,
 				75A47CBE2A65286800618359 /* NetworkConfiguration.swift in Sources */,
 				75A47D002A67A84F00618359 /* SearchRepositoriesAPI.swift in Sources */,
-				75A47C852A64FA0800618359 /* SceneDelegate.swift in Sources */,
 				75A47CC72A65332E00618359 /* UIFont+GitHubRxApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1210,7 +1206,6 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1448,7 +1443,6 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1674,7 +1668,6 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1900,7 +1893,6 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2187,7 +2179,6 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2225,7 +2216,6 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

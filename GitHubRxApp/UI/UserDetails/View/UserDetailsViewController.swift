@@ -12,7 +12,6 @@ class UserDetailsViewController: BaseViewController {
     
     struct Constants {
         static let avatarPlaceholder = "AvatarPlaceholder"
-        static let imageViewDimension = UIScreen.main.bounds.width / 1.5
     }
     
     private var userDetailsView: UserDetailsView {
@@ -62,7 +61,7 @@ extension UserDetailsViewController {
     
     private func setupElements() {
         userDetailsView.imageView.kf.setImage(with: URL(string: userDetails?.avatarUrl ?? ""), placeholder: UIImage(named: Constants.avatarPlaceholder))
-        userDetailsView.imageView.setupImageViewProperties(with: Constants.imageViewDimension / 2)
+        userDetailsView.imageView.setupImageViewProperties(with: UserDetailsView.Constants.imageViewDimension / 2)
         
         if let id = userDetails?.id,
            let nodeId = userDetails?.nodeId,

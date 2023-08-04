@@ -10,19 +10,29 @@ import UIKit
 extension UIColor {
     enum AssetsColor: String {
         case gBackgroundMain
+        case gBackgroundMainInvert
         case gBlue
         case gBorderLightGray
         case gButtonBlue
         case gDarkGray
         case gLightGray
+        case gSearchBarBackground
+        case gSearchBarDarkGray
+        case gSearchBarLightGray
+        case gShadowMain
     }
     
     class var gBackgroundMain: UIColor { return from(.gBackgroundMain) }
+    class var gBackgroundMainInvert: UIColor { return from(.gBackgroundMainInvert) }
     class var gBlue: UIColor { return from(.gBlue) }
     class var gBorderLightGray: UIColor { return from(.gBorderLightGray) }
     class var gButonBlue: UIColor { return from(.gButtonBlue) }
     class var gDarkGray: UIColor { return from(.gDarkGray) }
     class var gLightGray: UIColor { return from(.gLightGray) }
+    class var gSearchBarBackground: UIColor { return from(.gSearchBarBackground) }
+    class var gSearchBarDarkGray: UIColor { return from(.gSearchBarDarkGray) }
+    class var gSearchBarLightGray: UIColor { return from(.gSearchBarLightGray) }
+    class var gShadowMain: UIColor { return from(.gShadowMain) }
     
     private class func from(_ appColor: AssetsColor) -> UIColor {
         guard let color = UIColor(named: appColor.rawValue) else {

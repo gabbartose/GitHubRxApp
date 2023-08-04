@@ -11,11 +11,10 @@ import SnapKit
 class UserDetailsView: UIView, BasicViewMethodsProtocol {
     
     struct Constants {
-        static let imageViewDimension = UIScreen.main.bounds.width / 1.5
+        static let imageViewDimension = UIScreen.main.bounds.width / 1.6
     }
     
     enum UserDetailsStackViewLabels: String {
-        
         case id = "ID:"
         case nodeId = "Node ID:"
         case loginName = "Login name:"
@@ -86,7 +85,7 @@ extension UserDetailsView {
         }
         
         imageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(50)
+            make.top.equalToSuperview().offset(30)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(Constants.imageViewDimension)
         }

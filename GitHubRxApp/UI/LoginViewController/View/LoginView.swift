@@ -29,11 +29,12 @@ class LoginView: UIView, BasicViewMethodsProtocol {
     lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.buttonText, for: .normal)
-        button.titleLabel?.textColor = .gLightGray
-        button.titleLabel?.font = .ralewayBold(size: 18)
+        button.titleLabel?.font = .ralewayExtraBold(size: 20)
         button.backgroundColor = .gBlue
         button.layer.cornerRadius = 20
+        button.layer.masksToBounds = true
         button.addShadow()
+        button.setTitleColor(UIColor.gButonBlue, for: .normal)
         button.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
         return button
     }()
@@ -78,7 +79,7 @@ extension LoginView {
             make.bottom.equalToSuperview().offset(-30)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.height.equalTo(40)
+            make.height.equalTo(50)
         }
     }
 }

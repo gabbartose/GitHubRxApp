@@ -24,25 +24,26 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     
     lazy var repositorySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.backgroundColor = .gBorderLightGray
+        searchBar.backgroundColor = .gSearchBarBackground
         searchBar.layer.cornerRadius = 30
-        searchBar.clearBackgroundColor()
         searchBar.searchTextField.borderStyle = .none
-        searchBar.searchTextField.font = UIFont(name: .ralewayMedium, size: 14)
+        searchBar.searchTextField.font = UIFont(name: .ralewayBold, size: 15)
         searchBar.searchTextField.attributedPlaceholder =
         NSAttributedString(string: Constants.searchGithubRepositoriesPlaceholder,
-                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.gDarkGray])
+                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.gSearchBarLightGray])
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        searchBar.searchTextField.textColor = .gSearchBarDarkGray
         searchBar.searchTextField.leftView = paddingView
         searchBar.searchTextField.leftViewMode = .always
         searchBar.searchTextField.autocorrectionType = .no
+        searchBar.clearBackgroundColor()
         return searchBar
     }()
     
     lazy var filterButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: Constants.filterIcon), for: .normal)
-        button.tintColor = .gBlue
+        button.tintColor = .gBorderLightGray
         return button
     }()
     
@@ -78,8 +79,8 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     
     lazy var backgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = .gLightGray
-        view.alpha = 0.95
+        view.backgroundColor = .gSearchBarDarkGray
+        view.alpha = 0.97
         view.isHidden = true
         return view
     }()

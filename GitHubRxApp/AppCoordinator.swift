@@ -32,7 +32,6 @@ class AppCoordinator: NSObject, Coordinator {
         // showSearchRepositoriesFlow()
         
         window.rootViewController = rootViewController
-        window.makeKeyAndVisible()
     }
 }
 
@@ -72,12 +71,13 @@ extension AppCoordinator {
 // MARK: Setup UINavigationBar
 extension AppCoordinator {
     private func setupNavigationBar() {
-        // UINavigationBar.appearance().barTintColor = .gBackgroundMain
         let navigationBar = rootViewController.navigationBar
         let appearance = UINavigationBarAppearance()
-        let attributes = [NSAttributedString.Key.font: UIFont(name: .ralewayBold, size: 20), NSAttributedString.Key.foregroundColor: UIColor.setColor(.gDarkGray)]
+        let attributes = [NSAttributedString.Key.font: UIFont(name: .ralewayExtraBold, size: 18), NSAttributedString.Key.foregroundColor: UIColor.setColor(.gDarkGray)]
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gBorderLightGray, NSAttributedString.Key.font: UIFont(name: .ralewayBold, size: 16) as Any], for: UIControl.State.normal)
         appearance.titleTextAttributes = attributes as [NSAttributedString.Key: Any]
         appearance.backgroundColor = .gBackgroundMain
+        navigationBar.tintColor = .gBorderLightGray
         navigationBar.standardAppearance = appearance
         navigationBar.isTranslucent = false
         navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance

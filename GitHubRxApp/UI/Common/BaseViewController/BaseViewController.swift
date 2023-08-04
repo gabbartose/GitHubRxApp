@@ -57,7 +57,7 @@ extension BaseViewController {
     private func addActivityIndicatorView() {
         let activityIndicatorView = UIActivityIndicatorView()
         activityIndicatorView.style = .large
-        activityIndicatorView.color = .gBlue
+        activityIndicatorView.color = .gBackgroundMainInvert
         
         view.addSubview(activityIndicatorView)
         activityIndicatorView.snp.makeConstraints { make in
