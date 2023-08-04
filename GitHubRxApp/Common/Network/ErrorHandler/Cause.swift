@@ -14,6 +14,7 @@ enum Cause {
     case appOutdated
     case invalidCredentials
     case methodFailure
+    case invalidResponse
     case dataMissing
     case other
 }

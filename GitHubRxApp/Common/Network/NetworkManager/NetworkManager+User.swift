@@ -9,6 +9,10 @@ import Foundation
 
 // MARK: UserDefaults related topics
 /**
+ callbackURLScheme
+ clientID
+ clientSecret
+ 
  accessTokenKey
  refreshTokenKey
  usernameKey
@@ -22,9 +26,9 @@ extension NetworkManager {
     
     // MARK: Static Methods
     static func signOut() {
-        Self.accessToken = ""
-        Self.refreshToken = ""
-        Self.username = ""
+        accessToken = ""
+        refreshToken = ""
+        username = ""
     }
     
     // MARK: Private Constants

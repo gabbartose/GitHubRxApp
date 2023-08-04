@@ -9,11 +9,9 @@ import Foundation
 
 class NetworkManager {
     
-    typealias Failure = (ErrorReport) -> Void
     typealias NetworkResult<T: Codable> = (response: HTTPURLResponse, object: T)
-
     private(set) var configuration: NetworkConfiguration
-
+    
     init(configuration: NetworkConfiguration = NetworkConfiguration()) {
         self.configuration = configuration
     }
@@ -21,25 +19,23 @@ class NetworkManager {
     func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Result<NetworkResult<T>, ErrorReport>) -> ()) {
         guard let endpoint = createEndpoint(for: resource, basePath: basePath) else { return }
         print("Entire endpoint: \(endpoint)")
+        
         var request = createURLRequest(from: resource, endpoint)
         
         if let accessToken = NetworkManager.accessToken {
             request.setValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
         }
-
-        let session = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
-            guard let self = self else { return }
-
+        
+        let session = configuration.session.dataTask(with: request) { data, response, error in
             guard let response = response as? HTTPURLResponse else {
-              DispatchQueue.main.async {
-                completion(.failure(ErrorReport(cause: .other, data: data)))
-              }
-              return
+                DispatchQueue.main.async {
+                    completion(.failure(ErrorReport(cause: .invalidResponse, data: data)))
+                }
+                return
             }
             
             guard error == nil, let data = data else {
                 DispatchQueue.main.async {
-                  let error = error ?? ErrorReport(cause: .other, data: data)
                     completion(.failure(ErrorReport(cause: .dataMissing)))
                 }
                 return
@@ -71,80 +67,51 @@ class NetworkManager {
                 return
             } else {
                 DispatchQueue.main.async {
-                    completion(.failure(ErrorReport(cause: .methodFailure, data: data)))
+                    completion(.failure(ErrorReport(cause: .unauthorized, data: data)))
                 }
             }
         }
+        
         session.resume()
     }
     
-    func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Swift.Result<T, ErrorReport>) -> Void) {
-        guard let endpoint = createEndpoint(for: resource, basePath: basePath) else { return }
-        print("Entire endpoint: \(endpoint)")
-        let request = createURLRequest(from: resource, endpoint)
-
-        let session = configuration.session.dataTask(with: request) { [weak self] data, response, error in
-            guard let self = self else { return }
-            let networkResponseState = self.getNetworkResponseState(response: response, error: error, data: data)
-
-            switch networkResponseState {
-            case NetworkResponseState.failure(let cause):
-                DispatchQueue.main.async {
-                    completion(.failure(cause))
-                }
-            case NetworkResponseState.success:
-                let responseResult: Result<T, ErrorReport> = self.getResponseResult(data: data)
-
-                DispatchQueue.main.async {
-                    switch responseResult {
-                    case .failure(let cause):
-                        completion(.failure(cause))
-                    case .success(let decodedObject):
-                        completion(.success(decodedObject))
-                    }
-                }
-            }
-        }
-        session.resume()
-    }
-
     func createEndpoint<T>(for resource: Resource<T>, basePath: URL) -> URL? {
         var components = URLComponents(url: basePath, resolvingAgainstBaseURL: true)
         components?.path.append(resource.path)
         components?.queryItems = resource.queryItems
         return components?.url
     }
-
+    
     func createURLRequest<T>(from resource: Resource<T>, _ endpoint: URL) -> URLRequest {
         let mutableRequest = NSMutableURLRequest(url: endpoint)
         mutableRequest.httpMethod = resource.method.rawValue
         resource.headers.forEach { mutableRequest.addValue($0.value, forHTTPHeaderField: $0.key) }
-
+        
         if let requestBody = resource.requestBody {
             mutableRequest.httpBody = try? JSONSerialization.data(withJSONObject: requestBody)
         }
         return mutableRequest as URLRequest
     }
-
+    
     func getNetworkResponseState(response: URLResponse?, error: Error?, data: Data?) -> NetworkResponseState {
         guard error == nil
         else {
             return .failure(ErrorReport(cause: .other, data: nil))
         }
-
+        
         guard let urlResponse = response as? HTTPURLResponse else {
             return .failure(ErrorReport(cause: .other, data: nil))
         }
-
+        
         // Check for success status code
         guard 200...299 ~= urlResponse.statusCode else {
             let errorReport = processNotSuccessStatus(status: urlResponse.statusCode, data: data)
             return .failure(errorReport)
         }
-
+        
         return .success
     }
-
+    
     func processNotSuccessStatus(status: Int, data: Data?) -> ErrorReport {
         switch status {
         case 401:
@@ -163,13 +130,13 @@ class NetworkManager {
             return ErrorReport(cause: .other, data: data)
         }
     }
-
+    
     func processPreconditionFailed(for data: Data?) -> Cause {
         guard let data = data else { return .other }
         guard let preconditionFailed: PreconditionFailedError = data.decoded() else {
             return .unauthorized
         }
-
+        
         switch preconditionFailed.errors.code {
         case 120:
             return .appOutdated
@@ -179,7 +146,7 @@ class NetworkManager {
             return .other
         }
     }
-
+    
     func processUnprocessableEntity(for data: Data?) -> Cause {
         guard let data = data else { return .other }
         guard let _: UnprocessableEntity = data.decoded() else {
@@ -187,17 +154,17 @@ class NetworkManager {
         }
         return .invalidCredentials
     }
-
+    
     func getResponseResult<T: Decodable>(data: Data?) -> Result<T, ErrorReport> {
         // Check for response data
         guard let responseData = data else {
             return .failure(ErrorReport(cause: .other, data: nil))
         }
-
+        
         guard let decodedObject: T = responseData.decoded() else {
             return .failure(ErrorReport(cause: .other, data: data))
         }
-
+        
         return .success(decodedObject)
     }
 }

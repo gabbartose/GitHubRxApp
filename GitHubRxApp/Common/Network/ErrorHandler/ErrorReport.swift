@@ -49,37 +49,6 @@ extension ErrorReport {
             message = baseErrorsMessage
         } else if let genericMessage = unprocessableEntity.error {
             message = genericMessage
-        } else if let errorsContainer = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: [String: Any]],
-                  let errors = errorsContainer["errors"], !errors.keys.isEmpty {
-            message = ""
-
-            let fieldNames = [
-                "first_name": "Ime",
-                "last_name": "Prezime",
-                "phone_number": "Broj telefona",
-                "date_of_birth": "Datum rođenja",
-                "gender": "Spol",
-                "email": "Email",
-                "email_confirmation": "Potvrdi Email",
-                "password": "Lozinka",
-                "password_confirmation": "Potvrdi lozinku",
-                "city": "Grad",
-                "zipcode": "Poštanski broj",
-                "street_name": "Ulica",
-                "house_number": "Kućni broj",
-                "house_letter": "Kućno slovo",
-                "additional_notes": "Dodatna napomena",
-                "company_name": "Ime kompanije",
-                "personal_id_number": "OIB"
-            ]
-
-            errors.forEach { key, value in
-                if let arrayValue = value as? [String] {
-                    message.append("\(fieldNames[key] ?? key) \(arrayValue.joined(separator: ", ")).\n")
-                } else {
-                    message.append("\(fieldNames[key] ?? key) \(value).\n")
-                }
-            }
         }
         return AlertModel(title: "Error", message: message)
     }
