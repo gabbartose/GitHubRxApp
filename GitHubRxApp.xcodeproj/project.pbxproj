@@ -323,7 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				7515D68D2A7252FE00211BD4 /* Coordinator */,
-				7515D68E2A72530500211BD4 /* View */,
+				7515D68E2A72530500211BD4 /* Views */,
 			);
 			path = LoginViewController;
 			sourceTree = "<group>";
@@ -336,13 +336,13 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		7515D68E2A72530500211BD4 /* View */ = {
+		7515D68E2A72530500211BD4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				7515D6912A72532D00211BD4 /* LoginView.swift */,
 				7515D68F2A72532100211BD4 /* LoginViewController.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		75A47C762A64FA0700618359 = {
@@ -373,7 +373,7 @@
 				75A47C822A64FA0800618359 /* AppDelegate.swift */,
 				75A47CA22A65084600618359 /* AppCoordinator.swift */,
 				75A47CB52A65210000618359 /* Data */,
-				75A47CB32A6520CB00618359 /* ViewModel */,
+				75A47CB32A6520CB00618359 /* ViewModels */,
 				75A47CA42A65088500618359 /* UI */,
 				75A47CA52A65089300618359 /* Common */,
 				75A47C962A64FA9200618359 /* SupportingFiles */,
@@ -476,12 +476,12 @@
 			isa = PBXGroup;
 			children = (
 				75A47CB12A65209F00618359 /* Coordinator */,
-				75A47CB02A65208C00618359 /* View */,
+				75A47CB02A65208C00618359 /* Views */,
 			);
 			path = SearchRepositories;
 			sourceTree = "<group>";
 		};
-		75A47CB02A65208C00618359 /* View */ = {
+		75A47CB02A65208C00618359 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				7510C4712A7BE31B009EAAAF /* PickerValues */,
@@ -489,7 +489,7 @@
 				75A47CF12A665E8B00618359 /* SearchRepositoriesView.swift */,
 				75A47CE12A653A4200618359 /* SearchRepositoriesViewController.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		75A47CB12A65209F00618359 /* Coordinator */ = {
@@ -500,7 +500,7 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		75A47CB32A6520CB00618359 /* ViewModel */ = {
+		75A47CB32A6520CB00618359 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				7515D6952A72535200211BD4 /* LoginViewModel.swift */,
@@ -508,20 +508,20 @@
 				75A47D102A68F68200618359 /* RepositoryDetailsViewModel.swift */,
 				75A47D282A6E4CE100618359 /* UserDetailsViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		75A47CB52A65210000618359 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				75A47CFE2A67A80C00618359 /* APIs */,
-				75A47CB62A65210F00618359 /* Model */,
+				75A47CB62A65210F00618359 /* Models */,
 				75A47CFD2A67A7E000618359 /* Repositories */,
 			);
 			path = Data;
 			sourceTree = "<group>";
 		};
-		75A47CB62A65210F00618359 /* Model */ = {
+		75A47CB62A65210F00618359 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				75A47CB72A65216100618359 /* RepositoriesResponse.swift */,
@@ -529,7 +529,7 @@
 				75A47CBB2A65253400618359 /* Owner.swift */,
 				7515D6A92A73E2B900211BD4 /* User.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		75A47CBF2A652DC900618359 /* Extensions */ = {
@@ -673,7 +673,7 @@
 			isa = PBXGroup;
 			children = (
 				75A47D082A68F58C00618359 /* Coordinator */,
-				75A47D092A68F59800618359 /* View */,
+				75A47D092A68F59800618359 /* Views */,
 			);
 			path = RepositoryDetails;
 			sourceTree = "<group>";
@@ -686,13 +686,13 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		75A47D092A68F59800618359 /* View */ = {
+		75A47D092A68F59800618359 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				75A47D0E2A68F67400618359 /* RepositoryDetailsView.swift */,
 				75A47D0C2A68F66900618359 /* RepositoryDetailsViewController.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		75A47D122A68FBB000618359 /* ViewProtocols */ = {
@@ -707,7 +707,7 @@
 			isa = PBXGroup;
 			children = (
 				75A47D202A6E4C9300618359 /* Coordinator */,
-				75A47D212A6E4C9900618359 /* View */,
+				75A47D212A6E4C9900618359 /* Views */,
 			);
 			path = UserDetails;
 			sourceTree = "<group>";
@@ -720,13 +720,13 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		75A47D212A6E4C9900618359 /* View */ = {
+		75A47D212A6E4C9900618359 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				75A47D242A6E4CC700618359 /* UserDetailsView.swift */,
 				75A47D262A6E4CD300618359 /* UserDetailsViewController.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		75A47D3F2A6FB3C900618359 /* GitHubRxAppTests */ = {
