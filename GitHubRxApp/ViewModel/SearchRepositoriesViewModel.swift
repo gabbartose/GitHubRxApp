@@ -21,6 +21,8 @@ protocol SearchRepositoriesViewModelProtocol {
     var oldSortOption: String { get set }
     var isFetchInProgress: Bool { get set }
     var isReachedEndOfList: Bool { get set }
+    var selectedPickerChoice: String { get set }
+    var pickerSortDataArray: [String] { get set }
     
     func didEnter(currentQueryString: String, sortOption: String)
     func didSelectRepository(item: Item)
@@ -39,6 +41,8 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     var oldSortOption = ""
     var isFetchInProgress = false
     var isReachedEndOfList = false
+    var selectedPickerChoice = ""
+    var pickerSortDataArray = ["Best match", "Stars", "Forks", "Issues", "Updated"]
     
     private let searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()

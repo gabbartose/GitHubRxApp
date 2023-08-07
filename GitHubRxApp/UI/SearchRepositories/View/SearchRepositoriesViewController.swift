@@ -15,12 +15,10 @@ class SearchRepositoriesViewController: BaseViewController {
         return view
     }
     
-    private let viewModel: SearchRepositoriesViewModelProtocol
+    private var viewModel: SearchRepositoriesViewModelProtocol
     private let disposeBag = DisposeBag()
     private var searchTask: DispatchWorkItem?
     private var queryString = ""
-    private var selectedPickerChoice = ""
-    private let pickerSortDataArray = ["Best match", "Stars", "Forks", "Issues", "Updated"]
     
     private var repositoryComponents = [Item]() {
         didSet {
@@ -129,7 +127,7 @@ extension SearchRepositoriesViewController: UISearchBarDelegate {
             guard viewModel.oldQueryString != searchedText else {
                 return
             }
-            viewModel.didEnter(currentQueryString: searchedText, sortOption: self.selectedPickerChoice)
+            viewModel.didEnter(currentQueryString: searchedText, sortOption: self.viewModel.selectedPickerChoice)
             self.queryString = searchedText
         }
         searchTask = task
@@ -153,30 +151,30 @@ extension SearchRepositoriesViewController: UIPickerViewDelegate, UIPickerViewDa
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let row = pickerSortDataArray[row]
+        let row = viewModel.pickerSortDataArray[row]
         return row
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch row {
         case 1:
-            selectedPickerChoice = PickerValues.stars.rawValue
+            viewModel.selectedPickerChoice = PickerValues.stars.rawValue
         case 2:
-            selectedPickerChoice = PickerValues.forks.rawValue
+            viewModel.selectedPickerChoice = PickerValues.forks.rawValue
         case 3:
-            selectedPickerChoice = PickerValues.issues.rawValue
+            viewModel.selectedPickerChoice = PickerValues.issues.rawValue
         case 4:
-            selectedPickerChoice = PickerValues.updated.rawValue
+            viewModel.selectedPickerChoice = PickerValues.updated.rawValue
         default:
-            selectedPickerChoice = PickerValues.bestMatch.rawValue
+            viewModel.selectedPickerChoice = PickerValues.bestMatch.rawValue
         }
         
-        guard viewModel.oldSortOption != selectedPickerChoice else {
+        guard viewModel.oldSortOption != viewModel.selectedPickerChoice else {
             searchRepositoriesView.backgroundView.isHidden = true
             return
         }
-        viewModel.didEnter(currentQueryString: queryString, sortOption: selectedPickerChoice)
-        print("CurrentQueryString: \(queryString), SortOption: \(selectedPickerChoice)")
+        viewModel.didEnter(currentQueryString: queryString, sortOption: viewModel.selectedPickerChoice)
+        print("CurrentQueryString: \(queryString), SortOption: \(viewModel.selectedPickerChoice)")
         
         searchRepositoriesView.backgroundView.isHidden = true
         guard !repositoryComponents.isEmpty else { return }
@@ -213,7 +211,7 @@ extension SearchRepositoriesViewController: UITableViewDelegate, UITableViewData
               !viewModel.isReachedEndOfList else {
             return
         }
-        viewModel.didEnter(currentQueryString: queryString, sortOption: selectedPickerChoice)
+        viewModel.didEnter(currentQueryString: queryString, sortOption: viewModel.selectedPickerChoice)
     }
 }
 
@@ -229,7 +227,7 @@ extension SearchRepositoriesViewController {
     }
     
     private func setPickerOnDefaultValue() {
-        selectedPickerChoice = PickerValues.bestMatch.rawValue
+        viewModel.selectedPickerChoice = PickerValues.bestMatch.rawValue
         searchRepositoriesView.sortPickerView.selectRow(0, inComponent: 0, animated: true)
     }
     
