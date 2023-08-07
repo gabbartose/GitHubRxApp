@@ -25,15 +25,8 @@ class SearchRepositoriesViewController: BaseViewController {
     
     private var repositoryComponents = [Item]() {
         didSet {
-            guard !repositoryComponents.isEmpty else {
-                searchRepositoriesView.emptyStateView.isHidden = false
-                searchRepositoriesView.tableView.isHidden = true
-                searchRepositoriesView.tableView.reloadData()
-                return
-            }
-            searchRepositoriesView.emptyStateView.isHidden = true
-            searchRepositoriesView.tableView.isHidden = false
-            searchRepositoriesView.tableView.reloadData()
+            searchRepositoriesView.emptyStateView.isHidden = !repositoryComponents.isEmpty
+            searchRepositoriesView.tableView.isHidden = repositoryComponents.isEmpty
         }
     }
     
