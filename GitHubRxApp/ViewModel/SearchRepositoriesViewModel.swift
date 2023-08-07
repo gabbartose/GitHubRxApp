@@ -42,13 +42,12 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     var isFetchInProgress = false
     var isReachedEndOfList = false
     var selectedPickerChoice = ""
-    var pickerSortDataArray = ["Best match", "Stars", "Forks", "Issues", "Updated"]
+    var pickerSortDataArray = ["Best match", "Stars", "Forks", "Updated"]
     
     private let searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()
     private let onErrorSubject = PublishSubject<ErrorReport>()
     private let repositoryComponentsSubject = PublishSubject<[Item]>()
-    
     private var currentPage = 0
     private var numberOfItemsPerPage = 20
     private var repositoryItems: [Item] = []
@@ -70,11 +69,7 @@ extension SearchRepositoriesViewModel {
     func didEnter(currentQueryString: String, sortOption: String = "") {
         guard currentQueryString.count < 3 else {
             
-            if oldQueryString != currentQueryString {
-                setCurrentPageAndRepositoryItemsToDefault()
-            }
-
-            if oldSortOption != sortOption {
+            if oldQueryString != currentQueryString || oldSortOption != sortOption {
                 setCurrentPageAndRepositoryItemsToDefault()
             }
 

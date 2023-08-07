@@ -11,6 +11,5 @@ enum PickerValues: String, CaseIterable {
     case bestMatch = ""
     case stars = "stars"
     case forks = "forks"
-    case issues = "help-wanted-issues"
     case updated = "updated"
 }

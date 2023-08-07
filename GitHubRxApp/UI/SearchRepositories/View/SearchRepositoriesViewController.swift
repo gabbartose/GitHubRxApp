@@ -10,15 +10,18 @@ import RxCocoa
 
 class SearchRepositoriesViewController: BaseViewController {
     
+    struct Constants {
+        static var repositoryTableViewCell = "RepositoryTableViewCell"
+    }
+    
     private var searchRepositoriesView: SearchRepositoriesView {
         guard let view = self.view as? SearchRepositoriesView else { fatalError("There is no SearchRepositoriesView.") }
         return view
     }
     
     private var viewModel: SearchRepositoriesViewModelProtocol
-    private let disposeBag = DisposeBag()
-    private var searchTask: DispatchWorkItem?
     private var queryString = ""
+    private let disposeBag = DisposeBag()
     
     private var repositoryComponents = [Item]() {
         didSet {
@@ -38,12 +41,12 @@ class SearchRepositoriesViewController: BaseViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     override func loadView() {
         view = SearchRepositoriesView()
         setupNavigationBarElements()
-        setupNavigationItemTitle()
         setupUIDelegates()
+        setupSearchBar()
         setupTableView()
         setupGestures()
         subscribeToViewModel()
@@ -57,10 +60,6 @@ class SearchRepositoriesViewController: BaseViewController {
     deinit {
         print("deinit SearchRepositoriesViewController")
     }
-    
-    private func setupNavigationItemTitle() {
-        self.navigationItem.title = "Repository search"
-    }
 }
 
 // MARK: Subscribe to SearchRepositoriesViewModel
@@ -73,6 +72,15 @@ extension SearchRepositoriesViewController {
                 self?.repositoryComponents = repositoryComponents
             }
             .disposed(by: disposeBag)
+        
+        viewModel
+            .repositoryComponents.bind(to: searchRepositoriesView.tableView.rx.items(cellIdentifier: Constants.repositoryTableViewCell,
+                                                                                     cellType: RepositoryTableViewCell.self)) { [weak self] row, repositoryComponent, cell in
+                guard let self = self else { return }
+                let attributedString = self.getAttributedString(query: repositoryComponent.name ?? "")
+                cell.onDidSelectAuthorImageView = self.viewModel.didSelectUserImageView(userDetails:)
+                cell.setupWith(item: repositoryComponent, attributedString: attributedString)
+            }.disposed(by: disposeBag)
         
         viewModel
             .loadingInProgress
@@ -92,56 +100,22 @@ extension SearchRepositoriesViewController {
 
 // MARK: Setup UI delegates and elements
 extension SearchRepositoriesViewController {
-    
     private func setupUIDelegates() {
-        searchRepositoriesView.repositorySearchBar.delegate = self
-        
         searchRepositoriesView.sortPickerView.delegate = self
         searchRepositoriesView.sortPickerView.dataSource = self
-        
-        searchRepositoriesView.tableView.delegate = self
-        searchRepositoriesView.tableView.dataSource = self
-    }
-    
-    private func setupTableView() {
-        searchRepositoriesView.tableView.registerUINib(ofType: RepositoryTableViewCell.self)
     }
 }
 
 // MARK: Setup UINavigationBar elements
 extension SearchRepositoriesViewController {
-    
     private func setupNavigationBarElements() {
+        navigationItem.title = "Repository search"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(didTapSignOutButton))
-    }
-}
-
-// MARK: UISearchBar methods
-extension SearchRepositoriesViewController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchedText: String) {
-        searchTask?.cancel()
-        let task = DispatchWorkItem { [weak self] in
-            guard let self = self else { return }
-            
-            guard viewModel.oldQueryString != searchedText else {
-                return
-            }
-            viewModel.didEnter(currentQueryString: searchedText, sortOption: self.viewModel.selectedPickerChoice)
-            self.queryString = searchedText
-        }
-        searchTask = task
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: task)
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchRepositoriesView.repositorySearchBar.resignFirstResponder()
     }
 }
 
 // MARK: UIPickerView methods
 extension SearchRepositoriesViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -162,8 +136,6 @@ extension SearchRepositoriesViewController: UIPickerViewDelegate, UIPickerViewDa
         case 2:
             viewModel.selectedPickerChoice = PickerValues.forks.rawValue
         case 3:
-            viewModel.selectedPickerChoice = PickerValues.issues.rawValue
-        case 4:
             viewModel.selectedPickerChoice = PickerValues.updated.rawValue
         default:
             viewModel.selectedPickerChoice = PickerValues.bestMatch.rawValue
@@ -182,36 +154,55 @@ extension SearchRepositoriesViewController: UIPickerViewDelegate, UIPickerViewDa
     }
 }
 
-// MARK: UITableView methods
-extension SearchRepositoriesViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositoryComponents.count
+// MARK: Setup UISearchBar elements
+extension SearchRepositoriesViewController {
+    private func setupSearchBar() {
+        searchRepositoriesView.repositorySearchBar.rx.text
+            .orEmpty
+            .debounce(.milliseconds(700), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .map { [unowned self] _ in return self.searchRepositoriesView.repositorySearchBar.text ?? "" }
+            .subscribe(onNext: { [weak self] searchedText in
+                guard let self = self else { return }
+                guard viewModel.oldQueryString != searchedText else {
+                    return
+                }
+                viewModel.didEnter(currentQueryString: searchedText, sortOption: self.viewModel.selectedPickerChoice)
+                self.queryString = searchedText
+            })
+            .disposed(by: disposeBag)
+        
+        searchRepositoriesView.repositorySearchBar.rx
+            .cancelButtonClicked
+            .asDriver(onErrorJustReturn: ())
+            .drive(onNext: { [weak self] in
+                self?.searchRepositoriesView.repositorySearchBar.resignFirstResponder()
+                self?.searchRepositoriesView.repositorySearchBar.showsCancelButton = false
+            })
+            .disposed(by: disposeBag)
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let repositoryComponent = repositoryComponents[indexPath.row]
-        let cell = tableView.dequeueReusableCell(RepositoryTableViewCell.self, for: indexPath)
-        let attributedString = getAttributedString(query: repositoryComponent.name ?? "")
-        cell.onDidSelectAuthorImageView = viewModel.didSelectUserImageView(userDetails:)
-        cell.setupWith(item: repositoryComponent, attributedString: attributedString)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedComponent = repositoryComponents[indexPath.row]
-        viewModel.didSelectRepository(item: selectedComponent)
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        guard offsetY > contentHeight - scrollView.frame.height,
-              !viewModel.isFetchInProgress,
-              !viewModel.isReachedEndOfList else {
-            return
-        }
-        viewModel.didEnter(currentQueryString: queryString, sortOption: viewModel.selectedPickerChoice)
+}
+
+// MARK: Setup UITableView elements
+extension SearchRepositoriesViewController {
+    private func setupTableView() {
+        searchRepositoriesView.tableView.registerUINib(ofType: RepositoryTableViewCell.self)
+        
+        searchRepositoriesView.tableView.rx.modelSelected(Item.self).subscribe(onNext: { item in
+            self.viewModel.didSelectRepository(item: item)
+        }).disposed(by: disposeBag)
+        
+        searchRepositoriesView.tableView.rx.willDisplayCell
+            .subscribe(onNext: ({ [weak self] cell, indexPath in
+                guard let self = self,
+                      indexPath.section == searchRepositoriesView.tableView.numberOfSections - 1,
+                      indexPath.row == searchRepositoriesView.tableView.numberOfRows(inSection: indexPath.section) - 1,
+                      !viewModel.isFetchInProgress,
+                      !viewModel.isReachedEndOfList else {
+                    return
+                }
+                viewModel.didEnter(currentQueryString: queryString, sortOption: viewModel.selectedPickerChoice)
+            })).disposed(by: disposeBag)
     }
 }
 
@@ -221,7 +212,7 @@ extension SearchRepositoriesViewController {
     private func getAttributedString(query: String) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: query)
         let range = (query as NSString).range(of: queryString, options: .caseInsensitive)
-        guard let boldFont = UIFont(name: .ralewayBold, size: 18) else { fatalError("Font doesn't exist") }
+        guard let boldFont = UIFont(name: .ralewayExtraBold, size: 18) else { fatalError("Font doesn't exist") }
         attributedString.addAttribute(NSAttributedString.Key.font, value: boldFont, range: range)
         return attributedString
     }
@@ -239,7 +230,6 @@ extension SearchRepositoriesViewController {
 
 // MARK: Gestures
 extension SearchRepositoriesViewController {
-    
     private func setupGestures() {
         let filterButtonTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFilterButton))
         searchRepositoriesView.filterButton.addGestureRecognizer(filterButtonTapGesture)
