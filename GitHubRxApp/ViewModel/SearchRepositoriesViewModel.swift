@@ -17,12 +17,12 @@ protocol SearchRepositoriesViewModelProtocol {
     var loadingInProgress: Observable<Bool> { get set }
     var onError: Observable<ErrorReport> { get set }
     var repositoryComponents: Observable<[Item]> { get set }
+    var pickerSortDataArray: Observable<[String]> { get set }
     var oldQueryString: String { get set }
     var oldSortOption: String { get set }
     var isFetchInProgress: Bool { get set }
     var isReachedEndOfList: Bool { get set }
     var selectedPickerChoice: String { get set }
-    var pickerSortDataArray: [String] { get set }
     
     func didEnter(currentQueryString: String, sortOption: String)
     func didSelectRepository(item: Item)
@@ -37,12 +37,12 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     var loadingInProgress: Observable<Bool>
     var onError: Observable<ErrorReport>
     var repositoryComponents: Observable<[Item]>
+    var pickerSortDataArray: Observable<[String]> = Observable.of(["Best match", "Stars", "Forks", "Updated"])
     var oldQueryString = ""
     var oldSortOption = ""
     var isFetchInProgress = false
     var isReachedEndOfList = false
     var selectedPickerChoice = ""
-    var pickerSortDataArray = ["Best match", "Stars", "Forks", "Updated"]
     
     private let searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()
