@@ -34,7 +34,7 @@ class LoginView: UIView, BasicViewMethodsProtocol {
         button.layer.cornerRadius = 20
         button.layer.masksToBounds = true
         button.addShadow()
-        button.setTitleColor(UIColor.gButonBlue, for: .normal)
+        button.setTitleColor(UIColor.gButonLight, for: .normal)
         button.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
         return button
     }()

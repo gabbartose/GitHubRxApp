@@ -39,10 +39,10 @@ class RepositoryDetailsView: UIView, BasicViewMethodsProtocol {
     lazy var descriptionLabel = UILabel.setupLabel(textColor: .gDarkGray)
     
     lazy var repositoryDetailsExternalBrowserLabel = UILabel.setupLabel(with: "Open repository details in external browser",
-                                                                        textColor: .gButonBlue,
+                                                                        textColor: .gBlue,
                                                                         isUserInteractionEnabled: true)
     lazy var userDetailsLabel = UILabel.setupLabel(with: "Open user details screen",
-                                                   textColor: .gButonBlue,
+                                                   textColor: .gBlue,
                                                    isUserInteractionEnabled: true)
     
     init() {

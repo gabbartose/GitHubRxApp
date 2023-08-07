@@ -13,7 +13,7 @@ extension UIColor {
         case gBackgroundMainInvert
         case gBlue
         case gBorderLightGray
-        case gButtonBlue
+        case gButtonLight
         case gDarkGray
         case gLightGray
         case gSearchBarBackground
@@ -26,7 +26,7 @@ extension UIColor {
     class var gBackgroundMainInvert: UIColor { return from(.gBackgroundMainInvert) }
     class var gBlue: UIColor { return from(.gBlue) }
     class var gBorderLightGray: UIColor { return from(.gBorderLightGray) }
-    class var gButonBlue: UIColor { return from(.gButtonBlue) }
+    class var gButonLight: UIColor { return from(.gButtonLight) }
     class var gDarkGray: UIColor { return from(.gDarkGray) }
     class var gLightGray: UIColor { return from(.gLightGray) }
     class var gSearchBarBackground: UIColor { return from(.gSearchBarBackground) }

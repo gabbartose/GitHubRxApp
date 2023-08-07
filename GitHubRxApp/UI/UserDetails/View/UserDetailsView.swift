@@ -47,7 +47,7 @@ class UserDetailsView: UIView, BasicViewMethodsProtocol {
     lazy var siteAdminLabel = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.siteAdmin.rawValue)
     
     lazy var userDetailsLabel = UILabel.setupLabel(with: "Open user details in external browser",
-                                                   textColor: .gButonBlue,
+                                                   textColor: .gBlue,
                                                    isUserInteractionEnabled: true)
     
     init() {
