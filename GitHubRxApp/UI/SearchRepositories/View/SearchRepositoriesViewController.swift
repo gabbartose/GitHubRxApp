@@ -45,8 +45,7 @@ class SearchRepositoriesViewController: BaseViewController {
         view = SearchRepositoriesView()
         setupNavigationBarElements()
         setupNavigationItemTitle()
-        setupSearchBar()
-        setupPickerView()
+        setupUIDelegates()
         setupTableView()
         setupGestures()
         subscribeToViewModel()
@@ -93,29 +92,20 @@ extension SearchRepositoriesViewController {
     }
 }
 
-// MARK: Setup UI elements
+// MARK: Setup UI delegates and elements
 extension SearchRepositoriesViewController {
     
-    private func setupSearchBar() {
+    private func setupUIDelegates() {
         searchRepositoriesView.repositorySearchBar.delegate = self
-        searchRepositoriesView.repositorySearchBar.returnKeyType = .default
-    }
-    
-    private func setupPickerView() {
+        
         searchRepositoriesView.sortPickerView.delegate = self
         searchRepositoriesView.sortPickerView.dataSource = self
+        
+        searchRepositoriesView.tableView.delegate = self
+        searchRepositoriesView.tableView.dataSource = self
     }
     
     private func setupTableView() {
-        searchRepositoriesView.tableView.delegate = self
-        searchRepositoriesView.tableView.dataSource = self
-        searchRepositoriesView.tableView.backgroundView = UIView()
-        searchRepositoriesView.tableView.backgroundView?.backgroundColor = .gBackgroundMain
-        searchRepositoriesView.tableView.separatorColor = .gBorderLightGray
-        registerTableViewCell()
-    }
-    
-    private func registerTableViewCell() {
         searchRepositoriesView.tableView.registerUINib(ofType: RepositoryTableViewCell.self)
     }
 }
@@ -124,7 +114,6 @@ extension SearchRepositoriesViewController {
 extension SearchRepositoriesViewController {
     
     private func setupNavigationBarElements() {
-        navigationItem.hidesBackButton = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(didTapSignOutButton))
     }
 }

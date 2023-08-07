@@ -36,6 +36,7 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
         searchBar.searchTextField.leftView = paddingView
         searchBar.searchTextField.leftViewMode = .always
         searchBar.searchTextField.autocorrectionType = .no
+        searchBar.returnKeyType = .default
         searchBar.clearBackgroundColor()
         return searchBar
     }()
@@ -74,6 +75,9 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.alwaysBounceVertical = false
         tableView.keyboardDismissMode = .interactive
+        tableView.backgroundView = UIView()
+        tableView.backgroundView?.backgroundColor = .gBackgroundMain
+        tableView.separatorColor = .gBorderLightGray
         return tableView
     }()
     
