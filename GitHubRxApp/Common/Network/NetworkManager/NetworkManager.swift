@@ -23,7 +23,7 @@ class NetworkManager {
         var request = createURLRequest(from: resource, endpoint)
         
         if let accessToken = NetworkManager.accessToken {
-            request.setValue("token \(accessToken)", forHTTPHeaderField: "Authorization")
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         }
         
         let session = configuration.session.dataTask(with: request) { data, response, error in
