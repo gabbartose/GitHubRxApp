@@ -33,6 +33,7 @@ class LoginViewModel: NSObject, LoginViewModelProtocol {
     private let loginRepository: LoginRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()
     private let onErrorSubject = PublishSubject<ErrorReport>()
+    private var loginButtonCounter = 0
     
     init(loginRepository: LoginRepositoryProtocol) {
         self.loginRepository = loginRepository
@@ -65,6 +66,7 @@ extension LoginViewModel {
                       let queryItems = URLComponents(string: callbackURL.absoluteString)?.queryItems,
                       let code = queryItems.first(where: { $0.name == "code" })?.value else {
                     print("An error occurred when attempting to sign in.")
+                    self?.loginButtonCounter = 0
                     return
                 }
                 
@@ -81,13 +83,21 @@ extension LoginViewModel {
                 }
             }
         
+        guard loginButtonCounter < 1 else {
+            loadingInProgressSubject.onNext(false)
+            return
+        }
+        
         authenticationSession.presentationContextProvider = self
         authenticationSession.prefersEphemeralWebBrowserSession = true
         
         if !authenticationSession.start() {
             print("Failed to start ASWebAuthenticationSession")
+            loginButtonCounter = 0
         }
+        
         loadingInProgressSubject.onNext(false)
+        loginButtonCounter += 1
     }
     
     func getUser() {
