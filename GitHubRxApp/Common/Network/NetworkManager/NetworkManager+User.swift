@@ -64,6 +64,15 @@ extension NetworkManager {
         }
     }
     
+    static func areTokensAvailable() -> Bool {
+        if let accessToken = accessToken,
+           let refreshToken = refreshToken,
+           !accessToken.isEmpty, !refreshToken.isEmpty {
+            return true
+        }
+        return false
+    }
+    
     static func printTokens() {
         print("accessToken: \(accessToken ?? "")")
         print("refreshToken: \(refreshToken ?? "")")

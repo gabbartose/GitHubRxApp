@@ -34,13 +34,6 @@ class LoginViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideNavigationBar(animated: animated)
-
-        // Try to get the user in case the tokens are already stored on this device
-        if let accessToken = NetworkManager.accessToken,
-           let refreshToken = NetworkManager.refreshToken,
-           !accessToken.isEmpty, !refreshToken.isEmpty {
-            viewModel.getUser()
-        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {

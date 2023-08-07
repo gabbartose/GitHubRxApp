@@ -26,11 +26,15 @@ class AppCoordinator: NSObject, Coordinator {
     
     func start() {
         print("Current app environment is: \(EnvironmentProvider.shared.currentEnvironment)")
-
-        setupNavigationBar()
-        showLoginFlow()
-        // showSearchRepositoriesFlow()
         
+        setupNavigationBar()
+        
+        if NetworkManager.areTokensAvailable() {
+            showSearchRepositoriesFlow()
+        } else {
+            showLoginFlow()
+        }
+    
         window.rootViewController = rootViewController
     }
 }

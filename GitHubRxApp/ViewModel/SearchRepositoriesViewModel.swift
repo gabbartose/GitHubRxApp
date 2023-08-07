@@ -84,8 +84,8 @@ extension SearchRepositoriesViewModel {
     }
     
     func didTapSignOutButton() {
-        NetworkManager.signOut()
         delegate?.showLoginScreen()
+        NetworkManager.signOut()
     }
     
     func didSelectRepository(item: Item) {

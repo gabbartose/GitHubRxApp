@@ -11,11 +11,17 @@ protocol UserDetailsDelegate: AnyObject {
     func didSelectUserDetails(userDetails: Owner)
 }
 
+//protocol SearchRepositoriesCoordinatorDelegate: CoordinatorDelegate {
+//    func showLoginScreen()
+//}
+
 class SearchRepositoriesCoordinator: NSObject, NavigationCoordinator {
     
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var dependencyManager: DependencyManager
+    
+    // weak var delegate: SearchRepositoriesCoordinatorDelegate?
     
     required init(rootViewController: UINavigationController, dependencyManager: DependencyManager) {
         self.rootViewController = rootViewController
@@ -37,9 +43,12 @@ class SearchRepositoriesCoordinator: NSObject, NavigationCoordinator {
 }
 
 // MARK: Open RepositoryDetails
-extension SearchRepositoriesCoordinator: SearchRepositoriesViewModelDelegate {
+extension SearchRepositoriesCoordinator: SearchRepositoriesViewModelDelegate, LoginCoordinatorDelegate {
     func showLoginScreen() {
-        
+        let loginCoordinator = LoginCoordinator(rootViewController: rootViewController, dependencyManager: dependencyManager)
+        addChildCoordinator(loginCoordinator)
+        loginCoordinator.delegate = self
+        loginCoordinator.start()
     }
     
     func didSelectRepository(item: Item) {
