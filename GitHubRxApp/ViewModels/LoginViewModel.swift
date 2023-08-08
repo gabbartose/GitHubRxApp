@@ -79,6 +79,7 @@ extension LoginViewModel {
                     case .failure(let errorReport):
                         self.onErrorSubject.onNext(errorReport)
                         print("Failed to exchange access code for tokens: \(errorReport), \(errorReport.cause)")
+                        self.loginButtonCounter = 0
                     }
                 }
             }
@@ -112,6 +113,7 @@ extension LoginViewModel {
             case .failure(let errorReport):
                 self.onErrorSubject.onNext(errorReport)
                 print("Failed to get user, or there is no valid/active session: \(errorReport.localizedDescription), \(errorReport.cause)")
+                loginButtonCounter = 0
             }
         }
     }

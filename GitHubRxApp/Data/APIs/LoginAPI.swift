@@ -41,7 +41,7 @@ extension LoginAPI {
     
     func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ()) {
         let resource = Resource<User>(path: Paths.getUser.rawValue)
-        networkManager.apiCall(for: resource, basePath: .basePath, completion: completion)
+        networkManager.apiOAuthCall(for: resource, basePath: .basePath, completion: completion)
     }
     
     func codeExchange(code: String, completion: @escaping (Result<(response: HTTPURLResponse, object: String), ErrorReport>) -> ()) {
@@ -53,6 +53,6 @@ extension LoginAPI {
             URLQueryItem(name: "code", value: code)
         ]
 
-        networkManager.apiCall(for: resource, basePath: .oAuthBasePath, completion: completion)
+        networkManager.apiOAuthCall(for: resource, basePath: .oAuthBasePath, completion: completion)
     }
 }

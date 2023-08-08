@@ -148,15 +148,4 @@ struct Item: Codable, Equatable {
     let updatedAt: String?
     let htmlUrl: String?
     let description: String?
-    
-//    enum CodingKeys: String, CodingKey {
-//        case id, name, owner, language, description
-//        case watchersCount = "watchers_count"
-//        case forksCount = "forks_count"
-//        case stargazersCount = "stargazers_count"
-//        case openIssues = "open_issues_count"
-//        case createdAt = "created_at"
-//        case updatedAt = "updated_at"
-//        case htmlUrl = "html_url"
-//    }
 }
