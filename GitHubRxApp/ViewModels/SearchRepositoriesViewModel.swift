@@ -39,10 +39,10 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     var repositoryComponents: Observable<[Item]>
     var pickerSortDataArray: Observable<[String]> = Observable.of(["Best match", "Stars", "Forks", "Updated"])
     var oldQueryString = ""
+    var selectedPickerChoice = ""
     var oldSortOption = ""
     var isFetchInProgress = false
     var isReachedEndOfList = false
-    var selectedPickerChoice = ""
     
     private let searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()
