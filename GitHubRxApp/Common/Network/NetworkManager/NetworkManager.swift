@@ -95,8 +95,10 @@ class NetworkManager {
                         NetworkManager.username = user.login
                     }
                     completion(.success((response, object)))
+                    
                     print("Response: \(response)")
                     print("Object: \(object)")
+                    
                 }
                 return
             } else {
