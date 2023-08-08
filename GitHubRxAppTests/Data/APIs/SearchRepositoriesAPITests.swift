@@ -43,8 +43,8 @@ extension SearchRepositoriesAPITests {
         urlSessionMock.data = jsonString.data(using: .utf8)
         
         let completionExpectation = expectation(description: "Completion block expectation")
-        let completion: (Result<(response: HTTPURLResponse, object: RepositoriesResponse), ErrorReport>) -> () = { result in
-            guard case .success((_, let repositoriesResponse)) = result, repositoriesResponse == excpectedRepositories else { return }
+        let completion: (Result<RepositoriesResponse, ErrorReport>) -> () = { result in
+            guard case .success(let repositoriesResponse) = result, repositoriesResponse == excpectedRepositories else { return }
             completionExpectation.fulfill()
         }
         
@@ -64,7 +64,7 @@ extension SearchRepositoriesAPITests {
         urlSessionMock.errorCode = 404
         
         let completionExpectation = expectation(description: "Completion block expectation")
-        let completion: (Result<(response: HTTPURLResponse, object: RepositoriesResponse), ErrorReport>) -> () = { result in
+        let completion: (Result<RepositoriesResponse, ErrorReport>) -> () = { result in
             guard case .failure(let errorReport) = result, errorReport.cause == .resourceNotFound else { return }
             completionExpectation.fulfill()
         }

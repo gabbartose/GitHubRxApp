@@ -8,7 +8,8 @@
 import Foundation
 
 protocol SearchRepositoriesRepositoryProtocol {
-    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<(response: HTTPURLResponse, object: RepositoriesResponse), ErrorReport>) -> ())
+    // func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<(response: HTTPURLResponse, object: RepositoriesResponse), ErrorReport>) -> ())
+    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ())
 }
 
 class SearchRepositoriesRepository: SearchRepositoriesRepositoryProtocol {
@@ -21,7 +22,7 @@ class SearchRepositoriesRepository: SearchRepositoriesRepositoryProtocol {
 }
 
 extension SearchRepositoriesRepository {
-    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<(response: HTTPURLResponse, object: RepositoriesResponse), ErrorReport>) -> ()) {
+    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) {
         searchRepositoriesAPI.getRepositories(query: query, page: page, perPage: perPage, sort: sort, completion: completion)
     }
 }

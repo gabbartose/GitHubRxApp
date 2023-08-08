@@ -110,7 +110,7 @@ extension SearchRepositoriesViewModel {
             loadingInProgressSubject.onNext(false)
             isFetchInProgress = false
             switch result {
-            case .success((_, let temporaryRepositoriesPerPage)):
+            case .success(let temporaryRepositoriesPerPage):
                 guard !(temporaryRepositoriesPerPage.items.isEmpty) else {
                     repositoryComponentsSubject.onNext([])
                     return

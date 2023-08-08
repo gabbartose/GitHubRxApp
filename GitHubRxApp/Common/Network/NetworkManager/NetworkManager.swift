@@ -16,6 +16,38 @@ class NetworkManager {
         self.configuration = configuration
     }
     
+    func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Result<T, ErrorReport>) -> ()) {
+        guard let endpoint = createEndpoint(for: resource, basePath: basePath) else { return }
+        print("Entire endpoint: \(endpoint)")
+        
+        var request = createURLRequest(from: resource, endpoint)
+
+        let task = configuration.session.dataTask(with: request) { [weak self] data, response, error in
+            guard let self = self else { return }
+            let networkResponseState = self.getNetworkResponseState(response: response, error: error, data: data)
+
+            switch networkResponseState {
+            case NetworkResponseState.failure(let cause):
+                DispatchQueue.main.async {
+                    completion(.failure(cause))
+                }
+            case NetworkResponseState.success:
+                let responseResult: Result<T, ErrorReport> = self.getResponseResult(data: data)
+
+                DispatchQueue.main.async {
+                    switch responseResult {
+                    case .failure(let cause):
+                        completion(.failure(cause))
+                    case .success(let decodedObject):
+                        completion(.success(decodedObject))
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    
     func apiCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Result<NetworkResult<T>, ErrorReport>) -> ()) {
         guard let endpoint = createEndpoint(for: resource, basePath: basePath) else { return }
         print("Entire endpoint: \(endpoint)")
@@ -63,6 +95,8 @@ class NetworkManager {
                         NetworkManager.username = user.login
                     }
                     completion(.success((response, object)))
+                    print("Response: \(response)")
+                    print("Object: \(object)")
                 }
                 return
             } else {

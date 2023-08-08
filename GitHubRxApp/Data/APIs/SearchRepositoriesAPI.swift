@@ -8,7 +8,8 @@
 import Foundation
 
 protocol SearchRepositoriesAPIProtocol {
-    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<(response: HTTPURLResponse, object: RepositoriesResponse), ErrorReport>) -> ())
+    // func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<(response: HTTPURLResponse, object: RepositoriesResponse), ErrorReport>) -> ())
+    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ())
 }
 
 class SearchRepositoriesAPI: SearchRepositoriesAPIProtocol {
@@ -25,7 +26,7 @@ class SearchRepositoriesAPI: SearchRepositoriesAPIProtocol {
 }
 
 extension SearchRepositoriesAPI {
-    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<(response: HTTPURLResponse, object: RepositoriesResponse), ErrorReport>) -> ()) {
+    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) {
         var resource = Resource<RepositoriesResponse>(path: Paths.searchRepositories.rawValue)
         resource.queryItems = [
             URLQueryItem(name: "q", value: query),

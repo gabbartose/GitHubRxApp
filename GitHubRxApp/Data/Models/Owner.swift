@@ -43,11 +43,11 @@ struct Owner: Codable, Equatable {
     let siteAdmin: Bool?
     let htmlUrl: String?
     
-    enum CodingKeys: String, CodingKey {
-        case id, login, type
-        case nodeId = "node_id"
-        case avatarUrl = "avatar_url"
-        case siteAdmin = "site_admin"
-        case htmlUrl = "html_url"
-    }
+//    enum CodingKeys: String, CodingKey {
+//        case id, login, type
+//        case nodeId = "node_id"
+//        case avatarUrl = "avatar_url"
+//        case siteAdmin = "site_admin"
+//        case htmlUrl = "html_url"
+//    }
 }
