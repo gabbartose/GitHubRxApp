@@ -6,7 +6,6 @@ target 'GitHubRxApp' do
   use_frameworks!
 
   # Pods for GitHubRxApp
-  pod 'Alamofire'
   pod 'Kingfisher', '~> 7.0'
   pod 'RxCocoa', '~> 6'
   pod 'RxDataSources'

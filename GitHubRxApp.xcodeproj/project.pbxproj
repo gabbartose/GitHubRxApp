@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		4061A4AED2028F8E3AD74FEA /* Pods_GitHubRxApp_GitHubRxAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212507A7785563B259917FE3 /* Pods_GitHubRxApp_GitHubRxAppUITests.framework */; };
+		75098D182A82037700997DE8 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D172A82037700997DE8 /* URLSessionMock.swift */; };
+		75098D1A2A82047B00997DE8 /* URLSessionDataTaskMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D192A82047B00997DE8 /* URLSessionDataTaskMock.swift */; };
+		75098D1C2A82068100997DE8 /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D1B2A82068100997DE8 /* URLProtocolMock.swift */; };
+		75098D252A820A4500997DE8 /* SearchRepositoriesResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D242A820A4500997DE8 /* SearchRepositoriesResponseMock.swift */; };
+		75098D272A82104300997DE8 /* SearchRepositoriesAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D262A82104300997DE8 /* SearchRepositoriesAPITests.swift */; };
 		7510C46C2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46B2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift */; };
 		7510C46E2A7A166F009EAAAF /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46D2A7A166F009EAAAF /* LoginAPI.swift */; };
 		7510C4702A7B8560009EAAAF /* NetworkManager+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46F2A7B8560009EAAAF /* NetworkManager+User.swift */; };
@@ -109,6 +114,11 @@
 		60C62FA0D36C23ABE43BCD7A /* Pods-GitHubRxApp-GitHubRxAppUITests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxApp-GitHubRxAppUITests.test.xcconfig"; path = "Target Support Files/Pods-GitHubRxApp-GitHubRxAppUITests/Pods-GitHubRxApp-GitHubRxAppUITests.test.xcconfig"; sourceTree = "<group>"; };
 		678B50B5F0338BBCC441AA65 /* Pods-GitHubRxAppTests.devproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxAppTests.devproduction.xcconfig"; path = "Target Support Files/Pods-GitHubRxAppTests/Pods-GitHubRxAppTests.devproduction.xcconfig"; sourceTree = "<group>"; };
 		684B1D0E61B3CC0647DF90F8 /* Pods-GitHubRxApp.devproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxApp.devproduction.xcconfig"; path = "Target Support Files/Pods-GitHubRxApp/Pods-GitHubRxApp.devproduction.xcconfig"; sourceTree = "<group>"; };
+		75098D172A82037700997DE8 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
+		75098D192A82047B00997DE8 /* URLSessionDataTaskMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskMock.swift; sourceTree = "<group>"; };
+		75098D1B2A82068100997DE8 /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
+		75098D242A820A4500997DE8 /* SearchRepositoriesResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesResponseMock.swift; sourceTree = "<group>"; };
+		75098D262A82104300997DE8 /* SearchRepositoriesAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesAPITests.swift; sourceTree = "<group>"; };
 		7510C46B2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+GitHubRxApp.swift"; sourceTree = "<group>"; };
 		7510C46D2A7A166F009EAAAF /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		7510C46F2A7B8560009EAAAF /* NetworkManager+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+User.swift"; sourceTree = "<group>"; };
@@ -273,6 +283,40 @@
 				CED6D1CEAFC240E197B2F49D /* Pods-GitHubRxAppTests.devtest.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		75098D162A82035D00997DE8 /* URLSession */ = {
+			isa = PBXGroup;
+			children = (
+				75098D172A82037700997DE8 /* URLSessionMock.swift */,
+				75098D192A82047B00997DE8 /* URLSessionDataTaskMock.swift */,
+				75098D1B2A82068100997DE8 /* URLProtocolMock.swift */,
+			);
+			path = URLSession;
+			sourceTree = "<group>";
+		};
+		75098D1D2A8206AD00997DE8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				75098D1E2A8206B800997DE8 /* APIs */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		75098D1E2A8206B800997DE8 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				75098D262A82104300997DE8 /* SearchRepositoriesAPITests.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		75098D232A8209EB00997DE8 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				75098D242A820A4500997DE8 /* SearchRepositoriesResponseMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		7510C4712A7BE31B009EAAAF /* PickerValues */ = {
@@ -732,6 +776,9 @@
 		75A47D3F2A6FB3C900618359 /* GitHubRxAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				75098D1D2A8206AD00997DE8 /* Data */,
+				75098D232A8209EB00997DE8 /* Mocks */,
+				75098D162A82035D00997DE8 /* URLSession */,
 				75A47D402A6FB3C900618359 /* GitHubRxAppTests.swift */,
 			);
 			path = GitHubRxAppTests;
@@ -1084,7 +1131,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75098D252A820A4500997DE8 /* SearchRepositoriesResponseMock.swift in Sources */,
+				75098D182A82037700997DE8 /* URLSessionMock.swift in Sources */,
+				75098D272A82104300997DE8 /* SearchRepositoriesAPITests.swift in Sources */,
 				75A47D412A6FB3C900618359 /* GitHubRxAppTests.swift in Sources */,
+				75098D1A2A82047B00997DE8 /* URLSessionDataTaskMock.swift in Sources */,
+				75098D1C2A82068100997DE8 /* URLProtocolMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1198,6 +1250,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 495RC5CMM7;
+				ENABLE_TESTABILITY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubRxApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
@@ -1262,7 +1315,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1334,7 +1387,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1435,6 +1488,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 495RC5CMM7;
+				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubRxApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
@@ -1500,6 +1554,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1566,6 +1621,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1725,6 +1781,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1791,6 +1848,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1885,6 +1943,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 495RC5CMM7;
+				ENABLE_TESTABILITY = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GitHubRxApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
@@ -1950,6 +2009,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2016,6 +2076,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2346,6 +2407,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2484,6 +2546,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
