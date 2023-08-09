@@ -44,8 +44,7 @@ From this screen navigation should be made possible to:
 
 The repository detail screen should contain:
 
-    ● An extended set of information about the repository. This can be anything else you want
-from the Github API like:
+    ● An extended set of information about the repository. This can be anything else you want from the Github API like:
           ○ Programming language
         ○ Date of creation
         ○ Date of last modification
