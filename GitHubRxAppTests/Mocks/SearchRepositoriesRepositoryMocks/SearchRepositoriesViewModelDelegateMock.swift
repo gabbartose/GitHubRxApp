@@ -16,7 +16,8 @@ class SearchRepositoriesViewModelDelegateMock: SearchRepositoriesViewModelDelega
     private var didSelectUserDetailsWasCalled = false
     private var didSelectUserDetailsCounter = 0
     
-    
+    private var didTapSignOutButtonWasCalled = false
+    private var didTapSignOutButtonCounter = 0
     
     func didSelectRepository(item: Item) {
         didSelectRepositoryWasCalled = true
@@ -29,8 +30,7 @@ class SearchRepositoriesViewModelDelegateMock: SearchRepositoriesViewModelDelega
     }
     
     func didTapSignOutButton() {
-        
+        didTapSignOutButtonWasCalled = true
+        didTapSignOutButtonCounter += 1
     }
-    
-    
 }
