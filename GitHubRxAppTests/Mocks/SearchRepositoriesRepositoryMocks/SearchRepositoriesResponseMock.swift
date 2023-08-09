@@ -9,26 +9,26 @@ import Foundation
 @testable import GitHubRxApp
 
 class SearchRepositoriesResponseMock {
-    var id: Int? = 2
-    var name: String? = "new name"
-    var owner: Owner? = nil
-    var watchersCount: Int? = 200
-    var forksCount: Int? = 300
-    var stargazersCount: Int? = 5
-    var openIssues: Int? = 0
-    var language: String? = "C#"
-    var createdAt: String? = "02.02.2002."
-    var updatedAt: String? = "15.03.2010."
-    var htmlUrl: String? = "https://github.com/ZeusWPI/hydra-iOS"
-    var description: String? = "This is very nice description"
-    
-    var ownerId: Int? = 3
-    var nodeId: String? = "MDEyOk9yZ2FuaXphdGlvbjMzMTc1MA=="
-    var avatarUrl: String? = "https://avatars.githubusercontent.com/u/331750?v=4"
-    var login: String? = "ZeusWPI"
-    var type: String? = "Organization"
-    var siteAdmin: Bool? = false
-    var ownerHtmlUrl: String? = "https://github.com/ZeusWPI"
+    private var id: Int? = 2
+    private var name: String? = "new name"
+    private var owner: Owner? = nil
+    private var watchersCount: Int? = 200
+    private var forksCount: Int? = 300
+    private var stargazersCount: Int? = 5
+    private var openIssues: Int? = 0
+    private var language: String? = "C#"
+    private var createdAt: String? = "02.02.2002."
+    private var updatedAt: String? = "15.03.2010."
+    private var htmlUrl: String? = "https://github.com/ZeusWPI/hydra-iOS"
+    private var description: String? = "This is very nice description"
+
+    private var ownerId: Int? = 3
+    private var nodeId: String? = "MDEyOk9yZ2FuaXphdGlvbjMzMTc1MA=="
+    private var avatarUrl: String? = "https://avatars.githubusercontent.com/u/331750?v=4"
+    private var login: String? = "ZeusWPI"
+    private var type: String? = "Organization"
+    private var siteAdmin: Bool? = false
+    private var ownerHtmlUrl: String? = "https://github.com/ZeusWPI"
     
     func getRepositoriesResponse() -> RepositoriesResponse {
         let owner = Owner(id: ownerId,
@@ -38,7 +38,7 @@ class SearchRepositoriesResponseMock {
                           type: type,
                           siteAdmin: siteAdmin,
                           htmlUrl: ownerHtmlUrl)
-
+        
         let items = [Item(id: id,
                           name: name,
                           owner: owner,
@@ -53,7 +53,7 @@ class SearchRepositoriesResponseMock {
                           description: description)]
         return RepositoriesResponse(items: items)
     }
-
+    
     func getRepositories() -> [Item] {
         [Item(id: id,
               name: name,
@@ -68,7 +68,42 @@ class SearchRepositoriesResponseMock {
               htmlUrl: htmlUrl,
               description: description)]
     }
-
+    
+    func getOwnerItem() -> Owner {
+        let owner = Owner(id: 2,
+                          nodeId: "o4m_?m3399",
+                          avatarUrl: "https://static.eau-thermale-avene.com/sites/files-hr/styles/380x460/public/images/product/image/hydrance-uv-lagana-hidrirajuca-emulzija-spf-30.png?itok=Il2AvOB7",
+                          login: "tetris",
+                          type: "Admin",
+                          siteAdmin: true,
+                          htmlUrl: "https://github.com/ZeusWPI/hydra-iOS")
+        return owner
+    }
+    
+    func getRepositoryItem() -> Item {
+        let owner = Owner(id: 2,
+                          nodeId: "o4m_?m3399",
+                          avatarUrl: "https://static.eau-thermale-avene.com/sites/files-hr/styles/380x460/public/images/product/image/hydrance-uv-lagana-hidrirajuca-emulzija-spf-30.png?itok=Il2AvOB7",
+                          login: "tetris",
+                          type: "Admin",
+                          siteAdmin: true,
+                          htmlUrl: "https://github.com/ZeusWPI/hydra-iOS")
+        
+        let repositoryItem = Item(id: 2,
+                                  name: "Repository",
+                                  owner: getOwnerItem(),
+                                  watchersCount: 10,
+                                  forksCount: 27,
+                                  stargazersCount: 5,
+                                  openIssues: 0,
+                                  language: "JAVA",
+                                  createdAt: "27.01.2000.",
+                                  updatedAt: "27.01.2000.",
+                                  htmlUrl: "https://github.com/ZeusWPI/hydra-iOS",
+                                  description: "Very nice description.")
+        return repositoryItem
+    }
+    
     func getJsonString() -> String {
           """
           {

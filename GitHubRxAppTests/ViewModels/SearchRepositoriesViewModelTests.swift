@@ -85,4 +85,50 @@ extension SearchRepositoriesViewModelTests {
         // Assert (Then)
         XCTAssertEqual(observer.events, [.next(10, true), .next(10, false)])
     }
+    
+    func testSearchRepositoriesViewModel_WhenDidEnterCalledWithMoreThanThreeCharacters_ShouldPostRepositoryComponents() {
+        // Arrange (Given)
+        let queryString = "Python"
+        
+        // Act (When)
+        scheduler.scheduleAt(10) {[weak self] in
+            self?.sut.didEnter(currentQueryString: queryString)
+        }
+        
+        let observer = scheduler.record(sut.repositoryComponents, disposeBag: disposeBag)
+        scheduler.start()
+        
+        // Assert (Then)
+        XCTAssertEqual(observer.events, [.next(10, searchRepositoriesRepositoryMock.searchRepositoriesRepositoryResponse.items)])
+    }
+    
+    func testSearchRepositoriesViewModel_WhenDidEnterCalledWithMoreThanThreeCharacters_ShouldPostOnError() {
+        // Arrange (Given)
+        let queryString = "Backend"
+        let errorReport = ErrorReport(cause: .invalidResponse, data: nil)
+        searchRepositoriesRepositoryMock.errorReport = errorReport
+        
+        // Act (When)
+        scheduler.scheduleAt(10) { [weak self] in
+            self?.sut.didEnter(currentQueryString: queryString)
+        }
+        
+        let observer = scheduler.record(sut.onError, disposeBag: disposeBag)
+        scheduler.start()
+        
+        // Assert (Then)
+        XCTAssertEqual(observer.events, [.next(10, errorReport)])
+    }
+}
+
+// MARK: didSelectRepository(item: Item) test
+extension SearchRepositoriesViewModelTests {
+    func testSearchRepositoriesViewModel_WhenDidSelectRepositoryCalled_ShouldCallDidSelectRepositoryOnDelegate() {
+        // Arrange (Given)
+        
+        // Act (When)
+        
+        
+        // Assert (Then)
+    }
 }
