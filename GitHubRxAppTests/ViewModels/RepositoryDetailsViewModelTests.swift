@@ -10,9 +10,9 @@ import XCTest
 
 final class RepositoryDetailsViewModelTests: XCTestCase {
     
-    private var sut: RepositoryDetailsViewModel!
-    private var searchRepositoriesResponseMock: SearchRepositoriesResponseMock!
     private var repositoryDetailsViewModelDelegateMock: RepositoryDetailsViewModelDelegateMock!
+    private var searchRepositoriesResponseMock: SearchRepositoriesResponseMock!
+    private var sut: RepositoryDetailsViewModel!
     
     override func setUpWithError() throws {
         repositoryDetailsViewModelDelegateMock = RepositoryDetailsViewModelDelegateMock()

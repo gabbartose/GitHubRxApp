@@ -12,10 +12,10 @@ import XCTest
 
 final class SearchRepositoriesViewModelTests: XCTestCase {
     
-    private var sut: SearchRepositoriesViewModel!
-    private var searchRepositoriesRepositoryMock: SearchRepositoriesRepositoryMock!
-    private var searchRepositoriesResponseMock: SearchRepositoriesResponseMock!
     private var searchRepositoriesViewModelDelegateMock: SearchRepositoriesViewModelDelegateMock!
+    private var searchRepositoriesResponseMock: SearchRepositoriesResponseMock!
+    private var searchRepositoriesRepositoryMock: SearchRepositoriesRepositoryMock!
+    private var sut: SearchRepositoriesViewModel!
     private var scheduler: TestScheduler!
     private var disposeBag: DisposeBag!
 

@@ -10,7 +10,7 @@ import Foundation
 
 class SearchRepositoriesResponseMock {
     
-    //Item details
+    // Item details
     private var id: Int? = 2
     private var name: String? = "C# organization"
     private var watchersCount: Int? = 200

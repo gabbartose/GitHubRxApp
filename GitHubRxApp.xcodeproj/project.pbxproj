@@ -21,6 +21,8 @@
 		75098D372A835D6C00997DE8 /* SearchRepositoriesViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D362A835D6C00997DE8 /* SearchRepositoriesViewModelDelegateMock.swift */; };
 		750F11D22A837EFA0097B0CE /* RepositoryDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F11D12A837EFA0097B0CE /* RepositoryDetailsViewModelTests.swift */; };
 		750F11D52A83821F0097B0CE /* RepositoryDetailsViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F11D42A83821F0097B0CE /* RepositoryDetailsViewModelDelegateMock.swift */; };
+		750F11D72A83944C0097B0CE /* UserDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F11D62A83944C0097B0CE /* UserDetailsViewModelTests.swift */; };
+		750F11DA2A8395570097B0CE /* UserDetailsViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F11D92A8395570097B0CE /* UserDetailsViewModelDelegateMock.swift */; };
 		7510C46C2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46B2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift */; };
 		7510C46E2A7A166F009EAAAF /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46D2A7A166F009EAAAF /* LoginAPI.swift */; };
 		7510C4702A7B8560009EAAAF /* NetworkManager+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46F2A7B8560009EAAAF /* NetworkManager+User.swift */; };
@@ -134,6 +136,8 @@
 		75098D362A835D6C00997DE8 /* SearchRepositoriesViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesViewModelDelegateMock.swift; sourceTree = "<group>"; };
 		750F11D12A837EFA0097B0CE /* RepositoryDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		750F11D42A83821F0097B0CE /* RepositoryDetailsViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsViewModelDelegateMock.swift; sourceTree = "<group>"; };
+		750F11D62A83944C0097B0CE /* UserDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		750F11D92A8395570097B0CE /* UserDetailsViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModelDelegateMock.swift; sourceTree = "<group>"; };
 		7510C46B2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+GitHubRxApp.swift"; sourceTree = "<group>"; };
 		7510C46D2A7A166F009EAAAF /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		7510C46F2A7B8560009EAAAF /* NetworkManager+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+User.swift"; sourceTree = "<group>"; };
@@ -332,6 +336,7 @@
 			children = (
 				750F11D32A8381E90097B0CE /* RepositoryDetailsMocks */,
 				75098D2E2A828A9100997DE8 /* SearchRepositoriesRepositoryMocks */,
+				750F11D82A8395230097B0CE /* UserDetailsMocks */,
 				75098D162A82035D00997DE8 /* URLSession */,
 			);
 			path = Mocks;
@@ -369,6 +374,7 @@
 			children = (
 				75098D322A8358C000997DE8 /* SearchRepositoriesViewModelTests.swift */,
 				750F11D12A837EFA0097B0CE /* RepositoryDetailsViewModelTests.swift */,
+				750F11D62A83944C0097B0CE /* UserDetailsViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -379,6 +385,14 @@
 				750F11D42A83821F0097B0CE /* RepositoryDetailsViewModelDelegateMock.swift */,
 			);
 			path = RepositoryDetailsMocks;
+			sourceTree = "<group>";
+		};
+		750F11D82A8395230097B0CE /* UserDetailsMocks */ = {
+			isa = PBXGroup;
+			children = (
+				750F11D92A8395570097B0CE /* UserDetailsViewModelDelegateMock.swift */,
+			);
+			path = UserDetailsMocks;
 			sourceTree = "<group>";
 		};
 		7510C4712A7BE31B009EAAAF /* PickerValues */ = {
@@ -532,8 +546,8 @@
 			children = (
 				75A47CE32A653AC700618359 /* Common */,
 				7515D68C2A7252EE00211BD4 /* LoginViewController */,
-				75A47CAF2A65202800618359 /* SearchRepositories */,
 				75A47D072A68F57800618359 /* RepositoryDetails */,
+				75A47CAF2A65202800618359 /* SearchRepositories */,
 				75A47D1F2A6E4C8400618359 /* UserDetails */,
 			);
 			path = UI;
@@ -610,8 +624,8 @@
 			isa = PBXGroup;
 			children = (
 				7515D6952A72535200211BD4 /* LoginViewModel.swift */,
-				75A47CCA2A65342F00618359 /* SearchRepositoriesViewModel.swift */,
 				75A47D102A68F68200618359 /* RepositoryDetailsViewModel.swift */,
+				75A47CCA2A65342F00618359 /* SearchRepositoriesViewModel.swift */,
 				75A47D282A6E4CE100618359 /* UserDetailsViewModel.swift */,
 			);
 			path = ViewModels;
@@ -1195,9 +1209,11 @@
 				75098D252A820A4500997DE8 /* SearchRepositoriesResponseMock.swift in Sources */,
 				750F11D52A83821F0097B0CE /* RepositoryDetailsViewModelDelegateMock.swift in Sources */,
 				75098D182A82037700997DE8 /* URLSessionMock.swift in Sources */,
+				750F11DA2A8395570097B0CE /* UserDetailsViewModelDelegateMock.swift in Sources */,
 				75098D2A2A8288F100997DE8 /* TestScheduler+GitHubRxAppTests.swift in Sources */,
 				75098D2D2A82893900997DE8 /* SearchRepositoriesRepositoryTests.swift in Sources */,
 				75098D302A828AD800997DE8 /* SearchRepositoriesAPIMock.swift in Sources */,
+				750F11D72A83944C0097B0CE /* UserDetailsViewModelTests.swift in Sources */,
 				75098D332A8358C000997DE8 /* SearchRepositoriesViewModelTests.swift in Sources */,
 				75098D272A82104300997DE8 /* SearchRepositoriesAPITests.swift in Sources */,
 				75098D352A835AA600997DE8 /* SearchRepositoriesRepositoryMock.swift in Sources */,
