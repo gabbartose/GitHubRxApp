@@ -14,6 +14,11 @@ final class SearchRepositoriesAPITests: XCTestCase {
     private var urlSessionMock: URLSessionMock!
     private var searchRepositoriesResponseMock: SearchRepositoriesResponseMock!
     
+    private let query = "iOS"
+    private let page = 1
+    private let perPage = 20
+    private let sort = "forks"
+    
     override func setUpWithError() throws {
         urlSessionMock = URLSessionMock()
         sut = SearchRepositoriesAPI(networkManager: NetworkManager(configuration: NetworkConfiguration(session: urlSessionMock)))
@@ -32,11 +37,6 @@ final class SearchRepositoriesAPITests: XCTestCase {
 extension SearchRepositoriesAPITests {
     func testSearchRepositoriesAPI_WhenGetRepositoriesCalledOnSuccess_ShouldCallCompletionWithRepositoriesResponse() {
         // Arrange (Given)
-        let query = "iOS"
-        let page = 1
-        let perPage = 20
-        let sort = "forks"
-        
         let jsonString = searchRepositoriesResponseMock.getJsonString()
         let excpectedRepositories = searchRepositoriesResponseMock.getRepositoriesResponse()
         
@@ -57,10 +57,6 @@ extension SearchRepositoriesAPITests {
     
     func testRepositoriesAPI_WhenGetRepositoriesCalledOnFailure_ShouldCallCompletionWithErrorReport() {
         // Arrange (Given)
-        let query = "iOS"
-        let page = 1
-        let perPage = 20
-        let sort = "forks"
         urlSessionMock.errorCode = 404
         
         let completionExpectation = expectation(description: "Completion block expectation")
@@ -75,5 +71,4 @@ extension SearchRepositoriesAPITests {
         // Assert (Then)
         wait(for: [completionExpectation], timeout: 5)
     }
-    
 }

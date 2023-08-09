@@ -10,6 +10,14 @@ import Foundation
 
 class SearchRepositoriesRepositoryMock: SearchRepositoriesRepositoryProtocol {
     
+    var getRepositoriesWasCalled = false
+    var getRepositoriesCounter = 0
+    
+    var query: String?
+    var page: Int?
+    var perPage: Int?
+    var sort: String?
+    
     var errorReport: ErrorReport?
     var searchRepositoriesRepositoryResponse = RepositoriesResponse(items: [Item(id: 2,
                                                                                  name: "Repository",
@@ -30,14 +38,6 @@ class SearchRepositoriesRepositoryMock: SearchRepositoriesRepositoryProtocol {
                                                                                  htmlUrl: "https://github.com/ZeusWPI/hydra-iOS",
                                                                                  description: "Very nice description.")])
     
-    var getRepositoriesWasCalled = false
-    var getRepositoriesCounter = 0
-    
-    var query: String?
-    var page: Int?
-    var perPage: Int?
-    var sort: String?
-    
     func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) {
         getRepositoriesWasCalled = true
         getRepositoriesCounter += 1
@@ -54,6 +54,4 @@ class SearchRepositoriesRepositoryMock: SearchRepositoriesRepositoryProtocol {
         
         completion(.failure(errorReport))
     }
-    
-    
 }
