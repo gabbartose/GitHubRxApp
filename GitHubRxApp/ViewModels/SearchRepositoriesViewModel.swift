@@ -89,11 +89,13 @@ extension SearchRepositoriesViewModel {
     }
     
     func didSelectRepository(item: Item) {
+        // According to the task description on Readme.md, this function is only allowed if we are in a production nad staging app environments and not in a test environment
         guard !EnvironmentProvider.shared.isTest() else { return }
         delegate?.didSelectRepository(item: item)
     }
     
     func didSelectUserImageView(userDetails: Owner) {
+        // According to the task description on Readme.md, this function is only allowed if we are in a production app environment
         guard EnvironmentProvider.shared.isProduction() else { return }
         delegate?.didSelectUserDetails(userDetails: userDetails)
     }

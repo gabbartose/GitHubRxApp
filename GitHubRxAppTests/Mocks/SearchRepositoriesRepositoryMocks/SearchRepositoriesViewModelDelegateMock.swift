@@ -10,14 +10,14 @@ import Foundation
 
 class SearchRepositoriesViewModelDelegateMock: SearchRepositoriesViewModelDelegate {
     
-    private var didSelectRepositoryWasCalled = false
-    private var didSelectRepositoryCounter = 0
+    var didSelectRepositoryWasCalled = false
+    var didSelectRepositoryCounter = 0
     
-    private var didSelectUserDetailsWasCalled = false
-    private var didSelectUserDetailsCounter = 0
+    var didSelectUserDetailsWasCalled = false
+    var didSelectUserDetailsCounter = 0
     
-    private var didTapSignOutButtonWasCalled = false
-    private var didTapSignOutButtonCounter = 0
+    var didTapSignOutButtonWasCalled = false
+    var didTapSignOutButtonCounter = 0
     
     func didSelectRepository(item: Item) {
         didSelectRepositoryWasCalled = true

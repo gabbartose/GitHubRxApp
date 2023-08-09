@@ -14,6 +14,7 @@ final class SearchRepositoriesViewModelTests: XCTestCase {
     
     private var sut: SearchRepositoriesViewModel!
     private var searchRepositoriesRepositoryMock: SearchRepositoriesRepositoryMock!
+    private var searchRepositoriesResponseMock: SearchRepositoriesResponseMock!
     private var searchRepositoriesViewModelDelegateMock: SearchRepositoriesViewModelDelegateMock!
     private var scheduler: TestScheduler!
     private var disposeBag: DisposeBag!
@@ -21,6 +22,7 @@ final class SearchRepositoriesViewModelTests: XCTestCase {
     override func setUpWithError() throws {
         searchRepositoriesViewModelDelegateMock = SearchRepositoriesViewModelDelegateMock()
         searchRepositoriesRepositoryMock = SearchRepositoriesRepositoryMock()
+        searchRepositoriesResponseMock = SearchRepositoriesResponseMock()
         sut = SearchRepositoriesViewModel(searchRepositoriesRepository: searchRepositoriesRepositoryMock)
         sut.delegate = searchRepositoriesViewModelDelegateMock
         scheduler = TestScheduler(initialClock: 0, resolution: 1)
@@ -30,6 +32,7 @@ final class SearchRepositoriesViewModelTests: XCTestCase {
     override func tearDownWithError() throws {
         searchRepositoriesViewModelDelegateMock = nil
         searchRepositoriesRepositoryMock = nil
+        searchRepositoriesResponseMock = nil
         sut = nil
         scheduler = nil
         disposeBag = nil
@@ -127,8 +130,38 @@ extension SearchRepositoriesViewModelTests {
         // Arrange (Given)
         
         // Act (When)
-        
+        sut.didSelectRepository(item: searchRepositoriesResponseMock.getRepositoryItem())
         
         // Assert (Then)
+        XCTAssertTrue(searchRepositoriesViewModelDelegateMock.didSelectRepositoryWasCalled)
+        XCTAssertEqual(searchRepositoriesViewModelDelegateMock.didSelectRepositoryCounter, 1)
+    }
+}
+
+// MARK: didSelectUserDetails(userDetails: Owner) test
+extension SearchRepositoriesViewModelTests {
+    func testSearchRepositoriesViewModel_WhenDidSelectUserDetails_ShouldCallDidSelectUserImageViewOnDelegate() {
+        // Arrange (Given)
+        
+        // Act (When)
+        sut.didSelectUserImageView(userDetails: searchRepositoriesResponseMock.getOwnerItem())
+        
+        // Assert (Then)
+        XCTAssertTrue(searchRepositoriesViewModelDelegateMock.didSelectUserDetailsWasCalled)
+        XCTAssertEqual(searchRepositoriesViewModelDelegateMock.didSelectUserDetailsCounter, 1)
+    }
+}
+
+// MARK: didSelectUserDetails(userDetails: Owner) test
+extension SearchRepositoriesViewModelTests {
+    func testSearchRepositoriesViewModel_WhenDidTapSignOutButton_ShouldCallDidTapSignOutButtonOnDelegate() {
+        // Arrange (Given)
+        
+        // Act (When)
+        sut.didTapSignOutButton()
+        
+        // Assert (Then)
+        XCTAssertTrue(searchRepositoriesViewModelDelegateMock.didTapSignOutButtonWasCalled)
+        XCTAssertEqual(searchRepositoriesViewModelDelegateMock.didTapSignOutButtonCounter, 1)
     }
 }

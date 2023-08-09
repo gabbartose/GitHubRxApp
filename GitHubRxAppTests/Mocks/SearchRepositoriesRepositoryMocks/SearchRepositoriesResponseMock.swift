@@ -9,19 +9,21 @@ import Foundation
 @testable import GitHubRxApp
 
 class SearchRepositoriesResponseMock {
+    
+    //Item details
     private var id: Int? = 2
-    private var name: String? = "new name"
-    private var owner: Owner? = nil
+    private var name: String? = "C# organization"
     private var watchersCount: Int? = 200
     private var forksCount: Int? = 300
     private var stargazersCount: Int? = 5
     private var openIssues: Int? = 0
     private var language: String? = "C#"
-    private var createdAt: String? = "02.02.2002."
-    private var updatedAt: String? = "15.03.2010."
+    private var createdAt: String? = "2019-09-10T19:23:58Z"
+    private var updatedAt: String? = "2023-08-04T05:07:52Z"
     private var htmlUrl: String? = "https://github.com/ZeusWPI/hydra-iOS"
     private var description: String? = "This is very nice description"
-
+    
+    // Owner details
     private var ownerId: Int? = 3
     private var nodeId: String? = "MDEyOk9yZ2FuaXphdGlvbjMzMTc1MA=="
     private var avatarUrl: String? = "https://avatars.githubusercontent.com/u/331750?v=4"
@@ -30,7 +32,7 @@ class SearchRepositoriesResponseMock {
     private var siteAdmin: Bool? = false
     private var ownerHtmlUrl: String? = "https://github.com/ZeusWPI"
     
-    func getRepositoriesResponse() -> RepositoriesResponse {
+    func getOwnerItem() -> Owner {
         let owner = Owner(id: ownerId,
                           nodeId: nodeId,
                           avatarUrl: avatarUrl,
@@ -38,70 +40,28 @@ class SearchRepositoriesResponseMock {
                           type: type,
                           siteAdmin: siteAdmin,
                           htmlUrl: ownerHtmlUrl)
-        
-        let items = [Item(id: id,
-                          name: name,
-                          owner: owner,
-                          watchersCount: watchersCount,
-                          forksCount: forksCount,
-                          stargazersCount: stargazersCount,
-                          openIssues: openIssues,
-                          language: language,
-                          createdAt: createdAt,
-                          updatedAt: updatedAt,
-                          htmlUrl: htmlUrl,
-                          description: description)]
-        return RepositoriesResponse(items: items)
-    }
-    
-    func getRepositories() -> [Item] {
-        [Item(id: id,
-              name: name,
-              owner: owner,
-              watchersCount: watchersCount,
-              forksCount: forksCount,
-              stargazersCount: stargazersCount,
-              openIssues: openIssues,
-              language: language,
-              createdAt: createdAt,
-              updatedAt: updatedAt,
-              htmlUrl: htmlUrl,
-              description: description)]
-    }
-    
-    func getOwnerItem() -> Owner {
-        let owner = Owner(id: 2,
-                          nodeId: "o4m_?m3399",
-                          avatarUrl: "https://static.eau-thermale-avene.com/sites/files-hr/styles/380x460/public/images/product/image/hydrance-uv-lagana-hidrirajuca-emulzija-spf-30.png?itok=Il2AvOB7",
-                          login: "tetris",
-                          type: "Admin",
-                          siteAdmin: true,
-                          htmlUrl: "https://github.com/ZeusWPI/hydra-iOS")
         return owner
     }
     
     func getRepositoryItem() -> Item {
-        let owner = Owner(id: 2,
-                          nodeId: "o4m_?m3399",
-                          avatarUrl: "https://static.eau-thermale-avene.com/sites/files-hr/styles/380x460/public/images/product/image/hydrance-uv-lagana-hidrirajuca-emulzija-spf-30.png?itok=Il2AvOB7",
-                          login: "tetris",
-                          type: "Admin",
-                          siteAdmin: true,
-                          htmlUrl: "https://github.com/ZeusWPI/hydra-iOS")
-        
-        let repositoryItem = Item(id: 2,
-                                  name: "Repository",
+        let repositoryItem = Item(id: id,
+                                  name: name,
                                   owner: getOwnerItem(),
-                                  watchersCount: 10,
-                                  forksCount: 27,
-                                  stargazersCount: 5,
-                                  openIssues: 0,
-                                  language: "JAVA",
-                                  createdAt: "27.01.2000.",
-                                  updatedAt: "27.01.2000.",
-                                  htmlUrl: "https://github.com/ZeusWPI/hydra-iOS",
-                                  description: "Very nice description.")
+                                  watchersCount: watchersCount,
+                                  forksCount: forksCount,
+                                  stargazersCount: stargazersCount,
+                                  openIssues: openIssues,
+                                  language: language,
+                                  createdAt: createdAt,
+                                  updatedAt: updatedAt,
+                                  htmlUrl: htmlUrl,
+                                  description: description)
         return repositoryItem
+    }
+    
+    func getRepositoriesResponse() -> RepositoriesResponse {
+        let items = [getRepositoryItem()]
+        return RepositoriesResponse(items: items)
     }
     
     func getJsonString() -> String {

@@ -46,6 +46,7 @@ extension RepositoryDetailsViewModel {
     }
     
     func didSelectUserDetails(userDetails: Owner) {
+        // According to the task description on Readme.md, this function is only allowed if we are in a production app environment
         guard EnvironmentProvider.shared.isProduction() else { return }
         delegate?.didSelectUserDetails(userDetails: userDetails)
     }
