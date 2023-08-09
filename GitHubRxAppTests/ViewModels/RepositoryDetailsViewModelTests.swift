@@ -81,6 +81,6 @@ extension RepositoryDetailsViewModelTests {
         let repositoryItem = sut.getRepositoryItem()
         
         // Assert (Then)
-        XCTAssertEqual(self.searchRepositoriesResponseMock.getRepositoryItem(), repositoryItem)
+        XCTAssertEqual(searchRepositoriesResponseMock.getRepositoryItem(), repositoryItem)
     }
 }
