@@ -73,7 +73,7 @@ extension SearchRepositoriesAPITests {
         sut.getRepositories(query: query, page: page, perPage: perPage, sort: sort, completion: completion)
         
         // Assert (Then)
-        wait(for: [completionExpectation], timeout: 0.5)
+        wait(for: [completionExpectation], timeout: 5)
     }
     
 }

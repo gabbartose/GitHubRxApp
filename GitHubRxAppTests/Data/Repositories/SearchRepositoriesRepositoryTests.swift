@@ -14,13 +14,69 @@ final class SearchRepositoriesRepositoryTests: XCTestCase {
     private var searchRepositoriesAPIMock: SearchRepositoriesAPIMock!
     private var repositoriesResponseMock: SearchRepositoriesResponseMock!
     
+    private let query = "iOS"
+    private let page = 1
+    private let perPage = 20
+    private let sort = "forks"
+    
     override func setUpWithError() throws {
-        
+        searchRepositoriesAPIMock = SearchRepositoriesAPIMock()
+        sut = SearchRepositoriesRepository(networkManager: NetworkManager(), searchRepositoriesAPI: searchRepositoriesAPIMock)
+        repositoriesResponseMock = SearchRepositoriesResponseMock()
     }
 
     override func tearDownWithError() throws {
-        
+        searchRepositoriesAPIMock = nil
+        sut = nil
+        repositoriesResponseMock = nil
     }
+}
 
-
+// MARK: func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) tests
+extension SearchRepositoriesRepositoryTests {
+    func testSearchRepositoriesRepository_WhenGetRepositoryMethodCalled_ShouldCallRepositoriesAPIGetRepositoriesMethod() {
+        // Arrange (Given)
+        let completion: (Result<RepositoriesResponse, ErrorReport>) -> () = { _ in }
+        
+        // Act (When)
+        sut.getRepositories(query: query, page: page, perPage: perPage, sort: sort, completion: completion)
+        
+        // Assert (Then)
+        XCTAssertTrue(searchRepositoriesAPIMock.getSearchRepositoriesRepositoryCalled)
+        XCTAssertEqual(searchRepositoriesAPIMock.getSearchRepositoriesRepositoryCounter, 1)
+        XCTAssertEqual(searchRepositoriesAPIMock.query, query)
+        XCTAssertEqual(searchRepositoriesAPIMock.page, page)
+        XCTAssertEqual(searchRepositoriesAPIMock.perPage, perPage)
+        XCTAssertEqual(searchRepositoriesAPIMock.sort, sort)
+    }
+    
+    func testSearchRepositoriesRepository_WhenGetRepositoriesMethodCalledOnSuccess_ShouldCallCompletionWithRepositories() {
+        // Arrange (Given)
+        let searchRepositoriesRepositoryResponse = repositoriesResponseMock.getRepositoriesResponse()
+        searchRepositoriesAPIMock.searchRepositoriesRepositoryResponse = searchRepositoriesRepositoryResponse
+        let completionExpectation = expectation(description: "Completion block expectation")
+        
+        // Act (When)
+        sut.getRepositories(query: query, page: page, perPage: perPage, sort: sort) { result in
+            guard case .success = result else { return }
+            completionExpectation.fulfill()
+        }
+        
+        // Assert (Then)
+        wait(for: [completionExpectation], timeout: 5)
+    }
+    
+    func testSearchRepositoriesRepository_WhenGetRepositoriesMethodCalledOnFailure_ShouldCallCompletionWithErrorReport() {
+        // Arrange (Given)
+        let completionExpectation = expectation(description: "Completion block expectation")
+        
+        // Act (When)
+        sut.getRepositories(query: query, page: page, perPage: perPage, sort: sort) { result in
+            guard case .failure = result else { return }
+            completionExpectation.fulfill()
+        }
+        
+        // Assert (Then)
+        wait(for: [completionExpectation], timeout: 5)
+    }
 }
