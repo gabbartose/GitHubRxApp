@@ -8,13 +8,11 @@
 import Foundation
 
 protocol UserDetailsViewModelDelegate: AnyObject {
-    
     func didTapAdditionalInfoInBrowser(htmlURL: String)
     func didEnd()
 }
 
 protocol UserDetailsViewModelProtocol {
-    
     func getUserDetails() -> Owner
     func didTapAdditionalInfoInBrowser(htmlURL: String)
     func didDisappearViewController()

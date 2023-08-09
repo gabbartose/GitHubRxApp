@@ -152,7 +152,7 @@ extension SearchRepositoriesViewModelTests {
     }
 }
 
-// MARK: didSelectUserDetails(userDetails: Owner) test
+// MARK: didTapSignOutButton test
 extension SearchRepositoriesViewModelTests {
     func testSearchRepositoriesViewModel_WhenDidTapSignOutButton_ShouldCallDidTapSignOutButtonOnDelegate() {
         // Arrange (Given)

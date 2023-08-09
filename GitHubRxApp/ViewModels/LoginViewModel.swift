@@ -19,7 +19,6 @@ protocol LoginViewModelProtocol {
     
     func didSelectLoginButton()
     func didDisappearViewController()
-    func getUser()
     func navigateToSearchRepositoriesScreen()
 }
 
@@ -75,7 +74,7 @@ extension LoginViewModel {
                     self.loadingInProgressSubject.onNext(false)
                     switch result {
                     case .success:
-                        self.getUser()
+                        getUser()
                     case .failure(let errorReport):
                         self.onErrorSubject.onNext(errorReport)
                         print("Failed to exchange access code for tokens: \(errorReport), \(errorReport.cause)")
@@ -101,7 +100,15 @@ extension LoginViewModel {
         loginButtonCounter += 1
     }
     
-    func getUser() {
+    func didDisappearViewController() {
+        delegate?.didEnd()
+    }
+    
+    func navigateToSearchRepositoriesScreen() {
+        delegate?.showSearchRepositoriesScreen()
+    }
+    
+    private func getUser() {
         loadingInProgressSubject.onNext(true)
         
         loginRepository.getUser { [weak self] result in
@@ -116,14 +123,6 @@ extension LoginViewModel {
                 loginButtonCounter = 0
             }
         }
-    }
-    
-    func didDisappearViewController() {
-        delegate?.didEnd()
-    }
-    
-    func navigateToSearchRepositoriesScreen() {
-        delegate?.showSearchRepositoriesScreen()
     }
 }
 
