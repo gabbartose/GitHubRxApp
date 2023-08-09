@@ -10,7 +10,7 @@ import RxSwift
 protocol SearchRepositoriesViewModelDelegate: AnyObject {
     func didSelectRepository(item: Item)
     func didSelectUserDetails(userDetails: Owner)
-    func showLoginScreen()
+    func didTapSignOutButton()
 }
 
 protocol SearchRepositoriesViewModelProtocol {
@@ -84,7 +84,7 @@ extension SearchRepositoriesViewModel {
     }
     
     func didTapSignOutButton() {
-        delegate?.showLoginScreen()
+        delegate?.didTapSignOutButton()
         NetworkManager.signOut()
     }
     

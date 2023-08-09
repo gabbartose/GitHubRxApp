@@ -16,6 +16,9 @@
 		75098D2A2A8288F100997DE8 /* TestScheduler+GitHubRxAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D292A8288F000997DE8 /* TestScheduler+GitHubRxAppTests.swift */; };
 		75098D2D2A82893900997DE8 /* SearchRepositoriesRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D2C2A82893900997DE8 /* SearchRepositoriesRepositoryTests.swift */; };
 		75098D302A828AD800997DE8 /* SearchRepositoriesAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D2F2A828AD800997DE8 /* SearchRepositoriesAPIMock.swift */; };
+		75098D332A8358C000997DE8 /* SearchRepositoriesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D322A8358C000997DE8 /* SearchRepositoriesViewModelTests.swift */; };
+		75098D352A835AA600997DE8 /* SearchRepositoriesRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D342A835AA600997DE8 /* SearchRepositoriesRepositoryMock.swift */; };
+		75098D372A835D6C00997DE8 /* SearchRepositoriesViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D362A835D6C00997DE8 /* SearchRepositoriesViewModelDelegateMock.swift */; };
 		7510C46C2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46B2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift */; };
 		7510C46E2A7A166F009EAAAF /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46D2A7A166F009EAAAF /* LoginAPI.swift */; };
 		7510C4702A7B8560009EAAAF /* NetworkManager+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46F2A7B8560009EAAAF /* NetworkManager+User.swift */; };
@@ -124,6 +127,9 @@
 		75098D292A8288F000997DE8 /* TestScheduler+GitHubRxAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestScheduler+GitHubRxAppTests.swift"; sourceTree = "<group>"; };
 		75098D2C2A82893900997DE8 /* SearchRepositoriesRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesRepositoryTests.swift; sourceTree = "<group>"; };
 		75098D2F2A828AD800997DE8 /* SearchRepositoriesAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesAPIMock.swift; sourceTree = "<group>"; };
+		75098D322A8358C000997DE8 /* SearchRepositoriesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesViewModelTests.swift; sourceTree = "<group>"; };
+		75098D342A835AA600997DE8 /* SearchRepositoriesRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesRepositoryMock.swift; sourceTree = "<group>"; };
+		75098D362A835D6C00997DE8 /* SearchRepositoriesViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesViewModelDelegateMock.swift; sourceTree = "<group>"; };
 		7510C46B2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+GitHubRxApp.swift"; sourceTree = "<group>"; };
 		7510C46D2A7A166F009EAAAF /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
 		7510C46F2A7B8560009EAAAF /* NetworkManager+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+User.swift"; sourceTree = "<group>"; };
@@ -345,10 +351,20 @@
 		75098D2E2A828A9100997DE8 /* SearchRepositoriesRepositoryMocks */ = {
 			isa = PBXGroup;
 			children = (
-				75098D242A820A4500997DE8 /* SearchRepositoriesResponseMock.swift */,
 				75098D2F2A828AD800997DE8 /* SearchRepositoriesAPIMock.swift */,
+				75098D342A835AA600997DE8 /* SearchRepositoriesRepositoryMock.swift */,
+				75098D242A820A4500997DE8 /* SearchRepositoriesResponseMock.swift */,
+				75098D362A835D6C00997DE8 /* SearchRepositoriesViewModelDelegateMock.swift */,
 			);
 			path = SearchRepositoriesRepositoryMocks;
+			sourceTree = "<group>";
+		};
+		75098D312A83588F00997DE8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				75098D322A8358C000997DE8 /* SearchRepositoriesViewModelTests.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		7510C4712A7BE31B009EAAAF /* PickerValues */ = {
@@ -810,6 +826,7 @@
 			children = (
 				75098D1D2A8206AD00997DE8 /* Data */,
 				75098D232A8209EB00997DE8 /* Mocks */,
+				75098D312A83588F00997DE8 /* ViewModels */,
 			);
 			path = GitHubRxAppTests;
 			sourceTree = "<group>";
@@ -1166,8 +1183,11 @@
 				75098D2A2A8288F100997DE8 /* TestScheduler+GitHubRxAppTests.swift in Sources */,
 				75098D2D2A82893900997DE8 /* SearchRepositoriesRepositoryTests.swift in Sources */,
 				75098D302A828AD800997DE8 /* SearchRepositoriesAPIMock.swift in Sources */,
+				75098D332A8358C000997DE8 /* SearchRepositoriesViewModelTests.swift in Sources */,
 				75098D272A82104300997DE8 /* SearchRepositoriesAPITests.swift in Sources */,
+				75098D352A835AA600997DE8 /* SearchRepositoriesRepositoryMock.swift in Sources */,
 				75098D1A2A82047B00997DE8 /* URLSessionDataTaskMock.swift in Sources */,
+				75098D372A835D6C00997DE8 /* SearchRepositoriesViewModelDelegateMock.swift in Sources */,
 				75098D1C2A82068100997DE8 /* URLProtocolMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

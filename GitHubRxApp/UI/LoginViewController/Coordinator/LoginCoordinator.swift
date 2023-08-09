@@ -65,7 +65,7 @@ extension LoginCoordinator: SearchRepositoriesViewModelDelegate, RepositoryDetai
         userDetailsCoordinator.startWith(userDetails: userDetails)
     }
     
-    func showLoginScreen() {
+    func didTapSignOutButton() {
         start()
     }
 }
