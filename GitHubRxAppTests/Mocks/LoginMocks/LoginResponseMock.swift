@@ -23,8 +23,9 @@ class LoginResponseMock {
     private var tokenType: String? = "bearer"
     
     let codeExchangeURL = URL(string: "https://github.com/login/oauth/access_token?client_id=Iv1.03eda0e0b6c3100b&client_secret=370d1b2a85339484e0bb76c26a214ffbac09a388&code=6dc273fefba092a2a1d9")
+    let userURL = URL(string: "https://api.github.com/user")
     
-    func getUser() -> User {
+    func getUserResponse() -> User {
         return User(login: login ?? "",
                     name: name ?? "")
     }

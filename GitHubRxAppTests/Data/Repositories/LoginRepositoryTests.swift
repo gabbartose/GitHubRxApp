@@ -31,12 +31,21 @@ final class LoginRepositoryTests: XCTestCase {
 
 // MARK: createSignInURLWithClientId() -> URL? tests
 extension LoginRepositoryTests {
-    
+    func testLoginRepository_WhenCreateSignInURLWithClientIdMethodCalled_ShouldCallCreateSignInURLWithClientIdOnLoginAPI() {
+        // Arrange (Given)
+        
+        // Act (When)
+        _ = sut.createSignInURLWithClientId()
+        
+        // Assert (Then)
+        XCTAssertTrue(loginAPIMock.createSignInURLWithClientIdWasCalled)
+        XCTAssertEqual(loginAPIMock.createSignInURLWithClientIdCounter, 1)
+    }
 }
 
 // MARK: codeExchange(code: String, completion: @escaping (Result<(response: HTTPURLResponse, object: String), ErrorReport>) -> ()) tests
 extension LoginRepositoryTests {
-    func testLoginRepository_WhenCodeExchangeMethodCalled_ShouldCallLoginAPICodeExchangeMethod() {
+    func testLoginRepository_WhenCodeExchangeMethodCalled_ShouldCallCodeExchangeMethodOnLoginAPI() {
         // Arrange (Given)
         let completion: (Result<(response: HTTPURLResponse, object: String), ErrorReport>) -> () = { _ in }
         
@@ -87,5 +96,50 @@ extension LoginRepositoryTests {
 
 // MARK: getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ()) tests
 extension LoginRepositoryTests {
+    func testLoginRepository_WhenGetUserMethodCalled_ShouldCallGetUserMethodOnLoginAPI() {
+        // Arrange (Given)
+        let completion: (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> () = { _ in }
+        
+        // Act (When)
+        sut.getUser(completion: completion)
+        
+        // Assert (Then)
+        XCTAssertTrue(loginAPIMock.getUserWasCalled)
+        XCTAssertEqual(loginAPIMock.getUserCounter, 1)
+    }
     
+    func testLoginRepository_WhenGetUserMethodCalledOnSuccess_ShouldCallCompletionWithSuccess() {
+        // Arrange (Given)
+        let userURL = loginResponseMock.userURL
+        let userResponse = HTTPURLResponse(url: userURL!, statusCode: 200, httpVersion: nil, headerFields: nil)!
+        let userObject = loginResponseMock.getUserResponse()
+        
+        loginAPIMock.getUserResponse = userResponse
+        loginAPIMock.getUserObject = userObject
+        
+        let completionExpectation = expectation(description: "Completion block expectation")
+        
+        // Act (When)
+        sut.getUser() { result in
+            guard case .success = result else { return }
+            completionExpectation.fulfill()
+        }
+        
+        // Assert (Then)
+        wait(for: [completionExpectation], timeout: 5)
+    }
+    
+    func testLoginRepository_WhenGetUserMethodCalledOnFailure_ShouldCallCompletionWithErrorReport() {
+        // Arrange (Given)
+        let completionExpectation = expectation(description: "Completion block expectation")
+        
+        // Act (When)
+        sut.getUser() { result in
+            guard case .failure = result else { return }
+            completionExpectation.fulfill()
+        }
+        
+        // Assert (Then)
+        wait(for: [completionExpectation], timeout: 5)
+    }
 }

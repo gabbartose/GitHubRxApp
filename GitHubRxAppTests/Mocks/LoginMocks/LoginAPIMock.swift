@@ -12,13 +12,18 @@ class LoginAPIMock: LoginAPIProtocol {
     
     var createSignInURLWithClientIdWasCalled = false
     var createSignInURLWithClientIdCounter = 0
-    var signInURL: URL? = URL(string: "https://github.com/login/oauth/authorize?client_id=Iv1.03eda0e0b6c3100b") ?? URL(string: "")
+    var signInURL: URL?
     
     var codeExchangeWasCalled = false
     var codeExchangeCounter = 0
     var codeExchangeResponse: HTTPURLResponse?
     var codeExchangeObject: String?
     var code: String?
+    
+    var getUserWasCalled = false
+    var getUserCounter = 0
+    var getUserResponse: HTTPURLResponse?
+    var getUserObject: User?
     
     func createSignInURLWithClientId() -> URL? {
         createSignInURLWithClientIdWasCalled = true
@@ -32,7 +37,7 @@ class LoginAPIMock: LoginAPIProtocol {
         self.code = code
         
         guard let codeExchangeResponse = codeExchangeResponse,
-        let codeExchangeObject = codeExchangeObject else {
+              let codeExchangeObject = codeExchangeObject else {
             completion(.failure(ErrorReport(cause: .other, data: nil)))
             return
         }
@@ -40,9 +45,14 @@ class LoginAPIMock: LoginAPIProtocol {
     }
     
     func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ()) {
+        getUserWasCalled = true
+        getUserCounter += 1
         
-        // response za user-a
-        // Object: User(login: Optional("gabbartose"), name: Optional("Gabrijel Bartošek"))
-
+        guard let getUserResponse = getUserResponse,
+              let getUserObject = getUserObject else {
+            completion(.failure(ErrorReport(cause: .other, data: nil)))
+            return
+        }
+        completion(.success((getUserResponse, object: getUserObject)))
     }
 }
