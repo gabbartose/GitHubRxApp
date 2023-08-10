@@ -10,9 +10,9 @@ import XCTest
 
 final class SearchRepositoriesRepositoryTests: XCTestCase {
 
-    private var sut: SearchRepositoriesRepository!
     private var searchRepositoriesAPIMock: SearchRepositoriesAPIMock!
     private var repositoriesResponseMock: SearchRepositoriesResponseMock!
+    private var sut: SearchRepositoriesRepository!
     
     private let query = "iOS"
     private let page = 1
@@ -21,14 +21,14 @@ final class SearchRepositoriesRepositoryTests: XCTestCase {
     
     override func setUpWithError() throws {
         searchRepositoriesAPIMock = SearchRepositoriesAPIMock()
-        sut = SearchRepositoriesRepository(networkManager: NetworkManager(), searchRepositoriesAPI: searchRepositoriesAPIMock)
         repositoriesResponseMock = SearchRepositoriesResponseMock()
+        sut = SearchRepositoriesRepository(networkManager: NetworkManager(), searchRepositoriesAPI: searchRepositoriesAPIMock)
     }
 
     override func tearDownWithError() throws {
         searchRepositoriesAPIMock = nil
-        sut = nil
         repositoriesResponseMock = nil
+        sut = nil
     }
 }
 

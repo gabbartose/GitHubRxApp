@@ -19,6 +19,6 @@
 import Foundation
 
 struct User: Codable, Equatable {
-    var login: String?
-    var name: String?
+    var login: String
+    var name: String
 }

@@ -14,7 +14,7 @@ class LoginRepositoryMock: LoginRepositoryProtocol {
         return URL(string: "")
     }
     
-    func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), GitHubRxApp.ErrorReport>) -> ()) {
+    func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ()) {
         
     }
     

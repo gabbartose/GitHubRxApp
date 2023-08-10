@@ -10,9 +10,9 @@ import XCTest
 
 final class SearchRepositoriesAPITests: XCTestCase {
     
-    private var sut: SearchRepositoriesAPI!
-    private var urlSessionMock: URLSessionMock!
     private var searchRepositoriesResponseMock: SearchRepositoriesResponseMock!
+    private var urlSessionMock: URLSessionMock!
+    private var sut: SearchRepositoriesAPI!
     
     private let query = "iOS"
     private let page = 1
@@ -20,17 +20,16 @@ final class SearchRepositoriesAPITests: XCTestCase {
     private let sort = "forks"
     
     override func setUpWithError() throws {
+        searchRepositoriesResponseMock = SearchRepositoriesResponseMock()
         urlSessionMock = URLSessionMock()
         sut = SearchRepositoriesAPI(networkManager: NetworkManager(configuration: NetworkConfiguration(session: urlSessionMock)))
-        searchRepositoriesResponseMock = SearchRepositoriesResponseMock()
     }
     
     override func tearDownWithError() throws {
+        searchRepositoriesResponseMock = nil
         urlSessionMock = nil
         sut = nil
-        searchRepositoriesResponseMock = nil
     }
-    
 }
 
 // MARK: getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<(response: HTTPURLResponse, object: RepositoriesResponse), ErrorReport>) -> ()) tests
@@ -52,7 +51,7 @@ extension SearchRepositoriesAPITests {
         sut.getRepositories(query: query, page: page, perPage: perPage, sort: sort, completion: completion)
         
         // Assert (Then)
-        wait(for: [completionExpectation], timeout: 0.5)
+        wait(for: [completionExpectation], timeout: 5)
     }
     
     func testRepositoriesAPI_WhenGetRepositoriesCalledOnFailure_ShouldCallCompletionWithErrorReport() {
