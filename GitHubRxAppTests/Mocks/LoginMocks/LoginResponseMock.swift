@@ -22,6 +22,8 @@ class LoginResponseMock {
     private var refreshToken: String? = "ghr_85yZFcP59mgK6M8IJAE0Xla06baWtEdaWTk0Fsy2wA6fDgAMikkwBWBlorzrxC6kMaRSdz0SpeuB"
     private var tokenType: String? = "bearer"
     
+    let codeExchangeURL = URL(string: "https://github.com/login/oauth/access_token?client_id=Iv1.03eda0e0b6c3100b&client_secret=370d1b2a85339484e0bb76c26a214ffbac09a388&code=6dc273fefba092a2a1d9")
+    
     func getUser() -> User {
         return User(login: login ?? "",
                     name: name ?? "")
@@ -32,6 +34,14 @@ class LoginResponseMock {
           {
             "login": "\(login ?? "")",
             "name": "\(name ?? "")"
+          }
+          """
+    }
+    
+    func getSuccessStringResponse() -> String {
+          """
+          {
+            "Success"
           }
           """
     }
