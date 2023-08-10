@@ -88,8 +88,6 @@ class NetworkManager {
                     NetworkManager.accessToken = dictionary["access_token"]
                     NetworkManager.refreshToken = dictionary["refresh_token"]
                     completion(.success((response: response, "Success" as! T)))
-                    print("Response: \(response)")
-                    print("Dictionary: \(dictionary)")
                 }
                 return
                 
@@ -99,8 +97,6 @@ class NetworkManager {
                         NetworkManager.username = user.login
                     }
                     completion(.success((response, object)))
-                    print("Response: \(response)")
-                    print("Object: \(object)")
                 }
                 return
             } else {
