@@ -32,7 +32,8 @@ class LoginViewModel: NSObject, LoginViewModelProtocol {
     private let loginRepository: LoginRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()
     private let onErrorSubject = PublishSubject<ErrorReport>()
-    private var loginButtonCounter = 0
+    // private var loginButtonCounter = 0
+    private var isLoginButtonDisabled = false
     
     init(loginRepository: LoginRepositoryProtocol) {
         self.loginRepository = loginRepository
@@ -65,7 +66,7 @@ extension LoginViewModel {
                       let queryItems = URLComponents(string: callbackURL.absoluteString)?.queryItems,
                       let code = queryItems.first(where: { $0.name == "code" })?.value else {
                     print("An error occurred when attempting to sign in.")
-                    self?.loginButtonCounter = 0
+                    self?.isLoginButtonDisabled = false
                     return
                 }
                 
@@ -78,12 +79,12 @@ extension LoginViewModel {
                     case .failure(let errorReport):
                         self.onErrorSubject.onNext(errorReport)
                         print("Failed to exchange access code for tokens: \(errorReport), \(errorReport.cause)")
-                        self.loginButtonCounter = 0
+                        self.isLoginButtonDisabled = false
                     }
                 }
             }
         
-        guard loginButtonCounter < 1 else {
+        guard !isLoginButtonDisabled else {
             loadingInProgressSubject.onNext(false)
             return
         }
@@ -93,11 +94,11 @@ extension LoginViewModel {
         
         if !authenticationSession.start() {
             print("Failed to start ASWebAuthenticationSession")
-            loginButtonCounter = 0
+            isLoginButtonDisabled = false
         }
         
         loadingInProgressSubject.onNext(false)
-        loginButtonCounter += 1
+        isLoginButtonDisabled = true
     }
     
     func didDisappearViewController() {
@@ -115,14 +116,12 @@ extension LoginViewModel {
             guard let self = self else { return }
             self.loadingInProgressSubject.onNext(false)
             switch result {
-            case .success((let response, let object)):
-                print("Response: \(response)")
-                print("Object: \(object)")
+            case .success:
                 self.navigateToSearchRepositoriesScreen()
             case .failure(let errorReport):
                 self.onErrorSubject.onNext(errorReport)
                 print("Failed to get user, or there is no valid/active session: \(errorReport.localizedDescription), \(errorReport.cause)")
-                loginButtonCounter = 0
+                isLoginButtonDisabled = false
             }
         }
     }
