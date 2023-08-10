@@ -41,6 +41,7 @@
 		755648782A84A44300E1745E /* LoginAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755648772A84A44300E1745E /* LoginAPITests.swift */; };
 		7556487A2A84AC7800E1745E /* LoginResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755648792A84AC7800E1745E /* LoginResponseMock.swift */; };
 		7556487C2A84ACBC00E1745E /* LoginAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7556487B2A84ACBC00E1745E /* LoginAPIMock.swift */; };
+		7556487E2A84E69F00E1745E /* LoginRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7556487D2A84E69F00E1745E /* LoginRepositoryTests.swift */; };
 		75A47C832A64FA0800618359 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47C822A64FA0800618359 /* AppDelegate.swift */; };
 		75A47C8C2A64FA0A00618359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C8B2A64FA0A00618359 /* Assets.xcassets */; };
 		75A47C8F2A64FA0A00618359 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C8D2A64FA0A00618359 /* LaunchScreen.storyboard */; };
@@ -183,6 +184,7 @@
 		755648772A84A44300E1745E /* LoginAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPITests.swift; sourceTree = "<group>"; };
 		755648792A84AC7800E1745E /* LoginResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseMock.swift; sourceTree = "<group>"; };
 		7556487B2A84ACBC00E1745E /* LoginAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPIMock.swift; sourceTree = "<group>"; };
+		7556487D2A84E69F00E1745E /* LoginRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryTests.swift; sourceTree = "<group>"; };
 		75A47C7F2A64FA0800618359 /* GitHubRxApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRxApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A47C822A64FA0800618359 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75A47C8B2A64FA0A00618359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				75098D2C2A82893900997DE8 /* SearchRepositoriesRepositoryTests.swift */,
+				7556487D2A84E69F00E1745E /* LoginRepositoryTests.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1249,6 +1252,7 @@
 				75098D1A2A82047B00997DE8 /* URLSessionDataTaskMock.swift in Sources */,
 				755648782A84A44300E1745E /* LoginAPITests.swift in Sources */,
 				755648712A83AA4D00E1745E /* LoginViewModelTests.swift in Sources */,
+				7556487E2A84E69F00E1745E /* LoginRepositoryTests.swift in Sources */,
 				750F11D22A837EFA0097B0CE /* RepositoryDetailsViewModelTests.swift in Sources */,
 				75098D372A835D6C00997DE8 /* SearchRepositoriesViewModelDelegateMock.swift in Sources */,
 				75098D1C2A82068100997DE8 /* URLProtocolMock.swift in Sources */,

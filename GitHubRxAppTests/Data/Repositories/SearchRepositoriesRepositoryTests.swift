@@ -32,7 +32,7 @@ final class SearchRepositoriesRepositoryTests: XCTestCase {
     }
 }
 
-// MARK: func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) tests
+// MARK: getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) tests
 extension SearchRepositoriesRepositoryTests {
     func testSearchRepositoriesRepository_WhenGetRepositoryMethodCalled_ShouldCallRepositoriesAPIGetRepositoriesMethod() {
         // Arrange (Given)

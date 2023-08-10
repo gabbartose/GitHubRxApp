@@ -9,16 +9,16 @@ import Foundation
 
 protocol LoginAPIProtocol {
     func createSignInURLWithClientId() -> URL?
-    func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ())
     func codeExchange(code: String, completion: @escaping (Result<(response: HTTPURLResponse, object: String), ErrorReport>) -> ())
+    func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ())
 }
 
 class LoginAPI: LoginAPIProtocol {
     
     private enum Paths: String, Equatable {
         case signIn = "/login/oauth/authorize"
-        case getUser = "/user"
         case codeExchange = "/login/oauth/access_token"
+        case getUser = "/user"
     }
     
     private let networkManager: NetworkManager
@@ -39,11 +39,6 @@ extension LoginAPI {
         return networkManager.createEndpoint(for: resource, basePath: networkManager.configuration.oAuthBasePath)
     }
     
-    func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ()) {
-        let resource = Resource<User>(path: Paths.getUser.rawValue)
-        networkManager.apiOAuthCall(for: resource, basePath: .basePath, completion: completion)
-    }
-    
     func codeExchange(code: String, completion: @escaping (Result<(response: HTTPURLResponse, object: String), ErrorReport>) -> ()) {
         var resource = Resource<String>(path: Paths.codeExchange.rawValue, method: .post)
         
@@ -54,5 +49,10 @@ extension LoginAPI {
         ]
 
         networkManager.apiOAuthCall(for: resource, basePath: .oAuthBasePath, completion: completion)
+    }
+    
+    func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ()) {
+        let resource = Resource<User>(path: Paths.getUser.rawValue)
+        networkManager.apiOAuthCall(for: resource, basePath: .basePath, completion: completion)
     }
 }
