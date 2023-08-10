@@ -49,7 +49,6 @@ class NetworkManager {
         session.resume()
     }
     
-    
     func apiOAuthCall<T: Codable>(for resource: Resource<T>, basePath: URL, completion: @escaping (Result<NetworkResult<T>, ErrorReport>) -> ()) {
         guard let endpoint = createEndpoint(for: resource, basePath: basePath) else { return }
         print("Entire endpoint: \(endpoint)")

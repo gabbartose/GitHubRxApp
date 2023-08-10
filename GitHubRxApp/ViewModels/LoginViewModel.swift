@@ -32,7 +32,6 @@ class LoginViewModel: NSObject, LoginViewModelProtocol {
     private let loginRepository: LoginRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()
     private let onErrorSubject = PublishSubject<ErrorReport>()
-    // private var loginButtonCounter = 0
     private var isLoginButtonDisabled = false
     
     init(loginRepository: LoginRepositoryProtocol) {
