@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import SnapKit
 
 class RepositoryTableViewCell: UITableViewCell {
     
@@ -14,7 +15,7 @@ class RepositoryTableViewCell: UITableViewCell {
         static let avatarPlaceholder = "AvatarPlaceholder"
     }
     
-    enum RepositoryStackViewLabel: String {
+    enum RepositoryVerticalStackViewLabel: String {
         case watchersLabel = "Watchers"
         case forksLabel = "Forks"
         case issuesLabel = "Issues"
@@ -32,10 +33,10 @@ class RepositoryTableViewCell: UITableViewCell {
     @IBOutlet weak var numberOfStarsLabel: UILabel!
     @IBOutlet weak var updatedDateLabel: UILabel!
     
-    lazy var watchersVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryStackViewLabel.watchersLabel.rawValue)
-    lazy var forksVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryStackViewLabel.forksLabel.rawValue)
-    lazy var issuesVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryStackViewLabel.issuesLabel.rawValue)
-    lazy var starsVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryStackViewLabel.starsLabel.rawValue)
+    lazy var watchersVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryVerticalStackViewLabel.watchersLabel.rawValue)
+    lazy var forksVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryVerticalStackViewLabel.forksLabel.rawValue)
+    lazy var issuesVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryVerticalStackViewLabel.issuesLabel.rawValue)
+    lazy var starsVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryVerticalStackViewLabel.starsLabel.rawValue)
     
     private var repositoryItem: Item?
     var onDidSelectAuthorImageView: ((Owner) -> ())?
@@ -62,6 +63,7 @@ class RepositoryTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setRoundedCornerRadius()
+        setupVerticalStackViewTitleLabels()
         addGesture()
     }
 }
@@ -71,6 +73,13 @@ extension RepositoryTableViewCell {
     
     private func setRoundedCornerRadius() {
         authorImageView.setupImageViewProperties(with: authorImageView.bounds.size.width / 2.0)
+    }
+    
+    private func setupVerticalStackViewTitleLabels() {
+        watchersVerticalStackView.titleLabel.text = RepositoryVerticalStackViewLabel.watchersLabel.rawValue
+        forksVerticalStackView.titleLabel.text = RepositoryVerticalStackViewLabel.forksLabel.rawValue
+        issuesVerticalStackView.titleLabel.text = RepositoryVerticalStackViewLabel.issuesLabel.rawValue
+        starsVerticalStackView.titleLabel.text = RepositoryVerticalStackViewLabel.starsLabel.rawValue
     }
 }
 
