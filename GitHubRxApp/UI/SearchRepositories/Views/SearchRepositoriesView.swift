@@ -5,7 +5,6 @@
 //  Created by Gabrijel Bartosek on 18.07.2023..
 //
 
-import UIKit
 import SnapKit
 
 class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {

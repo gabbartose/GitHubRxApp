@@ -5,7 +5,6 @@
 //  Created by Gabrijel Bartosek on 27.07.2023..
 //
 
-import UIKit
 import SnapKit
 
 class LoginView: UIView, BasicViewMethodsProtocol {

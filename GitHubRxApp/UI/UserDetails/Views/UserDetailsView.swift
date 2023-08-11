@@ -5,7 +5,6 @@
 //  Created by Gabrijel Bartosek on 24.07.2023..
 //
 
-import UIKit
 import SnapKit
 
 class UserDetailsView: UIView, BasicViewMethodsProtocol {

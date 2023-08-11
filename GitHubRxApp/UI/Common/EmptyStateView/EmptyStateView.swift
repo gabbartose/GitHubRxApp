@@ -5,7 +5,6 @@
 //  Created by Gabrijel Bartosek on 19.07.2023..
 //
 
-import UIKit
 import SnapKit
 
 class EmptyStateView: UIView {
