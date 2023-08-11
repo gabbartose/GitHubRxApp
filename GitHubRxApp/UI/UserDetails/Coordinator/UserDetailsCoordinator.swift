@@ -30,8 +30,6 @@ class UserDetailsCoordinator: NSObject, NavigationCoordinator {
         let userDetailsViewModel = UserDetailsViewModel(userDetails: userDetails)
         userDetailsViewModel.delegate = self
         let userDetailsViewController = UserDetailsViewController(viewModel: userDetailsViewModel)
-        
-        // TODO: This should definitely be separated into a special class and/or find Pods with Custom animation (external library) for pushing to this screen
         let transition = CATransition()
         transition.duration = 0.7
         transition.type = CATransitionType.fade
