@@ -27,15 +27,15 @@ extension UIStackView {
     static func createVerticalStackView(with title: String) -> (stackView: UIStackView, titleLabel: UILabel, descriptionLabel: UILabel?) {
         let titleLabel = UILabel.setupLabel(font: .ralewayMedium(size: 12), textColor: .gDarkGray)
         let descriptionLabel = UILabel.setupLabel(font: .ralewayMedium(size: 12), textColor: .gDarkGray)
-        let horizontalStackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
+        let verticalStackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
         
         titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         descriptionLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        horizontalStackView.axis = .vertical
-        horizontalStackView.distribution = .fillEqually
-        horizontalStackView.alignment = .leading
-        horizontalStackView.spacing = 10
+        verticalStackView.axis = .vertical
+        verticalStackView.distribution = .fillEqually
+        verticalStackView.alignment = .leading
+        verticalStackView.spacing = 0
         
-        return (horizontalStackView, titleLabel, descriptionLabel)
+        return (verticalStackView, titleLabel, descriptionLabel)
     }
 }
