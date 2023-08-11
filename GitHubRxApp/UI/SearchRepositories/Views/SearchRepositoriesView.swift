@@ -37,6 +37,8 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
         searchBar.searchTextField.leftViewMode = .always
         searchBar.searchTextField.autocorrectionType = .no
         searchBar.returnKeyType = .default
+        searchBar.setImage(UIImage(systemName: "xmark.circle.fill"), for: .clear, state: .normal)
+        searchBar.tintColor = .gSearchBarDarkGray
         searchBar.clearBackgroundColor()
         return searchBar
     }()
