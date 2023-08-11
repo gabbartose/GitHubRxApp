@@ -10,4 +10,4 @@
 
 #include "Pods/Target Support Files/Pods-GitHubRxApp/Pods-GitHubRxApp.production.xcconfig"
 
-#include "StagingBaseConfiguration.xcconfig"
+#include "ProductionBaseConfiguration.xcconfig"

@@ -10,4 +10,4 @@
 
 #include "Pods/Target Support Files/Pods-GitHubRxApp/Pods-GitHubRxApp.test.xcconfig"
 
-#include "StagingBaseConfiguration.xcconfig"
+#include "TestBaseConfiguration.xcconfig"
