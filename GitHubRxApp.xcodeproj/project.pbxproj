@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4061A4AED2028F8E3AD74FEA /* Pods_GitHubRxApp_GitHubRxAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212507A7785563B259917FE3 /* Pods_GitHubRxApp_GitHubRxAppUITests.framework */; };
+		7508285B2A864230000CD39D /* CATransition+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7508285A2A864230000CD39D /* CATransition+GitHubRxApp.swift */; };
 		75098D182A82037700997DE8 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D172A82037700997DE8 /* URLSessionMock.swift */; };
 		75098D1A2A82047B00997DE8 /* URLSessionDataTaskMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D192A82047B00997DE8 /* URLSessionDataTaskMock.swift */; };
 		75098D1C2A82068100997DE8 /* URLProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D1B2A82068100997DE8 /* URLProtocolMock.swift */; };
@@ -130,6 +131,7 @@
 		60C62FA0D36C23ABE43BCD7A /* Pods-GitHubRxApp-GitHubRxAppUITests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxApp-GitHubRxAppUITests.test.xcconfig"; path = "Target Support Files/Pods-GitHubRxApp-GitHubRxAppUITests/Pods-GitHubRxApp-GitHubRxAppUITests.test.xcconfig"; sourceTree = "<group>"; };
 		678B50B5F0338BBCC441AA65 /* Pods-GitHubRxAppTests.devproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxAppTests.devproduction.xcconfig"; path = "Target Support Files/Pods-GitHubRxAppTests/Pods-GitHubRxAppTests.devproduction.xcconfig"; sourceTree = "<group>"; };
 		684B1D0E61B3CC0647DF90F8 /* Pods-GitHubRxApp.devproduction.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxApp.devproduction.xcconfig"; path = "Target Support Files/Pods-GitHubRxApp/Pods-GitHubRxApp.devproduction.xcconfig"; sourceTree = "<group>"; };
+		7508285A2A864230000CD39D /* CATransition+GitHubRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransition+GitHubRxApp.swift"; sourceTree = "<group>"; };
 		75098D172A82037700997DE8 /* URLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionMock.swift; sourceTree = "<group>"; };
 		75098D192A82047B00997DE8 /* URLSessionDataTaskMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskMock.swift; sourceTree = "<group>"; };
 		75098D1B2A82068100997DE8 /* URLProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolMock.swift; sourceTree = "<group>"; };
@@ -684,6 +686,7 @@
 		75A47CBF2A652DC900618359 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7508285A2A864230000CD39D /* CATransition+GitHubRxApp.swift */,
 				75A47CD62A6537FE00618359 /* Data+GitHubRxApp.swift */,
 				75A47D052A67E71700618359 /* Date+GitHubRxApp.swift */,
 				75A47CDD2A65399A00618359 /* UIAlertController+GitHubRxApp.swift */,
@@ -1226,6 +1229,7 @@
 				75A47CEE2A66506B00618359 /* RepositoryTableViewCell.swift in Sources */,
 				75A47CD52A6537AF00618359 /* PreconditionFailedError.swift in Sources */,
 				75A47CBE2A65286800618359 /* NetworkConfiguration.swift in Sources */,
+				7508285B2A864230000CD39D /* CATransition+GitHubRxApp.swift in Sources */,
 				75A47D002A67A84F00618359 /* SearchRepositoriesAPI.swift in Sources */,
 				75A47CC72A65332E00618359 /* UIFont+GitHubRxApp.swift in Sources */,
 			);

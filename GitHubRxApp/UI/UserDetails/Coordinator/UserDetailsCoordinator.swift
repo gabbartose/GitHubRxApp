@@ -30,10 +30,7 @@ class UserDetailsCoordinator: NSObject, NavigationCoordinator {
         let userDetailsViewModel = UserDetailsViewModel(userDetails: userDetails)
         userDetailsViewModel.delegate = self
         let userDetailsViewController = UserDetailsViewController(viewModel: userDetailsViewModel)
-        let transition = CATransition()
-        transition.duration = 0.7
-        transition.type = CATransitionType.fade
-        rootViewController.view.layer.add(transition, forKey: nil)
+        rootViewController.view.layer.add(CATransition.setTransition(), forKey: nil)
         rootViewController.pushViewController(userDetailsViewController, animated: false)
     }
     
