@@ -9,33 +9,30 @@ import UIKit
 
 extension UIStackView {
     
-    static func createHorizontalStackView(with title: String) -> (stackView: UIStackView, titleLabel: UILabel, descriptionLabel: UILabel?) {
-        let titleLabel = UILabel.setupLabel(font: .ralewayExtraBold, textColor: .gDarkGray)
-        let descriptionLabel = UILabel.setupLabel(font: .ralewayBold, textColor: .gDarkGray)
+    static func createStackView(with title: String,
+                                orientation: NSLayoutConstraint.Axis = .horizontal,
+                                spacing: CGFloat = 10) -> (stackView: UIStackView, titleLabel: UILabel, descriptionLabel: UILabel?) {
+        
+        let titleLabel: UILabel
+        let descriptionLabel: UILabel
+        
+        if orientation == .horizontal {
+            titleLabel = UILabel.setupLabel(font: .ralewayExtraBold(size: 14), textColor: .gDarkGray)
+            descriptionLabel = UILabel.setupLabel(font: .ralewayExtraBold(size: 14), textColor: .gDarkGray)
+        } else {
+            titleLabel = UILabel.setupLabel(font: .ralewayMedium(size: 12), textColor: .gDarkGray)
+            descriptionLabel = UILabel.setupLabel(font: .ralewayMedium(size: 12), textColor: .gDarkGray)
+        }
+        
         let horizontalStackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
         
         titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         descriptionLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        horizontalStackView.axis = .horizontal
+        horizontalStackView.axis = orientation
         horizontalStackView.distribution = .fillEqually
         horizontalStackView.alignment = .leading
-        horizontalStackView.spacing = 10
+        horizontalStackView.spacing = spacing
         
         return (horizontalStackView, titleLabel, descriptionLabel)
-    }
-    
-    static func createVerticalStackView(with title: String) -> (stackView: UIStackView, titleLabel: UILabel, descriptionLabel: UILabel?) {
-        let titleLabel = UILabel.setupLabel(font: .ralewayMedium(size: 12), textColor: .gDarkGray)
-        let descriptionLabel = UILabel.setupLabel(font: .ralewayMedium(size: 12), textColor: .gDarkGray)
-        let verticalStackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
-        
-        titleLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        descriptionLabel.setContentCompressionResistancePriority(.required, for: .vertical)
-        verticalStackView.axis = .vertical
-        verticalStackView.distribution = .fillEqually
-        verticalStackView.alignment = .leading
-        verticalStackView.spacing = 0
-        
-        return (verticalStackView, titleLabel, descriptionLabel)
     }
 }

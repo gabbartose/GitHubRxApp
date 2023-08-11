@@ -16,10 +16,10 @@ extension UIFont {
         case ralewayExtraBold = "Raleway-ExtraBold"
     }
     
-    static let ralewayMedium = UIFont(name: .ralewayMedium, size: 14.0)!
-    static let ralewayMediumItalic = UIFont(name: .ralewayMediumItalic, size: 14.0)!
-    static let ralewayBold = UIFont(name: .ralewayBold, size: 14.0)!
-    static let ralewayExtraBold = UIFont(name: .ralewayExtraBold, size: 14.0)!
+    static let ralewayMedium = UIFont(name: .ralewayMedium, size: 14.0) ?? UIFont.systemFont(ofSize: 14)
+    static let ralewayMediumItalic = UIFont(name: .ralewayMediumItalic, size: 14.0) ?? UIFont.systemFont(ofSize: 14)
+    static let ralewayBold = UIFont(name: .ralewayBold, size: 14.0) ?? UIFont.systemFont(ofSize: 14)
+    static let ralewayExtraBold = UIFont(name: .ralewayExtraBold, size: 14.0) ?? UIFont.systemFont(ofSize: 14)
     
     convenience init?(name fontName: FontName, size fontSize: CGFloat) {
         self.init(name: fontName.rawValue, size: fontSize)

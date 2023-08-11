@@ -32,9 +32,9 @@ class RepositoryDetailsView: UIView, BasicViewMethodsProtocol {
         return verticalStackView
     }()
     
-    lazy var programmingLanguageHorizontalStackView = UIStackView.createHorizontalStackView(with: RepositoryDetailsStackViewLabels.programmingLanguage.rawValue)
-    lazy var dateOfCreationHorizontalStackView = UIStackView.createHorizontalStackView(with: RepositoryDetailsStackViewLabels.dateOfCreation.rawValue)
-    lazy var dateOfModificationHorizontalStackView = UIStackView.createHorizontalStackView(with: RepositoryDetailsStackViewLabels.dateOfModification.rawValue)
+    lazy var programmingLanguageHorizontalStackView = UIStackView.createStackView(with: RepositoryDetailsStackViewLabels.programmingLanguage.rawValue)
+    lazy var dateOfCreationHorizontalStackView = UIStackView.createStackView(with: RepositoryDetailsStackViewLabels.dateOfCreation.rawValue)
+    lazy var dateOfModificationHorizontalStackView = UIStackView.createStackView(with: RepositoryDetailsStackViewLabels.dateOfModification.rawValue)
     
     lazy var descriptionLabel = UILabel.setupLabel(textColor: .gDarkGray)
     

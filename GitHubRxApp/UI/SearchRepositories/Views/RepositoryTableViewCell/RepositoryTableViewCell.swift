@@ -27,10 +27,25 @@ class RepositoryTableViewCell: UITableViewCell {
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var updatedDateLabel: UILabel!
     
-    lazy var watchersVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryVerticalStackViewLabel.watchersLabel.rawValue)
-    lazy var forksVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryVerticalStackViewLabel.forksLabel.rawValue)
-    lazy var issuesVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryVerticalStackViewLabel.issuesLabel.rawValue)
-    lazy var starsVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryVerticalStackViewLabel.starsLabel.rawValue)
+    lazy var watchersVerticalStackView = UIStackView.createStackView(
+        with: RepositoryVerticalStackViewLabel.watchersLabel.rawValue,
+        orientation: .vertical,
+        spacing: 0)
+    
+    lazy var forksVerticalStackView = UIStackView.createStackView(
+        with: RepositoryVerticalStackViewLabel.forksLabel.rawValue,
+        orientation: .vertical,
+        spacing: 0)
+    
+    lazy var issuesVerticalStackView = UIStackView.createStackView(
+        with: RepositoryVerticalStackViewLabel.issuesLabel.rawValue,
+        orientation: .vertical,
+        spacing: 0)
+    
+    lazy var starsVerticalStackView = UIStackView.createStackView(
+        with: RepositoryVerticalStackViewLabel.starsLabel.rawValue,
+        orientation: .vertical,
+        spacing: 0)
     
     
     lazy var watchersLabel = UILabel.setupLabel(with: RepositoryVerticalStackViewLabel.watchersLabel.rawValue,
@@ -38,16 +53,16 @@ class RepositoryTableViewCell: UITableViewCell {
                                                 textColor: .gDarkGray)
     
     lazy var forksLabel = UILabel.setupLabel(with: RepositoryVerticalStackViewLabel.forksLabel.rawValue,
-                                                font: .ralewayMedium(size: 12),
-                                                textColor: .gDarkGray)
+                                             font: .ralewayMedium(size: 12),
+                                             textColor: .gDarkGray)
     
     lazy var issuesLabel = UILabel.setupLabel(with: RepositoryVerticalStackViewLabel.issuesLabel.rawValue,
-                                                font: .ralewayMedium(size: 12),
-                                                textColor: .gDarkGray)
+                                              font: .ralewayMedium(size: 12),
+                                              textColor: .gDarkGray)
     
     lazy var starsLabel = UILabel.setupLabel(with: RepositoryVerticalStackViewLabel.starsLabel.rawValue,
-                                                font: .ralewayMedium(size: 12),
-                                                textColor: .gDarkGray)
+                                             font: .ralewayMedium(size: 12),
+                                             textColor: .gDarkGray)
     
     private var repositoryItem: Item?
     var onDidSelectAuthorImageView: ((Owner) -> ())?

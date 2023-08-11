@@ -40,11 +40,11 @@ class UserDetailsView: UIView, BasicViewMethodsProtocol {
         return verticalStackView
     }()
         
-    lazy var idHorizontalStackView = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.id.rawValue)
-    lazy var nodeIdHorizontalStackView = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.nodeId.rawValue)
-    lazy var loginNameHorizontalStackView = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.loginName.rawValue)
-    lazy var typeHorizontalStackView = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.type.rawValue)
-    lazy var siteAdminHorizontalStackView = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.siteAdmin.rawValue)
+    lazy var idHorizontalStackView = UIStackView.createStackView(with: UserDetailsStackViewLabels.id.rawValue)
+    lazy var nodeIdHorizontalStackView = UIStackView.createStackView(with: UserDetailsStackViewLabels.nodeId.rawValue)
+    lazy var loginNameHorizontalStackView = UIStackView.createStackView(with: UserDetailsStackViewLabels.loginName.rawValue)
+    lazy var typeHorizontalStackView = UIStackView.createStackView(with: UserDetailsStackViewLabels.type.rawValue)
+    lazy var siteAdminHorizontalStackView = UIStackView.createStackView(with: UserDetailsStackViewLabels.siteAdmin.rawValue)
     
     lazy var userDetailsLabel = UILabel.setupLabel(with: "Open user details in external browser",
                                                    textColor: .gBlue,
