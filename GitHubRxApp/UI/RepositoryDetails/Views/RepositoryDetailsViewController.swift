@@ -66,9 +66,9 @@ extension RepositoryDetailsViewController {
     }
     
     private func setupLabels() {
-        repositoryDetailsView.programmingLanguageLabel.descriptionLabel?.text = repositoryItem?.language ?? Constants.noDataLabel
-        repositoryDetailsView.dateOfCreationLabel.descriptionLabel?.text = Date.convertDate(date: repositoryItem?.createdAt ?? Constants.noDataLabel)
-        repositoryDetailsView.dateOfModificationLabel.descriptionLabel?.text = Date.convertDate(date: repositoryItem?.updatedAt ?? Constants.noDataLabel)
+        repositoryDetailsView.programmingLanguageHorizontalStackView.descriptionLabel?.text = repositoryItem?.language ?? Constants.noDataLabel
+        repositoryDetailsView.dateOfCreationHorizontalStackView.descriptionLabel?.text = Date.convertDate(date: repositoryItem?.createdAt ?? Constants.noDataLabel)
+        repositoryDetailsView.dateOfModificationHorizontalStackView.descriptionLabel?.text = Date.convertDate(date: repositoryItem?.updatedAt ?? Constants.noDataLabel)
         repositoryDetailsView.descriptionLabel.text = repositoryItem?.description ?? Constants.noDataLabel
     }
 }

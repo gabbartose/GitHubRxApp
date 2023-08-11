@@ -23,18 +23,18 @@ class RepositoryDetailsView: UIView, BasicViewMethodsProtocol {
     
     private lazy var mainVerticalStackView: UIStackView = {
         let verticalStackView = UIStackView(arrangedSubviews: [
-            programmingLanguageLabel.stackView,
-            dateOfCreationLabel.stackView,
-            dateOfModificationLabel.stackView
+            programmingLanguageHorizontalStackView.stackView,
+            dateOfCreationHorizontalStackView.stackView,
+            dateOfModificationHorizontalStackView.stackView
         ])
         verticalStackView.axis = .vertical
         verticalStackView.spacing = 20
         return verticalStackView
     }()
     
-    lazy var programmingLanguageLabel = UIStackView.createHorizontalStackView(with: RepositoryDetailsStackViewLabels.programmingLanguage.rawValue)
-    lazy var dateOfCreationLabel = UIStackView.createHorizontalStackView(with: RepositoryDetailsStackViewLabels.dateOfCreation.rawValue)
-    lazy var dateOfModificationLabel = UIStackView.createHorizontalStackView(with: RepositoryDetailsStackViewLabels.dateOfModification.rawValue)
+    lazy var programmingLanguageHorizontalStackView = UIStackView.createHorizontalStackView(with: RepositoryDetailsStackViewLabels.programmingLanguage.rawValue)
+    lazy var dateOfCreationHorizontalStackView = UIStackView.createHorizontalStackView(with: RepositoryDetailsStackViewLabels.dateOfCreation.rawValue)
+    lazy var dateOfModificationHorizontalStackView = UIStackView.createHorizontalStackView(with: RepositoryDetailsStackViewLabels.dateOfModification.rawValue)
     
     lazy var descriptionLabel = UILabel.setupLabel(textColor: .gDarkGray)
     
@@ -112,9 +112,9 @@ extension RepositoryDetailsView {
 extension RepositoryDetailsView {
     
     private func setupHorizontalStackViewTitleLabels() {
-        programmingLanguageLabel.titleLabel.text = RepositoryDetailsStackViewLabels.programmingLanguage.rawValue
-        dateOfCreationLabel.titleLabel.text = RepositoryDetailsStackViewLabels.dateOfCreation.rawValue
-        dateOfModificationLabel.titleLabel.text = RepositoryDetailsStackViewLabels.dateOfModification.rawValue
+        programmingLanguageHorizontalStackView.titleLabel.text = RepositoryDetailsStackViewLabels.programmingLanguage.rawValue
+        dateOfCreationHorizontalStackView.titleLabel.text = RepositoryDetailsStackViewLabels.dateOfCreation.rawValue
+        dateOfModificationHorizontalStackView.titleLabel.text = RepositoryDetailsStackViewLabels.dateOfModification.rawValue
     }
     
 }

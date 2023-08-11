@@ -14,6 +14,15 @@ class RepositoryTableViewCell: UITableViewCell {
         static let avatarPlaceholder = "AvatarPlaceholder"
     }
     
+    enum RepositoryStackViewLabel: String {
+        case watchersLabel = "Watchers"
+        case forksLabel = "Forks"
+        case issuesLabel = "Issues"
+        case starsLabel = "Stars"
+    }
+    
+    @IBOutlet weak var horizontalStackView: UIStackView!
+    
     @IBOutlet weak var authorImageView: UIImageView!
     @IBOutlet weak var repositoryNameLabel: UILabel!
     @IBOutlet weak var authorNameLabel: UILabel!
@@ -22,6 +31,11 @@ class RepositoryTableViewCell: UITableViewCell {
     @IBOutlet weak var numberOfIssuesLabel: UILabel!
     @IBOutlet weak var numberOfStarsLabel: UILabel!
     @IBOutlet weak var updatedDateLabel: UILabel!
+    
+    lazy var watchersVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryStackViewLabel.watchersLabel.rawValue)
+    lazy var forksVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryStackViewLabel.forksLabel.rawValue)
+    lazy var issuesVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryStackViewLabel.issuesLabel.rawValue)
+    lazy var starsVerticalStackView = UIStackView.createVerticalStackView(with: RepositoryStackViewLabel.starsLabel.rawValue)
     
     private var repositoryItem: Item?
     var onDidSelectAuthorImageView: ((Owner) -> ())?

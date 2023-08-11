@@ -68,11 +68,11 @@ extension UserDetailsViewController {
            let loginName = userDetails?.login,
            let type = userDetails?.type,
            let siteAdmin = userDetails?.siteAdmin {
-            userDetailsView.idLabel.descriptionLabel?.text = "\(id)"
-            userDetailsView.nodeIdLabel.descriptionLabel?.text = "\(nodeId)"
-            userDetailsView.loginNameLabel.descriptionLabel?.text = loginName
-            userDetailsView.typeLabel.descriptionLabel?.text = type
-            userDetailsView.siteAdminLabel.descriptionLabel?.text = "\(siteAdmin)"
+            userDetailsView.idHorizontalStackView.descriptionLabel?.text = "\(id)"
+            userDetailsView.nodeIdHorizontalStackView.descriptionLabel?.text = "\(nodeId)"
+            userDetailsView.loginNameHorizontalStackView.descriptionLabel?.text = loginName
+            userDetailsView.typeHorizontalStackView.descriptionLabel?.text = type
+            userDetailsView.siteAdminHorizontalStackView.descriptionLabel?.text = "\(siteAdmin)"
         }
     }
     

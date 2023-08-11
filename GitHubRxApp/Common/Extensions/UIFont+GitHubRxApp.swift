@@ -25,19 +25,19 @@ extension UIFont {
         self.init(name: fontName.rawValue, size: fontSize)
     }
     
-    static func ralewayMedium(size: CGFloat) -> UIFont? {
+    static func ralewayMedium(size: CGFloat) -> UIFont! {
         return UIFont(name: .ralewayMedium, size: size)
     }
     
-    static func ralewayMediumItalic(size: CGFloat) -> UIFont? {
+    static func ralewayMediumItalic(size: CGFloat) -> UIFont! {
         return UIFont(name: .ralewayMediumItalic, size: size)
     }
     
-    static func ralewayBold(size: CGFloat) -> UIFont? {
+    static func ralewayBold(size: CGFloat) -> UIFont! {
         return UIFont(name: .ralewayBold, size: size)
     }
     
-    static func ralewayExtraBold(size: CGFloat) -> UIFont? {
+    static func ralewayExtraBold(size: CGFloat) -> UIFont! {
         return UIFont(name: .ralewayExtraBold, size: size)
     }
 }

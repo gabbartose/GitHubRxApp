@@ -29,22 +29,22 @@ class UserDetailsView: UIView, BasicViewMethodsProtocol {
     
     private lazy var mainVerticalStackView: UIStackView = {
         let verticalStackView = UIStackView(arrangedSubviews: [
-            idLabel.stackView,
-            nodeIdLabel.stackView,
-            loginNameLabel.stackView,
-            typeLabel.stackView,
-            siteAdminLabel.stackView
+            idHorizontalStackView.stackView,
+            nodeIdHorizontalStackView.stackView,
+            loginNameHorizontalStackView.stackView,
+            typeHorizontalStackView.stackView,
+            siteAdminHorizontalStackView.stackView
         ])
         verticalStackView.axis = .vertical
         verticalStackView.spacing = 20
         return verticalStackView
     }()
         
-    lazy var idLabel = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.id.rawValue)
-    lazy var nodeIdLabel = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.nodeId.rawValue)
-    lazy var loginNameLabel = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.loginName.rawValue)
-    lazy var typeLabel = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.type.rawValue)
-    lazy var siteAdminLabel = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.siteAdmin.rawValue)
+    lazy var idHorizontalStackView = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.id.rawValue)
+    lazy var nodeIdHorizontalStackView = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.nodeId.rawValue)
+    lazy var loginNameHorizontalStackView = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.loginName.rawValue)
+    lazy var typeHorizontalStackView = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.type.rawValue)
+    lazy var siteAdminHorizontalStackView = UIStackView.createHorizontalStackView(with: UserDetailsStackViewLabels.siteAdmin.rawValue)
     
     lazy var userDetailsLabel = UILabel.setupLabel(with: "Open user details in external browser",
                                                    textColor: .gBlue,
@@ -109,10 +109,10 @@ extension UserDetailsView {
 extension UserDetailsView {
     
     private func setupHorizontalStackViewTitleLabels() {
-        idLabel.titleLabel.text = UserDetailsStackViewLabels.id.rawValue
-        nodeIdLabel.titleLabel.text = UserDetailsStackViewLabels.nodeId.rawValue
-        loginNameLabel.titleLabel.text = UserDetailsStackViewLabels.loginName.rawValue
-        typeLabel.titleLabel.text = UserDetailsStackViewLabels.type.rawValue
-        siteAdminLabel.titleLabel.text = UserDetailsStackViewLabels.siteAdmin.rawValue
+        idHorizontalStackView.titleLabel.text = UserDetailsStackViewLabels.id.rawValue
+        nodeIdHorizontalStackView.titleLabel.text = UserDetailsStackViewLabels.nodeId.rawValue
+        loginNameHorizontalStackView.titleLabel.text = UserDetailsStackViewLabels.loginName.rawValue
+        typeHorizontalStackView.titleLabel.text = UserDetailsStackViewLabels.type.rawValue
+        siteAdminHorizontalStackView.titleLabel.text = UserDetailsStackViewLabels.siteAdmin.rawValue
     }
 }

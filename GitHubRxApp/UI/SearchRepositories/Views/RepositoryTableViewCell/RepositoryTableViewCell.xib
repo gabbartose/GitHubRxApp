@@ -163,6 +163,7 @@
             <connections>
                 <outlet property="authorImageView" destination="FQZ-IM-9lK" id="iNp-vH-Hmb"/>
                 <outlet property="authorNameLabel" destination="841-Al-V8Y" id="7sY-IB-Fe6"/>
+                <outlet property="horizontalStackView" destination="zNz-VJ-qsh" id="EBG-Vc-gaJ"/>
                 <outlet property="numberOfForksLabel" destination="8Zy-gD-91N" id="e2h-L8-lCI"/>
                 <outlet property="numberOfIssuesLabel" destination="JWM-0W-dkm" id="UBg-ns-v6r"/>
                 <outlet property="numberOfStarsLabel" destination="Q6X-MV-aCU" id="8VL-Qs-DzR"/>
