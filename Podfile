@@ -6,11 +6,11 @@ target 'GitHubRxApp' do
   use_frameworks!
 
   # Pods for GitHubRxApp
-  pod 'Kingfisher', '~> 7.0'
-  pod 'RxCocoa', '~> 6'
+  pod 'Kingfisher', '~> 7.9.0'
+  pod 'RxCocoa', '~> 6.5.0'
   pod 'RxDataSources'
-  pod 'RxSwift', '~> 6'
-  pod 'SnapKit', '~> 5.0.0'
+  pod 'RxSwift', '~> 6.5.0'
+  pod 'SnapKit', '~> 5.6.0'
   
   target 'GitHubRxAppTests' do
     inherit! :search_paths
