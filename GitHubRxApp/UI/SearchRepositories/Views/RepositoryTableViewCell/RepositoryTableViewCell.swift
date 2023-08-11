@@ -50,10 +50,16 @@ class RepositoryTableViewCell: UITableViewCell {
            let issuesCount = item.openIssues,
            let starsCount = item.stargazersCount,
            let updatedDate = item.updatedAt {
-            numberOfWatchersLabel.text = "\(watchersCount)"
-            numberOfForksLabel.text = "\(forksCount)"
-            numberOfIssuesLabel.text = "\(issuesCount)"
-            numberOfStarsLabel.text = "\(starsCount)"
+            //            numberOfWatchersLabel.text = "\(watchersCount)"
+            //            numberOfForksLabel.text = "\(forksCount)"
+            //            numberOfIssuesLabel.text = "\(issuesCount)"
+            //            numberOfStarsLabel.text = "\(starsCount)"
+            
+            watchersVerticalStackView.descriptionLabel?.text = "\(watchersCount)"
+            forksVerticalStackView.descriptionLabel?.text = "\(forksCount)"
+            issuesVerticalStackView.descriptionLabel?.text = "\(issuesCount)"
+            starsVerticalStackView.descriptionLabel?.text = "\(starsCount)"
+            
             updatedDateLabel.text = "\(Date.convertDate(date: updatedDate))"
         }
         
