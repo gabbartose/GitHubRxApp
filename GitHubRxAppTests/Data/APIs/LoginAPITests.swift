@@ -35,8 +35,6 @@ final class LoginAPITests: XCTestCase {
 
 // MARK: createSignInURLWithClientId() -> URL? tests
 extension LoginAPITests {
-    // TODO: See what's going on with that test below
-    /*
     func testLoginAPI_WhenCreateSignInURLWithClientIdCalledOnSuccess_ShouldCallCreateEndpointOnNetworkManager() {
         // Arrange (Given)
         let signIn = URL(string: "https://github.com/login/oauth/authorize?client_id=Iv1.03eda0e0b6c3100b") ?? URL(string: "")
@@ -44,10 +42,9 @@ extension LoginAPITests {
         // Act (When)
         if let signInURL = sut.createSignInURLWithClientId() {
             // Assert (Then)
-            XCTAssertEqual(loginAPIMock.signInURL, signIn)
+            XCTAssertEqual(signInURL, signIn)
         }
     }
-     */
 }
 
 // MARK: codeExchange(code: String, completion: @escaping (Result<(response: HTTPURLResponse, object: String), ErrorReport>) -> ()) tests
@@ -62,7 +59,7 @@ extension LoginAPITests {
             guard case .success((_, let returnedObject)) = result, returnedObject == "Success" else { return }
             completionExpectation.fulfill()
         }
-
+        
         // Act (When)
         sut.codeExchange(code: codeExchange, completion: completion)
         
