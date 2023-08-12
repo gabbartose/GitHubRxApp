@@ -75,7 +75,7 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
         tableView.separatorInset = .zero
         tableView.rowHeight = UITableView.automaticDimension
         tableView.alwaysBounceVertical = false
-        tableView.keyboardDismissMode = .interactive
+        tableView.keyboardDismissMode = .onDragWithAccessory
         tableView.backgroundView = UIView()
         tableView.backgroundView?.backgroundColor = .gBackgroundMain
         tableView.separatorColor = .gBorderLightGray
