@@ -84,8 +84,3 @@ extension LoginViewController {
         loginView.onDidSelectLoginButton = viewModel.didSelectLoginButton
     }
 }
-
-// MARK: Helper methods
-extension LoginViewController {
-    
-}
