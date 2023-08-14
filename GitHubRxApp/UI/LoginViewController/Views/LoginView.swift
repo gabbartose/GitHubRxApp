@@ -35,6 +35,8 @@ class LoginView: UIView, BasicViewMethodsProtocol {
         button.addShadow()
         button.setTitleColor(UIColor.gButonLight, for: .normal)
         button.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(heldDown), for: .touchDown)
+        button.addTarget(self, action: #selector(heldAndReleased), for: .touchDragExit)
         return button
     }()
     
@@ -86,6 +88,17 @@ extension LoginView {
 extension LoginView {
     @objc
     func loginButtonAction() {
+        loginButton.backgroundColor = .gBlue
         onDidSelectLoginButton?()
+    }
+    
+    @objc
+    func heldDown() {
+        loginButton.backgroundColor = .gSearchBarBackground
+    }
+    
+    @objc
+    func heldAndReleased() {
+        loginButton.backgroundColor = .gBlue
     }
 }
