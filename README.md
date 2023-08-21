@@ -1,5 +1,5 @@
 # GitHubRxApp
-GitHub app for portfolio (practice) purpose used MVVM + Coordinator architectural pattern with Cocoa-Pods (RxSwift, RxCocoa, RxDataSources, SnapKit and Kingfisher).
+GitHub app for portfolio (practice) purpose used MVVM + Coordinator architectural pattern with Cocoa-Pods (RxSwift, RxCocoa, RxDataSources, SnapKit and Kingfisher). Unit tests are also implemented.
 
 **Intro**
 
