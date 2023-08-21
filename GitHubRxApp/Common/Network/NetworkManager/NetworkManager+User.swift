@@ -20,6 +20,7 @@ import Foundation
 extension NetworkManager {
     
     // MARK: User related keys defined on GitHub
+    // It's not a good practice to put such vital data here, but for the sake of simplicity and because it's not a production application, let's leave it that way for now.
     static let callbackURLScheme = "com.beer.GitHubRxApp"
     static let clientID = "Iv1.03eda0e0b6c3100b"
     static let clientSecret = "370d1b2a85339484e0bb76c26a214ffbac09a388"
