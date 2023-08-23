@@ -31,7 +31,6 @@ protocol SearchRepositoriesViewModelProtocol {
 }
 
 class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
-    
     weak var delegate: SearchRepositoriesViewModelDelegate?
     
     var loadingInProgress: Observable<Bool>
