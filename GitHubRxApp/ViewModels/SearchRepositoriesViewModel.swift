@@ -23,6 +23,7 @@ protocol SearchRepositoriesViewModelProtocol {
     var isFetchInProgress: Bool { get set }
     var isReachedEndOfList: Bool { get set }
     var selectedPickerChoice: String { get set }
+    var username: String { get }
     
     func didEnter(currentQueryString: String, sortOption: String)
     func didSelectRepository(item: Item)
@@ -42,6 +43,14 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     var oldSortOption = ""
     var isFetchInProgress = false
     var isReachedEndOfList = false
+    var username: String {
+        if let data = KeychainHelper.standard.read(service: KeychainHelper.Constants.usernameKey,
+                                                   account: KeychainHelper.Constants.githubString) {
+            return String(data: data, encoding: .utf8) ?? ""
+        } else {
+            return ""
+        }
+    }
     
     private let searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()
@@ -83,7 +92,9 @@ extension SearchRepositoriesViewModel {
     }
     
     func didTapSignOutButton() {
-        NetworkManager.signOut()
+        KeychainHelper.standard.delete(service: KeychainHelper.Constants.accessToken, account: KeychainHelper.Constants.githubString)
+        KeychainHelper.standard.delete(service: KeychainHelper.Constants.usernameKey, account: KeychainHelper.Constants.githubString)
+        
         delegate?.didTapSignOutButton()
     }
     

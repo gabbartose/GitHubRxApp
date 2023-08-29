@@ -26,7 +26,6 @@
 		750F11DA2A8395570097B0CE /* UserDetailsViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F11D92A8395570097B0CE /* UserDetailsViewModelDelegateMock.swift */; };
 		7510C46C2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46B2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift */; };
 		7510C46E2A7A166F009EAAAF /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46D2A7A166F009EAAAF /* LoginAPI.swift */; };
-		7510C4702A7B8560009EAAAF /* NetworkManager+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46F2A7B8560009EAAAF /* NetworkManager+User.swift */; };
 		7510C4732A7BE32D009EAAAF /* PickerValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C4722A7BE32D009EAAAF /* PickerValues.swift */; };
 		7515D68B2A71679300211BD4 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D68A2A71679300211BD4 /* EnvironmentProvider.swift */; };
 		7515D6902A72532100211BD4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D68F2A72532100211BD4 /* LoginViewController.swift */; };
@@ -36,6 +35,7 @@
 		7515D6982A7269A700211BD4 /* UIView+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6972A7269A700211BD4 /* UIView+GitHubRxApp.swift */; };
 		7515D69A2A727E6E00211BD4 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6992A727E6E00211BD4 /* LoginRepository.swift */; };
 		7515D6AA2A73E2B900211BD4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6A92A73E2B900211BD4 /* User.swift */; };
+		752930722A9E269C0077D7EB /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752930712A9E269C0077D7EB /* KeychainManager.swift */; };
 		755648712A83AA4D00E1745E /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755648702A83AA4D00E1745E /* LoginViewModelTests.swift */; };
 		755648742A83AAF700E1745E /* LoginViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755648732A83AAF700E1745E /* LoginViewModelDelegateMock.swift */; };
 		755648762A83AC6100E1745E /* LoginRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755648752A83AC6100E1745E /* LoginRepositoryMock.swift */; };
@@ -149,7 +149,6 @@
 		750F11D92A8395570097B0CE /* UserDetailsViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModelDelegateMock.swift; sourceTree = "<group>"; };
 		7510C46B2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+GitHubRxApp.swift"; sourceTree = "<group>"; };
 		7510C46D2A7A166F009EAAAF /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
-		7510C46F2A7B8560009EAAAF /* NetworkManager+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+User.swift"; sourceTree = "<group>"; };
 		7510C4722A7BE32D009EAAAF /* PickerValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerValues.swift; sourceTree = "<group>"; };
 		7515D6742A715B9D00211BD4 /* ProductionBaseConfiguration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ProductionBaseConfiguration.xcconfig; sourceTree = "<group>"; };
 		7515D6762A715C7200211BD4 /* TestBaseConfiguration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestBaseConfiguration.xcconfig; sourceTree = "<group>"; };
@@ -180,6 +179,7 @@
 		7515D6992A727E6E00211BD4 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		7515D6A92A73E2B900211BD4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		75230E16ACCAA1378A3DF58E /* Pods_GitHubRxAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubRxAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		752930712A9E269C0077D7EB /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		755648702A83AA4D00E1745E /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		755648732A83AAF700E1745E /* LoginViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelDelegateMock.swift; sourceTree = "<group>"; };
 		755648752A83AC6100E1745E /* LoginRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryMock.swift; sourceTree = "<group>"; };
@@ -485,6 +485,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		752930732A9E5A900077D7EB /* KeychainManager */ = {
+			isa = PBXGroup;
+			children = (
+				752930712A9E269C0077D7EB /* KeychainManager.swift */,
+			);
+			path = KeychainManager;
+			sourceTree = "<group>";
+		};
 		755648722A83AAE300E1745E /* LoginMocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				75A47CCD2A65370D00618359 /* ErrorHandler */,
+				752930732A9E5A900077D7EB /* KeychainManager */,
 				75A47CCC2A65370000618359 /* NetworkManager */,
 			);
 			path = Network;
@@ -708,7 +717,6 @@
 			isa = PBXGroup;
 			children = (
 				75A47CAD2A6519E300618359 /* NetworkManager.swift */,
-				7510C46F2A7B8560009EAAAF /* NetworkManager+User.swift */,
 				75A47CBD2A65286800618359 /* NetworkConfiguration.swift */,
 				75A47CD82A65385700618359 /* Resource.swift */,
 			);
@@ -1197,7 +1205,6 @@
 				75A47CD32A65376300618359 /* AlertModel.swift in Sources */,
 				75A47CAE2A6519E300618359 /* NetworkManager.swift in Sources */,
 				75A47CB82A65216100618359 /* RepositoriesResponse.swift in Sources */,
-				7510C4702A7B8560009EAAAF /* NetworkManager+User.swift in Sources */,
 				75A47CC32A65303900618359 /* SearchRepositoriesCoordinator.swift in Sources */,
 				75A47CD72A6537FE00618359 /* Data+GitHubRxApp.swift in Sources */,
 				75A47CC92A6533C500618359 /* UIColor+GitHubRxApp.swift in Sources */,
@@ -1209,6 +1216,7 @@
 				75A47D022A67AAE300618359 /* SearchRepositoriesRepository.swift in Sources */,
 				75A47CCB2A65342F00618359 /* SearchRepositoriesViewModel.swift in Sources */,
 				7515D6942A72534500211BD4 /* LoginCoordinator.swift in Sources */,
+				752930722A9E269C0077D7EB /* KeychainManager.swift in Sources */,
 				75A47CF42A66621500618359 /* UISearchBar+GitHubRxApp.swift in Sources */,
 				75A47D042A67C8E400618359 /* ErrorHandler.swift in Sources */,
 				75A47D292A6E4CE100618359 /* UserDetailsViewModel.swift in Sources */,
