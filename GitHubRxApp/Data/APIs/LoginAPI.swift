@@ -21,6 +21,8 @@ class LoginAPI: LoginAPIProtocol {
         case getUser = "/user"
     }
     
+    private let clientID = Bundle.main.object(forInfoDictionaryKey: "ClientID") as? String
+    private let clientSecret = Bundle.main.object(forInfoDictionaryKey: "ClientSecret") as? String
     private let networkManager: NetworkManager
 
     init(networkManager: NetworkManager) {
@@ -33,7 +35,7 @@ extension LoginAPI {
         var resource = Resource<String>(path: Paths.signIn.rawValue)
         
         resource.queryItems = [
-            URLQueryItem(name: "client_id", value: NetworkManager.clientID)
+            URLQueryItem(name: "client_id", value: clientID)
         ]
         
         return networkManager.createEndpoint(for: resource, basePath: networkManager.configuration.oAuthBasePath)
@@ -43,8 +45,8 @@ extension LoginAPI {
         var resource = Resource<String>(path: Paths.codeExchange.rawValue, method: .post)
         
         resource.queryItems = [
-            URLQueryItem(name: "client_id", value: NetworkManager.clientID),
-            URLQueryItem(name: "client_secret", value: NetworkManager.clientSecret),
+            URLQueryItem(name: "client_id", value: clientID),
+            URLQueryItem(name: "client_secret", value: clientSecret),
             URLQueryItem(name: "code", value: code)
         ]
 

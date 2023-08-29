@@ -19,6 +19,12 @@
 			</array>
 		</dict>
 	</array>
+	<key>CallbackURLScheme</key>
+	<string>com.beer.GitHubRxApp</string>
+	<key>ClientID</key>
+	<string>Iv1.03eda0e0b6c3100b</string>
+	<key>ClientSecret</key>
+	<string>370d1b2a85339484e0bb76c26a214ffbac09a388</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

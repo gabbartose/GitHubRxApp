@@ -49,13 +49,13 @@ class LoginViewModel: NSObject, LoginViewModelProtocol {
 extension LoginViewModel {
     func didSelectLoginButton() {
         loadingInProgressSubject.onNext(true)
-        guard let signInURL = loginRepository.createSignInURLWithClientId()
+        guard let signInURL = loginRepository.createSignInURLWithClientId(),
+              let callbackURLScheme = Bundle.main.object(forInfoDictionaryKey: "CallbackURLScheme") as? String
         else {
             print("Could not create the sign in URL.")
             return
         }
         
-        let callbackURLScheme = NetworkManager.callbackURLScheme
         let authenticationSession = ASWebAuthenticationSession(
             url: signInURL,
             callbackURLScheme: callbackURLScheme) { [weak self] callbackURL, error in

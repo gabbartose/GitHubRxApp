@@ -26,7 +26,6 @@
 		750F11DA2A8395570097B0CE /* UserDetailsViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750F11D92A8395570097B0CE /* UserDetailsViewModelDelegateMock.swift */; };
 		7510C46C2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46B2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift */; };
 		7510C46E2A7A166F009EAAAF /* LoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46D2A7A166F009EAAAF /* LoginAPI.swift */; };
-		7510C4702A7B8560009EAAAF /* NetworkManager+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C46F2A7B8560009EAAAF /* NetworkManager+User.swift */; };
 		7510C4732A7BE32D009EAAAF /* PickerValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7510C4722A7BE32D009EAAAF /* PickerValues.swift */; };
 		7515D68B2A71679300211BD4 /* EnvironmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D68A2A71679300211BD4 /* EnvironmentProvider.swift */; };
 		7515D6902A72532100211BD4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D68F2A72532100211BD4 /* LoginViewController.swift */; };
@@ -150,7 +149,6 @@
 		750F11D92A8395570097B0CE /* UserDetailsViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModelDelegateMock.swift; sourceTree = "<group>"; };
 		7510C46B2A78FB36009EAAAF /* UIViewController+GitHubRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+GitHubRxApp.swift"; sourceTree = "<group>"; };
 		7510C46D2A7A166F009EAAAF /* LoginAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPI.swift; sourceTree = "<group>"; };
-		7510C46F2A7B8560009EAAAF /* NetworkManager+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+User.swift"; sourceTree = "<group>"; };
 		7510C4722A7BE32D009EAAAF /* PickerValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerValues.swift; sourceTree = "<group>"; };
 		7515D6742A715B9D00211BD4 /* ProductionBaseConfiguration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ProductionBaseConfiguration.xcconfig; sourceTree = "<group>"; };
 		7515D6762A715C7200211BD4 /* TestBaseConfiguration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = TestBaseConfiguration.xcconfig; sourceTree = "<group>"; };
@@ -719,7 +717,6 @@
 			isa = PBXGroup;
 			children = (
 				75A47CAD2A6519E300618359 /* NetworkManager.swift */,
-				7510C46F2A7B8560009EAAAF /* NetworkManager+User.swift */,
 				75A47CBD2A65286800618359 /* NetworkConfiguration.swift */,
 				75A47CD82A65385700618359 /* Resource.swift */,
 			);
@@ -1208,7 +1205,6 @@
 				75A47CD32A65376300618359 /* AlertModel.swift in Sources */,
 				75A47CAE2A6519E300618359 /* NetworkManager.swift in Sources */,
 				75A47CB82A65216100618359 /* RepositoriesResponse.swift in Sources */,
-				7510C4702A7B8560009EAAAF /* NetworkManager+User.swift in Sources */,
 				75A47CC32A65303900618359 /* SearchRepositoriesCoordinator.swift in Sources */,
 				75A47CD72A6537FE00618359 /* Data+GitHubRxApp.swift in Sources */,
 				75A47CC92A6533C500618359 /* UIColor+GitHubRxApp.swift in Sources */,
