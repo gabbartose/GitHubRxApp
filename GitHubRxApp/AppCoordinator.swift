@@ -29,7 +29,8 @@ class AppCoordinator: NSObject, Coordinator {
         
         setupNavigationBar()
         
-        if NetworkManager.areTokensAvailable() {
+        if KeychainHelper.standard.read(service: KeychainHelper.Constants.accessToken,
+                                        account: KeychainHelper.Constants.githubString) != nil {
             showSearchRepositoriesFlow()
         } else {
             showLoginFlow()

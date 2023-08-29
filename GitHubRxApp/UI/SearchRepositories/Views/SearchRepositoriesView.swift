@@ -12,7 +12,6 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     struct Constants {
         static let searchGithubRepositoriesPlaceholder = "Search GitHub Repositories"
         static let filterIcon = "FilterIcon"
-        static let currentlyLoggedInUser = "Currently logged in user: "
     }
     
     private lazy var searchComponentsView = {
@@ -61,7 +60,6 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
         let label = UILabel()
         label.font = UIFont(name: .ralewayBold, size: 14)
         label.textColor = .gDarkGray
-        label.text = Constants.currentlyLoggedInUser + (NetworkManager.username ?? "")
         label.numberOfLines = 1
         label.textAlignment = .center
         return label

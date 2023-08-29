@@ -50,7 +50,6 @@ class LoginViewController: BaseViewController {
         view = LoginView()
         subscribeToViewModel()
         setupLoginButton()
-        NetworkManager.printTokens()
     }
     
     deinit {

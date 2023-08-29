@@ -36,6 +36,7 @@
 		7515D6982A7269A700211BD4 /* UIView+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6972A7269A700211BD4 /* UIView+GitHubRxApp.swift */; };
 		7515D69A2A727E6E00211BD4 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6992A727E6E00211BD4 /* LoginRepository.swift */; };
 		7515D6AA2A73E2B900211BD4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7515D6A92A73E2B900211BD4 /* User.swift */; };
+		752930722A9E269C0077D7EB /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752930712A9E269C0077D7EB /* KeychainManager.swift */; };
 		755648712A83AA4D00E1745E /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755648702A83AA4D00E1745E /* LoginViewModelTests.swift */; };
 		755648742A83AAF700E1745E /* LoginViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755648732A83AAF700E1745E /* LoginViewModelDelegateMock.swift */; };
 		755648762A83AC6100E1745E /* LoginRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755648752A83AC6100E1745E /* LoginRepositoryMock.swift */; };
@@ -180,6 +181,7 @@
 		7515D6992A727E6E00211BD4 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		7515D6A92A73E2B900211BD4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		75230E16ACCAA1378A3DF58E /* Pods_GitHubRxAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubRxAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		752930712A9E269C0077D7EB /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		755648702A83AA4D00E1745E /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		755648732A83AAF700E1745E /* LoginViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelDelegateMock.swift; sourceTree = "<group>"; };
 		755648752A83AC6100E1745E /* LoginRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryMock.swift; sourceTree = "<group>"; };
@@ -485,6 +487,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		752930732A9E5A900077D7EB /* KeychainManager */ = {
+			isa = PBXGroup;
+			children = (
+				752930712A9E269C0077D7EB /* KeychainManager.swift */,
+			);
+			path = KeychainManager;
+			sourceTree = "<group>";
+		};
 		755648722A83AAE300E1745E /* LoginMocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -618,6 +628,7 @@
 			isa = PBXGroup;
 			children = (
 				75A47CCD2A65370D00618359 /* ErrorHandler */,
+				752930732A9E5A900077D7EB /* KeychainManager */,
 				75A47CCC2A65370000618359 /* NetworkManager */,
 			);
 			path = Network;
@@ -1209,6 +1220,7 @@
 				75A47D022A67AAE300618359 /* SearchRepositoriesRepository.swift in Sources */,
 				75A47CCB2A65342F00618359 /* SearchRepositoriesViewModel.swift in Sources */,
 				7515D6942A72534500211BD4 /* LoginCoordinator.swift in Sources */,
+				752930722A9E269C0077D7EB /* KeychainManager.swift in Sources */,
 				75A47CF42A66621500618359 /* UISearchBar+GitHubRxApp.swift in Sources */,
 				75A47D042A67C8E400618359 /* ErrorHandler.swift in Sources */,
 				75A47D292A6E4CE100618359 /* UserDetailsViewModel.swift in Sources */,

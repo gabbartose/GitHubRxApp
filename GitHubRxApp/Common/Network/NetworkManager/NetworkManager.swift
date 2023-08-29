@@ -55,7 +55,8 @@ class NetworkManager {
         
         var request = createURLRequest(from: resource, endpoint)
         
-        if let accessToken = NetworkManager.accessToken {
+        if let data = KeychainHelper.standard.read(service: KeychainHelper.Constants.accessToken, account: KeychainHelper.Constants.githubString),
+           let accessToken = String(data: data, encoding: .utf8) {
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         }
         
@@ -84,16 +85,20 @@ class NetworkManager {
                     }
                 }
                 DispatchQueue.main.async {
-                    NetworkManager.accessToken = dictionary["access_token"]
-                    NetworkManager.refreshToken = dictionary["refresh_token"]
-                    completion(.success((response: response, "Success" as! T)))
+                    if let accessToken = dictionary[KeychainHelper.Constants.accessToken] {
+                        let data = Data(accessToken.utf8)
+                        KeychainHelper.standard.save(data, service: KeychainHelper.Constants.accessToken, account: KeychainHelper.Constants.githubString)
+                        completion(.success((response: response, "Success" as! T)))
+                    }
                 }
                 return
                 
             } else if let object = try? JSONDecoder().decode(T.self, from: data) {
                 DispatchQueue.main.async {
                     if let user = object as? User {
-                        NetworkManager.username = user.login
+                        let username = user.login
+                        let usernameData = Data(username.utf8)
+                        KeychainHelper.standard.save(usernameData, service: KeychainHelper.Constants.usernameKey, account: KeychainHelper.Constants.githubString)
                     }
                     completion(.success((response, object)))
                 }

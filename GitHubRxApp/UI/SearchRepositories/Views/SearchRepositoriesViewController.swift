@@ -41,9 +41,9 @@ class SearchRepositoriesViewController: BaseViewController {
         setupSearchBar()
         setupPickerView()
         setupTableView()
+        setupLoggedInUser()
         setupGestures()
         subscribeToViewModel()
-        NetworkManager.printTokens()
     }
     
     required init?(coder: NSCoder) {
@@ -212,6 +212,10 @@ extension SearchRepositoriesViewController {
 
 // MARK: Gestures
 extension SearchRepositoriesViewController {
+    private func setupLoggedInUser() {
+        searchRepositoriesView.loggedInUserLabel.text = "Currently logged in user: \(viewModel.username)"
+    }
+    
     private func setupGestures() {
         let filterButtonTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFilterButton))
         searchRepositoriesView.filterButton.addGestureRecognizer(filterButtonTapGesture)
