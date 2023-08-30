@@ -8,7 +8,7 @@
 import Foundation
 import Security
 
-final class KeychainHelper {
+final class KeychainManager {
     
     struct Constants {
         static var accessToken = "access_token"
@@ -16,7 +16,7 @@ final class KeychainHelper {
         static var githubString = "github"
     }
     
-    static let standard = KeychainHelper()
+    static let standard = KeychainManager()
     private init() { }
     
     func save(_ data: Data, service: String, account: String) {

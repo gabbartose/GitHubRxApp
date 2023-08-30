@@ -44,8 +44,8 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     var isFetchInProgress = false
     var isReachedEndOfList = false
     var username: String {
-        if let data = KeychainHelper.standard.read(service: KeychainHelper.Constants.usernameKey,
-                                                   account: KeychainHelper.Constants.githubString) {
+        if let data = KeychainManager.standard.read(service: KeychainManager.Constants.usernameKey,
+                                                   account: KeychainManager.Constants.githubString) {
             return String(data: data, encoding: .utf8) ?? ""
         } else {
             return ""
@@ -92,8 +92,8 @@ extension SearchRepositoriesViewModel {
     }
     
     func didTapSignOutButton() {
-        KeychainHelper.standard.delete(service: KeychainHelper.Constants.accessToken, account: KeychainHelper.Constants.githubString)
-        KeychainHelper.standard.delete(service: KeychainHelper.Constants.usernameKey, account: KeychainHelper.Constants.githubString)
+        KeychainManager.standard.delete(service: KeychainManager.Constants.accessToken, account: KeychainManager.Constants.githubString)
+        KeychainManager.standard.delete(service: KeychainManager.Constants.usernameKey, account: KeychainManager.Constants.githubString)
         
         delegate?.didTapSignOutButton()
     }

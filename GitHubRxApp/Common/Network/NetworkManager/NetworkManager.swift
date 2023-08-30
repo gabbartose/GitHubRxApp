@@ -55,7 +55,7 @@ class NetworkManager {
         
         var request = createURLRequest(from: resource, endpoint)
         
-        if let data = KeychainHelper.standard.read(service: KeychainHelper.Constants.accessToken, account: KeychainHelper.Constants.githubString),
+        if let data = KeychainManager.standard.read(service: KeychainManager.Constants.accessToken, account: KeychainManager.Constants.githubString),
            let accessToken = String(data: data, encoding: .utf8) {
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         }
@@ -85,9 +85,9 @@ class NetworkManager {
                     }
                 }
                 DispatchQueue.main.async {
-                    if let accessToken = dictionary[KeychainHelper.Constants.accessToken] {
+                    if let accessToken = dictionary[KeychainManager.Constants.accessToken] {
                         let data = Data(accessToken.utf8)
-                        KeychainHelper.standard.save(data, service: KeychainHelper.Constants.accessToken, account: KeychainHelper.Constants.githubString)
+                        KeychainManager.standard.save(data, service: KeychainManager.Constants.accessToken, account: KeychainManager.Constants.githubString)
                         completion(.success((response: response, "Success" as! T)))
                     }
                 }
@@ -98,7 +98,7 @@ class NetworkManager {
                     if let user = object as? User {
                         let username = user.login
                         let usernameData = Data(username.utf8)
-                        KeychainHelper.standard.save(usernameData, service: KeychainHelper.Constants.usernameKey, account: KeychainHelper.Constants.githubString)
+                        KeychainManager.standard.save(usernameData, service: KeychainManager.Constants.usernameKey, account: KeychainManager.Constants.githubString)
                     }
                     completion(.success((response, object)))
                 }
