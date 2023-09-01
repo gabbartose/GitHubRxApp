@@ -61,12 +61,11 @@ The user detail screen should contain:
 
 **Navigation overview**
 
-![Screenshot 2023-08-09 at 12 34 10](https://github.com/gabbartose/GitHubRxApp/assets/57413150/5a911c2e-b908-4a16-abdb-cd308e7f49f1)
+<img width="947" alt="Screenshot 2023-09-01 at 10 11 41" src="https://github.com/gabbartose/GitHubRxApp/assets/57413150/9805e52a-629d-41bd-90e2-72a38d790cc8">
+
 
 
 **Bonus**
-
-If you have some extra time and go above and beyond, try solving these tasks too:
 
     ● Implement user authorization and show information about the currently logged in user. You can add additional functionality that
       requires authorization if needed. Documentation for OAuth is available at the following link: ​https://developer.github.com/v3/oauth/
