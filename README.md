@@ -65,6 +65,7 @@ The user detail screen should contain:
 
 
 
+
 **Bonus**
 
     ● Implement user authorization and show information about the currently logged in user. You can add additional functionality that
