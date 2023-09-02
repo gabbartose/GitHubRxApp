@@ -57,8 +57,6 @@ class NetworkManager {
         
         if let data = KeychainManager.standard.read(service: KeychainManager.Constants.accessToken, account: KeychainManager.Constants.githubString),
            let accessToken = String(data: data, encoding: .utf8) {
-            print("accessToken: \(accessToken)")
-            print("data: \(data)")
             request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         }
         
