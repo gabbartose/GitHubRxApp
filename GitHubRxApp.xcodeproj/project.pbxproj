@@ -536,7 +536,6 @@
 				75A47CA42A65088500618359 /* UI */,
 				75A47CA52A65089300618359 /* Common */,
 				75A47C962A64FA9200618359 /* SupportingFiles */,
-				75A47C902A64FA0A00618359 /* Info.plist */,
 			);
 			path = GitHubRxApp;
 			sourceTree = "<group>";
@@ -548,6 +547,7 @@
 				75A47CE72A6557E800618359 /* Configuration */,
 				75A47C9A2A64FC3B00618359 /* Fonts */,
 				75A47C8D2A64FA0A00618359 /* LaunchScreen.storyboard */,
+				75A47C902A64FA0A00618359 /* Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -1385,7 +1385,7 @@
 				ENABLE_TESTABILITY = NO;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GitHubRxApp/Info.plist;
+				INFOPLIST_FILE = GitHubRxApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1626,7 +1626,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GitHubRxApp/Info.plist;
+				INFOPLIST_FILE = GitHubRxApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1856,7 +1856,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GitHubRxApp/Info.plist;
+				INFOPLIST_FILE = GitHubRxApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -2087,7 +2087,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GitHubRxApp/Info.plist;
+				INFOPLIST_FILE = GitHubRxApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -2378,7 +2378,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GitHubRxApp/Info.plist;
+				INFOPLIST_FILE = GitHubRxApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -2416,7 +2416,7 @@
 				DEVELOPMENT_TEAM = 495RC5CMM7;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GitHubRxApp/Info.plist;
+				INFOPLIST_FILE = GitHubRxApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "GitHubRxSearch Staging";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
