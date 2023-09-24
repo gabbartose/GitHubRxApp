@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DAB1E3D2AC0283900F3856F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DAB1E3C2AC0283900F3856F /* Colors.xcassets */; };
 		4061A4AED2028F8E3AD74FEA /* Pods_GitHubRxApp_GitHubRxAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212507A7785563B259917FE3 /* Pods_GitHubRxApp_GitHubRxAppUITests.framework */; };
 		7508285B2A864230000CD39D /* CATransition+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7508285A2A864230000CD39D /* CATransition+GitHubRxApp.swift */; };
 		75098D182A82037700997DE8 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D172A82037700997DE8 /* URLSessionMock.swift */; };
@@ -124,6 +125,7 @@
 		14B6A029E722942C0EB75873 /* Pods-GitHubRxApp-GitHubRxAppUITests.devtest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxApp-GitHubRxAppUITests.devtest.xcconfig"; path = "Target Support Files/Pods-GitHubRxApp-GitHubRxAppUITests/Pods-GitHubRxApp-GitHubRxAppUITests.devtest.xcconfig"; sourceTree = "<group>"; };
 		1A5F24C5C6FD460C08F3D377 /* Pods-GitHubRxApp.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxApp.test.xcconfig"; path = "Target Support Files/Pods-GitHubRxApp/Pods-GitHubRxApp.test.xcconfig"; sourceTree = "<group>"; };
 		212507A7785563B259917FE3 /* Pods_GitHubRxApp_GitHubRxAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubRxApp_GitHubRxAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DAB1E3C2AC0283900F3856F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		2E5AD88DC63D215D0A926E30 /* Pods-GitHubRxAppTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxAppTests.test.xcconfig"; path = "Target Support Files/Pods-GitHubRxAppTests/Pods-GitHubRxAppTests.test.xcconfig"; sourceTree = "<group>"; };
 		3321D8F040BBFEB616961CBF /* Pods-GitHubRxApp.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxApp.production.xcconfig"; path = "Target Support Files/Pods-GitHubRxApp/Pods-GitHubRxApp.production.xcconfig"; sourceTree = "<group>"; };
 		5D328DCF83146DD7B2BA8CD5 /* Pods-GitHubRxApp-GitHubRxAppUITests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxApp-GitHubRxAppUITests.production.xcconfig"; path = "Target Support Files/Pods-GitHubRxApp-GitHubRxAppUITests/Pods-GitHubRxApp-GitHubRxAppUITests.production.xcconfig"; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 			isa = PBXGroup;
 			children = (
 				75A47C8B2A64FA0A00618359 /* Assets.xcassets */,
+				2DAB1E3C2AC0283900F3856F /* Colors.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1030,6 +1033,7 @@
 				75A47CA02A64FC7200618359 /* Raleway-Medium.ttf in Resources */,
 				75A47CEF2A66506B00618359 /* RepositoryTableViewCell.xib in Resources */,
 				75A47CA12A64FC7200618359 /* Raleway-MediumItalic.ttf in Resources */,
+				2DAB1E3D2AC0283900F3856F /* Colors.xcassets in Resources */,
 				75A47C8C2A64FA0A00618359 /* Assets.xcassets in Resources */,
 				75A47C9F2A64FC7200618359 /* Raleway-Bold.ttf in Resources */,
 			);
