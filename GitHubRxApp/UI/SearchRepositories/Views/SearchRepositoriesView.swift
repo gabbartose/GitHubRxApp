@@ -7,7 +7,7 @@
 
 import SnapKit
 
-class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
+final class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
     
     struct Constants {
         static let searchGithubRepositoriesPlaceholder = "Search GitHub Repositories"
@@ -109,7 +109,6 @@ class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
 }
 
 extension SearchRepositoriesView {
-    
     internal func addSubviews() {
         addSubview(searchComponentsView)
         searchComponentsView.addSubview(repositorySearchBar)

@@ -8,7 +8,7 @@
 import RxSwift
 import RxCocoa
 
-class LoginViewController: BaseViewController {
+final class LoginViewController: BaseViewController {
     
     struct Constants {
         static let activityIndicatorYOffset = -UIScreen.main.bounds.height * 0.05

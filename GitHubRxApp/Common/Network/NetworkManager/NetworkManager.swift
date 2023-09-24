@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkManager {
+final class NetworkManager {
     
     typealias NetworkResult<T: Codable> = (response: HTTPURLResponse, object: T)
     private(set) var configuration: NetworkConfiguration

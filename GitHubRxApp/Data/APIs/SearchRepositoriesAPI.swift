@@ -11,7 +11,7 @@ protocol SearchRepositoriesAPIProtocol {
     func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ())
 }
 
-class SearchRepositoriesAPI: SearchRepositoriesAPIProtocol {
+final class SearchRepositoriesAPI: SearchRepositoriesAPIProtocol {
     
     private enum Paths: String {
         case searchRepositories = "/search/repositories"

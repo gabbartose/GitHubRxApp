@@ -9,7 +9,7 @@ import UIKit
 
 protocol LoginCoordinatorDelegate: CoordinatorDelegate { }
 
-class LoginCoordinator: NSObject, NavigationCoordinator {
+final class LoginCoordinator: NSObject, NavigationCoordinator {
     
     var rootViewController: UINavigationController
     var dependencyManager: DependencyManager

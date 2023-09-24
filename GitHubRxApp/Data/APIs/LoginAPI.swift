@@ -13,7 +13,7 @@ protocol LoginAPIProtocol {
     func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ())
 }
 
-class LoginAPI: LoginAPIProtocol {
+final class LoginAPI: LoginAPIProtocol {
     
     private enum Paths: String, Equatable {
         case signIn = "/login/oauth/authorize"

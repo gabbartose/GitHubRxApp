@@ -18,8 +18,7 @@ protocol UserDetailsViewModelProtocol {
     func didDisappearViewController()
 }
 
-class UserDetailsViewModel: UserDetailsViewModelProtocol {
-    
+final class UserDetailsViewModel: UserDetailsViewModelProtocol {
     private let userDetails: Owner
     
     weak var delegate: UserDetailsViewModelDelegate?
@@ -34,7 +33,6 @@ class UserDetailsViewModel: UserDetailsViewModelProtocol {
 }
 
 extension UserDetailsViewModel {
-    
     func getUserDetails() -> Owner {
         return userDetails
     }

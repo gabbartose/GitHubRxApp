@@ -7,7 +7,7 @@
 
 import SnapKit
 
-class EmptyStateView: UIView {
+final class EmptyStateView: UIView {
     
     struct Constants {
         static let gitHubSearchIcon = "GitHubSearchIcon"

@@ -9,7 +9,7 @@ import UIKit
 
 public typealias ErrorAction = (ErrorReport) -> Void
 
-class ErrorHandler {
+final class ErrorHandler {
     weak var rootViewController: UIViewController?
     
     private var defaultHandlerMap: [Cause: ErrorAction]?

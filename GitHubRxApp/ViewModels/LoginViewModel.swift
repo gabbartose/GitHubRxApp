@@ -22,8 +22,7 @@ protocol LoginViewModelProtocol {
     func navigateToSearchRepositoriesScreen()
 }
 
-class LoginViewModel: NSObject, LoginViewModelProtocol {
-    
+final class LoginViewModel: NSObject, LoginViewModelProtocol {
     var loadingInProgress: Observable<Bool>
     var onError: Observable<ErrorReport>
     

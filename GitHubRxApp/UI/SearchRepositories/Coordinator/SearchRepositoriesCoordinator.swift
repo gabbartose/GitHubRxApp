@@ -11,8 +11,7 @@ protocol UserDetailsDelegate: AnyObject {
     func didSelectUserDetails(userDetails: Owner)
 }
 
-class SearchRepositoriesCoordinator: NSObject, NavigationCoordinator {
-    
+final class SearchRepositoriesCoordinator: NSObject, NavigationCoordinator {
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
     var dependencyManager: DependencyManager

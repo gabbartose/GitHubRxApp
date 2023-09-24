@@ -20,8 +20,7 @@ protocol RepositoryDetailsViewModelProtocol {
     func didDisappearViewController()
 }
 
-class RepositoryDetailsViewModel: RepositoryDetailsViewModelProtocol {
-
+final class RepositoryDetailsViewModel: RepositoryDetailsViewModelProtocol {
     private let repositoryItem: Item
     
     weak var delegate: RepositoryDetailsViewModelDelegate?
@@ -36,7 +35,6 @@ class RepositoryDetailsViewModel: RepositoryDetailsViewModelProtocol {
 }
 
 extension RepositoryDetailsViewModel {
-    
     func getRepositoryItem() -> Item? {
         return repositoryItem
     }

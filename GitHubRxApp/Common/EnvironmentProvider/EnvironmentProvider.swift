@@ -14,7 +14,6 @@ enum Environment: String, CaseIterable {
 }
 
 struct EnvironmentProvider {
-    
     var currentEnvironment: Environment
     static let shared = EnvironmentProvider()
     

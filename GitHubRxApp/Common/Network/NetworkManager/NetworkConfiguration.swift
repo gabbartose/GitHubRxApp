@@ -7,8 +7,7 @@
 
 import Foundation
 
-class NetworkConfiguration {
-    
+final class NetworkConfiguration {
     private(set) var basePath: URL
     private(set) var oAuthBasePath: URL
     private(set) var session: URLSession

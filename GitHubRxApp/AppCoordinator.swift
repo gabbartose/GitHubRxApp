@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppCoordinator: NSObject, Coordinator {
+final class AppCoordinator: NSObject, Coordinator {
     
     var childCoordinators = [Coordinator]()
     
@@ -30,19 +30,19 @@ class AppCoordinator: NSObject, Coordinator {
         setupNavigationBar()
         
         if KeychainManager.standard.read(service: KeychainManager.Constants.accessToken,
-                                        account: KeychainManager.Constants.githubString) != nil {
+                                         account: KeychainManager.Constants.githubString) != nil {
             showSearchRepositoriesFlow()
         } else {
             showLoginFlow()
         }
-    
+        
         window.rootViewController = rootViewController
     }
 }
 
 // MARK: Required HTTP headers
-extension AppCoordinator {
-    private func getHTTPHeaders() -> [String: String] {
+private extension AppCoordinator {
+    func getHTTPHeaders() -> [String: String] {
         var HTTPHeaders = [String: String]()
         HTTPHeaders["Content-Type"] = "application/json"
         HTTPHeaders["Accept"] = "application/json"
@@ -57,15 +57,15 @@ extension AppCoordinator {
 }
 
 // MARK: Navigation
-extension AppCoordinator {
-    private func showLoginFlow() {
+private extension AppCoordinator {
+    func showLoginFlow() {
         let loginCoordinator = LoginCoordinator(rootViewController: rootViewController,
                                                 dependencyManager: dependencyManager)
         addChildCoordinator(loginCoordinator)
         loginCoordinator.start()
     }
     
-    private func showSearchRepositoriesFlow() {
+    func showSearchRepositoriesFlow() {
         let searchRepositoriesCoordinator = SearchRepositoriesCoordinator(rootViewController: rootViewController,
                                                                           dependencyManager: dependencyManager)
         addChildCoordinator(searchRepositoriesCoordinator)
@@ -74,8 +74,8 @@ extension AppCoordinator {
 }
 
 // MARK: Setup UINavigationBar
-extension AppCoordinator {
-    private func setupNavigationBar() {
+private extension AppCoordinator {
+    func setupNavigationBar() {
         let navigationBar = rootViewController.navigationBar
         let appearance = UINavigationBarAppearance()
         let attributes = [NSAttributedString.Key.font: UIFont(name: .ralewayExtraBold, size: 18), NSAttributedString.Key.foregroundColor: UIColor.setColor(.gDarkGray)]

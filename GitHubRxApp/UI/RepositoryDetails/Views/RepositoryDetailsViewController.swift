@@ -7,7 +7,7 @@
 
 import SnapKit
 
-class RepositoryDetailsViewController: BaseViewController {
+final class RepositoryDetailsViewController: BaseViewController {
     
     struct Constants {
         static let noDataLabel = "There is currently no data for this record."
@@ -74,7 +74,6 @@ extension RepositoryDetailsViewController {
 
 // MARK: Gestures
 extension RepositoryDetailsViewController {
-    
     private func setupGestures() {
         let repositoryExternalBrowserTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapDetailsInformationInExternalBrowser))
         repositoryDetailsView.repositoryDetailsExternalBrowserLabel.addGestureRecognizer(repositoryExternalBrowserTapGesture)

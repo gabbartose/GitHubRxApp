@@ -13,7 +13,7 @@ protocol LoginRepositoryProtocol {
     func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ())
 }
 
-class LoginRepository: LoginRepositoryProtocol {
+final class LoginRepository: LoginRepositoryProtocol {
     
     let loginAPI: LoginAPIProtocol
 

@@ -31,7 +31,7 @@ protocol SearchRepositoriesViewModelProtocol {
     func didTapSignOutButton()
 }
 
-class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
+final class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     weak var delegate: SearchRepositoriesViewModelDelegate?
     
     var loadingInProgress: Observable<Bool>
@@ -73,7 +73,6 @@ class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
 }
 
 extension SearchRepositoriesViewModel {
-    
     func didEnter(currentQueryString: String, sortOption: String = "") {
         guard currentQueryString.count < 3 else {
             

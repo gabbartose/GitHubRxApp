@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DependencyManager {
+final class DependencyManager {
     var networkManager: NetworkManager
 
     init(networkManager: NetworkManager) {

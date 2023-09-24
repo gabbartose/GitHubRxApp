@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class UserDetailsViewController: BaseViewController {
+final class UserDetailsViewController: BaseViewController {
     
     struct Constants {
         static let avatarPlaceholder = "AvatarPlaceholder"
@@ -53,13 +53,12 @@ class UserDetailsViewController: BaseViewController {
 }
 
 // MARK: Helper methods
-extension UserDetailsViewController {
-    
-    private func getUserDetails() {
+private extension UserDetailsViewController {
+    func getUserDetails() {
         userDetails = viewModel.getUserDetails()
     }
     
-    private func setupElements() {
+    func setupElements() {
         userDetailsView.imageView.kf.setImage(with: URL(string: userDetails?.avatarUrl ?? ""), placeholder: UIImage(named: Constants.avatarPlaceholder))
         userDetailsView.imageView.setupImageViewProperties(with: UserDetailsView.Constants.imageViewDimension / 2)
         
@@ -76,21 +75,20 @@ extension UserDetailsViewController {
         }
     }
     
-    private func setupNavigationItemTitle() {
+    func setupNavigationItemTitle() {
         navigationItem.title = userDetails?.login
     }
 }
 
 // MARK: Gestures
-extension UserDetailsViewController {
-    
-    private func setupGesture() {
+private extension UserDetailsViewController {
+    func setupGesture() {
         let userDetailsExternalBrowserLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapDetailsInformationsInExternalBrowser))
         userDetailsView.userDetailsLabel.addGestureRecognizer(userDetailsExternalBrowserLabelTapGesture)
     }
     
     @objc
-    private func didTapDetailsInformationsInExternalBrowser() {
+    func didTapDetailsInformationsInExternalBrowser() {
         guard let htmlURL = userDetails?.htmlUrl else { return }
         viewModel.didTapAdditionalInfoInBrowser(htmlURL: htmlURL)
     }

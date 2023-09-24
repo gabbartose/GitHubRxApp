@@ -8,20 +8,21 @@
 import RxSwift
 import RxCocoa
 
-class SearchRepositoriesViewController: BaseViewController {
+final class SearchRepositoriesViewController: BaseViewController {
     
     struct Constants {
         static var repositoryTableViewCell = "RepositoryTableViewCell"
     }
     
+    private let disposeBag = DisposeBag()
+    
+    private var viewModel: SearchRepositoriesViewModelProtocol
+    private var queryString = ""
+    
     private var searchRepositoriesView: SearchRepositoriesView {
         guard let view = self.view as? SearchRepositoriesView else { fatalError("There is no SearchRepositoriesView.") }
         return view
     }
-    
-    private var viewModel: SearchRepositoriesViewModelProtocol
-    private var queryString = ""
-    private let disposeBag = DisposeBag()
     
     private var repositoryComponents = [Item]() {
         didSet {
@@ -56,8 +57,8 @@ class SearchRepositoriesViewController: BaseViewController {
 }
 
 // MARK: Subscribe to SearchRepositoriesViewModel
-extension SearchRepositoriesViewController {
-    private func subscribeToViewModel() {
+private extension SearchRepositoriesViewController {
+    func subscribeToViewModel() {
         viewModel
             .repositoryComponents
             .bind { [weak self] repositoryComponents in
@@ -80,16 +81,16 @@ extension SearchRepositoriesViewController {
 }
 
 // MARK: Setup UINavigationBar elements
-extension SearchRepositoriesViewController {
-    private func setupNavigationBarElements() {
+private extension SearchRepositoriesViewController {
+    func setupNavigationBarElements() {
         navigationItem.title = "Repository search"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(didTapSignOutButton))
     }
 }
 
 // MARK: Setup UISearchBar related elements
-extension SearchRepositoriesViewController {
-    private func setupSearchBar() {
+private extension SearchRepositoriesViewController {
+    func setupSearchBar() {
         searchRepositoriesView.repositorySearchBar.rx.text
             .orEmpty
             .debounce(.milliseconds(700), scheduler: MainScheduler.instance)
@@ -117,8 +118,8 @@ extension SearchRepositoriesViewController {
 }
 
 // MARK: UIPickerView related methods
-extension SearchRepositoriesViewController {
-    private func setupPickerView() {
+private extension SearchRepositoriesViewController {
+    func setupPickerView() {
         viewModel.pickerSortDataArray.bind(to: searchRepositoriesView.sortPickerView.rx.itemTitles) { row, element in
             return element
         }
@@ -156,20 +157,20 @@ extension SearchRepositoriesViewController {
             }.disposed(by: disposeBag)
     }
     
-    private func setPickerOnDefaultValue() {
+    func setPickerOnDefaultValue() {
         viewModel.selectedPickerChoice = PickerValues.bestMatch.rawValue
         searchRepositoriesView.sortPickerView.selectRow(0, inComponent: 0, animated: true)
     }
     
-    private func scrollToTop() {
+    func scrollToTop() {
         let topRow = IndexPath(row: 0, section: 0)
         searchRepositoriesView.tableView.scrollToRow(at: topRow, at: .top, animated: true)
     }
 }
 
 // MARK: Setup UITableView related elements
-extension SearchRepositoriesViewController {
-    private func setupTableView() {
+private extension SearchRepositoriesViewController {
+    func setupTableView() {
         searchRepositoriesView.tableView.registerUINib(ofType: RepositoryTableViewCell.self)
         
         searchRepositoriesView.tableView.rx.modelSelected(Item.self)
@@ -201,7 +202,7 @@ extension SearchRepositoriesViewController {
             })).disposed(by: disposeBag)
     }
     
-    private func getAttributedString(query: String) -> NSMutableAttributedString {
+    func getAttributedString(query: String) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: query)
         let range = (query as NSString).range(of: queryString, options: .caseInsensitive)
         guard let boldFont = UIFont(name: .ralewayExtraBold, size: 18) else { fatalError("Font doesn't exist") }
@@ -211,12 +212,12 @@ extension SearchRepositoriesViewController {
 }
 
 // MARK: Gestures
-extension SearchRepositoriesViewController {
-    private func setupLoggedInUser() {
+private extension SearchRepositoriesViewController {
+    func setupLoggedInUser() {
         searchRepositoriesView.loggedInUserLabel.text = "Currently logged in user: \(viewModel.username)"
     }
     
-    private func setupGestures() {
+    func setupGestures() {
         let filterButtonTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFilterButton))
         searchRepositoriesView.filterButton.addGestureRecognizer(filterButtonTapGesture)
         
@@ -225,17 +226,17 @@ extension SearchRepositoriesViewController {
     }
     
     @objc
-    private func didTapSignOutButton() {
+    func didTapSignOutButton() {
         viewModel.didTapSignOutButton()
     }
     
     @objc
-    private func didTapFilterButton() {
+    func didTapFilterButton() {
         searchRepositoriesView.backgroundView.isHidden = false
     }
     
     @objc
-    private func didTapBackgroundView() {
+    func didTapBackgroundView() {
         searchRepositoriesView.backgroundView.isHidden = true
     }
 }

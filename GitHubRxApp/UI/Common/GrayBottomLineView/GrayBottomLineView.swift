@@ -7,7 +7,7 @@
 
 import SnapKit
 
-class GrayBottomLineView: UIView {
+final class GrayBottomLineView: UIView {
     
     init() {
         super.init(frame: CGRect.zero)

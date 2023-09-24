@@ -7,7 +7,7 @@
 
 import SnapKit
 
-class LoginView: UIView, BasicViewMethodsProtocol {
+final class LoginView: UIView, BasicViewMethodsProtocol {
     
     struct Constants {
         static let gitHubSearchIcon = "GitHubSearchIcon"

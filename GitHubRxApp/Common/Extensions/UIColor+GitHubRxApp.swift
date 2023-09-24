@@ -36,7 +36,8 @@ extension UIColor {
     
     private class func from(_ appColor: AssetsColor) -> UIColor {
         guard let color = UIColor(named: appColor.rawValue) else {
-            fatalError("Trying to load undefined color: \(appColor)")
+            print("Trying to load undefined color: \(appColor)")
+            return .white
         }
         return color
     }

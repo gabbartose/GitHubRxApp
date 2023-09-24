@@ -7,7 +7,7 @@
 
 import SnapKit
 
-class UserDetailsView: UIView, BasicViewMethodsProtocol {
+final class UserDetailsView: UIView, BasicViewMethodsProtocol {
     
     struct Constants {
         static let imageViewDimension = UIScreen.main.bounds.width / 1.6
@@ -62,7 +62,6 @@ class UserDetailsView: UIView, BasicViewMethodsProtocol {
 }
 
 extension UserDetailsView {
-    
     internal func addSubviews() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -105,9 +104,8 @@ extension UserDetailsView {
 }
 
 // MARK: Helper methods
-extension UserDetailsView {
-    
-    private func setupHorizontalStackViewTitleLabels() {
+private extension UserDetailsView {
+    func setupHorizontalStackViewTitleLabels() {
         idHorizontalStackView.titleLabel.text = UserDetailsStackViewLabels.id.rawValue
         nodeIdHorizontalStackView.titleLabel.text = UserDetailsStackViewLabels.nodeId.rawValue
         loginNameHorizontalStackView.titleLabel.text = UserDetailsStackViewLabels.loginName.rawValue

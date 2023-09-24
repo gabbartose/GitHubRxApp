@@ -11,7 +11,7 @@ protocol SearchRepositoriesRepositoryProtocol {
     func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ())
 }
 
-class SearchRepositoriesRepository: SearchRepositoriesRepositoryProtocol {
+final class SearchRepositoriesRepository: SearchRepositoriesRepositoryProtocol {
     
     let searchRepositoriesAPI: SearchRepositoriesAPIProtocol
     

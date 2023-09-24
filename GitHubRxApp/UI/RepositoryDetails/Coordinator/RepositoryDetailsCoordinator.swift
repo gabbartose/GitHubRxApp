@@ -9,7 +9,7 @@ import UIKit
 
 protocol RepositoryDetailsCoordinatorDelegate: CoordinatorDelegate, UserDetailsDelegate { }
 
-class RepositoryDetailsCoordinator: NSObject, NavigationCoordinator {
+final class RepositoryDetailsCoordinator: NSObject, NavigationCoordinator {
     
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []

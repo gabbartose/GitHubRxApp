@@ -7,7 +7,7 @@
 
 import SnapKit
 
-class RepositoryDetailsView: UIView, BasicViewMethodsProtocol {
+final class RepositoryDetailsView: UIView, BasicViewMethodsProtocol {
     
     enum RepositoryDetailsStackViewLabels: String {
         case programmingLanguage = "Programming language:"
@@ -57,7 +57,6 @@ class RepositoryDetailsView: UIView, BasicViewMethodsProtocol {
 }
 
 extension RepositoryDetailsView {
-    
     internal func addSubviews() {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -109,11 +108,9 @@ extension RepositoryDetailsView {
 
 // MARK: Helper methods
 extension RepositoryDetailsView {
-    
     private func setupHorizontalStackViewTitleLabels() {
         programmingLanguageHorizontalStackView.titleLabel.text = RepositoryDetailsStackViewLabels.programmingLanguage.rawValue
         dateOfCreationHorizontalStackView.titleLabel.text = RepositoryDetailsStackViewLabels.dateOfCreation.rawValue
         dateOfModificationHorizontalStackView.titleLabel.text = RepositoryDetailsStackViewLabels.dateOfModification.rawValue
     }
-    
 }
