@@ -46,7 +46,6 @@
 		75A47C832A64FA0800618359 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47C822A64FA0800618359 /* AppDelegate.swift */; };
 		75A47C8C2A64FA0A00618359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C8B2A64FA0A00618359 /* Assets.xcassets */; };
 		75A47C8F2A64FA0A00618359 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C8D2A64FA0A00618359 /* LaunchScreen.storyboard */; };
-		75A47C982A64FADA00618359 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C972A64FADA00618359 /* Colors.xcassets */; };
 		75A47C9F2A64FC7200618359 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C9C2A64FC7100618359 /* Raleway-Bold.ttf */; };
 		75A47CA02A64FC7200618359 /* Raleway-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C9D2A64FC7100618359 /* Raleway-Medium.ttf */; };
 		75A47CA12A64FC7200618359 /* Raleway-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75A47C9E2A64FC7200618359 /* Raleway-MediumItalic.ttf */; };
@@ -192,7 +191,6 @@
 		75A47C8B2A64FA0A00618359 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75A47C8E2A64FA0A00618359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75A47C902A64FA0A00618359 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		75A47C972A64FADA00618359 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		75A47C9C2A64FC7100618359 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		75A47C9D2A64FC7100618359 /* Raleway-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Medium.ttf"; sourceTree = "<group>"; };
 		75A47C9E2A64FC7200618359 /* Raleway-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-MediumItalic.ttf"; sourceTree = "<group>"; };
@@ -556,7 +554,6 @@
 			isa = PBXGroup;
 			children = (
 				75A47C8B2A64FA0A00618359 /* Assets.xcassets */,
-				75A47C972A64FADA00618359 /* Colors.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1033,7 +1030,6 @@
 				75A47CA02A64FC7200618359 /* Raleway-Medium.ttf in Resources */,
 				75A47CEF2A66506B00618359 /* RepositoryTableViewCell.xib in Resources */,
 				75A47CA12A64FC7200618359 /* Raleway-MediumItalic.ttf in Resources */,
-				75A47C982A64FADA00618359 /* Colors.xcassets in Resources */,
 				75A47C8C2A64FA0A00618359 /* Assets.xcassets in Resources */,
 				75A47C9F2A64FC7200618359 /* Raleway-Bold.ttf in Resources */,
 			);
