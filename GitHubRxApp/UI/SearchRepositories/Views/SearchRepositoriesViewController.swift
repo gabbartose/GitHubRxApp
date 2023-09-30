@@ -171,7 +171,7 @@ private extension SearchRepositoriesViewController {
 // MARK: Setup UITableView related elements
 private extension SearchRepositoriesViewController {
     func setupTableView() {
-        searchRepositoriesView.tableView.registerUINib(ofType: RepositoryTableViewCell.self)
+        searchRepositoriesView.tableView.registerCell(ofType: RepositoryTableViewCell.self)
         
         searchRepositoriesView.tableView.rx.modelSelected(Item.self)
             .subscribe(onNext: { [weak self] item in

@@ -60,7 +60,7 @@ private extension UserDetailsViewController {
     
     func setupElements() {
         userDetailsView.imageView.kf.setImage(with: URL(string: userDetails?.avatarUrl ?? ""), placeholder: UIImage(named: Constants.avatarPlaceholder))
-        userDetailsView.imageView.setupImageViewProperties(with: UserDetailsView.Constants.imageViewDimension / 2)
+        userDetailsView.imageView.setupCornerRadius(with: UserDetailsView.Constants.imageViewDimension / 2)
         
         if let id = userDetails?.id,
            let nodeId = userDetails?.nodeId,

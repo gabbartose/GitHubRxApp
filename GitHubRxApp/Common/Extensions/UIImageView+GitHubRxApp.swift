@@ -9,7 +9,7 @@ import UIKit
 
 extension UIImageView {
     
-    func setupImageViewProperties(with cornerRadius: CGFloat) {
+    func setupCornerRadius(with cornerRadius: CGFloat) {
         contentMode = .scaleAspectFit
         layer.cornerRadius = cornerRadius
         layer.masksToBounds = true
