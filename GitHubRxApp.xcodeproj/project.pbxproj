@@ -76,7 +76,6 @@
 		75A47CE22A653A4200618359 /* SearchRepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47CE12A653A4200618359 /* SearchRepositoriesViewController.swift */; };
 		75A47CE62A653AE500618359 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47CE52A653AE500618359 /* BaseViewController.swift */; };
 		75A47CEE2A66506B00618359 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47CEC2A66506B00618359 /* RepositoryTableViewCell.swift */; };
-		75A47CEF2A66506B00618359 /* RepositoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75A47CED2A66506B00618359 /* RepositoryTableViewCell.xib */; };
 		75A47CF22A665E8B00618359 /* SearchRepositoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47CF12A665E8B00618359 /* SearchRepositoriesView.swift */; };
 		75A47CF42A66621500618359 /* UISearchBar+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47CF32A66621500618359 /* UISearchBar+GitHubRxApp.swift */; };
 		75A47CF72A66652E00618359 /* GrayBottomLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47CF62A66652E00618359 /* GrayBottomLineView.swift */; };
@@ -223,7 +222,6 @@
 		75A47CE52A653AE500618359 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		75A47CEB2A656BE400618359 /* StagingBaseConfiguration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = StagingBaseConfiguration.xcconfig; sourceTree = "<group>"; };
 		75A47CEC2A66506B00618359 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
-		75A47CED2A66506B00618359 /* RepositoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryTableViewCell.xib; sourceTree = "<group>"; };
 		75A47CF12A665E8B00618359 /* SearchRepositoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoriesView.swift; sourceTree = "<group>"; };
 		75A47CF32A66621500618359 /* UISearchBar+GitHubRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+GitHubRxApp.swift"; sourceTree = "<group>"; };
 		75A47CF62A66652E00618359 /* GrayBottomLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayBottomLineView.swift; sourceTree = "<group>"; };
@@ -790,7 +788,6 @@
 			isa = PBXGroup;
 			children = (
 				75A47CEC2A66506B00618359 /* RepositoryTableViewCell.swift */,
-				75A47CED2A66506B00618359 /* RepositoryTableViewCell.xib */,
 			);
 			path = RepositoryTableViewCell;
 			sourceTree = "<group>";
@@ -1031,7 +1028,6 @@
 				75A47D1E2A6AAA0D00618359 /* Raleway-ExtraBold.ttf in Resources */,
 				75A47C8F2A64FA0A00618359 /* LaunchScreen.storyboard in Resources */,
 				75A47CA02A64FC7200618359 /* Raleway-Medium.ttf in Resources */,
-				75A47CEF2A66506B00618359 /* RepositoryTableViewCell.xib in Resources */,
 				75A47CA12A64FC7200618359 /* Raleway-MediumItalic.ttf in Resources */,
 				2DAB1E3D2AC0283900F3856F /* Colors.xcassets in Resources */,
 				75A47C8C2A64FA0A00618359 /* Assets.xcassets in Resources */,
