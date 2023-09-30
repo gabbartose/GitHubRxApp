@@ -14,5 +14,4 @@ extension CATransition {
         transition.type = transitionType
         return transition
     }
-    
 }

@@ -9,15 +9,14 @@ import Foundation
 @testable import GitHubRxApp
 
 class SearchRepositoriesRepositoryMock: SearchRepositoriesRepositoryProtocol {
-    
     var getRepositoriesWasCalled = false
     var getRepositoriesCounter = 0
-    
+
     var query: String?
     var page: Int?
     var perPage: Int?
     var sort: String?
-    
+
     var errorReport: ErrorReport?
     var searchRepositoriesRepositoryResponse = RepositoriesResponse(items: [Item(id: 2,
                                                                                  name: "Repository",
@@ -37,21 +36,21 @@ class SearchRepositoriesRepositoryMock: SearchRepositoriesRepositoryProtocol {
                                                                                  updatedAt: "27.01.2000.",
                                                                                  htmlUrl: "https://github.com/ZeusWPI/hydra-iOS",
                                                                                  description: "Very nice description.")])
-    
-    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) {
+
+    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> Void) {
         getRepositoriesWasCalled = true
         getRepositoriesCounter += 1
-        
+
         self.query = query
         self.page = page
         self.perPage = perPage
         self.sort = sort
-        
+
         guard let errorReport = errorReport else {
             completion(.success(searchRepositoriesRepositoryResponse))
             return
         }
-        
+
         completion(.failure(errorReport))
     }
 }

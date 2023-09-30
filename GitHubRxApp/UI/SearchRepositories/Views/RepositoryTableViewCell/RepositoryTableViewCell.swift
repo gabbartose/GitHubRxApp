@@ -9,21 +9,20 @@ import Kingfisher
 import SnapKit
 
 final class RepositoryTableViewCell: UITableViewCell {
-    
     private struct Constants {
         static let avatarPlaceholder = "AvatarPlaceholder"
         static let updated = "Updated:"
         static let authorImageSize = 80
     }
-    
+
     enum RepositoryVerticalStackViewLabel: String {
         case watchersLabel = "Watchers"
         case forksLabel = "Forks"
         case issuesLabel = "Issues"
         case starsLabel = "Stars"
     }
-    
-    var onDidSelectAuthorImageView: ((Owner) -> ())?
+
+    var onDidSelectAuthorImageView: ((Owner) -> Void)?
 
     private lazy var authorImageView = AuthorImageView(frame: CGRect(x: 0, y: 0, width: Constants.authorImageSize, height: Constants.authorImageSize))
 
@@ -92,46 +91,45 @@ final class RepositoryTableViewCell: UITableViewCell {
         with: RepositoryVerticalStackViewLabel.watchersLabel.rawValue,
         orientation: .vertical,
         spacing: 0)
-    
+
     private lazy var forksVerticalStackView = UIStackView.createStackView(
         with: RepositoryVerticalStackViewLabel.forksLabel.rawValue,
         orientation: .vertical,
         spacing: 0)
-    
+
     private lazy var issuesVerticalStackView = UIStackView.createStackView(
         with: RepositoryVerticalStackViewLabel.issuesLabel.rawValue,
         orientation: .vertical,
         spacing: 0)
-    
+
     private lazy var starsVerticalStackView = UIStackView.createStackView(
         with: RepositoryVerticalStackViewLabel.starsLabel.rawValue,
         orientation: .vertical,
         spacing: 0)
-    
-    
+
     private lazy var watchersLabel = UILabel.setupLabel(with: RepositoryVerticalStackViewLabel.watchersLabel.rawValue,
                                                         font: .ralewayMedium(size: 12),
                                                         textColor: .gDarkGray)
-    
+
     private lazy var forksLabel = UILabel.setupLabel(with: RepositoryVerticalStackViewLabel.forksLabel.rawValue,
                                                      font: .ralewayMedium(size: 12),
                                                      textColor: .gDarkGray)
-    
+
     private lazy var issuesLabel = UILabel.setupLabel(with: RepositoryVerticalStackViewLabel.issuesLabel.rawValue,
                                                       font: .ralewayMedium(size: 12),
                                                       textColor: .gDarkGray)
-    
+
     private lazy var starsLabel = UILabel.setupLabel(with: RepositoryVerticalStackViewLabel.starsLabel.rawValue,
                                                      font: .ralewayMedium(size: 12),
                                                      textColor: .gDarkGray)
-    
+
     private var repositoryItem: Item?
-    
+
     func setupWith(item: Item, attributedString: NSMutableAttributedString) {
         authorImageView.kf.setImage(with: URL(string: item.owner?.avatarUrl ?? ""), placeholder: UIImage(named: Constants.avatarPlaceholder))
         repositoryNameLabel.attributedText = attributedString
         authorNameLabel.text = item.owner?.login
-        
+
         if let watchersCount = item.watchersCount,
            let forksCount = item.forksCount,
            let issuesCount = item.openIssues,
@@ -141,10 +139,10 @@ final class RepositoryTableViewCell: UITableViewCell {
             forksVerticalStackView.descriptionLabel?.text = "\(forksCount)"
             issuesVerticalStackView.descriptionLabel?.text = "\(issuesCount)"
             starsVerticalStackView.descriptionLabel?.text = "\(starsCount)"
-            
+
             updatedDateLabel.text = "\(Date.convertDate(date: updatedDate))"
         }
-        
+
         self.repositoryItem = item
     }
 
@@ -173,7 +171,7 @@ private extension RepositoryTableViewCell {
         issuesVerticalStackView.titleLabel.text = RepositoryVerticalStackViewLabel.issuesLabel.rawValue
         starsVerticalStackView.titleLabel.text = RepositoryVerticalStackViewLabel.starsLabel.rawValue
     }
-    
+
     func addVerticalStackViewInHorizontal() {
         let verticalStackView = UIStackView(arrangedSubviews: [
             watchersVerticalStackView.stackView,
@@ -181,7 +179,7 @@ private extension RepositoryTableViewCell {
             issuesVerticalStackView.stackView,
             starsVerticalStackView.stackView
         ])
-        
+
         horizontalStackView.addArrangedSubview(verticalStackView)
         setupVerticalStackViewTitleLabels()
     }
@@ -224,7 +222,7 @@ private extension RepositoryTableViewCell {
         authorImageView.isUserInteractionEnabled = true
         authorImageView.addGestureRecognizer(authorImageViewTapGesture)
     }
-    
+
     @objc
     func didTapAuthorImageView() {
         guard let ownerItem = repositoryItem?.owner else { return }

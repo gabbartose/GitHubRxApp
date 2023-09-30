@@ -8,34 +8,33 @@
 import UIKit
 
 final class AppCoordinator: NSObject, Coordinator {
-    
     var childCoordinators = [Coordinator]()
-    
+
     lazy var dependencyManager: DependencyManager = {
         let configuration = NetworkConfiguration(HTTPHeaders: getHTTPHeaders())
         let networkManager = NetworkManager(configuration: configuration)
         return DependencyManager(networkManager: networkManager)
     }()
-    
+
     private let rootViewController = UINavigationController()
     private let window: UIWindow
-    
+
     init(window: UIWindow) {
         self.window = window
     }
-    
+
     func start() {
         print("Current app environment is: \(EnvironmentProvider.shared.currentEnvironment)")
-        
+
         setupNavigationBar()
-        
+
         if KeychainManager.standard.read(service: KeychainManager.Constants.accessToken,
                                          account: KeychainManager.Constants.githubString) != nil {
             showSearchRepositoriesFlow()
         } else {
             showLoginFlow()
         }
-        
+
         window.rootViewController = rootViewController
     }
 }
@@ -47,11 +46,11 @@ private extension AppCoordinator {
         HTTPHeaders["Content-Type"] = "application/json"
         HTTPHeaders["Accept"] = "application/json"
         HTTPHeaders["X-App-OS"] = "iOS"
-        
+
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             HTTPHeaders["X-App-Version"] = version
         }
-        
+
         return HTTPHeaders
     }
 }
@@ -64,7 +63,7 @@ private extension AppCoordinator {
         addChildCoordinator(loginCoordinator)
         loginCoordinator.start()
     }
-    
+
     func showSearchRepositoriesFlow() {
         let searchRepositoriesCoordinator = SearchRepositoriesCoordinator(rootViewController: rootViewController,
                                                                           dependencyManager: dependencyManager)

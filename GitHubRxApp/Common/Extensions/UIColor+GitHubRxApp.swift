@@ -21,7 +21,7 @@ extension UIColor {
         case gSearchBarLightGray
         case gShadowMain
     }
-    
+
     class var gBackgroundMain: UIColor { return from(.gBackgroundMain) }
     class var gBackgroundMainInvert: UIColor { return from(.gBackgroundMainInvert) }
     class var gBlue: UIColor { return from(.gBlue) }
@@ -33,7 +33,7 @@ extension UIColor {
     class var gSearchBarDarkGray: UIColor { return from(.gSearchBarDarkGray) }
     class var gSearchBarLightGray: UIColor { return from(.gSearchBarLightGray) }
     class var gShadowMain: UIColor { return from(.gShadowMain) }
-    
+
     private class func from(_ appColor: AssetsColor) -> UIColor {
         guard let color = UIColor(named: appColor.rawValue) else {
             print("Trying to load undefined color: \(appColor)")
@@ -55,14 +55,14 @@ extension UIColor {
     static func from(hex: String?) -> UIColor? {
         guard let hex = hex else { return nil }
         var hexFormatted = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        
+
         if hexFormatted.hasPrefix("#") {
             hexFormatted.remove(at: hexFormatted.startIndex)
         }
-        
+
         var rgb: UInt64 = 0
         Scanner(string: hexFormatted).scanHexInt64(&rgb)
-        
+
         if hexFormatted.count == 6 {
             return UIColor(red: CGFloat((rgb & 0xFF0000) >> 16) / 255.0,
                            green: CGFloat((rgb & 0x00FF00) >> 8) / 255.0,

@@ -8,7 +8,6 @@
 import UIKit
 
 extension UILabel {
-    
     static func setupLabel(with title: String? = "",
                            font: UIFont = .ralewayMedium(size: 14) ?? UIFont.systemFont(ofSize: 14),
                            textColor: UIColor,

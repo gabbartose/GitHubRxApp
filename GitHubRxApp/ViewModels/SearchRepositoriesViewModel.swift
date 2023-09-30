@@ -24,7 +24,7 @@ protocol SearchRepositoriesViewModelProtocol {
     var isReachedEndOfList: Bool { get set }
     var selectedPickerChoice: String { get set }
     var username: String { get }
-    
+
     func didEnter(currentQueryString: String, sortOption: String)
     func didSelectRepository(item: Item)
     func didSelectUserImageView(userDetails: Owner)
@@ -33,7 +33,7 @@ protocol SearchRepositoriesViewModelProtocol {
 
 final class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     weak var delegate: SearchRepositoriesViewModelDelegate?
-    
+
     var loadingInProgress: Observable<Bool>
     var onError: Observable<ErrorReport>
     var repositoryComponents: Observable<[Item]>
@@ -51,7 +51,7 @@ final class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
             return ""
         }
     }
-    
+
     private let searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol
     private let loadingInProgressSubject = PublishSubject<Bool>()
     private let onErrorSubject = PublishSubject<ErrorReport>()
@@ -59,14 +59,14 @@ final class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
     private var currentPage = 0
     private var numberOfItemsPerPage = 20
     private var repositoryItems: [Item] = []
-    
+
     init(searchRepositoriesRepository: SearchRepositoriesRepositoryProtocol) {
         self.searchRepositoriesRepository = searchRepositoriesRepository
         loadingInProgress = loadingInProgressSubject.asObservable().distinctUntilChanged()
         onError = onErrorSubject.asObservable()
         repositoryComponents = repositoryComponentsSubject.asObservable()
     }
-    
+
     deinit {
         print("deinit SearchRepositoriesViewModel")
     }
@@ -75,7 +75,6 @@ final class SearchRepositoriesViewModel: SearchRepositoriesViewModelProtocol {
 extension SearchRepositoriesViewModel {
     func didEnter(currentQueryString: String, sortOption: String = "") {
         guard currentQueryString.count < 3 else {
-            
             if oldQueryString != currentQueryString || oldSortOption != sortOption {
                 setCurrentPageAndRepositoryItemsToDefault()
             }
@@ -85,30 +84,30 @@ extension SearchRepositoriesViewModel {
             oldSortOption = sortOption
             return
         }
-        
+
         oldQueryString = currentQueryString
         repositoryComponentsSubject.onNext([])
     }
-    
+
     func didTapSignOutButton() {
         KeychainManager.standard.delete(service: KeychainManager.Constants.accessToken, account: KeychainManager.Constants.githubString)
         KeychainManager.standard.delete(service: KeychainManager.Constants.usernameKey, account: KeychainManager.Constants.githubString)
-        
+
         delegate?.didTapSignOutButton()
     }
-    
+
     func didSelectRepository(item: Item) {
         // According to the task description on Readme.md, this function is only allowed if we are in a production nad staging app environments and not in a test environment
         guard !EnvironmentProvider.shared.isTest() else { return }
         delegate?.didSelectRepository(item: item)
     }
-    
+
     func didSelectUserImageView(userDetails: Owner) {
         // According to the task description on Readme.md, this function is only allowed if we are in a production app environment
         guard EnvironmentProvider.shared.isProduction() else { return }
         delegate?.didSelectUserDetails(userDetails: userDetails)
     }
-    
+
     private func getRepositoryComponents(query: String = "", sortOption: String = "") {
         guard !isFetchInProgress else { return }
         isFetchInProgress = true
@@ -130,19 +129,19 @@ extension SearchRepositoriesViewModel {
                 repositoryItems.append(contentsOf: temporaryRepositoriesPerPage.items)
                 repositoryComponentsSubject.onNext(self.repositoryItems)
                 print("Repository items count: \(self.repositoryItems.count)")
-                
+
                 guard numberOfItemsPerPage > temporaryRepositoriesPerPage.items.count else {
                     isReachedEndOfList = false
                     return
                 }
                 isReachedEndOfList = true
-                
+
             case .failure(let errorReport):
                 onErrorSubject.onNext(errorReport)
             }
         }
     }
-    
+
     private func setCurrentPageAndRepositoryItemsToDefault() {
         currentPage = 0
         repositoryItems = []

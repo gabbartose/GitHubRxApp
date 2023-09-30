@@ -935,6 +935,7 @@
 				75A47C7C2A64FA0800618359 /* Frameworks */,
 				75A47C7D2A64FA0800618359 /* Resources */,
 				B9F6F66A4C49FE010AB03A2A /* [CP] Embed Pods Frameworks */,
+				2DC3024F2AC8708C00DCEBCA /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -1076,6 +1077,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GitHubRxApp-GitHubRxAppUITests/Pods-GitHubRxApp-GitHubRxAppUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		2DC3024F2AC8708C00DCEBCA /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n  swiftlint --fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		64D51AB62B62B07E64EA771D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

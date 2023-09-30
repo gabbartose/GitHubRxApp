@@ -10,18 +10,17 @@ import UIKit
 protocol LoginCoordinatorDelegate: CoordinatorDelegate { }
 
 final class LoginCoordinator: NSObject, NavigationCoordinator {
-    
     var rootViewController: UINavigationController
     var dependencyManager: DependencyManager
     var childCoordinators: [Coordinator] = []
-    
+
     weak var delegate: LoginCoordinatorDelegate?
-    
+
     required init(rootViewController: UINavigationController, dependencyManager: DependencyManager) {
         self.rootViewController = rootViewController
         self.dependencyManager = dependencyManager
     }
-    
+
     func start() {
         let loginRepository = LoginRepository(networkManager: dependencyManager.networkManager)
         let loginViewModel = LoginViewModel(loginRepository: loginRepository)
@@ -29,7 +28,7 @@ final class LoginCoordinator: NSObject, NavigationCoordinator {
         let loginViewController = LoginViewController(viewModel: loginViewModel)
         rootViewController.pushViewController(loginViewController, animated: true)
     }
-    
+
     deinit {
         print("deinit LoginCoordinator")
     }
@@ -44,7 +43,7 @@ extension LoginCoordinator: LoginViewModelDelegate {
             viewModel: searchRepositoriesViewModel)
         rootViewController.pushViewController(searchRepositoriesViewController, animated: true)
     }
-    
+
     func didEnd() {
         delegate?.shouldRemoveCoordinator(coordinator: self)
     }
@@ -57,14 +56,14 @@ extension LoginCoordinator: SearchRepositoriesViewModelDelegate, RepositoryDetai
         repositoryDetailsCoordinator.delegate = self
         repositoryDetailsCoordinator.startWith(repositoryItem: item)
     }
-    
+
     func didSelectUserDetails(userDetails: Owner) {
         let userDetailsCoordinator = UserDetailsCoordinator(rootViewController: rootViewController, dependencyManager: dependencyManager)
         addChildCoordinator(userDetailsCoordinator)
         userDetailsCoordinator.delegate = self
         userDetailsCoordinator.startWith(userDetails: userDetails)
     }
-    
+
     func didTapSignOutButton() {
         start()
     }

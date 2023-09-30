@@ -16,7 +16,7 @@ enum Environment: String, CaseIterable {
 struct EnvironmentProvider {
     var currentEnvironment: Environment
     static let shared = EnvironmentProvider()
-    
+
     private init() {
         if let environmentString = Bundle.main.infoDictionary?["App Bundle ID"] as? String,
            let environment = Environment(rawValue: environmentString) {
@@ -25,15 +25,15 @@ struct EnvironmentProvider {
             fatalError("No valid environment available!")
         }
     }
-    
+
     func isProduction() -> Bool {
         return EnvironmentProvider.shared.currentEnvironment == .production
     }
-    
+
     func isStaging() -> Bool {
         return EnvironmentProvider.shared.currentEnvironment == .staging
     }
-    
+
     func isTest() -> Bool {
         return EnvironmentProvider.shared.currentEnvironment == .test
     }

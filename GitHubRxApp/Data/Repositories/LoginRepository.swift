@@ -9,12 +9,11 @@ import Foundation
 
 protocol LoginRepositoryProtocol {
     func createSignInURLWithClientId() -> URL?
-    func codeExchange(code: String, completion: @escaping (Result<(response: HTTPURLResponse, object: String), ErrorReport>) -> ())
-    func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ())
+    func codeExchange(code: String, completion: @escaping (Result<(response: HTTPURLResponse, object: String), ErrorReport>) -> Void)
+    func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> Void)
 }
 
 final class LoginRepository: LoginRepositoryProtocol {
-    
     let loginAPI: LoginAPIProtocol
 
     init(networkManager: NetworkManager, loginAPI: LoginAPIProtocol? = nil) {
@@ -26,12 +25,12 @@ extension LoginRepository {
     func createSignInURLWithClientId() -> URL? {
         loginAPI.createSignInURLWithClientId()
     }
-    
-    func codeExchange(code: String, completion: @escaping (Result<(response: HTTPURLResponse, object: String), ErrorReport>) -> ()) {
+
+    func codeExchange(code: String, completion: @escaping (Result<(response: HTTPURLResponse, object: String), ErrorReport>) -> Void) {
         loginAPI.codeExchange(code: code, completion: completion)
     }
-    
-    func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> ()) {
+
+    func getUser(completion: @escaping (Result<(response: HTTPURLResponse, object: User), ErrorReport>) -> Void) {
         loginAPI.getUser(completion: completion)
     }
 }

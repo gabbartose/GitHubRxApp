@@ -11,7 +11,6 @@ import RxTest
 import XCTest
 
 final class LoginViewModelTests: XCTestCase {
-    
     private var loginViewModelDelegateMock: LoginViewModelDelegateMock!
     private var loginRepositoryMock: LoginRepositoryMock!
     private var sut: LoginViewModel!
@@ -40,10 +39,10 @@ final class LoginViewModelTests: XCTestCase {
 extension LoginViewModelTests {
     func testLoginViewModel_WhenNavigateToSearchRepositoriesScreenWasCalled_ShouldCallShowSearchRepositoriesScreenOnDelegate() {
         // Arrange (Given)
-        
+
         // Act (When)
         sut.navigateToSearchRepositoriesScreen()
-        
+
         // Assert (Then)
         XCTAssertTrue(loginViewModelDelegateMock.showSearchRepositoriesScreenWasCalled)
         XCTAssertEqual(loginViewModelDelegateMock.showSearchRepositoriesScreenCounter, 1)
@@ -54,10 +53,10 @@ extension LoginViewModelTests {
 extension LoginViewModelTests {
     func testLoginViewModel_WhenDidDissapearWasCalled_ShouldCallDidEndOnDelegate() {
         // Arrange (Given)
-        
+
         // Act (When)
         sut.didDisappearViewController()
-        
+
         // Assert (Then)
         XCTAssertTrue(loginViewModelDelegateMock.didEndWasCalled)
         XCTAssertEqual(loginViewModelDelegateMock.didEndCounter, 1)
@@ -68,15 +67,15 @@ extension LoginViewModelTests {
 extension LoginViewModelTests {
     func testLoginViewModel_WhenLoginButtonSelected_ShouldPostLoadingInProgressToTrue() {
         // Arrange (Given)
-        
+
         // Act (When)
         scheduler.scheduleAt(10) { [weak self] in
             self?.sut.didSelectLoginButton()
         }
-        
+
         let observer = scheduler.record(sut.loadingInProgress, disposeBag: disposeBag)
         scheduler.start()
-        
+
         // Assert (Then)
         XCTAssertEqual(observer.events, [.next(10, true)])
     }

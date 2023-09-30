@@ -8,11 +8,11 @@
 import UIKit
 
 extension UIViewController {
-    func hideNavigationBar(animated: Bool){
+    func hideNavigationBar(animated: Bool) {
         // Hide the navigation bar on the this view controller
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
+
     func showNavigationBar(animated: Bool) {
         // Show the navigation bar on other view controllers
         navigationController?.setNavigationBarHidden(false, animated: animated)

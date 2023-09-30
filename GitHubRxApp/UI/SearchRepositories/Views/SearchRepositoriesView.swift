@@ -8,18 +8,17 @@
 import SnapKit
 
 final class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
-    
     struct Constants {
         static let searchGithubRepositoriesPlaceholder = "Search GitHub Repositories"
         static let filterIcon = "FilterIcon"
     }
-    
+
     private lazy var searchComponentsView = {
         let view = UIView()
         view.backgroundColor = .gBackgroundMain
         return view
     }()
-    
+
     lazy var repositorySearchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.backgroundColor = .gSearchBarBackground
@@ -40,22 +39,22 @@ final class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
         searchBar.clearBackgroundColor()
         return searchBar
     }()
-    
+
     lazy var filterButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: Constants.filterIcon), for: .normal)
         button.tintColor = .gBorderLightGray
         return button
     }()
-    
+
     private lazy var grayBottomLineViewUnderSearch = GrayBottomLineView()
-    
+
     private lazy var loggedInUserView = {
         let view = UIView()
         view.backgroundColor = .gBackgroundMain
         return view
     }()
-    
+
     lazy var loggedInUserLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: .ralewayBold, size: 14)
@@ -64,9 +63,9 @@ final class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
         label.textAlignment = .center
         return label
     }()
-    
+
     private lazy var grayBottomLineViewUnderLoggedInUserView = GrayBottomLineView()
-    
+
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .singleLine
@@ -79,7 +78,7 @@ final class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
         tableView.separatorColor = .gBorderLightGray
         return tableView
     }()
-    
+
     lazy var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .gSearchBarDarkGray
@@ -87,22 +86,22 @@ final class SearchRepositoriesView: UIView, BasicViewMethodsProtocol {
         view.isHidden = true
         return view
     }()
-    
+
     lazy var sortPickerView: UIPickerView = {
         let pickerView = UIPickerView()
         pickerView.backgroundColor = .gBackgroundMain
         pickerView.layer.cornerRadius = 30
         return pickerView
     }()
-    
+
     lazy var emptyStateView = EmptyStateView()
-    
+
     init() {
         super.init(frame: CGRect.zero)
         addSubviews()
         setupConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -114,23 +113,23 @@ extension SearchRepositoriesView {
         searchComponentsView.addSubview(repositorySearchBar)
         searchComponentsView.addSubview(filterButton)
         addSubview(grayBottomLineViewUnderSearch)
-        
+
         addSubview(loggedInUserView)
         loggedInUserView.addSubview(loggedInUserLabel)
         addSubview(grayBottomLineViewUnderLoggedInUserView)
-        
+
         addSubview(tableView)
         addSubview(emptyStateView)
-        
+
         addSubview(backgroundView)
         backgroundView.addSubview(sortPickerView)
     }
-    
+
     internal func setupConstraints() {
         searchComponentsView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
         }
-        
+
         repositorySearchBar.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.bottom.equalToSuperview().offset(-10)
@@ -138,49 +137,49 @@ extension SearchRepositoriesView {
             $0.trailing.equalTo(filterButton.snp.leading).offset(-10)
             $0.height.equalTo(55)
         }
-        
+
         filterButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-10)
             $0.size.equalTo(35)
         }
-        
+
         grayBottomLineViewUnderSearch.snp.makeConstraints {
             $0.top.equalTo(searchComponentsView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
         }
-        
+
         loggedInUserView.snp.makeConstraints {
             $0.top.equalTo(grayBottomLineViewUnderSearch.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(25)
         }
-        
+
         loggedInUserLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(25)
             $0.trailing.equalToSuperview().offset(-25)
             $0.centerY.equalToSuperview()
         }
-        
+
         grayBottomLineViewUnderLoggedInUserView.snp.makeConstraints {
             $0.top.equalTo(loggedInUserView.snp.bottom)
             $0.leading.trailing.equalToSuperview()
         }
-        
+
         tableView.snp.makeConstraints {
             $0.top.equalTo(grayBottomLineViewUnderLoggedInUserView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
-        
+
         emptyStateView.snp.makeConstraints {
             $0.top.equalTo(grayBottomLineViewUnderLoggedInUserView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
-        
+
         backgroundView.snp.makeConstraints {
             $0.top.bottom.leading.trailing.equalToSuperview()
         }
-        
+
         sortPickerView.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(25)

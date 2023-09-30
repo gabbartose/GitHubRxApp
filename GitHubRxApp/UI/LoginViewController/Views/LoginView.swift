@@ -8,15 +8,14 @@
 import SnapKit
 
 final class LoginView: UIView, BasicViewMethodsProtocol {
-    
     struct Constants {
         static let gitHubSearchIcon = "GitHubSearchIcon"
         static let buttonText = "Login"
         static let centerViewHeight = UIScreen.main.bounds.height * 0.50
     }
-    
+
     private lazy var centerView = UIView()
-    
+
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -24,7 +23,7 @@ final class LoginView: UIView, BasicViewMethodsProtocol {
         imageView.addShadow()
         return imageView
     }()
-    
+
     lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle(Constants.buttonText, for: .normal)
@@ -39,42 +38,41 @@ final class LoginView: UIView, BasicViewMethodsProtocol {
         button.addTarget(self, action: #selector(heldAndReleased), for: .touchDragExit)
         return button
     }()
-    
-    var onDidSelectLoginButton: (() -> ())?
-    
+
+    var onDidSelectLoginButton: (() -> Void)?
+
     init() {
         super.init(frame: CGRect.zero)
         backgroundColor = .white
         addSubviews()
         setupConstraints()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension LoginView {
-    
     internal func addSubviews() {
         addSubview(centerView)
         centerView.addSubview(imageView)
         centerView.addSubview(loginButton)
     }
-    
+
     internal func setupConstraints() {
         centerView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(40)
             $0.trailing.equalToSuperview().offset(-40)
             $0.centerY.equalToSuperview()
         }
-        
+
         imageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(30)
             $0.size.equalTo(170)
             $0.centerX.equalToSuperview()
         }
-        
+
         loginButton.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(30)
             $0.bottom.equalToSuperview().offset(-30)
@@ -91,12 +89,12 @@ extension LoginView {
         loginButton.backgroundColor = .gBlue
         onDidSelectLoginButton?()
     }
-    
+
     @objc
     func heldDown() {
         loginButton.backgroundColor = .gSearchBarBackground
     }
-    
+
     @objc
     func heldAndReleased() {
         loginButton.backgroundColor = .gBlue

@@ -10,7 +10,6 @@ import UIKit
 public typealias Handler = () -> Void
 
 extension UIAlertController {
-    
     convenience init(alertModel: AlertModel, buttonTitle: String? = nil, handler: Handler? = nil) {
         self.init(title: alertModel.title, message: alertModel.message, preferredStyle: .alert)
         self.addAction(

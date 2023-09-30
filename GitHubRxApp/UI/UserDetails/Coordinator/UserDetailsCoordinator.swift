@@ -13,18 +13,18 @@ final class UserDetailsCoordinator: NSObject, NavigationCoordinator {
     var rootViewController: UINavigationController
     var dependencyManager: DependencyManager
     var childCoordinators: [Coordinator] = []
-    
+
     weak var delegate: UserDetailsCoordinatorDelegate?
-    
+
     required init(rootViewController: UINavigationController, dependencyManager: DependencyManager) {
         self.rootViewController = rootViewController
         self.dependencyManager = dependencyManager
     }
-    
+
     func start() {
         fatalError("use startWith")
     }
-    
+
     func startWith(userDetails: Owner) {
         let userDetailsViewModel = UserDetailsViewModel(userDetails: userDetails)
         userDetailsViewModel.delegate = self
@@ -32,7 +32,7 @@ final class UserDetailsCoordinator: NSObject, NavigationCoordinator {
         rootViewController.view.layer.add(CATransition.setTransition(), forKey: nil)
         rootViewController.pushViewController(userDetailsViewController, animated: false)
     }
-    
+
     deinit {
         print("deinit UserDetailsCoordinator")
     }
@@ -42,7 +42,7 @@ extension UserDetailsCoordinator: UserDetailsViewModelDelegate {
     func didTapAdditionalInfoInBrowser(htmlURL: String) {
         URL.openLinkInWebBrowser(htmlURL: htmlURL)
     }
-    
+
     func didEnd() {
         delegate?.shouldRemoveCoordinator(coordinator: self)
     }

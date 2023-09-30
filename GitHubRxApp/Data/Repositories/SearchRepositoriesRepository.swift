@@ -8,20 +8,19 @@
 import Foundation
 
 protocol SearchRepositoriesRepositoryProtocol {
-    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ())
+    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> Void)
 }
 
 final class SearchRepositoriesRepository: SearchRepositoriesRepositoryProtocol {
-    
     let searchRepositoriesAPI: SearchRepositoriesAPIProtocol
-    
+
     init(networkManager: NetworkManager, searchRepositoriesAPI: SearchRepositoriesAPIProtocol? = nil) {
         self.searchRepositoriesAPI = searchRepositoriesAPI ?? SearchRepositoriesAPI(networkManager: networkManager)
     }
 }
 
 extension SearchRepositoriesRepository {
-    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> ()) {
+    func getRepositories(query: String, page: Int, perPage: Int, sort: String, completion: @escaping (Result<RepositoriesResponse, ErrorReport>) -> Void) {
         searchRepositoriesAPI.getRepositories(query: query, page: page, perPage: perPage, sort: sort, completion: completion)
     }
 }

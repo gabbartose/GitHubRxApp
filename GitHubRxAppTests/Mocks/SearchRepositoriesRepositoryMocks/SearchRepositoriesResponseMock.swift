@@ -9,7 +9,6 @@ import Foundation
 @testable import GitHubRxApp
 
 class SearchRepositoriesResponseMock {
-    
     // Item details
     private var id: Int? = 2
     private var name: String? = "C# organization"
@@ -22,7 +21,7 @@ class SearchRepositoriesResponseMock {
     private var updatedAt: String? = "2023-08-04T05:07:52Z"
     private var htmlUrl: String? = "https://github.com/ZeusWPI/hydra-iOS"
     private var description: String? = "This is very nice description"
-    
+
     // Owner details
     private var ownerId: Int? = 3
     private var nodeId: String? = "MDEyOk9yZ2FuaXphdGlvbjMzMTc1MA=="
@@ -31,7 +30,7 @@ class SearchRepositoriesResponseMock {
     private var type: String? = "Organization"
     private var siteAdmin: Bool? = false
     private var ownerHtmlUrl: String? = "https://github.com/ZeusWPI"
-    
+
     func getOwnerItem() -> Owner {
         let owner = Owner(id: ownerId,
                           nodeId: nodeId,
@@ -42,7 +41,7 @@ class SearchRepositoriesResponseMock {
                           htmlUrl: ownerHtmlUrl)
         return owner
     }
-    
+
     func getRepositoryItem() -> Item {
         let repositoryItem = Item(id: id,
                                   name: name,
@@ -58,12 +57,12 @@ class SearchRepositoriesResponseMock {
                                   description: description)
         return repositoryItem
     }
-    
+
     func getRepositoriesResponse() -> RepositoriesResponse {
         let items = [getRepositoryItem()]
         return RepositoriesResponse(items: items)
     }
-    
+
     func getJsonString() -> String {
           """
           {

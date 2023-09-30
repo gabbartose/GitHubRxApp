@@ -5,37 +5,36 @@
 //  Created by Gabrijel Bartosek on 17.07.2023..
 //
 
-import RxSwift
 import RxCocoa
+import RxSwift
 
 final class SearchRepositoriesViewController: BaseViewController {
-    
     struct Constants {
         static var repositoryTableViewCell = "RepositoryTableViewCell"
     }
-    
+
     private let disposeBag = DisposeBag()
-    
+
     private var viewModel: SearchRepositoriesViewModelProtocol
     private var queryString = ""
-    
+
     private var searchRepositoriesView: SearchRepositoriesView {
         guard let view = self.view as? SearchRepositoriesView else { fatalError("There is no SearchRepositoriesView.") }
         return view
     }
-    
+
     private var repositoryComponents = [Item]() {
         didSet {
             searchRepositoriesView.emptyStateView.isHidden = !repositoryComponents.isEmpty
             searchRepositoriesView.tableView.isHidden = repositoryComponents.isEmpty
         }
     }
-    
+
     init(viewModel: SearchRepositoriesViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     override func loadView() {
         view = SearchRepositoriesView()
         setupNavigationBarElements()
@@ -46,11 +45,11 @@ final class SearchRepositoriesViewController: BaseViewController {
         setupGestures()
         subscribeToViewModel()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     deinit {
         print("deinit SearchRepositoriesViewController")
     }
@@ -65,13 +64,13 @@ private extension SearchRepositoriesViewController {
                 self?.repositoryComponents = repositoryComponents
             }
             .disposed(by: disposeBag)
-        
+
         viewModel
             .loadingInProgress
             .bind { [weak self] isInProgress in
                 self?.activityIndicatorView(startAnimating: isInProgress)
             }.disposed(by: disposeBag)
-        
+
         viewModel
             .onError
             .bind { [weak self] errorReport in
@@ -105,7 +104,7 @@ private extension SearchRepositoriesViewController {
                 self.queryString = searchedText
             })
             .disposed(by: disposeBag)
-        
+
         searchRepositoriesView.repositorySearchBar.rx
             .cancelButtonClicked
             .asDriver(onErrorJustReturn: ())
@@ -120,11 +119,11 @@ private extension SearchRepositoriesViewController {
 // MARK: UIPickerView related methods
 private extension SearchRepositoriesViewController {
     func setupPickerView() {
-        viewModel.pickerSortDataArray.bind(to: searchRepositoriesView.sortPickerView.rx.itemTitles) { row, element in
+        viewModel.pickerSortDataArray.bind(to: searchRepositoriesView.sortPickerView.rx.itemTitles) { _, element in
             return element
         }
         .disposed(by: disposeBag)
-        
+
         searchRepositoriesView.sortPickerView.rx.itemSelected
             .subscribe { [weak self] event in
                 guard let self = self else { return }
@@ -140,14 +139,14 @@ private extension SearchRepositoriesViewController {
                     default:
                         self.viewModel.selectedPickerChoice = PickerValues.bestMatch.rawValue
                     }
-                    
+
                     guard viewModel.oldSortOption != viewModel.selectedPickerChoice else {
                         searchRepositoriesView.backgroundView.isHidden = true
                         return
                     }
                     viewModel.didEnter(currentQueryString: queryString, sortOption: viewModel.selectedPickerChoice)
                     print("CurrentQueryString: \(queryString), SortOption: \(viewModel.selectedPickerChoice)")
-                    
+
                     searchRepositoriesView.backgroundView.isHidden = true
                     guard !repositoryComponents.isEmpty else { return }
                     scrollToTop()
@@ -156,12 +155,12 @@ private extension SearchRepositoriesViewController {
                 }
             }.disposed(by: disposeBag)
     }
-    
+
     func setPickerOnDefaultValue() {
         viewModel.selectedPickerChoice = PickerValues.bestMatch.rawValue
         searchRepositoriesView.sortPickerView.selectRow(0, inComponent: 0, animated: true)
     }
-    
+
     func scrollToTop() {
         let topRow = IndexPath(row: 0, section: 0)
         searchRepositoriesView.tableView.scrollToRow(at: topRow, at: .top, animated: true)
@@ -172,25 +171,25 @@ private extension SearchRepositoriesViewController {
 private extension SearchRepositoriesViewController {
     func setupTableView() {
         searchRepositoriesView.tableView.registerCell(ofType: RepositoryTableViewCell.self)
-        
+
         searchRepositoriesView.tableView.rx.modelSelected(Item.self)
             .subscribe(onNext: { [weak self] item in
                 guard let self = self else { return }
                 self.viewModel.didSelectRepository(item: item)
             }).disposed(by: disposeBag)
-        
+
         viewModel
             .repositoryComponents
             .bind(to: searchRepositoriesView.tableView.rx.items(cellIdentifier: Constants.repositoryTableViewCell,
-                                                                cellType: RepositoryTableViewCell.self)) { [weak self] row, repositoryComponent, cell in
+                                                                cellType: RepositoryTableViewCell.self)) { [weak self] _, repositoryComponent, cell in
                 guard let self = self else { return }
                 let attributedString = self.getAttributedString(query: repositoryComponent.name ?? "")
                 cell.onDidSelectAuthorImageView = self.viewModel.didSelectUserImageView(userDetails:)
                 cell.setupWith(item: repositoryComponent, attributedString: attributedString)
             }.disposed(by: disposeBag)
-        
+
         searchRepositoriesView.tableView.rx.willDisplayCell
-            .subscribe(onNext: ({ [weak self] cell, indexPath in
+            .subscribe(onNext: ({ [weak self] _, indexPath in
                 guard let self = self,
                       indexPath.section == searchRepositoriesView.tableView.numberOfSections - 1,
                       indexPath.row == searchRepositoriesView.tableView.numberOfRows(inSection: indexPath.section) - 1,
@@ -201,7 +200,7 @@ private extension SearchRepositoriesViewController {
                 viewModel.didEnter(currentQueryString: queryString, sortOption: viewModel.selectedPickerChoice)
             })).disposed(by: disposeBag)
     }
-    
+
     func getAttributedString(query: String) -> NSMutableAttributedString {
         let attributedString = NSMutableAttributedString(string: query)
         let range = (query as NSString).range(of: queryString, options: .caseInsensitive)
@@ -216,25 +215,25 @@ private extension SearchRepositoriesViewController {
     func setupLoggedInUser() {
         searchRepositoriesView.loggedInUserLabel.text = "Currently logged in user: \(viewModel.username)"
     }
-    
+
     func setupGestures() {
         let filterButtonTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapFilterButton))
         searchRepositoriesView.filterButton.addGestureRecognizer(filterButtonTapGesture)
-        
+
         let backgroundViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapBackgroundView))
         searchRepositoriesView.backgroundView.addGestureRecognizer(backgroundViewTapGesture)
     }
-    
+
     @objc
     func didTapSignOutButton() {
         viewModel.didTapSignOutButton()
     }
-    
+
     @objc
     func didTapFilterButton() {
         searchRepositoriesView.backgroundView.isHidden = false
     }
-    
+
     @objc
     func didTapBackgroundView() {
         searchRepositoriesView.backgroundView.isHidden = true
