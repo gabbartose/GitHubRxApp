@@ -22,12 +22,6 @@ final class RepositoryTableViewCell: UITableViewCell {
         case starsLabel = "Stars"
     }
     
-    //    @IBOutlet weak var horizontalStackView: UIStackView!
-    //    @IBOutlet weak var authorImageView: UIImageView!
-    //    @IBOutlet weak var repositoryNameLabel: UILabel!
-    //    @IBOutlet weak var authorNameLabel: UILabel!
-    //    @IBOutlet weak var updatedDateLabel: UILabel!
-    
     var onDidSelectAuthorImageView: ((Owner) -> ())?
 
 
@@ -158,13 +152,6 @@ final class RepositoryTableViewCell: UITableViewCell {
         self.repositoryItem = item
     }
     
-    //    override func awakeFromNib() {
-    //        super.awakeFromNib()
-    //        addVerticalStackViewInHorizontal()
-    //        setRoundedCornerRadius()
-    //        addGesture()
-    //    }
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
