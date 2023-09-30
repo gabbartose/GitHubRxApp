@@ -10,9 +10,10 @@ import SnapKit
 
 final class RepositoryTableViewCell: UITableViewCell {
     
-    struct Constants {
+    private struct Constants {
         static let avatarPlaceholder = "AvatarPlaceholder"
         static let updated = "Updated:"
+        static let authorImageSize = 80
     }
     
     enum RepositoryVerticalStackViewLabel: String {
@@ -24,12 +25,7 @@ final class RepositoryTableViewCell: UITableViewCell {
     
     var onDidSelectAuthorImageView: ((Owner) -> ())?
 
-
-    private lazy var authorImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    private lazy var authorImageView = AuthorImageView(frame: CGRect(x: 0, y: 0, width: Constants.authorImageSize, height: Constants.authorImageSize))
 
     private lazy var mainVerticalStackView: UIStackView = {
         let stackView = UIStackView()
@@ -151,7 +147,7 @@ final class RepositoryTableViewCell: UITableViewCell {
         
         self.repositoryItem = item
     }
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
@@ -161,7 +157,6 @@ final class RepositoryTableViewCell: UITableViewCell {
         setupConstraints()
 
         addVerticalStackViewInHorizontal()
-        setRoundedCornerRadius()
         addGesture()
     }
 
@@ -172,10 +167,6 @@ final class RepositoryTableViewCell: UITableViewCell {
 
 // MARK: Helper methods
 private extension RepositoryTableViewCell {
-    func setRoundedCornerRadius() {
-        authorImageView.setupCornerRadius(with: 30)
-    }
-    
     func setupVerticalStackViewTitleLabels() {
         watchersVerticalStackView.titleLabel.text = RepositoryVerticalStackViewLabel.watchersLabel.rawValue
         forksVerticalStackView.titleLabel.text = RepositoryVerticalStackViewLabel.forksLabel.rawValue
@@ -214,7 +205,7 @@ extension RepositoryTableViewCell: BasicViewMethodsProtocol {
         authorImageView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(16)
             $0.centerY.equalToSuperview()
-            $0.size.equalTo(60)
+            $0.size.equalTo(Constants.authorImageSize)
         }
 
         mainVerticalStackView.snp.makeConstraints {
@@ -230,6 +221,7 @@ extension RepositoryTableViewCell: BasicViewMethodsProtocol {
 private extension RepositoryTableViewCell {
     func addGesture() {
         let authorImageViewTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapAuthorImageView))
+        authorImageView.isUserInteractionEnabled = true
         authorImageView.addGestureRecognizer(authorImageViewTapGesture)
     }
     

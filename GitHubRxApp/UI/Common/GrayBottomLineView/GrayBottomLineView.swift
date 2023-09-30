@@ -24,8 +24,8 @@ final class GrayBottomLineView: UIView {
     }
     
     private func setupConstraints() {
-        self.snp.makeConstraints { make in
-            make.height.equalTo(1)
+        self.snp.makeConstraints {
+            $0.height.equalTo(1)
         }
     }
 }

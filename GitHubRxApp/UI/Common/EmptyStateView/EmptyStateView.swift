@@ -44,28 +44,28 @@ final class EmptyStateView: UIView {
     }
 }
 
-extension EmptyStateView {
+extension EmptyStateView: BasicViewMethodsProtocol {
     private func setupView() {
         addSubviews()
         setupConstraints()
     }
     
-    private func addSubviews() {
+    func addSubviews() {
         addSubview(imageView)
         addSubview(emptyStateLabel)
     }
     
-    private func setupConstraints() {
-        imageView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(Constants.iconDistanceFromCenter)
-            make.size.equalTo(170)
+    func setupConstraints() {
+        imageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(Constants.iconDistanceFromCenter)
+            $0.size.equalTo(170)
         }
         
-        emptyStateLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(30)
-            make.leading.equalToSuperview().offset(25)
-            make.trailing.equalToSuperview().offset(-25)
+        emptyStateLabel.snp.makeConstraints {
+            $0.top.equalTo(imageView.snp.bottom).offset(30)
+            $0.leading.equalToSuperview().offset(25)
+            $0.trailing.equalToSuperview().offset(-25)
         }
     }
 }

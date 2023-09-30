@@ -127,65 +127,65 @@ extension SearchRepositoriesView {
     }
     
     internal func setupConstraints() {
-        searchComponentsView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+        searchComponentsView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
         }
         
-        repositorySearchBar.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-10)
-            make.leading.equalToSuperview().offset(10)
-            make.trailing.equalTo(filterButton.snp.leading).offset(-10)
-            make.height.equalTo(55)
+        repositorySearchBar.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-10)
+            $0.leading.equalToSuperview().offset(10)
+            $0.trailing.equalTo(filterButton.snp.leading).offset(-10)
+            $0.height.equalTo(55)
         }
         
-        filterButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-10)
-            make.size.equalTo(35)
+        filterButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.size.equalTo(35)
         }
         
-        grayBottomLineViewUnderSearch.snp.makeConstraints { make in
-            make.top.equalTo(searchComponentsView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
+        grayBottomLineViewUnderSearch.snp.makeConstraints {
+            $0.top.equalTo(searchComponentsView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
         }
         
-        loggedInUserView.snp.makeConstraints { make in
-            make.top.equalTo(grayBottomLineViewUnderSearch.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(25)
+        loggedInUserView.snp.makeConstraints {
+            $0.top.equalTo(grayBottomLineViewUnderSearch.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(25)
         }
         
-        loggedInUserLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(25)
-            make.trailing.equalToSuperview().offset(-25)
-            make.centerY.equalToSuperview()
+        loggedInUserLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(25)
+            $0.trailing.equalToSuperview().offset(-25)
+            $0.centerY.equalToSuperview()
         }
         
-        grayBottomLineViewUnderLoggedInUserView.snp.makeConstraints { make in
-            make.top.equalTo(loggedInUserView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
+        grayBottomLineViewUnderLoggedInUserView.snp.makeConstraints {
+            $0.top.equalTo(loggedInUserView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
         }
         
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(grayBottomLineViewUnderLoggedInUserView.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(grayBottomLineViewUnderLoggedInUserView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
         
-        emptyStateView.snp.makeConstraints { make in
-            make.top.equalTo(grayBottomLineViewUnderLoggedInUserView.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+        emptyStateView.snp.makeConstraints {
+            $0.top.equalTo(grayBottomLineViewUnderLoggedInUserView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
         
-        backgroundView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
+        backgroundView.snp.makeConstraints {
+            $0.top.bottom.leading.trailing.equalToSuperview()
         }
         
-        sortPickerView.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(25)
-            make.trailing.equalToSuperview().offset(-25)
-            make.height.equalTo(200)
+        sortPickerView.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(25)
+            $0.trailing.equalToSuperview().offset(-25)
+            $0.height.equalTo(200)
         }
     }
 }

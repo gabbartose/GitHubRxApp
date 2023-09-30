@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2DAB1E3D2AC0283900F3856F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DAB1E3C2AC0283900F3856F /* Colors.xcassets */; };
+		2DC3024E2AC853D900DCEBCA /* AuthorImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC3024D2AC853D900DCEBCA /* AuthorImageView.swift */; };
 		4061A4AED2028F8E3AD74FEA /* Pods_GitHubRxApp_GitHubRxAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212507A7785563B259917FE3 /* Pods_GitHubRxApp_GitHubRxAppUITests.framework */; };
 		7508285B2A864230000CD39D /* CATransition+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7508285A2A864230000CD39D /* CATransition+GitHubRxApp.swift */; };
 		75098D182A82037700997DE8 /* URLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75098D172A82037700997DE8 /* URLSessionMock.swift */; };
@@ -95,7 +96,6 @@
 		75A47D252A6E4CC700618359 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47D242A6E4CC700618359 /* UserDetailsView.swift */; };
 		75A47D272A6E4CD300618359 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47D262A6E4CD300618359 /* UserDetailsViewController.swift */; };
 		75A47D292A6E4CE100618359 /* UserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47D282A6E4CE100618359 /* UserDetailsViewModel.swift */; };
-		75A47D2E2A6E68DC00618359 /* UIImageView+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47D2D2A6E68DC00618359 /* UIImageView+GitHubRxApp.swift */; };
 		75A47D312A6E796B00618359 /* UIStackView+GitHubRxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47D302A6E796B00618359 /* UIStackView+GitHubRxApp.swift */; };
 		75A47D522A6FB40700618359 /* GitHubRxAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47D512A6FB40700618359 /* GitHubRxAppUITests.swift */; };
 		75A47D542A6FB40700618359 /* GitHubRxAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A47D532A6FB40700618359 /* GitHubRxAppUITestsLaunchTests.swift */; };
@@ -125,6 +125,7 @@
 		1A5F24C5C6FD460C08F3D377 /* Pods-GitHubRxApp.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxApp.test.xcconfig"; path = "Target Support Files/Pods-GitHubRxApp/Pods-GitHubRxApp.test.xcconfig"; sourceTree = "<group>"; };
 		212507A7785563B259917FE3 /* Pods_GitHubRxApp_GitHubRxAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubRxApp_GitHubRxAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DAB1E3C2AC0283900F3856F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		2DC3024D2AC853D900DCEBCA /* AuthorImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorImageView.swift; sourceTree = "<group>"; };
 		2E5AD88DC63D215D0A926E30 /* Pods-GitHubRxAppTests.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxAppTests.test.xcconfig"; path = "Target Support Files/Pods-GitHubRxAppTests/Pods-GitHubRxAppTests.test.xcconfig"; sourceTree = "<group>"; };
 		3321D8F040BBFEB616961CBF /* Pods-GitHubRxApp.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxApp.production.xcconfig"; path = "Target Support Files/Pods-GitHubRxApp/Pods-GitHubRxApp.production.xcconfig"; sourceTree = "<group>"; };
 		5D328DCF83146DD7B2BA8CD5 /* Pods-GitHubRxApp-GitHubRxAppUITests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubRxApp-GitHubRxAppUITests.production.xcconfig"; path = "Target Support Files/Pods-GitHubRxApp-GitHubRxAppUITests/Pods-GitHubRxApp-GitHubRxAppUITests.production.xcconfig"; sourceTree = "<group>"; };
@@ -241,7 +242,6 @@
 		75A47D242A6E4CC700618359 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 		75A47D262A6E4CD300618359 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		75A47D282A6E4CE100618359 /* UserDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModel.swift; sourceTree = "<group>"; };
-		75A47D2D2A6E68DC00618359 /* UIImageView+GitHubRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+GitHubRxApp.swift"; sourceTree = "<group>"; };
 		75A47D302A6E796B00618359 /* UIStackView+GitHubRxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+GitHubRxApp.swift"; sourceTree = "<group>"; };
 		75A47D3E2A6FB3C700618359 /* GitHubRxAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubRxAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A47D4F2A6FB40500618359 /* GitHubRxAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubRxAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -315,6 +315,14 @@
 				CED6D1CEAFC240E197B2F49D /* Pods-GitHubRxAppTests.devtest.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		2DC3024C2AC853C700DCEBCA /* AuthorImageView */ = {
+			isa = PBXGroup;
+			children = (
+				2DC3024D2AC853D900DCEBCA /* AuthorImageView.swift */,
+			);
+			path = AuthorImageView;
 			sourceTree = "<group>";
 		};
 		75098D162A82035D00997DE8 /* URLSession */ = {
@@ -699,7 +707,6 @@
 				75A47CDD2A65399A00618359 /* UIAlertController+GitHubRxApp.swift */,
 				75A47CC82A6533C500618359 /* UIColor+GitHubRxApp.swift */,
 				75A47CC62A65332E00618359 /* UIFont+GitHubRxApp.swift */,
-				75A47D2D2A6E68DC00618359 /* UIImageView+GitHubRxApp.swift */,
 				75A47D1B2A6A80F900618359 /* UILabel+GitHubRxApp.swift */,
 				75A47D302A6E796B00618359 /* UIStackView+GitHubRxApp.swift */,
 				75A47CDF2A6539DE00618359 /* UITableView+GitHubRxApp.swift */,
@@ -744,6 +751,7 @@
 		75A47CE32A653AC700618359 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2DC3024C2AC853C700DCEBCA /* AuthorImageView */,
 				75A47CE42A653AD600618359 /* BaseViewController */,
 				75A47CF82A67A32A00618359 /* EmptyStateView */,
 				75A47CF52A66651800618359 /* GrayBottomLineView */,
@@ -1227,8 +1235,8 @@
 				7515D68B2A71679300211BD4 /* EnvironmentProvider.swift in Sources */,
 				75A47CF72A66652E00618359 /* GrayBottomLineView.swift in Sources */,
 				75A47CE22A653A4200618359 /* SearchRepositoriesViewController.swift in Sources */,
-				75A47D2E2A6E68DC00618359 /* UIImageView+GitHubRxApp.swift in Sources */,
 				7510C46E2A7A166F009EAAAF /* LoginAPI.swift in Sources */,
+				2DC3024E2AC853D900DCEBCA /* AuthorImageView.swift in Sources */,
 				75A47CFC2A67A36400618359 /* EmptyStateView.swift in Sources */,
 				75A47CEE2A66506B00618359 /* RepositoryTableViewCell.swift in Sources */,
 				75A47CD52A6537AF00618359 /* PreconditionFailedError.swift in Sources */,

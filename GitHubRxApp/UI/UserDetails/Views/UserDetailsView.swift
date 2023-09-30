@@ -10,7 +10,7 @@ import SnapKit
 final class UserDetailsView: UIView, BasicViewMethodsProtocol {
     
     struct Constants {
-        static let imageViewDimension = UIScreen.main.bounds.width / 1.6
+        static let authorImageSize = UIScreen.main.bounds.width / 1.6
     }
     
     enum UserDetailsStackViewLabels: String {
@@ -24,7 +24,7 @@ final class UserDetailsView: UIView, BasicViewMethodsProtocol {
     private lazy var scrollView = UIScrollView()
     private lazy var contentView = UIView()
     
-    lazy var imageView = UIImageView()
+    lazy var authorImageView = AuthorImageView(frame: CGRect(x: 0, y: 0, width: Constants.authorImageSize, height: Constants.authorImageSize))
     
     private lazy var mainVerticalStackView: UIStackView = {
         let verticalStackView = UIStackView(arrangedSubviews: [
@@ -66,39 +66,39 @@ extension UserDetailsView {
         addSubview(scrollView)
         scrollView.addSubview(contentView)
         
-        contentView.addSubview(imageView)
+        contentView.addSubview(authorImageView)
         contentView.addSubview(mainVerticalStackView)
         contentView.addSubview(userDetailsLabel)
     }
     
     internal func setupConstraints() {
-        scrollView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+        scrollView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
         }
         
-        contentView.snp.makeConstraints { make in
-            make.top.bottom.leading.trailing.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalToSuperview().priority(250)
+        contentView.snp.makeConstraints {
+            $0.top.bottom.leading.trailing.equalToSuperview()
+            $0.width.equalToSuperview()
+            $0.height.equalToSuperview().priority(250)
         }
         
-        imageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(30)
-            make.centerX.equalToSuperview()
-            make.width.height.equalTo(Constants.imageViewDimension)
+        authorImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(30)
+            $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(Constants.authorImageSize)
         }
         
-        mainVerticalStackView.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(30)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+        mainVerticalStackView.snp.makeConstraints {
+            $0.top.equalTo(authorImageView.snp.bottom).offset(30)
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-20)
         }
         
-        userDetailsLabel.snp.makeConstraints { make in
-            make.top.equalTo(mainVerticalStackView.snp.bottom).offset(30)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.lessThanOrEqualToSuperview().offset(-20)
-            make.bottom.lessThanOrEqualToSuperview().offset(-20)
+        userDetailsLabel.snp.makeConstraints {
+            $0.top.equalTo(mainVerticalStackView.snp.bottom).offset(30)
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.lessThanOrEqualToSuperview().offset(-20)
+            $0.bottom.lessThanOrEqualToSuperview().offset(-20)
         }
     }
 }

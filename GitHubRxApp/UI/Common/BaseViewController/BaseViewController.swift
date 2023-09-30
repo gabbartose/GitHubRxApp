@@ -59,9 +59,9 @@ extension BaseViewController {
         activityIndicatorView.color = .gBackgroundMainInvert
         
         view.addSubview(activityIndicatorView)
-        activityIndicatorView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(Constants.activityIndicatorDistanceFromCenter)
+        activityIndicatorView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(Constants.activityIndicatorDistanceFromCenter)
         }
         
         self.activityIndicatorView = activityIndicatorView

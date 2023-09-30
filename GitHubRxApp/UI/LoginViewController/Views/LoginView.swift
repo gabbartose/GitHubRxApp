@@ -63,24 +63,24 @@ extension LoginView {
     }
     
     internal func setupConstraints() {
-        centerView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(40)
-            make.trailing.equalToSuperview().offset(-40)
-            make.centerY.equalToSuperview()
+        centerView.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(40)
+            $0.trailing.equalToSuperview().offset(-40)
+            $0.centerY.equalToSuperview()
         }
         
-        imageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(30)
-            make.size.equalTo(170)
-            make.centerX.equalToSuperview()
+        imageView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(30)
+            $0.size.equalTo(170)
+            $0.centerX.equalToSuperview()
         }
         
-        loginButton.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom).offset(30)
-            make.bottom.equalToSuperview().offset(-30)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.height.equalTo(50)
+        loginButton.snp.makeConstraints {
+            $0.top.equalTo(imageView.snp.bottom).offset(30)
+            $0.bottom.equalToSuperview().offset(-30)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.height.equalTo(50)
         }
     }
 }
